@@ -1,0 +1,16 @@
+{
+    "type": "string",
+    "minLength": 1,
+    "enum": [
+        "OWNDATA",
+        "CONTACT",
+        "MESSAGE",
+        "COMMAND",
+        "GRAPHIC",
+        "STATUS",
+        "METEO",
+        "HEARTBEAT"
+    ],
+    "title": "sedapexpress",
+    "description": "JSON-Schema for SEDAP Express REST-Api"
+}
