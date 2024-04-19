@@ -21,6 +21,9 @@ here to make it as easy as possible for everyone to get started.
 
 Here you can find everything you need about SEDAP-Express and to understand the protocols. In the future we will also publish tutorial videos and such stuff here to make it as easy as possible for everyone to get started.
 
+### MessageTool
+The main function of that tool is to manually generate messages for test and debugging but also in operational use cases ("sneakernet"). 
+
 ### SampleRESTClient
 If you want to implement a REST API client for SEDAP Express, you can use this sample client as a basis. It already contains everything you need for a smooth start.
 
