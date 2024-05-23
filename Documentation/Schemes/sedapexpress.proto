@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message SomeMessage {
+
+  message Messages {
+    string message = 1;
+  }
+  
+  repeated Messages messages = 1;
+}
