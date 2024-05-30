@@ -1,5 +1,9 @@
 # *Welcome on the official SEDAP-Express repository!* :+1:
 
+
+## Remarks 
+This repository has not yet been officially published. The ICD (Interface Description Document) is ready, but many important software parts are still missing. This repository will be completed in the next two weeks (by mid-June).
+
  
 ## Scope
 
