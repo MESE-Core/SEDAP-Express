@@ -1,0 +1,3 @@
+//Fügt die Reads für die parametrisierten Tests hinzu
+--add-reads
+    sedap_framework=org.junit.jupiter.params

@@ -28,17 +28,20 @@ Here you can find everything you need about SEDAP-Express and to understand the 
 ### MessageTool
 The main function of that tool is to manually generate messages for test and debugging but also in operational use cases ("sneakernet"). 
 
-### SampleRESTClient
-If you want to implement a REST API client for SEDAP Express, you can use this sample client as a basis. It already contains everything you need for a smooth start.
-
-### SampleSerialClient
-This is another example client that can be used as a basic structure for your new client if you need to communicate via a serial line.
-
 ### SampleTCPClient
 For most cases, this sample client is the right way to get started with SEDAP Express development. TCP has some significant advantages over UDP, so if you are able to use it in your future use case, it is better to start with this one.
 
 ### SampleUDPClient
 Almost the same client as the TCP variant, but for use cases in which only UDP can be used or is required for other reasons.
+
+### SampleRESTClient
+If you want to implement a REST API client for SEDAP Express, you can use this sample client as a basis. It already contains everything you need for a smooth start.
+
+### SampleProtobugClient
+The protocol buffer standard is another method for exchanging SEDAP Express messages. You can see how it works in this example client. As always, the required libraries can already be found in the libs folder of the project.
+
+### SampleSerialClient
+This is another example client that can be used as a basic structure for your new client if you need to communicate via a serial line.
 
 ### SECMockUp
 This mockup simulates the real SEDAP-Express connector of the MESE framework. It answers your acknowledge request or heartbeats. You can take it also for verifing and debugging your own SEDAP-Express client software.
