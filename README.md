@@ -1,9 +1,9 @@
 # *Welcome on the official SEDAP-Express repository!* :+1:
 
-
-## Remarks 
+## <span style="color:blue">Remarks</span> 
+<span style="color:blue">
 This repository has not yet been officially published. The ICD (Interface Description Document) is ready, but many important software parts are still missing. This repository will be completed in the next two weeks (by mid-June).
-
+</span>
  
 ## Scope
 
@@ -31,13 +31,16 @@ The main function of that tool is to manually generate messages for test and deb
 ### SampleTCPClient
 For most cases, this sample client is the right way to get started with SEDAP Express development. TCP has some significant advantages over UDP, so if you are able to use it in your future use case, it is better to start with this one.
 
+### SampleTCPServer
+This is nearly the same project as the SampleTCPClient, except that in this case you are in the server role. Technically it shares the main sources with SampleTCPClient.
+
 ### SampleUDPClient
 Almost the same client as the TCP variant, but for use cases in which only UDP can be used or is required for other reasons.
 
 ### SampleRESTClient
 If you want to implement a REST API client for SEDAP Express, you can use this sample client as a basis. It already contains everything you need for a smooth start.
 
-### SampleProtobugClient
+### SampleProtobufClient
 The protocol buffer standard is another method for exchanging SEDAP Express messages. You can see how it works in this example client. As always, the required libraries can already be found in the libs folder of the project.
 
 ### SampleSerialClient
