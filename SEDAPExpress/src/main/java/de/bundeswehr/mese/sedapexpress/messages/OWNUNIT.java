@@ -192,7 +192,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field latitude is empty!",
+			      "Mandatory field \"latitude\" is empty!",
 			      value);
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.latitude = Double.valueOf(value);
@@ -202,7 +202,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field longitude contains invalid value!",
+			      "Mandatory field \"longitude\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -215,7 +215,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field longitude is empty!",
+			      "Mandatory field \"longitude\" is empty!",
 			      value);
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.longitude = Double.valueOf(value);
@@ -225,7 +225,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field longitude contains invalid value!",
+			      "Mandatory field \"longitude\" contains invalid value!",
 			      value);
 	    }
 	}

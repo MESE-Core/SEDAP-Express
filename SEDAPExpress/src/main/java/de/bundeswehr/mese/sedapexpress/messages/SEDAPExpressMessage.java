@@ -42,7 +42,6 @@ import de.bundeswehr.mese.sedapexpress.messages.alt.ACKNOWLEDGE;
 import de.bundeswehr.mese.sedapexpress.messages.alt.COMMAND;
 import de.bundeswehr.mese.sedapexpress.messages.alt.GENERIC;
 import de.bundeswehr.mese.sedapexpress.messages.alt.GRAPHIC;
-import de.bundeswehr.mese.sedapexpress.messages.alt.HEARTBEAT;
 import de.bundeswehr.mese.sedapexpress.messages.alt.RESEND;
 import de.bundeswehr.mese.sedapexpress.messages.alt.STATUS;
 import de.bundeswehr.mese.sedapexpress.messages.alt.TEXT;
@@ -97,7 +96,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public static final Pattern NUMBER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,2}$"); // Number
     public static final Pattern TIME_MATCHER = Pattern.compile("^[A-Fa-f0-9]{11,16}$"); // Time
-    public static final Pattern SENDER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,4}$"); // Sender
+    public static final Pattern SENDER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,4}$"); // Sender-Recipient
 
     public static final Pattern DOUBLE_MATCHER = Pattern.compile("^-?\\d+.?\\d*$"); // Double
     public static final Pattern POSITIVE_DOUBLE_MATCHER = Pattern.compile("^\\d+.?\\d*$"); // Double

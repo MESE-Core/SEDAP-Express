@@ -226,7 +226,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field speedThroughWater is empty!");
+			      "Optional field \"speedThroughWater\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.speedThroughWater = Double.valueOf(value);
 	    } else {
@@ -235,7 +235,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field speedThroughWater contains invalid value!",
+			      "Optional field \"speedThroughWater\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -248,7 +248,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterSpeed is empty!");
+			      "Optional field \"waterSpeed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterSpeed = Double.valueOf(value);
 	    } else {
@@ -257,7 +257,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterSpeed contains invalid value!",
+			      "Optional field \"waterSpeed\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -270,7 +270,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterDirection is empty!");
+			      "Optional field \"waterDirection\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterDirection = Double.valueOf(value);
 	    } else {
@@ -279,7 +279,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterDirection contains invalid value!",
+			      "Optional field \"waterDirection\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -292,7 +292,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterTemperature is empty!");
+			      "Optional field \"waterTemperature\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterTemperature = Double.valueOf(value);
 	    } else {
@@ -301,7 +301,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterTemperature contains invalid value!",
+			      "Optional field \"waterTemperature\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -314,7 +314,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterDepth is empty!");
+			      "Optional field \"waterDepth\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterDepth = Double.valueOf(value);
 	    } else {
@@ -323,7 +323,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field waterDepth contains invalid value!",
+			      "Optional field \"waterDepth\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -336,7 +336,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field airTemperature is empty!");
+			      "Optional field \"airTemperature\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.airTemperature = Double.valueOf(value);
 	    } else {
@@ -345,7 +345,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field airTemperature contains invalid value!",
+			      "Optional field \"airTemperature\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -358,7 +358,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field dewPoint is empty!");
+			      "Optional field \"dewPoint\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.dewPoint = Double.valueOf(value);
 	    } else {
@@ -367,7 +367,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field dewPoint contains invalid value!",
+			      "Optional field \"dewPoint\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -380,7 +380,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field humidityRel is empty!");
+			      "Optional field \"humidityRel\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.humidityRel = Double.valueOf(value);
 	    } else {
@@ -389,7 +389,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field humidityRel contains invalid value!",
+			      "Optional field \"humidityRel\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -402,7 +402,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field pressure is empty!");
+			      "Optional field \"pressure\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.pressure = Double.valueOf(value);
 	    } else {
@@ -411,7 +411,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field pressure contains invalid value!",
+			      "Optional field \"pressure\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -424,7 +424,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field windSpeed is empty!");
+			      "Optional field \"windSpeed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.windSpeed = Double.valueOf(value);
 	    } else {
@@ -433,7 +433,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field windSpeed contains invalid value!",
+			      "Optional field \"windSpeed\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -446,7 +446,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field windDirection is empty!");
+			      "Optional field \"windDirection\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.windDirection = Double.valueOf(value);
 	    } else {
@@ -455,7 +455,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field windDirection contains invalid value!",
+			      "Optional field \"windDirection\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -468,7 +468,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field visibility is empty!");
+			      "Optional field \"visibility\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.visibility = Double.valueOf(value);
 	    } else {
@@ -477,7 +477,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field visibility contains invalid value!",
+			      "Optional field \"visibility\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -490,7 +490,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field cloudHeight is empty!");
+			      "Optional field \"cloudHeight\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.cloudHeight = Double.valueOf(value);
 	    } else {
@@ -499,7 +499,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field cloudHeight contains invalid value!",
+			      "Optional field \"cloudHeight\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -512,7 +512,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field cloudCover is empty!");
+			      "Optional field \"cloudCover\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.cloudCover = Double.valueOf(value);
 	    } else {
@@ -521,7 +521,7 @@ public class METEO extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "METEO",
 			      "METEO(Iterator<String> message)",
-			      "Optional field cloudCover contains invalid value!",
+			      "Optional field \"cloudCover\" contains invalid value!",
 			      value);
 	    }
 	}

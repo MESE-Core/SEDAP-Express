@@ -23,11 +23,10 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
-package de.bundeswehr.mese.sedapexpress.messages.alt;
+package de.bundeswehr.mese.sedapexpress.messages;
 
 import java.util.Iterator;
-
-import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
+import java.util.logging.Level;
 
 public class HEARTBEAT extends SEDAPExpressMessage {
 
@@ -44,11 +43,20 @@ public class HEARTBEAT extends SEDAPExpressMessage {
     }
 
     /**
-     *
+     * 
+     * @param number
+     * @param time
+     * @param sender
+     * @param classification
+     * @param acknowledgement
+     * @param hmac
+     * @param recipient
      */
-    public HEARTBEAT() {
-	super();
+    protected HEARTBEAT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac, String recipient) {
 
+	super(number, time, sender, classification, acknowledgement, hmac);
+
+	this.recipient = recipient;
     }
 
     /**
@@ -83,6 +91,38 @@ public class HEARTBEAT extends SEDAPExpressMessage {
     public HEARTBEAT(Iterator<String> message) {
 
 	super(message);
+
+	String value;
+
+	if (message.hasNext()) {
+	    value = message.next();
+	    if (value.isBlank()) {
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.SEVERE,
+			      "SEDAPExpressMessage",
+			      "SEDAPExpressMessage(Iterator<String> message)",
+			      "Mandatory field \"recipient\" is empty!");
+	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
+		this.recipient = String.valueOf(Integer.parseInt(value, 16));
+	    } else if (!value.isBlank()) {
+		this.recipient = value;
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.INFO,
+			      "SEDAPExpressMessage",
+			      "SEDAPExpressMessage(Iterator<String> message)",
+			      "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!",
+			      value);
+	    }
+	} else {
+	    SEDAPExpressMessage.logger
+		    .logp(
+			  Level.SEVERE,
+			  "SEDAPExpressMessage",
+			  "SEDAPExpressMessage(Iterator<String> message)",
+			  "Incomplete message!");
+	}
     }
 
     @Override

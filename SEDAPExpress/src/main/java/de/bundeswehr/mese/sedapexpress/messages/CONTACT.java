@@ -382,7 +382,7 @@ public class CONTACT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "CONTACT",
 			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field latitude contains invalid value!",
+			      "Mandatory field \"latitude\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -395,7 +395,7 @@ public class CONTACT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "CONTACT",
 			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field longitude is empty!");
+			      "Mandatory field \"longitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.longitude = Double.valueOf(value);
 	    } else {
@@ -404,7 +404,7 @@ public class CONTACT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "CONTACT",
 			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field longitude contains invalid value!",
+			      "Mandatory field \"longitude\" contains invalid value!",
 			      value);
 	    }
 	}
