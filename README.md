@@ -47,10 +47,7 @@ The protocol buffer standard is another method for exchanging SEDAP Express mess
 This is another example client that can be used as a basic structure for your new client if you need to communicate via a serial line.
 
 ### SECMockUp
-This mockup simulates the real SEDAP-Express connector of the MESE framework. It answers your acknowledge request or heartbeats. You can take it also for verifing and debugging your own SEDAP-Express client software.
-
-### C2MockUp
-As a complement to SECMockUp, this mockup is intended to be a simple kind of Command&Control (C2) system simulator by providing a simple map with Mil-Std-2525c icons. The engine uses the standard NASA WorldWind framework without our multithread and other modifications.
+This mockup simulates the real SEDAP-Express connector of the MESE framework. It answers your acknowledge request or heartbeats. You can take it also for verifing and debugging your own SEDAP-Express client software. Also, it's intended to be a simple kind of Command&Control (C2) system simulator by providing a simple map with Mil-Std-2525c icons. The engine uses the standard NASA WorldWind framework without our own multithread and other modifications.
 
 
 
@@ -58,4 +55,4 @@ As a complement to SECMockUp, this mockup is intended to be a simple kind of Com
 ***An NOW greetings from the North Sea and Happy Coding***
 
 
-***VolkerVoß***
+***Volker Voß***
