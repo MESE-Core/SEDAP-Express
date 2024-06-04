@@ -43,7 +43,23 @@ public class HEARTBEAT extends SEDAPExpressMessage {
     }
 
     /**
-     * 
+     *
+     * @param number
+     * @param time
+     * @param sender
+     * @param classification
+     * @param acknowledgement
+     * @param hmac
+     */
+    protected HEARTBEAT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac) {
+
+	super(number, time, sender, classification, acknowledgement, hmac);
+
+	this.recipient = null;
+    }
+
+    /**
+     *
      * @param number
      * @param time
      * @param sender
@@ -76,6 +92,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
      * @param classification
      * @param acknowledgement
      * @param hmac
+     * @param recipient
      */
     public HEARTBEAT(Short number, Long time, String sender, Character classification,
 	    Boolean acknowledgement, int hmac, String recipient) {
@@ -99,10 +116,10 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
-			      Level.SEVERE,
+			      Level.INFO,
 			      "SEDAPExpressMessage",
 			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Mandatory field \"recipient\" is empty!");
+			      "Optional field \"recipient\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
 		this.recipient = String.valueOf(Integer.parseInt(value, 16));
 	    } else if (!value.isBlank()) {
@@ -112,16 +129,16 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "SEDAPExpressMessage",
 			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!",
+			      "Optional field \"recipient\" contains not a valid number, but free text is allowed!",
 			      value);
 	    }
 	} else {
 	    SEDAPExpressMessage.logger
 		    .logp(
-			  Level.SEVERE,
+			  Level.INFO,
 			  "SEDAPExpressMessage",
 			  "SEDAPExpressMessage(Iterator<String> message)",
-			  "Incomplete message!");
+			  "Optional field \"recipient\" is empty!");
 	}
     }
 
@@ -146,7 +163,9 @@ public class HEARTBEAT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader().append(this.recipient).toString();
+	return serializeHeader()
+		.append(this.recipient != null ? this.recipient : "")
+		.toString();
 
     }
 

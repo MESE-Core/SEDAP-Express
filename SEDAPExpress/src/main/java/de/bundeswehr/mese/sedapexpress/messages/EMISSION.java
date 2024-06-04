@@ -352,7 +352,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field sensorLatitude is empty!");
+			      "Mandatory field \"sensorLatitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.sensorLatitude = Double.valueOf(value);
 	    } else {
@@ -361,7 +361,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field sensorLatitude contains invalid value!",
+			      "Mandatory field \"sensorLatitude\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -374,7 +374,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field sensorLongitude is empty!");
+			      "Mandatory field \"sensorLongitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.sensorLongitude = Double.valueOf(value);
 	    } else {
@@ -383,7 +383,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field sensorLongitude contains invalid value!",
+			      "Mandatory field \"sensorLongitude\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -418,7 +418,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Optional field emitterLatitude is empty!");
+			      "Optional field \"emitterLatitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.emitterLatitude = Double.valueOf(value);
 	    } else {
@@ -427,7 +427,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Optional field emitterLatitude contains invalid value!",
+			      "Optional field \"emitterLatitude\" contains invalid value!",
 			      value);
 	    }
 	}
@@ -440,7 +440,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Optional field emitterLongitude is empty!");
+			      "Optional field \"emitterLongitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.emitterLongitude = Double.valueOf(value);
 	    } else {
@@ -449,7 +449,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "EMISSION",
 			      "EMISSION(Iterator<String> message)",
-			      "Optional field emitterLongitude contains invalid value!",
+			      "Optional field \"emitterLongitude\" contains invalid value!",
 			      value);
 	    }
 	}
