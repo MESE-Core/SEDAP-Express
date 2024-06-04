@@ -354,7 +354,12 @@ public class CONTACT extends SEDAPExpressMessage {
 	    } else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
 		this.deleteFlag = false;
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"deleteFlag\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.SEVERE,
+			      "CONTACT",
+			      "CONTACT(Iterator<String> message)",
+			      "Mandatory field \"deleteFlag\" invalid value: \"" + value + "\"");
 	    }
 	} else {
 	    SEDAPExpressMessage.logger

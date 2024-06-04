@@ -44,7 +44,6 @@ import de.bundeswehr.mese.sedapexpress.messages.alt.GENERIC;
 import de.bundeswehr.mese.sedapexpress.messages.alt.GRAPHIC;
 import de.bundeswehr.mese.sedapexpress.messages.alt.RESEND;
 import de.bundeswehr.mese.sedapexpress.messages.alt.STATUS;
-import de.bundeswehr.mese.sedapexpress.messages.alt.TEXT;
 
 /**
  * @author Volker Voß

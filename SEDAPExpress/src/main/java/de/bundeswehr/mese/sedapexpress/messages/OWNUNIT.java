@@ -192,8 +192,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field \"latitude\" is empty!",
-			      value);
+			      "Mandatory field \"latitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.latitude = Double.valueOf(value);
 	    } else {
@@ -215,8 +214,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field \"longitude\" is empty!",
-			      value);
+			      "Mandatory field \"longitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.longitude = Double.valueOf(value);
 	    } else {
@@ -238,8 +236,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"altitude\" is empty!",
-			      value);
+			      "Optional field \"altitude\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.altitude = Double.valueOf(value);
 	    } else {
@@ -261,8 +258,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 			      Level.INFO,
 			      "OWNUNIT",
 			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"speed\" is empty!",
-			      value);
+			      "Optional field \"speed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.speed = Double.valueOf(value);
 	    } else {
