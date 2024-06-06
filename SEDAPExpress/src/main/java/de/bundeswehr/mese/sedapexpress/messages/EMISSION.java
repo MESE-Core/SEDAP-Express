@@ -696,7 +696,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	    return false;
 	} else {
 	    return super.equals(obj) &&
-		    (this.emissionID.equals(((EMISSION) obj).emissionID)) &&
+
+		    (((this.emissionID == null) && (((EMISSION) obj).emissionID == null)) ||
+			    ((this.emissionID != null) && this.emissionID.equals(((EMISSION) obj).emissionID)))
+		    &&
+
 		    (this.deleteFlag == ((EMISSION) obj).deleteFlag) &&
 		    (this.sensorLatitude == ((EMISSION) obj).sensorLatitude) &&
 		    (this.sensorLongitude == ((EMISSION) obj).sensorLongitude) &&
@@ -713,7 +717,10 @@ public class EMISSION extends SEDAPExpressMessage {
 		    (this.function == ((EMISSION) obj).function) &&
 		    (this.spotNumber == ((EMISSION) obj).spotNumber) &&
 		    Arrays.equals(this.sidc, ((EMISSION) obj).sidc) &&
-		    this.comment.equals(((EMISSION) obj).comment);
+
+		    (((this.comment == null) && (((EMISSION) obj).comment == null)) ||
+			    ((this.comment != null) && this.comment.equals(((EMISSION) obj).comment)));
+
 	}
     }
 
@@ -726,24 +733,30 @@ public class EMISSION extends SEDAPExpressMessage {
     public String toString() {
 
 	return serializeHeader()
+
 		.append((this.emissionID != null) ? this.emissionID : "")
 		.append(";")
+
 		.append(this.deleteFlag != null ? this.deleteFlag : "")
 		.append(";")
+
 		.append(this.sensorLatitude != null ? this.sensorLatitude : "")
 		.append(";")
 		.append(this.sensorLongitude != null ? this.sensorLongitude : "")
 		.append(";")
 		.append(this.sensorAltitude != null ? this.sensorAltitude : "")
 		.append(";")
+
 		.append(this.emitterLatitude != null ? this.emitterLatitude : "")
 		.append(";")
 		.append(this.emitterLongitude != null ? this.emitterLongitude : "")
 		.append(";")
 		.append(this.emitterAltitude != null ? this.emitterAltitude : "")
 		.append(";")
+
 		.append(this.bearing != null ? this.bearing : "")
 		.append(";")
+
 		.append(this.frequencies != null ? getStringFromList(this.frequencies) : "")
 		.append(";")
 		.append(this.bandwidth != null ? this.bandwidth : "")
@@ -754,12 +767,16 @@ public class EMISSION extends SEDAPExpressMessage {
 		.append(";")
 		.append(this.prfAgility != null ? this.prfAgility : "")
 		.append(";")
+
 		.append(this.function != null ? this.function : "")
 		.append(";")
+
 		.append(this.spotNumber != null ? this.spotNumber : "")
 		.append(";")
+
 		.append(this.sidc != null ? String.valueOf(this.sidc) : "")
 		.append(";")
+
 		.append(this.comment != null ? this.comment : "")
 		.toString();
     }

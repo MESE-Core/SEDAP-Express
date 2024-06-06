@@ -39,9 +39,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import de.bundeswehr.mese.sedapexpress.messages.alt.ACKNOWLEDGE;
-import de.bundeswehr.mese.sedapexpress.messages.alt.COMMAND;
 import de.bundeswehr.mese.sedapexpress.messages.alt.GENERIC;
-import de.bundeswehr.mese.sedapexpress.messages.alt.GRAPHIC;
 import de.bundeswehr.mese.sedapexpress.messages.alt.RESEND;
 import de.bundeswehr.mese.sedapexpress.messages.alt.STATUS;
 
@@ -56,6 +54,9 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     static {
 	SEDAPExpressMessage.logger.setLevel(Level.ALL);
     }
+
+    public static final String ENCODING_BASE64 = "BASE64";
+    public static final String ENCODING_NONE = "NONE";
 
     public static final char NONE = '-';
     public static final char PUBLIC = 'P';
@@ -96,6 +97,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern NUMBER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,2}$"); // Number
     public static final Pattern TIME_MATCHER = Pattern.compile("^[A-Fa-f0-9]{11,16}$"); // Time
     public static final Pattern SENDER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,4}$"); // Sender-Recipient
+    public static final Pattern TEXTTYPE_MATCHER = Pattern.compile("^[0-4]$"); // Text type
 
     public static final Pattern DOUBLE_MATCHER = Pattern.compile("^-?\\d+.?\\d*$"); // Double
     public static final Pattern POSITIVE_DOUBLE_MATCHER = Pattern.compile("^\\d+.?\\d*$"); // Double
@@ -106,7 +108,10 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern SIDC_MATCHER = Pattern.compile("^[a-zA-Z-]{15}$"); // SIDC
     public static final Pattern MMSI_MATCHER = SEDAPExpressMessage.INTEGER_MATCHER; // Integer
     public static final Pattern ICAO_MATCHER = Pattern.compile("^[A-Z]{1}[A-Z0-9]{1,3}$"); // ICAO
-    public static final Pattern SOURCE_MATCHER = Pattern.compile("^[R,A,I,S,E,O,Y,M]+$"); // ICAO
+    public static final Pattern SOURCE_MATCHER = Pattern.compile("^[R,A,I,S,E,O,Y,M]+$"); // Source type
+    public static final Pattern CMDTYPE_MATCHER = Pattern.compile("^[0-255]$"); // Command type
+    public static final Pattern GRAPHICTYPE_MATCHER = Pattern.compile("^[0-14]$"); // Graphic type
+    public static final Pattern RGBA_MATCHER = Pattern.compile("^[0-9A-F]{8}$"); // RGBA Format
 
     public static boolean matchesPattern(Pattern pattern, String value) {
 	return pattern.matcher(value).matches();

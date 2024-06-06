@@ -51,7 +51,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
      * @param acknowledgement
      * @param hmac
      */
-    protected HEARTBEAT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac) {
+    public HEARTBEAT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac) {
 
 	super(number, time, sender, classification, acknowledgement, hmac);
 
@@ -68,7 +68,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
      * @param hmac
      * @param recipient
      */
-    protected HEARTBEAT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac, String recipient) {
+    public HEARTBEAT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac, String recipient) {
 
 	super(number, time, sender, classification, acknowledgement, hmac);
 
@@ -151,7 +151,10 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 	    return false;
 	} else {
 	    return super.equals(obj) &&
-		    this.recipient.equals(((HEARTBEAT) obj).getRecipient());
+
+		    (((this.recipient == null) && (((HEARTBEAT) obj).recipient == null)) ||
+			    ((this.recipient != null) && this.recipient.equals(((HEARTBEAT) obj).recipient)));
+
 	}
     }
 

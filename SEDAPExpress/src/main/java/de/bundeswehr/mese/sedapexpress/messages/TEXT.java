@@ -35,8 +35,11 @@ public class TEXT extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 1140074068439618568L;
 
-    public static final String BASE64 = "BASE64";
-    public static final String NONE = "NONE";
+    public static final Integer TYPE_Undefined = 0;
+    public static final Integer TYPE_Alert = 1;
+    public static final Integer TYPE_Warning = 2;
+    public static final Integer TYPE_Notice = 3;
+    public static final Integer TYPE_Chat = 4;
 
     private Integer type;
 
@@ -121,6 +124,7 @@ public class TEXT extends SEDAPExpressMessage {
 
 	String value;
 
+	// Type
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -130,7 +134,7 @@ public class TEXT extends SEDAPExpressMessage {
 			      "TEXT",
 			      "TEXT(Iterator<String> message)",
 			      "Optional field \"type\" is empty!");
-	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.INTEGER_MATCHER, value)) {
+	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXTTYPE_MATCHER, value)) {
 		this.type = Integer.valueOf(value);
 	    } else {
 		SEDAPExpressMessage.logger
@@ -149,12 +153,13 @@ public class TEXT extends SEDAPExpressMessage {
 			  "Incomplete message!");
 	}
 
+	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
 	    if ("base64".equalsIgnoreCase(value)) {
-		this.encoding = TEXT.BASE64;
+		this.encoding = SEDAPExpressMessage.ENCODING_BASE64;
 	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
-		this.encoding = TEXT.NONE;
+		this.encoding = SEDAPExpressMessage.ENCODING_NONE;
 	    } else {
 		SEDAPExpressMessage.logger
 			.logp(
@@ -172,6 +177,7 @@ public class TEXT extends SEDAPExpressMessage {
 			  "Incomplete message!");
 	}
 
+	// Text
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -182,7 +188,7 @@ public class TEXT extends SEDAPExpressMessage {
 			      "TEXT(Iterator<String> message)",
 			      "Mandatory field \"text\" is empty!");
 	    } else {
-		if (TEXT.BASE64.equals(this.encoding)) {
+		if (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding)) {
 		    try {
 			this.text = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
@@ -207,6 +213,7 @@ public class TEXT extends SEDAPExpressMessage {
 			  "Incomplete message!");
 	}
 
+	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
@@ -235,9 +242,17 @@ public class TEXT extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 		    (this.type == ((TEXT) obj).type) &&
-		    this.encoding.equals(((TEXT) obj).encoding) &&
-		    this.text.equals(((TEXT) obj).text) &&
-		    this.recipient.equals(((TEXT) obj).recipient);
+
+		    (((this.encoding == null) && (((TEXT) obj).encoding == null)) ||
+			    ((this.encoding != null) && this.encoding.equals(((TEXT) obj).encoding)))
+		    &&
+
+		    (((this.text == null) && (((TEXT) obj).text == null)) ||
+			    ((this.text != null) && this.text.equals(((TEXT) obj).text)))
+		    &&
+
+		    (((this.recipient == null) && (((TEXT) obj).recipient == null)) ||
+			    ((this.recipient != null) && this.recipient.equals(((TEXT) obj).recipient)));
 	}
     }
 
@@ -254,10 +269,9 @@ public class TEXT extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.encoding != null) ? this.encoding : "")
 		.append(";")
-		.append((this.text != null) ? this.text : "")
+		.append((this.text != null) ? ((SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.text.getBytes()) : "")) : "")
 		.append(";")
 		.append((this.recipient != null) ? this.recipient : "")
-		.append(";")
 		.toString();
     }
 

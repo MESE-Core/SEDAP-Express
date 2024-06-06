@@ -457,7 +457,6 @@ public class OWNUNIT extends SEDAPExpressMessage {
 		.append(";")
 
 		.append(this.sidc != null ? String.valueOf(this.sidc) : "")
-
 		.toString();
 
     }

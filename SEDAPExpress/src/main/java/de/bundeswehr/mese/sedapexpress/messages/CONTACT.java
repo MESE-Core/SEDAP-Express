@@ -335,6 +335,7 @@ public class CONTACT extends SEDAPExpressMessage {
 
 	String value;
 
+	// ContactID
 	if (message.hasNext()) {
 	    this.contactID = message.next();
 	    if (this.contactID.isBlank()) {
@@ -347,6 +348,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// DeleteFlag
 	if (message.hasNext()) {
 	    value = message.next();
 	    if ("true".equalsIgnoreCase(value)) {
@@ -370,6 +372,7 @@ public class CONTACT extends SEDAPExpressMessage {
 			  "Incomplete message!");
 	}
 
+	// Latitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -392,6 +395,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Longitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -414,6 +418,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Altitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -436,6 +441,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Relative-X-Distance
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -458,6 +464,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Relative-Y-Distance
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -480,6 +487,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Relative-Z-Distance
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -502,6 +510,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Speed
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -524,6 +533,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Course
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -546,6 +556,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Heading
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
@@ -561,6 +572,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Roll
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -583,6 +595,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Pitch
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -605,6 +618,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Width
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -627,6 +641,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Length
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -649,6 +664,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Height
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -671,6 +687,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Name
 	if (message.hasNext()) {
 	    this.name = message.next();
 	    if (this.name.isBlank()) {
@@ -683,6 +700,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Source
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -705,6 +723,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// SIDC
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -727,6 +746,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// MMSI
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -749,6 +769,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// ICAO
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -771,6 +792,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// ImageData
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -794,6 +816,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Comment
 	if (message.hasNext()) {
 	    this.comment = message.next();
 	    if (this.comment.isBlank()) {
@@ -817,7 +840,9 @@ public class CONTACT extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (this.contactID.equals(((CONTACT) obj).contactID)) &&
+		    (((this.contactID == null) && (((CONTACT) obj).contactID == null)) ||
+			    ((this.contactID != null) && this.contactID.equals(((CONTACT) obj).contactID)))
+		    &&
 
 		    (this.deleteFlag == ((CONTACT) obj).deleteFlag) &&
 
@@ -840,16 +865,29 @@ public class CONTACT extends SEDAPExpressMessage {
 		    (this.length == ((CONTACT) obj).length) &&
 		    (this.height == ((CONTACT) obj).height) &&
 
-		    this.name.equals(((CONTACT) obj).name) &&
-		    this.source.equals(((CONTACT) obj).source) &&
+		    (((this.name == null) && (((CONTACT) obj).name == null)) ||
+			    ((this.name != null) && this.name.equals(((CONTACT) obj).name)))
+		    &&
+
+		    (((this.source == null) && (((CONTACT) obj).source == null)) ||
+			    ((this.source != null) && this.source.equals(((CONTACT) obj).source)))
+		    &&
 
 		    Arrays.equals(this.sidc, ((CONTACT) obj).sidc) &&
-		    this.mmsi.equals(((CONTACT) obj).mmsi) &&
-		    this.icao.equals(((CONTACT) obj).icao) &&
+
+		    (((this.mmsi == null) && (((CONTACT) obj).mmsi == null)) ||
+			    ((this.mmsi != null) && this.mmsi.equals(((CONTACT) obj).mmsi)))
+		    &&
+
+		    (((this.icao == null) && (((CONTACT) obj).icao == null)) ||
+			    ((this.icao != null) && this.icao.equals(((CONTACT) obj).icao)))
+		    &&
 
 		    Arrays.equals(this.imageData, ((CONTACT) obj).imageData) &&
 
-		    this.comment.equals(((CONTACT) obj).comment);
+		    (((this.comment == null) && (((CONTACT) obj).comment == null)) ||
+			    ((this.comment != null) && this.comment.equals(((CONTACT) obj).comment)));
+
 	}
     }
 
@@ -915,7 +953,6 @@ public class CONTACT extends SEDAPExpressMessage {
 		.append(";")
 
 		.append(this.comment != null ? this.comment : "")
-
 		.toString();
     }
 

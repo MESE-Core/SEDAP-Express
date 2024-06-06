@@ -560,6 +560,7 @@ public class METEO extends SEDAPExpressMessage {
     @Override
     public String toString() {
 	return serializeHeader()
+
 		.append((this.speedThroughWater != null) ? this.speedThroughWater : "")
 		.append(";")
 		.append(this.waterSpeed != null ? this.waterSpeed : "")
@@ -570,6 +571,7 @@ public class METEO extends SEDAPExpressMessage {
 		.append(";")
 		.append(this.waterDepth != null ? this.waterDepth : "")
 		.append(";")
+
 		.append(this.airTemperature != null ? this.airTemperature : "")
 		.append(";")
 		.append(this.dewPoint != null ? this.dewPoint : "")
@@ -578,10 +580,12 @@ public class METEO extends SEDAPExpressMessage {
 		.append(";")
 		.append(this.pressure != null ? this.pressure : "")
 		.append(";")
+
 		.append(this.windSpeed != null ? this.windSpeed : "")
 		.append(";")
 		.append(this.windDirection != null ? this.windDirection : "")
 		.append(";")
+
 		.append(this.visibility != null ? this.visibility : "")
 		.append(";")
 		.append(this.cloudHeight != null ? this.cloudHeight : "")
