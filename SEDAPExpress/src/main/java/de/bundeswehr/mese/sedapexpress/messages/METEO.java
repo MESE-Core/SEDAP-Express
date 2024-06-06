@@ -218,6 +218,7 @@ public class METEO extends SEDAPExpressMessage {
 
 	String value;
 
+	// SpeedThroughWater
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -240,6 +241,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// WaterSpeed
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -262,6 +264,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// WaterDirection
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -284,6 +287,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// WaterTemperature
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -306,6 +310,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// WaterDepth
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -328,6 +333,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// AirTemperature
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -350,6 +356,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// DewPoint
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -372,6 +379,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// HumidityRel
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -394,6 +402,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Pressure
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -416,6 +425,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// WindSpeed
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -438,6 +448,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// WindDirection
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -460,6 +471,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Visibility
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -482,6 +494,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// CloudHeight
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -504,6 +517,7 @@ public class METEO extends SEDAPExpressMessage {
 	    }
 	}
 
+	// CloudCover
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {

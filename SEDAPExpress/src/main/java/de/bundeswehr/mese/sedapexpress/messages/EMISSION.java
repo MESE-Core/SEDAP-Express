@@ -314,6 +314,7 @@ public class EMISSION extends SEDAPExpressMessage {
 
 	String value;
 
+	// EmissionID
 	if (message.hasNext()) {
 	    this.emissionID = message.next();
 	    if (this.emissionID.isBlank()) {
@@ -326,6 +327,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// DeleteFlag
 	if (message.hasNext()) {
 	    value = message.next();
 	    if ("true".equalsIgnoreCase(value)) {
@@ -333,7 +335,12 @@ public class EMISSION extends SEDAPExpressMessage {
 	    } else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
 		this.deleteFlag = false;
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"deleteFlag\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.SEVERE,
+			      "EMISSION",
+			      "EMISSION(Iterator<String> message)",
+			      "Optional field \"deleteFlag\" invalid value: \"" + value + "\"");
 	    }
 	} else {
 	    SEDAPExpressMessage.logger
@@ -344,6 +351,7 @@ public class EMISSION extends SEDAPExpressMessage {
 			  "Incomplete message!");
 	}
 
+	// SensorLatitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -366,6 +374,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// SensorLongitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -388,6 +397,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// SensorAltitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -410,6 +420,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// EmitterLatitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -432,6 +443,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// EmitterLongitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -454,6 +466,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// EmitterAltitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -476,6 +489,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Bearing
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -498,6 +512,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Frequencies
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -521,6 +536,7 @@ public class EMISSION extends SEDAPExpressMessage {
 
 	}
 
+// Bandwidth
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -543,6 +559,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Power
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -565,6 +582,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// FreqAgility
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -587,6 +605,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// PrfAgility
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -609,6 +628,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Function
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -631,6 +651,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// SpotNumber
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -653,6 +674,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// SIDC
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -675,6 +697,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Comment
 	if (message.hasNext()) {
 	    this.comment = message.next();
 	    if (this.comment.isBlank()) {

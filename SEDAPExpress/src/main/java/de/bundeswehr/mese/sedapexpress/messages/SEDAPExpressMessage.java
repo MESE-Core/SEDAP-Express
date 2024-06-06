@@ -38,11 +38,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import de.bundeswehr.mese.sedapexpress.messages.alt.ACKNOWLEDGE;
-import de.bundeswehr.mese.sedapexpress.messages.alt.GENERIC;
-import de.bundeswehr.mese.sedapexpress.messages.alt.RESEND;
-import de.bundeswehr.mese.sedapexpress.messages.alt.STATUS;
-
 /**
  * @author Volker Voß
  */
@@ -94,8 +89,9 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public static final HexFormat HEXFOMATER = HexFormat.of().withUpperCase();
 
+    public static final Pattern NAME_MATCHER = Pattern.compile("^[a-zA-Z]+$"); // Name
     public static final Pattern NUMBER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,2}$"); // Number
-    public static final Pattern TIME_MATCHER = Pattern.compile("^[A-Fa-f0-9]{11,16}$"); // Time
+    public static final Pattern TIME_MATCHER = Pattern.compile("^[A-Fa-f0-9]{8,16}$"); // Time
     public static final Pattern SENDER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,4}$"); // Sender-Recipient
     public static final Pattern TEXTTYPE_MATCHER = Pattern.compile("^[0-4]$"); // Text type
 
@@ -104,14 +100,18 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern DOUBLE_LIST_MATCHER = Pattern.compile("^[\\d.?\\d?#]*$"); // Double
     public static final Pattern INTEGER_MATCHER = Pattern.compile("^-?\\d+$"); // Integer
 
-    public static final Pattern BEARING_MATCHER = Pattern.compile("^(00\\d\\.\\d*|[012]\\d\\d\\.\\d*|3[0-5]\\d\\.\\d*)$"); // 000.00-359.999
+    public static final Pattern BEARING_MATCHER = Pattern.compile("^(\\d+\\.?\\d*|[012]\\d\\d\\.\\d*|3[0-5]\\d\\\\.\\d*)$"); // 000.00-359.999
     public static final Pattern SIDC_MATCHER = Pattern.compile("^[a-zA-Z-]{15}$"); // SIDC
     public static final Pattern MMSI_MATCHER = SEDAPExpressMessage.INTEGER_MATCHER; // Integer
     public static final Pattern ICAO_MATCHER = Pattern.compile("^[A-Z]{1}[A-Z0-9]{1,3}$"); // ICAO
     public static final Pattern SOURCE_MATCHER = Pattern.compile("^[R,A,I,S,E,O,Y,M]+$"); // Source type
     public static final Pattern CMDTYPE_MATCHER = Pattern.compile("^[0-255]$"); // Command type
     public static final Pattern GRAPHICTYPE_MATCHER = Pattern.compile("^[0-14]$"); // Graphic type
-    public static final Pattern RGBA_MATCHER = Pattern.compile("^[0-9A-F]{8}$"); // RGBA Format
+    public static final Pattern RGBA_MATCHER = Pattern.compile("^[0-9A-F]{8}$"); // RGBA Format´
+    public static final Pattern TECSTATUS_MATCHER = Pattern.compile("^[0-5]$"); // TecStatus
+    public static final Pattern OPSSTATUS_MATCHER = Pattern.compile("^[0-4]$"); // OpsStatus
+    public static final Pattern PERCENT_MATCHER = Pattern.compile("^(100(\\.0+)?|(\\d{1,2})(\\.\\d+)?)$"); // Percent
+    public static final Pattern ENCODING_MATCHER = Pattern.compile("^[BASE64]|[ASCII]|[BINARY]$");
 
     public static boolean matchesPattern(Pattern pattern, String value) {
 	return pattern.matcher(value).matches();

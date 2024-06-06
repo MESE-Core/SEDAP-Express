@@ -184,6 +184,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 
 	String value;
 
+	// Latitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -206,6 +207,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Longitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
@@ -228,6 +230,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Altitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -250,6 +253,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Speed
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -272,6 +276,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Speed
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -294,6 +299,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Heading
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -316,6 +322,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Roll
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -338,6 +345,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Pitch
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
@@ -360,6 +368,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// Name
 	if (message.hasNext()) {
 	    this.name = message.next();
 	    if (this.name.isBlank()) {
@@ -372,6 +381,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	    }
 	}
 
+	// SIDC
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {

@@ -79,6 +79,15 @@ public class HEARTBEAT extends SEDAPExpressMessage {
      *
      * @param message
      */
+    public HEARTBEAT() {
+
+	super();
+    }
+
+    /**
+     *
+     * @param message
+     */
     public HEARTBEAT(String message) {
 
 	this(SEDAPExpressMessage.splitMessage(message.substring(message.indexOf(';') + 1)).iterator());
@@ -111,6 +120,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 
 	String value;
 
+	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
