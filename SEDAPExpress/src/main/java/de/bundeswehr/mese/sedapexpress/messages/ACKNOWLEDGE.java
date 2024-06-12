@@ -69,15 +69,15 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param recipient
      * @param nameOfTheMessage
      * @param numberOfTheMessage
      */
-    public ACKNOWLEDGE(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac,
+    public ACKNOWLEDGE(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    String recipient, String nameOfTheMessage, Short numberOfTheMessage) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.recipient = recipient;
 	this.nameOfTheMessage = nameOfTheMessage;

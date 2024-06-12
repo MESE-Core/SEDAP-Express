@@ -88,14 +88,14 @@ public class COMMAND extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param recipient
      * @param cmdType
      * @param cmdTypeDependentParameters
      */
-    public COMMAND(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac, String recipient, Integer cmdType, List<String> cmdTypeDependentParameters) {
+    public COMMAND(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, String recipient, Integer cmdType, List<String> cmdTypeDependentParameters) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.recipient = recipient;
 	this.cmdType = cmdType;

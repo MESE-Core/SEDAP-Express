@@ -260,7 +260,7 @@ public class CONTACT extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param contactID
      * @param deleteFlag
      * @param latitude
@@ -284,13 +284,13 @@ public class CONTACT extends SEDAPExpressMessage {
      * @param icao
      * @param comment
      */
-    public CONTACT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac,
+    public CONTACT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    String contactID, Boolean deleteFlag, Double latitude, Double longitude, Double altitude,
 	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance,
 	    Double speed, Double course, Double heading, Double roll, Double pitch,
 	    Double width, Double length, Double height, String name, String source, char[] sidc, String mmsi, String icao, String comment) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.contactID = contactID;
 	this.deleteFlag = deleteFlag;
@@ -346,6 +346,13 @@ public class CONTACT extends SEDAPExpressMessage {
 			      "CONTACT(Iterator<String> message)",
 			      "Mandatory field \"contactID\" is empty!");
 	    }
+	} else {
+	    SEDAPExpressMessage.logger
+		    .logp(
+			  Level.SEVERE,
+			  "CONTACT",
+			  "CONTACT(Iterator<String> message)",
+			  "Incomplete message!");
 	}
 
 	// DeleteFlag
@@ -393,6 +400,13 @@ public class CONTACT extends SEDAPExpressMessage {
 			      "Mandatory field \"latitude\" contains invalid value!",
 			      value);
 	    }
+	} else {
+	    SEDAPExpressMessage.logger
+		    .logp(
+			  Level.SEVERE,
+			  "CONTACT",
+			  "CONTACT(Iterator<String> message)",
+			  "Incomplete message!");
 	}
 
 	// Longitude
@@ -416,6 +430,13 @@ public class CONTACT extends SEDAPExpressMessage {
 			      "Mandatory field \"longitude\" contains invalid value!",
 			      value);
 	    }
+	} else {
+	    SEDAPExpressMessage.logger
+		    .logp(
+			  Level.SEVERE,
+			  "CONTACT",
+			  "CONTACT(Iterator<String> message)",
+			  "Incomplete message!");
 	}
 
 	// Altitude
@@ -741,7 +762,7 @@ public class CONTACT extends SEDAPExpressMessage {
 			      Level.SEVERE,
 			      "CONTACT",
 			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"SIDC\" contains invalid value - length: " + this.sidc.length + " bytes!",
+			      "Optional field \"SIDC\" contains invalid value - length: " + value.length() + " bytes!",
 			      value);
 	    }
 	}
@@ -811,7 +832,7 @@ public class CONTACT extends SEDAPExpressMessage {
 				  Level.SEVERE,
 				  "CONTACT",
 				  "CONTACT(Iterator<String> message)",
-				  "Optional field \"imageData\" could not decoded from Base64!");
+				  "Optional field \"imageData\" could not be decoded from Base64!");
 		}
 	    }
 	}

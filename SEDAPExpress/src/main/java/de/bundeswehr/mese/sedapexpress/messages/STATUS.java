@@ -128,7 +128,7 @@ public class STATUS extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param tecStatus
      * @param opsStatus
      * @param ammunitionLevel
@@ -139,10 +139,10 @@ public class STATUS extends SEDAPExpressMessage {
      * @param encoding
      * @param freeText
      */
-    public STATUS(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac,
+    public STATUS(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer tecStatus, Integer opsStatus, Double ammunitionLevel, Double fuelLevel, Double batterieLevel,
 	    String hostname, String mediaUrls, String encoding, String freeText) {
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 	this.tecStatus = tecStatus;
 	this.opsStatus = opsStatus;
 	this.ammunitionLevel = ammunitionLevel;
@@ -272,7 +272,7 @@ public class STATUS extends SEDAPExpressMessage {
 				  Level.SEVERE,
 				  "STATUS",
 				  "STATUS(Iterator<String> message)",
-				  "Optional field \"hostname\" could not decoded from Base64!");
+				  "Optional field \"hostname\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -296,7 +296,7 @@ public class STATUS extends SEDAPExpressMessage {
 				  Level.SEVERE,
 				  "STATUS",
 				  "STATUS(Iterator<String> message)",
-				  "Optional field \"mediaUrls\" could not decoded from Base64!");
+				  "Optional field \"mediaUrls\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -337,7 +337,7 @@ public class STATUS extends SEDAPExpressMessage {
 				  Level.SEVERE,
 				  "STATUS",
 				  "STATUS(Iterator<String> message)",
-				  "Optional field \"freeText\" could not decoded from Base64!");
+				  "Optional field \"freeText\" could not be decoded from Base64!");
 		}
 	    }
 	}

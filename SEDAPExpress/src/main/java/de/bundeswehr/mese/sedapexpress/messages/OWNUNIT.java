@@ -135,7 +135,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param latitude
      * @param longitude
      * @param altitude
@@ -147,11 +147,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
      * @param name
      * @param sidc
      */
-    public OWNUNIT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, int hmac,
+    public OWNUNIT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Double latitude, Double longitude, Double altitude, Double speed, Double course, Double heading,
 	    Double roll, Double pitch, String name, char[] sidc) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.latitude = latitude;
 	this.longitude = longitude;

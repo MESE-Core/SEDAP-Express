@@ -73,15 +73,15 @@ public class GENERIC extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param contentType
      * @param encoding
      * @param content
      */
-    public GENERIC(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac,
+    public GENERIC(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    String contentType, String encoding, String content) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.contentType = contentType;
 	this.encoding = encoding;

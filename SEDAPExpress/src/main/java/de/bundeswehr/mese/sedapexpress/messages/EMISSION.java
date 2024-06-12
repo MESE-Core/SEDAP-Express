@@ -249,7 +249,7 @@ public class EMISSION extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param emissionID
      * @param deleteFlag
      * @param sensorLatitude
@@ -269,11 +269,11 @@ public class EMISSION extends SEDAPExpressMessage {
      * @param sidc
      * @param comment
      */
-    public EMISSION(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac, String emissionID, Boolean deleteFlag, Double sensorLatitude, Double sensorLongitude, Double sensorAltitude,
+    public EMISSION(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, String emissionID, Boolean deleteFlag, Double sensorLatitude, Double sensorLongitude, Double sensorAltitude,
 	    Double emitterLatitude, Double emitterLongitude, Double emitterAltitude, Double bearing, List<Double> frequency, Double bandwidth, Double power, Integer freqAgility, Integer prfAgility, Integer function, Integer spotNumber, char[] sidc,
 	    String comment) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.emissionID = emissionID;
 	this.deleteFlag = deleteFlag;

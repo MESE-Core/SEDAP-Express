@@ -166,7 +166,7 @@ public class METEO extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param speedThroughWater
      * @param waterSpeed
      * @param waterDirection
@@ -182,10 +182,10 @@ public class METEO extends SEDAPExpressMessage {
      * @param cloudHeight
      * @param cloudCover
      */
-    public METEO(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac, Double speedThroughWater, Double waterSpeed, Double waterDirection, Double waterTemperature, Double waterDepth,
+    public METEO(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, Double speedThroughWater, Double waterSpeed, Double waterDirection, Double waterTemperature, Double waterDepth,
 	    Double airTemperature, Double dewPoint, Double humidityRel, Double pressure, Double windSpeed, Double windDirection, Double visibility, Double cloudHeight, Double cloudCover) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.speedThroughWater = speedThroughWater;
 	this.waterSpeed = waterSpeed;

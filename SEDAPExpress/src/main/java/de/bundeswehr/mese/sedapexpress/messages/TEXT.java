@@ -88,16 +88,16 @@ public class TEXT extends SEDAPExpressMessage {
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac
      * @param type
      * @param encoding
      * @param text
      * @param recipient
      */
-    public TEXT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, Integer hmac,
+    public TEXT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer type, String encoding, String text, String recipient) {
 
-	super(number, time, sender, classification, acknowledgement, hmac);
+	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.type = type;
 	this.encoding = encoding;
@@ -197,7 +197,7 @@ public class TEXT extends SEDAPExpressMessage {
 				      Level.SEVERE,
 				      "TEXT",
 				      "TEXT(Iterator<String> message)",
-				      "Mandatory field \"text\" could not decoded from Base64!");
+				      "Mandatory field \"text\" could not be decoded from Base64!");
 		    }
 
 		} else {

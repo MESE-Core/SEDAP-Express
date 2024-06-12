@@ -99,6 +99,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern POSITIVE_DOUBLE_MATCHER = Pattern.compile("^\\d+.?\\d*$"); // Double
     public static final Pattern DOUBLE_LIST_MATCHER = Pattern.compile("^[\\d.?\\d?#]*$"); // Double
     public static final Pattern INTEGER_MATCHER = Pattern.compile("^-?\\d+$"); // Integer
+    public static final Pattern BIGINTEGER_MATCHER = Pattern.compile("^([A-Fa-f0-9][A-Fa-f0-9])+$"); // Hexadecimal BigInteger
 
     public static final Pattern BEARING_MATCHER = Pattern.compile("^(\\d+\\.?\\d*|[012]\\d\\d\\.\\d*|3[0-5]\\d\\\\.\\d*)$"); // 000.00-359.999
     public static final Pattern SIDC_MATCHER = Pattern.compile("^[a-zA-Z-]{15}$"); // SIDC
@@ -127,7 +128,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     private Boolean acknowledgement;
 
-    private Integer hmac;
+    private String mac;
 
     public static HexFormat formatter = HexFormat.of().withUpperCase();
 
@@ -171,12 +172,12 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	this.acknowledgement = acknowledgement;
     }
 
-    public Integer getHMAC() {
-	return this.hmac;
+    public String getMAC() {
+	return this.mac;
     }
 
-    public void setHMAC(Integer hmac) {
-	this.hmac = hmac;
+    public void setMAC(String mac) {
+	this.mac = mac;
     }
 
     @Override
@@ -549,17 +550,17 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      * @param sender
      * @param classification
      * @param acknowledgement
-     * @param hmac
+     * @param mac             Message Authentification Code
      */
     protected SEDAPExpressMessage(Short number, Long time, String sender, Character classification,
-	    Boolean acknowledgement, Integer hmac) {
+	    Boolean acknowledgement, String mac) {
 	super();
 	this.number = number;
 	this.time = time;
 	this.sender = sender;
 	this.classification = classification;
 	this.acknowledgement = acknowledgement;
-	this.hmac = hmac;
+	this.mac = mac;
     }
 
     /**
@@ -692,14 +693,14 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    if (message.hasNext()) {
 		value = message.next();
 		if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
-		    this.hmac = Integer.parseInt(value, 16);
+		    this.mac = value;
 		} else if (!value.isBlank()) {
 		    SEDAPExpressMessage.logger
 			    .logp(
 				  Level.INFO,
 				  "SEDAPExpressMessage",
 				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"hmac\" contains not a valid number, but free text is allowed!",
+				  "Optional field \"mac\" contains not a valid number, but free text is allowed!",
 				  value);
 		}
 	    } else if (this instanceof HEARTBEAT) {
@@ -801,8 +802,8 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	}
 	result.append(';');
 
-	if (this.hmac != null) {
-	    result.append(SEDAPExpressMessage.formatter.toHexDigits(this.hmac));
+	if (this.mac != null) {
+	    result.append(this.mac);
 	}
 
 	result.append(';');

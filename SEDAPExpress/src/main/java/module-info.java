@@ -41,7 +41,7 @@ module SEDAPExpress {
     requires java.logging;
 
     requires org.bouncycastle.util;
-    requires org.bouncycastle.provider;
+    requires transitive org.bouncycastle.provider;
     requires org.bouncycastle.pkix;
     requires com.google.gson;
     requires com.google.protobuf;
