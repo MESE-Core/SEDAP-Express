@@ -26,6 +26,8 @@
 package de.bundeswehr.mese.sedapexpress.messages;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -35,6 +37,23 @@ public class STATUS extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = -6681575300891302102L;
 
+    public static final int TECSTATUS_Off_absent = 0;
+    public static final int TECSTATUS_Initializing = 1;
+    public static final int TECSTATUS_Degraded = 2;
+    public static final int TECSTATUS_Operational = 3;
+    public static final int TECSTATUS_Fault = 4;
+
+    public static final int OPSSTATUS_Not_operational = 0;
+    public static final int OPSSTATUS_Degraded = 1;
+    public static final int OPSSTATUS_Operational = 2;
+
+    public static final int CMDSTATUS_Undefined = 0;
+    public static final int CMDSTATUS_Executed_successfully = 1;
+    public static final int CMDSTATUS_Partially_executed_successfully = 2;
+    public static final int CMDSTATUS_Executed_not_successfully = 3;
+    public static final int CMDSTATUS_Execution_not_possible = 4;
+    public static final int CMDSTATUS_Will_execute_at = 5;
+
     private Integer tecStatus;
     private Integer opsStatus;
 
@@ -42,11 +61,13 @@ public class STATUS extends SEDAPExpressMessage {
     private Double fuelLevel;
     private Double batterieLevel;
 
+    private Integer cmdId;
+    private Integer cmdState;
+
     private String hostname;
 
-    private String mediaUrls;
+    private List<String> mediaUrls;
 
-    private String encoding;
     private String freeText;
 
     public Integer getTecStatus() {
@@ -89,6 +110,22 @@ public class STATUS extends SEDAPExpressMessage {
 	this.batterieLevel = batterieLevel;
     }
 
+    public Integer getCmdId() {
+	return this.cmdId;
+    }
+
+    public void setCmdId(Integer cmdId) {
+	this.cmdId = cmdId;
+    }
+
+    public Integer getCmdState() {
+	return this.cmdState;
+    }
+
+    public void setCmdState(Integer cmdState) {
+	this.cmdState = cmdState;
+    }
+
     public String getHostname() {
 	return this.hostname;
     }
@@ -97,20 +134,12 @@ public class STATUS extends SEDAPExpressMessage {
 	this.hostname = hostname;
     }
 
-    public String getMediaUrls() {
+    public List<String> getMediaUrls() {
 	return this.mediaUrls;
     }
 
-    public void setMediaUrls(String mediaUrls) {
+    public void setMediaUrls(List<String> mediaUrls) {
 	this.mediaUrls = mediaUrls;
-    }
-
-    public String getEncoding() {
-	return this.encoding;
-    }
-
-    public void setEncoding(String encoding) {
-	this.encoding = encoding;
     }
 
     public String getFreeText() {
@@ -136,12 +165,11 @@ public class STATUS extends SEDAPExpressMessage {
      * @param batterieLevel
      * @param hostname
      * @param mediaUrls
-     * @param encoding
      * @param freeText
      */
-    public STATUS(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public STATUS(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer tecStatus, Integer opsStatus, Double ammunitionLevel, Double fuelLevel, Double batterieLevel,
-	    String hostname, String mediaUrls, String encoding, String freeText) {
+	    String hostname, List<String> mediaUrls, String freeText) {
 	super(number, time, sender, classification, acknowledgement, mac);
 	this.tecStatus = tecStatus;
 	this.opsStatus = opsStatus;
@@ -150,7 +178,6 @@ public class STATUS extends SEDAPExpressMessage {
 	this.batterieLevel = batterieLevel;
 	this.hostname = hostname;
 	this.mediaUrls = mediaUrls;
-	this.encoding = encoding;
 	this.freeText = freeText;
     }
 
@@ -289,7 +316,12 @@ public class STATUS extends SEDAPExpressMessage {
 			      "Optional field \"mediaUrls\" is empty!");
 	    } else {
 		try {
-		    this.mediaUrls = new String(Base64.decode(value));
+
+		    this.mediaUrls = new LinkedList<>();
+		    String[] urls = value.split("#");
+		    for (String url : urls) {
+			this.mediaUrls.add(new String(Base64.decode(url)));
+		    }
 		} catch (DecoderException e) {
 		    SEDAPExpressMessage.logger
 			    .logp(
@@ -298,23 +330,6 @@ public class STATUS extends SEDAPExpressMessage {
 				  "STATUS(Iterator<String> message)",
 				  "Optional field \"mediaUrls\" could not be decoded from Base64!");
 		}
-	    }
-	}
-
-	// Encoding
-	if (message.hasNext()) {
-	    value = message.next();
-	    if ("base64".equalsIgnoreCase(value)) {
-		this.encoding = SEDAPExpressMessage.ENCODING_BASE64;
-	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
-		this.encoding = SEDAPExpressMessage.ENCODING_NONE;
-	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "STATUS field \"encoding\" invalid value: \"" + value + "\"");
 	    }
 	}
 
@@ -368,10 +383,6 @@ public class STATUS extends SEDAPExpressMessage {
 			    ((this.mediaUrls != null) && this.mediaUrls.equals(((STATUS) obj).mediaUrls)))
 		    &&
 
-		    (((this.encoding == null) && (((STATUS) obj).encoding == null)) ||
-			    ((this.encoding != null) && this.encoding.equals(((STATUS) obj).encoding)))
-		    &&
-
 		    (((this.freeText == null) && (((STATUS) obj).freeText == null)) ||
 			    ((this.freeText != null) && this.freeText.equals(((STATUS) obj).freeText)));
 
@@ -385,6 +396,10 @@ public class STATUS extends SEDAPExpressMessage {
 
     @Override
     public String toString() {
+
+	StringBuilder urls = new StringBuilder();
+	this.mediaUrls.forEach(entry -> urls.append(Base64.toBase64String(entry.getBytes()) + "#"));
+
 	return serializeHeader()
 
 		.append((this.tecStatus != null) ? this.tecStatus : "")
@@ -397,13 +412,15 @@ public class STATUS extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.batterieLevel != null) ? this.batterieLevel : "")
 		.append(";")
+		.append((this.cmdId != null) ? this.cmdId : "")
+		.append(";")
+		.append((this.cmdState != null) ? this.cmdState : "")
+		.append(";")
 		.append((this.hostname != null) ? this.hostname : "")
 		.append(";")
-		.append((this.mediaUrls != null) ? Base64.toBase64String(this.mediaUrls.getBytes()) : "")
+		.append((this.mediaUrls != null) ? urls.subSequence(0, urls.length() - 1) : "")
 		.append(";")
-		.append((this.encoding != null) ? this.encoding : "")
-		.append(";")
-		.append((this.freeText != null) ? this.freeText : "")
+		.append((this.freeText != null) ? Base64.toBase64String(this.freeText.getBytes()) : "")
 		.toString();
     }
 }

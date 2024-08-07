@@ -26,12 +26,15 @@
 package de.bundeswehr.mese.sedapexpress.network;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.HexFormat;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.MessageType;
 import de.bundeswehr.mese.sedapexpress.processing.SEDAPExpressSubscriber;
 
 /**
@@ -43,16 +46,17 @@ public abstract class SEDAPExpressCommunicator {
 
     public abstract boolean sendSEDAPExpressMessage(SEDAPExpressMessage message);
 
-    protected ConcurrentHashMap<Class<? extends SEDAPExpressMessage>, Set<SEDAPExpressSubscriber>> subscriptions = new ConcurrentHashMap<>();
+    protected ConcurrentHashMap<MessageType, Set<SEDAPExpressSubscriber>> subscriptions = new ConcurrentHashMap<>();
 
     /**
+     * Subscribe one or more message types
      *
-     * @param subscriber
-     * @param clazzes
+     * @param subscriber the subscriber for the message types
+     * @param clazzes    Collection of message types which should be subscribed
      */
-    public void subscribeMessages(SEDAPExpressSubscriber subscriber, Class<? extends SEDAPExpressMessage>... clazzes) {
+    public void subscribeMessages(SEDAPExpressSubscriber subscriber, Collection<MessageType> clazzes) {
 
-	Arrays.asList(clazzes).forEach(clazz -> {
+	clazzes.forEach(clazz -> {
 
 	    this.subscriptions.computeIfAbsent(clazz, key -> Collections.synchronizedSet(new HashSet<SEDAPExpressSubscriber>()));
 
@@ -62,12 +66,25 @@ public abstract class SEDAPExpressCommunicator {
     }
 
     /**
+     * Subscribe one or more message types
      *
-     * @param subscriber
-     * @param clazzes
+     * @param subscriber the subscriber for the message types
+     * @param clazzes    Collection of message types which should be subscribed
      */
-    public void unsubscribeMessages(SEDAPExpressSubscriber subscriber, Class<? extends SEDAPExpressMessage>... clazzes) {
-	Arrays.asList(clazzes).forEach(clazz -> {
+    public void subscribeMessages(SEDAPExpressSubscriber subscriber, MessageType... clazzes) {
+
+	subscribeMessages(subscriber, Arrays.asList(clazzes));
+
+    }
+
+    /**
+     * Unsubscribe one or more message types
+     *
+     * @param subscriber the original subscriber of the message types
+     * @param clazzes    Collection of message types which should be unsubscribe
+     */
+    public void unsubscribeMessages(SEDAPExpressSubscriber subscriber, Collection<MessageType> clazzes) {
+	clazzes.forEach(clazz -> {
 
 	    this.subscriptions.computeIfPresent(clazz, (key, value) -> {
 		value.remove(subscriber);
@@ -78,14 +95,31 @@ public abstract class SEDAPExpressCommunicator {
     }
 
     /**
+     * Unsubscribe one or more message types
+     *
+     * @param subscriber the original subscriber of the message types
+     * @param clazzes    Arrays of message types which should be unsubscribe
+     */
+    public void unsubscribeMessages(SEDAPExpressSubscriber subscriber, MessageType... clazzes) {
+
+	unsubscribeMessages(subscriber, Arrays.asList(clazzes));
+    }
+
+    /**
+     * Distribute a message to the subscribers
      *
      * @param message
      */
     protected void distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage message) {
 
-	if ((message != null) && this.subscriptions.containsKey(message.getClass())) {
-	    this.subscriptions.get(message.getClass()).forEach(subscriber -> subscriber.processSEDAPExpressMessage(message));
+	if ((message != null) && this.subscriptions.containsKey(message.getMessageType())) {
+	    this.subscriptions.get(message.getMessageType()).forEach(subscriber -> subscriber.processSEDAPExpressMessage(message));
 	}
+    }
+
+    public String createSenderId() {
+
+	return HexFormat.of().toHexDigits((short) Math.round(Math.random() * 65535));
     }
 
 }

@@ -1,0 +1,1129 @@
+2525Charlie1stTen,2525Charlie,2525DeltaSymbolSet,2525DeltaEntity,2525DeltaMod1,2525DeltaMod2,2525DeltaName,2525DeltaMod1Name,2525DeltaMod2Name,DeltaToCharlie,Remarks
+S*ZP------,SPZP-----------,00,000000,00,00,Unspecified,,,SPZP-----------,pass
+S*APM-----,SPAPM----------,01,110000,00,00,Military (Air),Not Applicable,Not Applicable,SPAPM----------,pass
+S*APMF----,SPAPMF---------,01,110100,00,00,Military (Air) : Fixed-Wing,Not Applicable,Not Applicable,SPAPMF---------,pass
+S*APMFO---,SPAPMFO--------,01,110101,00,00,Military (Air) : Fixed-Wing : Medical Evacuation (MEDEVAC),Not Applicable,Not Applicable,SPAPMFO--------,pass
+S*APMFA---,SPAPMFA--------,01,110102,00,00,Military (Air) : Fixed-Wing : Attack/Strike,Not Applicable,Not Applicable,SPAPMFA--------,pass
+S*APMFB---,SPAPMFB--------,01,110103,00,00,Military (Air) : Fixed-Wing : Bomber,Not Applicable,Not Applicable,SPAPMFB--------,pass
+S*APMFF---,SPAPMFF--------,01,110104,00,00,Military (Air) : Fixed-Wing : Fighter,Not Applicable,Not Applicable,SPAPMFF--------,pass
+S*APMFFI--,SPAPMFFI-------,01,110102,05,00,Military (Air) : Fixed-Wing : Attack/Strike,Military Aircraft Type : Interceptor,Not Applicable,SPAPMFFI-------,pass
+S*APMFC---,SPAPMFC--------,01,110107,00,00,Military (Air) : Fixed-Wing : Cargo,Not Applicable,Not Applicable,SPAPMFC--------,pass
+S*APMFCL--,SPAPMFCL-------,01,110107,00,03,Military (Air) : Fixed-Wing : Cargo,Not Applicable,Cargo/Transport Capacity : Light,SPAPMFCL-------,pass
+S*APMFCM--,SPAPMFCM-------,01,110107,00,02,Military (Air) : Fixed-Wing : Cargo,Not Applicable,Cargo/Transport Capacity : Medium,SPAPMFCM-------,pass
+S*APMFCH--,SPAPMFCH-------,01,110107,00,01,Military (Air) : Fixed-Wing : Cargo,Not Applicable,Cargo/Transport Capacity : Heavy,SPAPMFCH-------,pass
+S*APMFJ---,SPAPMFJ--------,01,110108,00,00,Military (Air) : Fixed-Wing : Electronic Combat (EC)/Jammer,Not Applicable,Not Applicable,SPAPMFJ--------,pass
+S*APMFK---,SPAPMFK--------,01,110109,00,00,Military (Air) : Fixed-Wing : Tanker,Not Applicable,Not Applicable,SPAPMFK--------,pass
+S*APMFKB--,SPAPMFKB-------,01,110109,00,04,Military (Air) : Fixed-Wing : Tanker,Not Applicable,Re-fueling Capability : Boom-Only,SPAPMFKB-------,pass
+S*APMFKD--,SPAPMFKD-------,01,110109,00,05,Military (Air) : Fixed-Wing : Tanker,Not Applicable,Re-fueling Capability : Drogue-Only,SPAPMFKD-------,pass
+S*APMFP---,SPAPMFP--------,01,110110,00,00,Military (Air) : Fixed-Wing : Patrol,Not Applicable,Not Applicable,SPAPMFP--------,pass
+S*APMFR---,SPAPMFR--------,01,110111,00,00,Military (Air) : Fixed-Wing : Reconnaissance,Not Applicable,Not Applicable,SPAPMFR--------,pass
+S*APMFT---,SPAPMFT--------,01,110112,00,00,Military (Air) : Fixed-Wing : Trainer,Not Applicable,Not Applicable,SPAPMFT--------,pass
+S*APMFU---,SPAPMFU--------,01,110113,00,00,Military (Air) : Fixed-Wing : Utility,Not Applicable,Not Applicable,SPAPMFU--------,pass
+S*APMFUL--,SPAPMFUL-------,01,110113,00,03,Military (Air) : Fixed-Wing : Utility,Not Applicable,Cargo/Transport Capacity : Light,SPAPMFUL-------,pass
+S*APMFUM--,SPAPMFUM-------,01,110113,00,02,Military (Air) : Fixed-Wing : Utility,Not Applicable,Cargo/Transport Capacity : Medium,SPAPMFUM-------,pass
+S*APMFUH--,SPAPMFUH-------,01,110113,00,01,Military (Air) : Fixed-Wing : Utility,Not Applicable,Cargo/Transport Capacity : Heavy,SPAPMFUH-------,pass
+S*APMFL---,SPAPMFL--------,01,110114,00,00,Military (Air) : Fixed-Wing : VSTOL,Not Applicable,Not Applicable,SPAPMFL--------,pass
+S*APMFD---,SPAPMFD--------,01,110115,00,00,Military (Air) : Fixed-Wing : Airborne Command Post (ACP),Not Applicable,Not Applicable,SPAPMFD--------,pass
+S*APMFRW--,SPAPMFRW-------,01,110116,00,00,Military (Air) : Fixed-Wing : Airborne Early Warning (AEW),Not Applicable,Not Applicable,SPAPMFRW-------,pass
+S*APMFPN--,SPAPMFPN-------,01,110117,00,00,Military (Air) : Fixed-Wing : Antisurface Warfare,Not Applicable,Not Applicable,SPAPMFPN-------,pass
+S*APMFS---,SPAPMFS--------,01,110118,00,00,Military (Air) : Fixed-Wing : Antisubmarine Warfare,Not Applicable,Not Applicable,SPAPMFS--------,pass
+S*APMFY---,SPAPMFY--------,01,110119,00,00,Military (Air) : Fixed-Wing : Communications,Not Applicable,Not Applicable,SPAPMFY--------,pass
+S*APMFH---,SPAPMFH--------,01,110120,00,00,Military (Air) : Fixed-Wing : Combat Search and Rescue (CSAR),Not Applicable,Not Applicable,SPAPMFH--------,pass
+S*APMFRZ--,SPAPMFRZ-------,01,110121,00,00,Military (Air) : Fixed-Wing : Electronic Support (ES),Not Applicable,Not Applicable,SPAPMFRZ-------,pass
+S*APMFPM--,SPAPMFPM-------,01,110123,00,00,Military (Air) : Fixed-Wing : Mine Countermeasures (MCM),Not Applicable,Not Applicable,SPAPMFPM-------,pass
+S*APMFM---,SPAPMFM--------,01,110126,00,00,Military (Air) : Fixed-Wing : Special Operations Forces,Not Applicable,Not Applicable,SPAPMFM--------,pass
+S*APMFRX--,SPAPMFRX-------,01,110128,00,00,Military (Air) : Fixed-Wing : Photographic Reconnaissance,Not Applicable,Not Applicable,SPAPMFRX-------,pass
+S*APMV----,SPAPMV---------,01,110129,00,00,Military (Air) : Fixed-Wing : Very Important Person (VIP),Not Applicable,Not Applicable,SPAPMV---------,pass
+S*APME----,SPAPME---------,01,110132,00,00,Military (Air) : Fixed-Wing : Escort,Not Applicable,Not Applicable,SPAPME---------,pass
+S*APMH----,SPAPMH---------,01,110200,00,00,Military (Air) : Rotary-Wing,Not Applicable,Not Applicable,SPAPMH---------,pass
+S*APMHA---,SPAPMHA--------,01,110200,01,00,Military (Air) : Rotary-Wing,Military Aircraft Type : Attack/Strike,Not Applicable,SPAPMHA--------,pass
+S*APMHS---,SPAPMHS--------,01,110200,32,00,Military (Air) : Rotary-Wing,Military Mission Area : Antisurface Warfare,Not Applicable,SPAPMHS--------,pass
+S*APMHU---,SPAPMHU--------,01,110200,07,00,Military (Air) : Rotary-Wing,Aircraft Type : Utility,Not Applicable,SPAPMHU--------,pass
+S*APMHUL--,SPAPMHUL-------,01,110200,07,03,Military (Air) : Rotary-Wing,Aircraft Type : Utility,Cargo/Transport Capacity : Light,SPAPMHUL-------,pass
+S*APMHUM--,SPAPMHUM-------,01,110200,07,02,Military (Air) : Rotary-Wing,Aircraft Type : Utility,Cargo/Transport Capacity : Medium,SPAPMHUM-------,pass
+S*APMHUH--,SPAPMHUH-------,01,110200,07,01,Military (Air) : Rotary-Wing,Aircraft Type : Utility,Cargo/Transport Capacity : Heavy,SPAPMHUH-------,pass
+S*APMHI---,SPAPMHI--------,01,110200,25,00,Military (Air) : Rotary-Wing,Military Mission Area : Mine Countermeasures (MCM),Not Applicable,SPAPMHI--------,pass
+S*APMHH---,SPAPMHH--------,01,110200,30,00,Military (Air) : Rotary-Wing,Military Mission Area : Combat Search and Rescue (CSAR),Not Applicable,SPAPMHH--------,pass
+S*APMHR---,SPAPMHR--------,01,110200,18,00,Military (Air) : Rotary-Wing,Mission Area : Reconnaissance,Not Applicable,SPAPMHR--------,pass
+S*APMHC---,SPAPMHC--------,01,110200,03,00,Military (Air) : Rotary-Wing,Aircraft Type : Cargo,Not Applicable,SPAPMHC--------,pass
+S*APMHCL--,SPAPMHCL-------,01,110200,03,03,Military (Air) : Rotary-Wing,Aircraft Type : Cargo,Cargo/Transport Capacity : Light,SPAPMHCL-------,pass
+S*APMHCM--,SPAPMHCM-------,01,110200,03,02,Military (Air) : Rotary-Wing,Aircraft Type : Cargo,Cargo/Transport Capacity : Medium,SPAPMHCM-------,pass
+S*APMHCH--,SPAPMHCH-------,01,110200,03,01,Military (Air) : Rotary-Wing,Aircraft Type : Cargo,Cargo/Transport Capacity : Heavy,SPAPMHCH-------,pass
+S*APMHT---,SPAPMHT--------,01,110200,19,00,Military (Air) : Rotary-Wing,Mission Area : Trainer,Not Applicable,SPAPMHT--------,pass
+S*APMHO---,SPAPMHO--------,01,110200,14,00,Military (Air) : Rotary-Wing,Mission Area : Medical Evacuation (MEDEVAC),Not Applicable,SPAPMHO--------,pass
+S*APMHM---,SPAPMHM--------,01,110200,27,00,Military (Air) : Rotary-Wing,Military Mission Area : Special Operations Forces,Not Applicable,SPAPMHM--------,pass
+S*APMHD---,SPAPMHD--------,01,110200,11,00,Military (Air) : Rotary-Wing,Military Aircraft Type : Airborne Command Post (ACP),Not Applicable,SPAPMHD--------,pass
+S*APMHK---,SPAPMHK--------,01,110200,06,00,Military (Air) : Rotary-Wing,Aircraft Type : Tanker,Not Applicable,SPAPMHK--------,pass
+S*APMHJ---,SPAPMHJ--------,01,110200,16,00,Military (Air) : Rotary-Wing,Military Mission Area : Electronic Combat (EC)/Jammer,Not Applicable,SPAPMHJ--------,pass
+S*APMFQ---,SPAPMFQ--------,01,110300,00,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Not Applicable,Not Applicable,SPAPMFQ--------,pass
+S*APMFQA--,SPAPMFQA-------,01,110300,01,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Aircraft Type : Attack/Strike,Not Applicable,SPAPMFQA-------,pass
+S*APMFQB--,SPAPMFQB-------,01,110300,02,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Aircraft Type : Bomber,Not Applicable,SPAPMFQB-------,pass
+S*APMFQC--,SPAPMFQC-------,01,110300,03,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Aircraft Type : Cargo,Not Applicable,SPAPMFQC-------,pass
+S*APMFQD--,SPAPMFQD-------,01,110300,11,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Aircraft Type : Airborne Command Post (ACP),Not Applicable,SPAPMFQD-------,pass
+S*APMFQRW-,SPAPMFQRW------,01,110300,12,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Aircraft Type : Airborne Early Warning (AEW),Not Applicable,SPAPMFQRW------,pass
+S*APMFQF--,SPAPMFQF-------,01,110300,04,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Aircraft Type : Fighter,Not Applicable,SPAPMFQF-------,pass
+S*APMFQH--,SPAPMFQH-------,01,110300,30,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Combat Search and Rescue (CSAR),Not Applicable,SPAPMFQH-------,pass
+S*APMFQJ--,SPAPMFQJ-------,01,110300,16,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Electronic Combat (EC)/Jammer,Not Applicable,SPAPMFQJ-------,pass
+S*APMFQRZ-,SPAPMFQRZ------,01,110300,24,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Electronic Support (ES),Not Applicable,SPAPMFQRZ------,pass
+S*APMFQK--,SPAPMFQK-------,01,110300,06,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Aircraft Type : Tanker,Not Applicable,SPAPMFQK-------,pass
+S*APMFQL--,SPAPMFQL-------,01,110300,08,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Aircraft Type : VSTOL/VTOL,Not Applicable,SPAPMFQL-------,pass
+S*APMFQM--,SPAPMFQM-------,01,110300,27,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Special Operations Forces,Not Applicable,SPAPMFQM-------,pass
+S*APMFQI--,SPAPMFQI-------,01,110300,25,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Mine Countermeasures (MCM),Not Applicable,SPAPMFQI-------,pass
+S*APMFQN--,SPAPMFQN-------,01,110300,32,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Antisurface Warfare,Not Applicable,SPAPMFQN-------,pass
+S*APMFQP--,SPAPMFQP-------,01,110300,17,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Mission Area : Patrol,Not Applicable,SPAPMFQP-------,pass
+S*APMFQR--,SPAPMFQR-------,01,110300,18,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Mission Area : Reconnaissance,Not Applicable,SPAPMFQR-------,pass
+S*APMFQRX-,SPAPMFQRX------,01,110300,20,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Mission Area : Photographic (Reconnaissance),Not Applicable,SPAPMFQRX------,pass
+S*APMFQS--,SPAPMFQS-------,01,110300,22,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Military Mission Area : Antisubmarine Warfare,Not Applicable,SPAPMFQS-------,pass
+S*APMFQT--,SPAPMFQT-------,01,110300,19,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Mission Area : Trainer,Not Applicable,SPAPMFQT-------,pass
+S*APMFQU--,SPAPMFQU-------,01,110300,07,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Aircraft Type : Utility,Not Applicable,SPAPMFQU-------,pass
+S*APMFQY--,SPAPMFQY-------,01,110300,23,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Mission Area : Communications,Not Applicable,SPAPMFQY-------,pass
+S*APMFQO--,SPAPMFQO-------,01,110300,14,00,Military (Air) : Unmanned Aircraft (UA- UAV- UAS- RPV),Mission Area : Medical Evacuation (MEDEVAC),Not Applicable,SPAPMFQO-------,pass
+S*APMHQ---,SPAPMHQ--------,01,110400,00,00,Military (Air) : Vertical-Takeoff UAV (VT-UAV),Not Applicable,Not Applicable,SPAPMHQ--------,pass
+S*APML----,SPAPML---------,01,110500,00,00,Military (Air) : Lighter Than Air,Not Applicable,Not Applicable,SPAPML---------,pass
+S*APC-----,SPAPC----------,01,120000,00,00,Civilian (Air),Not Applicable,Not Applicable,SPAPC----------,pass
+S*APCF----,SPAPCF---------,01,120100,00,00,Civilian (Air) : Fixed Wing,Not Applicable,Not Applicable,SPAPCF---------,pass
+S*APCH----,SPAPCH---------,01,120200,00,00,Civilian (Air) : Rotary Wing,Not Applicable,Not Applicable,SPAPCH---------,pass
+S*APCL----,SPAPCL---------,01,120400,00,00,Civilian (Air) : Lighter Than Air,Not Applicable,Not Applicable,SPAPCL---------,pass
+S*APW-----,SPAPW----------,01,130000,00,00,Weapon (Air),Not Applicable,Not Applicable,SPAPW----------,pass
+S*APWB----,SPAPWB---------,01,130100,00,00,Weapon (Air) : Bomb,Not Applicable,Not Applicable,SPAPWB---------,pass
+S*APWD----,SPAPWD---------,01,130200,00,00,Weapon (Air) : Decoy,Not Applicable,Not Applicable,SPAPWD---------,pass
+S*AP------,SPAP-----------,01,000000,00,00,Unspecified,Not Applicable,Not Applicable,SPAP-----------,pass
+S*APW-----,SPAPW----------,01,130000,00,00,Weapon (Air),Not Applicable,Not Applicable,SPAPW----------,pass
+S*APWM----,SPAPWM---------,02,110000,00,05,Missile (Air Missile),Unspecified,Missile Status : Launched,SPAPWM---------,pass
+S*APWMS---,SPAPWMS--------,02,110000,02,05,Missile (Air Missile),Launch Origin : Surface,Missile Status : Launched,SPAPWMS--------,pass
+S*APWMSB--,SPAPWMSB-------,02,110000,05,00,Missile (Air Missile),Missile Class : Anti-Ballistic,Unspecified,SPAPWMSB-------,pass
+S*APWMSS--,SPAPWMSS-------,02,110000,02,02,Missile (Air Missile),Launch Origin : Surface,Missile Destination : Surface,SPAPWMSS-------,pass
+S*APWMSA--,SPAPWMSA-------,02,110000,02,01,Missile (Air Missile),Launch Origin : Surface,Missile Destination : Air,SPAPWMSA-------,pass
+S*APWMSU--,SPAPWMSU-------,02,110000,02,03,Missile (Air Missile),Launch Origin : Surface,Missile Destination : Subsurface,SPAPWMSU-------,pass
+S*APWMA---,SPAPWMA--------,02,110000,01,05,Missile (Air Missile),Launch Origin : Air,Missile Status : Launched,SPAPWMA--------,pass
+S*APWMAS--,SPAPWMAS-------,02,110000,01,02,Missile (Air Missile),Launch Origin : Air,Missile Destination : Surface,SPAPWMAS-------,pass
+S*APWMAA--,SPAPWMAA-------,02,110000,01,01,Missile (Air Missile),Launch Origin : Air,Missile Destination : Air,SPAPWMAA-------,pass
+S*APWMAP--,SPAPWMAP-------,02,110000,01,04,Missile (Air Missile),Launch Origin : Air,Missile Destination : Space,SPAPWMAP-------,pass
+S*APWMU---,SPAPWMU--------,02,110000,03,02,Missile (Air Missile),Launch Origin : Subsurface,Missile Destination : Surface,SPAPWMU--------,pass
+S*APWMCM--,SPAPWMCM-------,02,110000,07,06,Missile (Air Missile),Missile Class : Cruise,Missile Status : Missile,SPAPWMCM-------,pass
+S*APWMB---,SPAPWMB--------,02,110000,06,06,Missile (Air Missile),Missile Class : Ballistic (Air Missile),Missile Status : Missile,SPAPWMB--------,pass
+S*PP------,SPPP-----------,05,000000,00,00,Unspecified,Unspecified,Unspecified,SPPP-----------,pass
+S*PPS-----,SPPPS----------,05,110700,00,00,Military (Space) : Satellite,Unspecified,Unspecified,SPPPS----------,pass
+S*PPT-----,SPPPT----------,05,111600,00,00,Military (Space) : Space Station,Unspecified,Unspecified,SPPPT----------,pass
+S*PPL-----,SPPPL----------,05,111900,00,00,Military (Space) : Space Launched Vehicle (SLV),Unspecified,Unspecified,SPPPL----------,pass
+S*PPV-----,SPPPV----------,98,100000,00,00,,,,,Retired
+S*GP------,SPGP-----------,10,000000,00,00,Unspecified,Unspecified,Unspecified,SPGP-----------,pass
+S*FPGC----,SPFPGC---------,10,110200,00,00,Command and Control : Civil Affairs,Unspecified,Unspecified,SPFPGC---------,pass
+S*FPGP----,SPFPGP---------,10,110600,00,00,Command and Control : Military Information Support (MISO),Unspecified,Unspecified,SPFPGP---------,pass
+S*GPUUS---,SPGPUUS--------,10,111000,00,00,Command and Control : Signal : Unknown,Unspecified,Unspecified,SPGPUUS--------,pass
+S*GPUUSA--,SPGPUUSA-------,10,111000,02,00,Command and Control : Signal : Unknown,Capability : Area,Unspecified,SPGPUUSA-------,pass
+S*GPUUSC--,SPGPUUSC-------,10,111000,11,00,Command and Control : Signal : Unknown,Capability : Communications Contingency Package,Unspecified,SPGPUUSC-------,pass
+S*GPUUSCL-,SPGPUUSCL------,98,100000,00,00,,,,,Retired
+S*GPUUSO--,SPGPUUSO-------,10,111000,49,00,Command and Control : Signal : Unknown,Capability : Operations,Unspecified,SPGPUUSO-------,pass
+S*GPUUSF--,SPGPUUSF-------,10,111000,27,00,Command and Control : Signal : Unknown,Capability : Forward,Unspecified,SPGPUUSF-------,pass
+S*GPUUSM--,SPGPUUSM-------,10,111000,36,00,Command and Control : Signal : Unknown,Capability : Mobile Subscriber Equipment,Unspecified,SPGPUUSM-------,pass
+S*GPUUSML-,SPGPUUSML------,10,111000,30,00,Command and Control : Signal : Unknown,Capability : Large Extension Node,Unspecified,SPGPUUSML------,pass
+S*GPUUSMN-,SPGPUUSMN------,10,111000,47,00,Command and Control : Signal : Unknown,Capability : Node Center,Unspecified,SPGPUUSMN------,pass
+S*GPUUSMS-,SPGPUUSMS------,98,100000,00,00,,,,,Retired
+S*GPUUSS--,SPGPUUSS-------,10,111000,77,00,Command and Control : Signal : Unknown,Capability : Support 1,Unspecified,SPGPUUSS-------,pass
+S*GPUUSW--,SPGPUUSW-------,98,100000,00,00,,,,,Retired
+S*GPUUSR--,SPGPUUSR-------,10,111001,00,00,Command and Control : Signal : Radio : Unknown,Unspecified,Unspecified,SPGPUUSR-------,pass
+S*GPUUSRW-,SPGPUUSRW------,10,111002,00,00,Command and Control : Signal : Radio Relay : Unknown,Unspecified,Unspecified,SPGPUUSRW------,pass
+S*GPUUSRT-,SPGPUUSRT------,10,111003,00,00,Command and Control : Signal : Teletype : Unknown,Unspecified,Unspecified,SPGPUUSRT------,pass
+S*GPUUSRS-,SPGPUUSRS------,10,111004,00,00,Command and Control : Signal : Tactical Satellite : Unknown,Unspecified,Unspecified,SPGPUUSRS------,pass
+S*GPUUP---,SPGPUUP--------,10,120300,29,00,Movement and Maneuver : Amphibious : Unknown,Capability : Landing Support,Unspecified,SPGPUUP--------,pass
+S*GPUCAA--,SPGPUCAA-------,10,120400,00,00,Movement and Maneuver : Antitank/Antiarmor : Unknown,Unspecified,Unspecified,SPGPUCAA-------,pass
+S*GPUCAAD-,SPGPUCAAD------,10,120400,00,00,Movement and Maneuver : Antitank/Antiarmor : Unknown,Unspecified,Unspecified,SPGPUCAA-------,pass (multiple)
+S*GPUCAAL-,SPGPUCAAL------,10,120400,00,19,Movement and Maneuver : Antitank/Antiarmor : Unknown,Unspecified,Capability : Light,SPGPUCAAL------,pass
+S*GPUCAAM-,SPGPUCAAM------,10,120400,00,01,Movement and Maneuver : Antitank/Antiarmor : Unknown,Unspecified,Mobility : Airborne,SPGPUCAAM------,pass
+S*GPUCAAS-,SPGPUCAAS------,10,120400,01,00,Movement and Maneuver : Antitank/Antiarmor : Unknown,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCAAS------,pass
+S*GPUCAAU-,SPGPUCAAU------,10,120400,00,27,Movement and Maneuver : Antitank/Antiarmor : Unknown,Unspecified,Capability : Mountain,SPGPUCAAU------,pass
+S*GPUCAAC-,SPGPUCAAC------,10,120400,00,02,Movement and Maneuver : Antitank/Antiarmor : Unknown,Unspecified,Mobility : Arctic,SPGPUCAAC------,pass
+S*GPUCAAA-,SPGPUCAAA------,10,120401,00,00,Movement and Maneuver : Antitank/Antiarmor : Armored : Unknown,Unspecified,Unspecified,SPGPUCAAA------,pass
+S*GPUCAAAT,SPGPUCAAAT-----,10,120401,00,00,Movement and Maneuver : Antitank/Antiarmor : Armored : Unknown,Unspecified,Unspecified,SPGPUCAAA------,pass (multiple)
+S*GPUCAAAS,SPGPUCAAAS-----,10,120401,01,00,Movement and Maneuver : Antitank/Antiarmor : Armored : Unknown,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCAAAS-----,pass
+S*GPUCAAAW,SPGPUCAAAW-----,10,120401,00,51,Movement and Maneuver : Antitank/Antiarmor : Armored : Unknown,Unspecified,Mobility : Wheeled,SPGPUCAAAW-----,pass
+S*GPUCAAO-,SPGPUCAAO------,10,120402,00,00,Movement and Maneuver : Antitank/Antiarmor : Motorized : Unknown,Unspecified,Unspecified,SPGPUCAAO------,pass
+S*GPUCAAOS,SPGPUCAAOS-----,10,120402,01,00,Movement and Maneuver : Antitank/Antiarmor : Motorized : Unknown,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCAAOS-----,pass
+S*GPUCAT--,SPGPUCAT-------,10,120500,00,00,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Unspecified,SPGPUCAT-------,pass
+S*GPUCA---,SPGPUCA--------,10,120500,00,00,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Unspecified,SPGPUCAT-------,pass (multiple)
+S*GPUCATL-,SPGPUCATL------,10,120500,00,19,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Capability : Light,SPGPUCATL------,pass
+S*GPUCATM-,SPGPUCATM------,10,120500,00,24,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Capability : Medium,SPGPUCATM------,pass
+S*GPUCATH-,SPGPUCATH------,10,120500,00,15,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Capability : Heavy,SPGPUCATH------,pass
+S*GPUCATA-,SPGPUCATA------,10,120500,00,01,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Mobility : Airborne,SPGPUCATA------,pass
+S*GPUCATR-,SPGPUCATR------,10,120500,00,38,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Capability : Recovery (Maintenance),SPGPUCATR------,pass
+S*GPUCRVA-,SPGPUCRVA------,10,120501,00,00,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Unspecified,SPGPUCRVA------,pass
+S*GPUCRRL-,SPGPUCRRL------,10,120501,00,19,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Capability : Light,SPGPUCRRL------,pass
+S*GPUCATW-,SPGPUCATW------,10,120502,00,00,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked : Amphibious : Unknown,Unspecified,Unspecified,SPGPUCATW------,pass
+S*GPUCAW--,SPGPUCAW-------,10,120500,00,51,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked,Unspecified,Mobility : Wheeled,SPGPUCAW-------,pass
+S*GPUCAWA-,SPGPUCAWA------,98,100000,00,00,,,,,Retired
+S*GPUCAWL-,SPGPUCAWL------,98,100000,00,00,,,,,Retired
+S*GPUCAWM-,SPGPUCAWM------,98,100000,00,00,,,,,Retired
+S*GPUCAWH-,SPGPUCAWH------,98,100000,00,00,,,,,Retired
+S*GPUCAWR-,SPGPUCAWR------,98,100000,00,00,,,,,Retired
+S*GPUCAWWR,SPGPUCAWWR-----,98,100000,00,00,,,,,Retired
+S*GPUCAAAS,SPGPUCAAAS-----,10,120401,01,00,Movement and Maneuver : Antitank/Antiarmor : Armored : Unknown,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCAAAS-----,pass
+S*GPUCAWW-,SPGPUCAWW------,10,120502,00,51,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked : Amphibious : Unknown,Unspecified,Mobility : Wheeled,SPGPUCAWW------,pass
+S*GPUCATWR,SPGPUCATWR-----,10,120502,00,38,Movement and Maneuver : Armor/Armored/Mechanized/Self-Propelled/Tracked : Amphibious : Unknown,Unspecified,Capability : Recovery (Maintenance),SPGPUCATWR-----,pass
+S*GPUCV---,SPGPUCV--------,10,120600,00,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Unspecified,Unspecified,SPGPUCV--------,pass
+S*GPUCVRA-,SPGPUCVRA------,10,120600,03,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Attack 1,Unspecified,SPGPUCVRA------,pass
+S*GPUCVUR-,SPGPUCVUR------,10,120600,01,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCVUR------,pass
+S*GPUCVRUC,SPGPUCVRUC-----,10,120600,10,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Command and Control,Unspecified,SPGPUCVRUC-----,pass
+S*GPUCVRM-,SPGPUCVRM------,10,120600,33,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Mine Countermeasure,Unspecified,SPGPUCVRM------,pass
+S*GPUCVS--,SPGPUCVS-------,10,120600,53,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Search and Rescue,Unspecified,SPGPUCVS-------,pass
+S*GPUCSA--,SPGPUCSA-------,10,120600,54,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Security,Unspecified,SPGPUCSA-------,pass
+S*FPA-----,SPFPA----------,10,120600,63,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Unspecified,SPFPA----------,pass
+S*FPAH----,SPFPAH---------,98,100000,00,00,,,,,Retired
+S*FPAHA---,SPFPAHA--------,10,120600,63,54,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Capability : Attack 2,SPFPAHA--------,pass
+S*FPAHU---,SPFPAHU--------,10,120600,63,56,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Capability : Utility 2,SPFPAHU--------,pass
+S*FPAHH---,SPFPAHH--------,10,120600,63,57,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Capability : Combat Search and Rescue,SPFPAHH--------,pass
+S*FPAHUL--,SPFPAHUL-------,10,120600,63,19,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Capability : Light,SPFPAHUL-------,pass
+S*FPAHUM--,SPFPAHUM-------,10,120600,63,24,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Capability : Medium,SPFPAHUM-------,pass
+S*FPAHUH--,SPFPAHUH-------,10,120600,63,15,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Special Operations Forces (SOF),Capability : Heavy,SPFPAHUH-------,pass
+S*GPUCVRU-,SPGPUCVRU------,10,120600,69,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Utility 1,Unspecified,SPGPUCVRU------,pass
+S*GPUCVRUL,SPGPUCVRUL-----,10,120600,69,19,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Utility 1,Capability : Light,SPGPUCVRUL-----,pass
+S*GPUCVRUM,SPGPUCVRUM-----,10,120600,69,24,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Utility 1,Capability : Medium,SPGPUCVRUM-----,pass
+S*GPUCVRUH,SPGPUCVRUH-----,10,120600,69,15,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Utility 1,Capability : Heavy,SPGPUCVRUH-----,pass
+S*GPUCVRW-,SPGPUCVRW------,10,120600,74,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Antisubmarine Warfare,Unspecified,SPGPUCVRW------,pass
+S*GPUCVRUE,SPGPUCVRUE-----,10,120600,75,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing,Capability : Medevac,Unspecified,SPGPUCVRUE-----,pass
+S*GPUCRVO-,SPGPUCRVO------,10,120601,00,00,Movement and Maneuver : Army Aviation/Aviation Rotary Wing : Reconnaissance : Unknown,Unspecified,Unspecified,SPGPUCRVO------,pass
+S*GPUCVRS-,SPGPUCVRS------,98,100000,00,00,,,,,Retired
+S*GPUCVC--,SPGPUCVC-------,10,120700,00,00,Movement and Maneuver : Aviation Composite,Unspecified,Unspecified,SPGPUCVC-------,pass
+S*GPUCVF--,SPGPUCVF-------,10,120800,00,00,Movement and Maneuver : Aviation Fixed Wing,Unspecified,Unspecified,SPGPUCVF-------,pass
+S*GPUCVFA-,SPGPUCVFA------,10,120800,03,00,Movement and Maneuver : Aviation Fixed Wing,Capability : Attack 1,Unspecified,SPGPUCVFA------,pass
+S*GPUCVUF-,SPGPUCVUF------,10,120800,01,00,Movement and Maneuver : Aviation Fixed Wing,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCVUF------,pass
+S*FPAF----,SPFPAF---------,10,120800,63,00,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Unspecified,SPFPAF---------,pass
+S*FPAFA---,SPFPAFA--------,10,120800,63,54,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Capability : Attack 2,SPFPAFA--------,pass
+S*FPAFK---,SPFPAFK--------,10,120800,63,55,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Capability : Refuel,SPFPAFK--------,pass
+S*FPAFU---,SPFPAFU--------,10,120800,63,56,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Capability : Utility 2,SPFPAFU--------,pass
+S*FPAFUL--,SPFPAFUL-------,10,120800,63,19,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Capability : Light,SPFPAFUL-------,pass
+S*FPAFUM--,SPFPAFUM-------,10,120800,63,24,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Capability : Medium,SPFPAFUM-------,pass
+S*FPAFUH--,SPFPAFUH-------,10,120800,63,15,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Capability : Heavy,SPFPAFUH-------,pass
+S*FPAV----,SPFPAV---------,10,120800,63,49,Movement and Maneuver : Aviation Fixed Wing,Capability : Special Operations Forces (SOF),Mobility : Vertical or Short Take-Off and Landing (VTOL/VSTOL),SPFPAV---------,pass
+S*GPUCVFU-,SPGPUCVFU------,10,120800,69,00,Movement and Maneuver : Aviation Fixed Wing,Capability : Utility 1,Unspecified,SPGPUCVFU------,pass
+S*GPUCVV--,SPGPUCVV-------,10,120800,00,49,Movement and Maneuver : Aviation Fixed Wing,Unspecified,Mobility : Vertical or Short Take-Off and Landing (VTOL/VSTOL),SPGPUCVV-------,pass
+S*GPUCVFR-,SPGPUCVFR------,10,120801,00,00,Movement and Maneuver : Aviation Fixed Wing : Reconnaissance : Unknown,Unspecified,Unspecified,SPGPUCVFR------,pass
+S*GPUC----,SPGPUC---------,10,120900,00,00,Movement and Maneuver : Combat,Unspecified,Unspecified,SPGPUC---------,pass
+S*GPUCI---,SPGPUCI--------,10,121100,00,00,Movement and Maneuver : Infantry : Unknown,Unspecified,Unspecified,SPGPUCI--------,pass
+S*FPGR----,SPFPGR---------,10,121100,57,01,Movement and Maneuver : Infantry : Unknown,Capability : Signals Intelligence,Mobility : Airborne,SPFPGR---------,pass
+S*GPUCIL--,SPGPUCIL-------,10,121100,00,19,Movement and Maneuver : Infantry : Unknown,Unspecified,Capability : Light,SPGPUCIL-------,pass
+S*GPUCIO--,SPGPUCIO-------,10,121100,00,27,Movement and Maneuver : Infantry : Unknown,Unspecified,Capability : Mountain,SPGPUCIO-------,pass
+S*GPUCIA--,SPGPUCIA-------,10,121100,00,01,Movement and Maneuver : Infantry : Unknown,Unspecified,Mobility : Airborne,SPGPUCIA-------,pass
+S*GPUCIS--,SPGPUCIS-------,10,121100,01,00,Movement and Maneuver : Infantry : Unknown,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCIS-------,pass
+S*GPUCIC--,SPGPUCIC-------,10,121100,00,02,Movement and Maneuver : Infantry : Unknown,Unspecified,Mobility : Arctic,SPGPUCIC-------,pass
+S*GPUCIN--,SPGPUCIN-------,10,121100,46,00,Movement and Maneuver : Infantry : Unknown,Capability : Naval,Unspecified,SPGPUCIN-------,pass
+S*GPUCIZ--,SPGPUCIZ-------,10,121102,00,00,Movement and Maneuver : Infantry : Armored/Mechanized/Tracked : Unknown,Unspecified,Unspecified,SPGPUCIZ-------,pass
+S*GPUCIM--,SPGPUCIM-------,10,121104,00,00,Movement and Maneuver : Infantry : Motorized : Unknown,Unspecified,Unspecified,SPGPUCIM-------,pass
+S*GPUCR---,SPGPUCR--------,10,121300,00,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Unspecified,SPGPUCR--------,pass
+S*GPUCRVG-,SPGPUCRVG------,10,121300,00,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Unspecified,SPGPUCR--------,pass (multiple)
+S*GPUCRC--,SPGPUCRC-------,10,121300,00,02,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Mobility : Arctic,SPGPUCRC-------,pass
+S*GPUCRS--,SPGPUCRS-------,10,121300,01,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCRS-------,pass
+S*GPUCRA--,SPGPUCRA-------,10,121300,00,01,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Mobility : Airborne,SPGPUCRA-------,pass
+S*GPUCRO--,SPGPUCRO-------,10,121300,00,27,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Capability : Mountain,SPGPUCRO-------,pass
+S*GPUCRL--,SPGPUCRL-------,10,121300,00,19,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Capability : Light,SPGPUCRL-------,pass
+S*GPUCRX--,SPGPUCRX-------,10,121300,00,22,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Capability : Long Range,SPGPUCRX-------,pass
+S*GPUCRH--,SPGPUCRH-------,10,121300,00,31,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Unknown,Unspecified,Capability : Pack Animal,SPGPUCRH-------,pass
+S*GPUCRR--,SPGPUCRR-------,10,121302,00,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Marine : Unknown,Unspecified,Unspecified,SPGPUCRR-------,pass
+S*GPUCRRD-,SPGPUCRRD------,10,121302,19,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Marine : Unknown,Capability : Division,Unspecified,SPGPUCRRD------,pass
+S*GPUCRRF-,SPGPUCRRF------,10,121302,26,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Marine : Unknown,Capability : Force,Unspecified,SPGPUCRRF------,pass
+S*GPUCRVM-,SPGPUCRVM------,10,121303,00,00,Movement and Maneuver : Reconnaissance/Cavalry/Scout : Motorized : Unknown,Unspecified,Unspecified,SPGPUCRVM------,pass
+S*GPUCRV--,SPGPUCRV-------,98,100000,00,00,,,,,Retired
+S*FPNS----,SPFPNS---------,10,121400,00,00,Movement and Maneuver : Sea Air Land (SEAL),Unspecified,Unspecified,SPFPNS---------,pass
+S*FPGS----,SPFPGS---------,10,121700,00,00,Movement and Maneuver : Special Forces,Unspecified,Unspecified,SPFPGS---------,pass
+S*FP------,SPFP-----------,10,121800,00,00,Movement and Maneuver : SOF,Unspecified,Unspecified,SPFP-----------,pass
+S*FPB-----,SPFPB----------,10,121800,00,54,Movement and Maneuver : SOF,Unspecified,Capability : Attack 2,SPFPB----------,pass
+S*FPGPA---,SPFPGPA--------,10,121801,00,00,Movement and Maneuver : SOF : Fixed Wing MISO,Unspecified,Unspecified,SPFPGPA--------,pass
+S*FPG-----,SPFPG----------,10,121802,00,00,Movement and Maneuver : SOF : Ground : Unknown,Unspecified,Unspecified,SPFPG----------,pass
+S*FPNB----,SPFPNB---------,10,121803,00,00,Movement and Maneuver : SOF : Special Boat,Unspecified,Unspecified,SPFPNB---------,pass
+S*FPNN----,SPFPNN---------,10,121804,00,00,Movement and Maneuver : SOF : Special SSNR,Unspecified,Unspecified,SPFPNN---------,pass
+S*FPNU----,SPFPNU---------,10,121805,00,00,Movement and Maneuver : SOF : Underwater Demolition Team,Unspecified,Unspecified,SPFPNU---------,pass
+S*GPUCVU--,SPGPUCVU-------,10,121900,00,00,Movement and Maneuver : Unmanned Aerial Systems,Unspecified,Unspecified,SPGPUCVU-------,pass
+S*GPUCD---,SPGPUCD--------,10,130100,00,00,Fires : Air Defense : Unknown,Unspecified,Unspecified,SPGPUCD--------,pass
+S*GPUCDC--,SPGPUCDC-------,98,100000,00,00,,,,,Retired
+S*GPUCDS--,SPGPUCDS-------,10,130100,00,43,Fires : Air Defense : Unknown,Unspecified,Capability : Short Range,SPGPUCDS-------,pass
+S*GPUCDT--,SPGPUCDT-------,10,130100,67,00,Fires : Air Defense : Unknown,Capability : Target Acquisition,Unspecified,SPGPUCDT-------,pass
+S*GPUCDG--,SPGPUCDG-------,10,130101,00,00,Fires : Air Defense : Main Gun System : Unknown,Unspecified,Unspecified,SPGPUCDG-------,pass
+S*GPUCDM--,SPGPUCDM-------,10,130102,00,00,Fires : Air Defense : Missile : Unknown,Unspecified,Unspecified,SPGPUCDM-------,pass
+S*GPUCDH--,SPGPUCDH-------,10,130102,28,00,Fires : Air Defense : Missile : Unknown,Capability : Ground Station Module,Unspecified,SPGPUCDH-------,pass
+S*GPUCDML-,SPGPUCDML------,10,130102,00,19,Fires : Air Defense : Missile : Unknown,Unspecified,Capability : Light,SPGPUCDML------,pass
+S*GPUCDMM-,SPGPUCDMM------,10,130102,00,24,Fires : Air Defense : Missile : Unknown,Unspecified,Capability : Medium,SPGPUCDMM------,pass
+S*GPUCDMH-,SPGPUCDMH------,10,130102,00,15,Fires : Air Defense : Missile : Unknown,Unspecified,Capability : Heavy,SPGPUCDMH------,pass
+S*GPUCDO--,SPGPUCDO-------,10,130198,34,00,Fires : Air Defense : Theater/Echelons Above Corps Support,Capability : Missile,Unspecified,SPGPUCDO-------,pass
+S*GPUCFTA-,SPGPUCFTA------,10,130200,00,00,Fires : Air/Land Naval Gunfire Liaison : Unknown,Unspecified,Unspecified,SPGPUCFTA------,pass
+S*GPUCF---,SPGPUCF--------,10,130300,00,00,Fires : Field Artillery,Unspecified,Unspecified,SPGPUCF--------,pass
+S*GPUCFH--,SPGPUCFH-------,98,100000,00,00,,,,,Retired
+S*GPUCFHA-,SPGPUCFHA------,10,130300,00,01,Fires : Field Artillery,Unspecified,Mobility : Airborne,SPGPUCFHA------,pass
+S*GPUCFHS-,SPGPUCFHS------,10,130300,01,00,Fires : Field Artillery,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCFHS------,pass
+S*GPUCFHC-,SPGPUCFHC------,10,130300,00,02,Fires : Field Artillery,Unspecified,Mobility : Arctic,SPGPUCFHC------,pass
+S*GPUCFHO-,SPGPUCFHO------,10,130300,00,27,Fires : Field Artillery,Unspecified,Capability : Mountain,SPGPUCFHO------,pass
+S*GPUCFHL-,SPGPUCFHL------,10,130300,00,19,Fires : Field Artillery,Unspecified,Capability : Light,SPGPUCFHL------,pass
+S*GPUCFHM-,SPGPUCFHM------,10,130300,00,24,Fires : Field Artillery,Unspecified,Capability : Medium,SPGPUCFHM------,pass
+S*GPUCFHH-,SPGPUCFHH------,10,130300,00,15,Fires : Field Artillery,Unspecified,Capability : Heavy,SPGPUCFHH------,pass
+S*GPUCFRM-,SPGPUCFRM------,10,130300,41,00,Fires : Field Artillery,Capability : Multiple Rocket Launcher,Unspecified,SPGPUCFRM------,pass
+S*GPUCFTR-,SPGPUCFTR------,10,130300,50,00,Fires : Field Artillery,Capability : Radar,Unspecified,SPGPUCFTR------,pass
+S*GPUCFRS-,SPGPUCFRS------,10,130300,59,00,Fires : Field Artillery,Capability : Single Rocket Launcher,Unspecified,SPGPUCFRS------,pass
+S*GPUCFRSR,SPGPUCFRSR-----,10,130300,59,51,Fires : Field Artillery,Capability : Single Rocket Launcher,Mobility : Wheeled,SPGPUCFRSR-----,pass
+S*GPUCFRST,SPGPUCFRST-----,10,130300,59,47,Fires : Field Artillery,Capability : Single Rocket Launcher,Mobility : Towed,SPGPUCFRST-----,pass
+S*GPUCFTS-,SPGPUCFTS------,10,130300,62,00,Fires : Field Artillery,Capability : Sound Ranging,Unspecified,SPGPUCFTS------,pass
+S*GPUCFT--,SPGPUCFT-------,10,130300,67,00,Fires : Field Artillery,Capability : Target Acquisition,Unspecified,SPGPUCFT-------,pass
+S*GPUCFTF-,SPGPUCFTF------,10,130300,67,30,Fires : Field Artillery,Capability : Target Acquisition,Capability : Optical (Flash),SPGPUCFTF------,pass
+S*GPUCFHE-,SPGPUCFHE------,10,130301,00,00,Fires : Field Artillery : Self-propelled,Unspecified,Unspecified,SPGPUCFHE------,pass
+S*GPUCFRSS,SPGPUCFRSS-----,10,130301,59,00,Fires : Field Artillery : Self-propelled,Capability : Single Rocket Launcher,Unspecified,SPGPUCFRSS-----,pass
+S*GPUCFRMS,SPGPUCFRMS-----,10,130301,41,00,Fires : Field Artillery : Self-propelled,Capability : Multiple Rocket Launcher,Unspecified,SPGPUCFRMS-----,pass
+S*GPUCFTCM,SPGPUCFTCM-----,10,130302,00,00,Fires : Field Artillery : Target Acquisition : Unknown,Unspecified,Unspecified,SPGPUCFTCM-----,pass
+S*GPUCFTC-,SPGPUCFTC------,10,130400,00,00,Fires : Field Artillery Observer,Unspecified,Unspecified,SPGPUCFTC------,pass
+S*GPUCFTCD,SPGPUCFTCD-----,10,130400,00,00,Fires : Field Artillery Observer,Unspecified,Unspecified,SPGPUCFTC------,pass (multiple)
+S*GPUCFO--,SPGPUCFO-------,10,130600,00,00,Fires : Meteorological,Unspecified,Unspecified,SPGPUCFO-------,pass
+S*GPUCFOS-,SPGPUCFOS------,10,130600,01,00,Fires : Meteorological,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCFOS------,pass
+S*GPUCFOA-,SPGPUCFOA------,10,130600,00,01,Fires : Meteorological,Unspecified,Mobility : Airborne,SPGPUCFOA------,pass
+S*GPUCFOL-,SPGPUCFOL------,10,130600,00,19,Fires : Meteorological,Unspecified,Capability : Light,SPGPUCFOL------,pass
+S*GPUCFOO-,SPGPUCFOO------,10,130600,00,27,Fires : Meteorological,Unspecified,Capability : Mountain,SPGPUCFOO------,pass
+S*GPUCM---,SPGPUCM--------,10,130700,00,00,Fires : Missile,Unspecified,Unspecified,SPGPUCM--------,pass
+S*GPUCMS--,SPGPUCMS-------,10,130700,00,44,Fires : Missile,Unspecified,Capability : Strategic,SPGPUCMS-------,pass
+S*GPUCMT--,SPGPUCMT-------,10,130700,00,46,Fires : Missile,Unspecified,Capability : Tactical,SPGPUCMT-------,pass
+S*GPUCFM--,SPGPUCFM-------,10,130800,00,00,Fires : Mortar,Unspecified,Unspecified,SPGPUCFM-------,pass
+S*GPUCFMTC,SPGPUCFMTC-----,10,130800,00,02,Fires : Mortar,Unspecified,Mobility : Arctic,SPGPUCFMTC-----,pass
+S*GPUCFMS-,SPGPUCFMS------,10,130801,00,00,Fires : Mortar : Armored/Mechanized/Tracked,Unspecified,Unspecified,SPGPUCFMS------,pass
+S*GPUCFMW-,SPGPUCFMW------,10,130802,00,00,Fires : Mortar : Self-Propelled Wheeled,Unspecified,Unspecified,SPGPUCFMW------,pass
+S*GPUCFMT-,SPGPUCFMT------,10,130803,00,00,Fires : Mortar : Towed,Unspecified,Unspecified,SPGPUCFMT------,pass
+S*GPUCFMTS,SPGPUCFMTS-----,10,130803,01,00,Fires : Mortar : Towed,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCFMTS-----,pass
+S*GPUCFMTA,SPGPUCFMTA-----,10,130803,00,01,Fires : Mortar : Towed,Unspecified,Mobility : Airborne,SPGPUCFMTA-----,pass
+S*GPUCFMTO,SPGPUCFMTO-----,10,130803,00,27,Fires : Mortar : Towed,Unspecified,Capability : Mountain,SPGPUCFMTO-----,pass
+S*GPUCFS--,SPGPUCFS-------,10,130900,00,00,Fires : Survey,Unspecified,Unspecified,SPGPUCFS-------,pass
+S*GPUCFSS-,SPGPUCFSS------,10,130900,01,00,Fires : Survey,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCFSS------,pass
+S*GPUCFSA-,SPGPUCFSA------,10,130900,00,01,Fires : Survey,Unspecified,Mobility : Airborne,SPGPUCFSA------,pass
+S*GPUCFSL-,SPGPUCFSL------,10,130900,00,19,Fires : Survey,Unspecified,Capability : Light,SPGPUCFSL------,pass
+S*GPUCFSO-,SPGPUCFSO------,10,130900,00,27,Fires : Survey,Unspecified,Capability : Mountain,SPGPUCFSO------,pass
+S*GPUUA---,SPGPUUA--------,10,140100,00,00,Protection : CBRN Defense,Unspecified,Unspecified,SPGPUUA--------,pass
+S*GPUUAC--,SPGPUUAC-------,10,140100,07,00,Protection : CBRN Defense,Capability : Chemical,Unspecified,SPGPUUAC-------,pass
+S*GPUUACS-,SPGPUUACS------,10,140100,60,00,Protection : CBRN Defense,Capability : Smoke,Unspecified,SPGPUUACS------,pass
+S*GPUUAN--,SPGPUUAN-------,10,140100,48,00,Protection : CBRN Defense,Capability : Nuclear,Unspecified,SPGPUUAN-------,pass
+S*GPUUAB--,SPGPUUAB-------,10,140100,04,00,Protection : CBRN Defense,Capability : Biological,Unspecified,SPGPUUAB-------,pass
+S*GPUUAD--,SPGPUUAD-------,10,140100,15,00,Protection : CBRN Defense,Capability : Decontamination 1,Unspecified,SPGPUUAD-------,pass
+S*GPUUACC-,SPGPUUACC------,10,140100,60,09,Protection : CBRN Defense,Capability : Smoke,Capability : Decontamination 2,SPGPUUACC------,pass
+S*GPUUACSA,SPGPUUACSA-----,10,140101,60,00,Protection : CBRN Defense : Mechanized,Capability : Smoke,Unspecified,SPGPUUACSA-----,pass
+S*GPUUACCK,SPGPUUACCK-----,10,140101,60,09,Protection : CBRN Defense : Mechanized,Capability : Smoke,Capability : Decontamination 2,SPGPUUACCK-----,pass
+S*GPUUACSM,SPGPUUACSM-----,10,140102,60,00,Protection : CBRN Defense : Motorized : Unknown,Capability : Smoke,Unspecified,SPGPUUACSM-----,pass
+S*GPUUACCM,SPGPUUACCM-----,10,140102,60,09,Protection : CBRN Defense : Motorized : Unknown,Capability : Smoke,Capability : Decontamination 2,SPGPUUACCM-----,pass
+S*GPUUACR-,SPGPUUACR------,10,140103,07,00,Protection : CBRN Defense : Reconnaissance : Unknown,Capability : Chemical,Unspecified,SPGPUUACR------,pass
+S*GPUUACRS,SPGPUUACRS-----,98,100000,00,00,,,,,Retired
+S*GPUUACRW,SPGPUUACRW-----,10,140104,00,51,Protection : CBRN Defense : Reconnaissance Armored : Unknown,Unspecified,Mobility : Wheeled,SPGPUUACRW-----,pass
+S*GPUUABR-,SPGPUUABR------,10,140105,04,00,Protection : CBRN Defense : Reconnaissance Equipped : Unknown,Capability : Biological,Unspecified,SPGPUUABR------,pass
+S*GPUU----,SPGPUU---------,10,140200,00,00,Protection : Combat Support (Maneuver Enhancement),Unspecified,Unspecified,SPGPUU---------,pass
+S*GPUULD--,SPGPUULD-------,10,140300,00,00,Protection : Criminal Investigation Division,Unspecified,Unspecified,SPGPUULD-------,pass
+S*GPUCE---,SPGPUCE--------,10,140700,00,00,Protection : Engineer,Unspecified,Unspecified,SPGPUCE--------,pass
+S*GPUCECS-,SPGPUCECS------,10,140700,01,00,Protection : Engineer,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUCECS------,pass
+S*GPUCECA-,SPGPUCECA------,10,140700,00,01,Protection : Engineer,Unspecified,Mobility : Airborne,SPGPUCECA------,pass
+S*GPUCECC-,SPGPUCECC------,10,140700,00,02,Protection : Engineer,Unspecified,Mobility : Arctic,SPGPUCECC------,pass
+S*GPUCEC--,SPGPUCEC-------,10,140700,09,00,Protection : Engineer,Capability : Combat,Unspecified,SPGPUCEC-------,pass
+S*GPUCECL-,SPGPUCECL------,10,140700,09,19,Protection : Engineer,Capability : Combat,Capability : Light,SPGPUCECL------,pass
+S*GPUCECM-,SPGPUCECM------,10,140700,09,24,Protection : Engineer,Capability : Combat,Capability : Medium,SPGPUCECM------,pass
+S*GPUCECH-,SPGPUCECH------,10,140700,09,15,Protection : Engineer,Capability : Combat,Capability : Heavy,SPGPUCECH------,pass
+S*GPUCECO-,SPGPUCECO------,10,140700,09,27,Protection : Engineer,Capability : Combat,Capability : Mountain,SPGPUCECO------,pass
+S*GPUCEN--,SPGPUCEN-------,10,140700,12,00,Protection : Engineer,Capability : Construction,Unspecified,SPGPUCEN-------,pass
+S*GPUCENN-,SPGPUCENN------,10,140700,46,00,Protection : Engineer,Capability : Naval,Unspecified,SPGPUCENN------,pass
+S*GPUCECT-,SPGPUCECT------,10,140701,00,00,Protection : Engineer : Mechanized,Unspecified,Unspecified,SPGPUCECT------,pass
+S*GPUCECW-,SPGPUCECW------,10,140702,00,00,Protection : Engineer : Motorized : Unknown,Unspecified,Unspecified,SPGPUCECW------,pass
+S*GPUCECR-,SPGPUCECR------,10,140703,00,00,Protection : Engineer : Reconnaissance : Unknown,Unspecified,Unspecified,SPGPUCECR------,pass
+S*GPUUE---,SPGPUUE--------,10,140800,00,00,Protection : Explosive Ordnance Disposal (EOD),Unspecified,Unspecified,SPGPUUE--------,pass
+E*OPCA----,EPOPCA---------,10,141000,00,00,Protection : Fire Fighting/Fire Protection,Unspecified,Unspecified,EPOPCA---------,pass
+S*GPUULM--,SPGPUULM-------,10,141200,00,00,Protection : Military Police,Unspecified,Unspecified,SPGPUULM-------,pass
+S*GPUCS---,SPGPUCS--------,10,141700,00,00,Protection : Security,Unspecified,Unspecified,SPGPUCS--------,pass
+S*GPUCSG--,SPGPUCSG-------,10,141700,00,00,Protection : Security,Unspecified,Unspecified,SPGPUCS--------,pass (multiple)
+S*GPUCSW--,SPGPUCSW-------,10,141700,00,40,Protection : Security,Unspecified,Mobility : Riverine,SPGPUCSW-------,pass
+S*GPUCSGD-,SPGPUCSGD------,98,100000,00,00,,,,,Retired
+S*GPUCSR--,SPGPUCSR-------,10,141700,00,36,Protection : Security,Unspecified,Mobility : Railroad,SPGPUCSR-------,pass
+S*GPUCSGA-,SPGPUCSGA------,10,141701,00,00,Protection : Security : Mechanized,Unspecified,Unspecified,SPGPUCSGA------,pass
+S*GPUCSM--,SPGPUCSM-------,10,141701,00,51,Protection : Security : Mechanized,Unspecified,Mobility : Wheeled,SPGPUCSM-------,pass
+S*GPUCSGM-,SPGPUCSGM------,10,141702,00,00,Protection : Security : Motorized : Unknown,Unspecified,Unspecified,SPGPUCSGM------,pass
+S*GPUUL---,SPGPUUL--------,98,100000,00,00,,,,,Retired
+S*GPUULF--,SPGPUULF-------,10,141900,00,00,Protection : Security Police (Air),Unspecified,Unspecified,SPGPUULF-------,pass
+S*GPUULS--,SPGPUULS-------,10,142000,00,00,Protection : Shore Patrol,Unspecified,Unspecified,SPGPUULS-------,pass
+S*GPUUMC--,SPGPUUMC-------,10,150200,00,00,Intelligence : Counterintelligence,Unspecified,Unspecified,SPGPUUMC-------,pass
+S*GPUUSX--,SPGPUUSX-------,10,150400,00,00,Intelligence : Electronic Ranging,Unspecified,Unspecified,SPGPUUSX-------,pass
+S*GPUUI---,SPGPUUI--------,98,100000,00,00,,,,,Retired
+S*GPUUMSE-,SPGPUUMSE------,10,150500,00,00,Intelligence : Electronic Warfare,Unspecified,Unspecified,SPGPUUMSE------,pass
+S*GPUUMSEA,SPGPUUMSEA-----,98,100000,00,00,,,,,Retired
+S*GPUUMSEC,SPGPUUMSEC-----,10,150597,00,00,Intelligence : Electronic Warfare : Corps Support,Unspecified,Unspecified,SPGPUUMSEC-----,pass
+S*GPUUMSET,SPGPUUMSET-----,10,150598,00,00,Intelligence : Electronic Warfare : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUUMSET-----,pass
+S*GPUUMSED,SPGPUUMSED-----,10,150502,00,00,Intelligence : Electronic Warfare : Direction Finding,Unspecified,Unspecified,SPGPUUMSED-----,pass
+S*GPUUMSEI,SPGPUUMSEI-----,10,150503,00,00,Intelligence : Electronic Warfare : Intercept,Unspecified,Unspecified,SPGPUUMSEI-----,pass
+S*GPUUMSEJ,SPGPUUMSEJ-----,10,150504,00,00,Intelligence : Electronic Warfare : Jamming : Unknown,Unspecified,Unspecified,SPGPUUMSEJ-----,pass
+S*GPUUMQ--,SPGPUUMQ-------,10,150700,00,00,Intelligence : Interrogation,Unspecified,Unspecified,SPGPUUMQ-------,pass
+S*GPUUMJ--,SPGPUUMJ-------,10,150900,00,00,Intelligence : Joint Intelligence Center,Unspecified,Unspecified,SPGPUUMJ-------,pass
+S*GPUUM---,SPGPUUM--------,10,151000,00,00,Intelligence : Military Intelligence,Unspecified,Unspecified,SPGPUUM--------,pass
+S*GPUUMR--,SPGPUUMR-------,10,151000,00,00,Intelligence : Military Intelligence,Unspecified,Unspecified,SPGPUUM--------,pass (multiple)
+S*GPUUMA--,SPGPUUMA-------,10,151000,01,00,Intelligence : Military Intelligence,Mobility : Air Mobile/Air Assault (US Only),Unspecified,SPGPUUMA-------,pass
+S*GPUUMO--,SPGPUUMO-------,10,151000,49,00,Intelligence : Military Intelligence,Capability : Operations,Unspecified,SPGPUUMO-------,pass
+S*GPUUMS--,SPGPUUMS-------,10,151000,57,00,Intelligence : Military Intelligence,Capability : Signals Intelligence,Unspecified,SPGPUUMS-------,pass
+S*GPUUMRG-,SPGPUUMRG------,10,151000,50,00,Intelligence : Military Intelligence,Capability : Radar,Unspecified,SPGPUUMRG------,pass
+S*GPUUMRS-,SPGPUUMRS------,10,151000,55,00,Intelligence : Military Intelligence,Capability : Sensor,Unspecified,SPGPUUMRS------,pass
+S*GPUUMRSS,SPGPUUMRSS-----,10,151000,56,00,Intelligence : Military Intelligence,Capability : Sensor Control Module (SCM),Unspecified,SPGPUUMRSS-----,pass
+S*GPUUMRX-,SPGPUUMRX------,10,151000,28,00,Intelligence : Military Intelligence,Capability : Ground Station Module,Unspecified,SPGPUUMRX------,pass
+S*GPUUMMO-,SPGPUUMMO------,10,151000,32,00,Intelligence : Military Intelligence,Capability : Meteorological,Unspecified,SPGPUUMMO------,pass
+S*GPUUMT--,SPGPUUMT-------,10,151000,66,00,Intelligence : Military Intelligence,Capability : Tactical Exploitation,Unspecified,SPGPUUMT-------,pass
+S*GPUUMSET,SPGPUUMSET-----,10,150598,00,00,Intelligence : Electronic Warfare : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUUMSET-----,pass
+S*GPUUMSEC,SPGPUUMSEC-----,10,150597,00,00,Intelligence : Electronic Warfare : Corps Support,Unspecified,Unspecified,SPGPUUMSEC-----,pass
+S*GPUSA---,SPGPUSA--------,10,160100,00,00,Sustainment : Administrative,Unspecified,Unspecified,SPGPUSA--------,pass
+S*GPUSAC--,SPGPUSAC-------,10,160197,00,00,Sustainment : Administrative : Corps Support,Unspecified,Unspecified,SPGPUSAC-------,pass
+S*GPUSAT--,SPGPUSAT-------,10,160198,00,00,Sustainment : Administrative : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAT-------,pass
+S*GPUSTA--,SPGPUSTA-------,10,160300,00,00,Sustainment : Airport of Debarkation/Airport of Embarkation,Unspecified,Unspecified,SPGPUSTA-------,pass
+S*GPUSTAC-,SPGPUSTAC------,10,160397,00,00,Sustainment : Airport of Debarkation/Airport of Embarkation : Corps Support,Unspecified,Unspecified,SPGPUSTAC------,pass
+S*GPUSTAT-,SPGPUSTAT------,10,160398,00,00,Sustainment : Airport of Debarkation/Airport of Embarkation : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSTAT------,pass
+S*GPUS----,SPGPUS---------,10,160600,00,00,Sustainment : Combat Service Support,Unspecified,Unspecified,SPGPUS---------,pass
+S*GPUSAF--,SPGPUSAF-------,10,160700,00,00,Sustainment : Finance,Unspecified,Unspecified,SPGPUSAF-------,pass
+S*GPUSAFC-,SPGPUSAFC------,10,160797,00,00,Sustainment : Finance : Corps Support,Unspecified,Unspecified,SPGPUSAFC------,pass
+S*GPUSAFT-,SPGPUSAFT------,10,160798,00,00,Sustainment : Finance : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAFT------,pass
+S*GPUSAJ--,SPGPUSAJ-------,10,160800,00,00,Sustainment : Judge Advocate General,Unspecified,Unspecified,SPGPUSAJ-------,pass
+S*GPUSAJC-,SPGPUSAJC------,10,160897,00,00,Sustainment : Judge Advocate General : Corps Support,Unspecified,Unspecified,SPGPUSAJC------,pass
+S*GPUSAJT-,SPGPUSAJT------,10,160898,00,00,Sustainment : Judge Advocate General : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAJT------,pass
+S*GPUSAL--,SPGPUSAL-------,10,160900,00,00,Sustainment : Labor,Unspecified,Unspecified,SPGPUSAL-------,pass
+S*GPUSALC-,SPGPUSALC------,10,160997,00,00,Sustainment : Labor : Corps Support,Unspecified,Unspecified,SPGPUSALC------,pass
+S*GPUSALT-,SPGPUSALT------,10,160998,00,00,Sustainment : Labor : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSALT------,pass
+S*GPUSSL--,SPGPUSSL-------,10,161000,00,00,Sustainment : Laundry/Bath,Unspecified,Unspecified,SPGPUSSL-------,pass
+S*GPUSSLC-,SPGPUSSLC------,10,161097,00,00,Sustainment : Laundry/Bath : Corps Support,Unspecified,Unspecified,SPGPUSSLC------,pass
+S*GPUSSLT-,SPGPUSSLT------,10,161098,00,00,Sustainment : Laundry/Bath : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSSLT------,pass
+S*GPUSX---,SPGPUSX--------,10,161100,00,00,Sustainment : Maintenance,Unspecified,Unspecified,SPGPUSX--------,pass
+S*GPUSXH--,SPGPUSXH-------,10,161100,00,15,Sustainment : Maintenance,Unspecified,Capability : Heavy,SPGPUSXH-------,pass
+S*GPUSXE--,SPGPUSXE-------,10,161100,22,00,Sustainment : Maintenance,Capability : Electro-Optical,Unspecified,SPGPUSXE-------,pass
+S*GPUSXOM-,SPGPUSXOM------,10,161100,34,00,Sustainment : Maintenance,Capability : Missile,Unspecified,SPGPUSXOM------,pass
+S*GPUSXC--,SPGPUSXC-------,10,161197,00,00,Sustainment : Maintenance : Corps Support,Unspecified,Unspecified,SPGPUSXC-------,pass
+S*GPUSXT--,SPGPUSXT-------,10,161198,00,00,Sustainment : Maintenance : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSXT-------,pass
+S*GPUSXHC-,SPGPUSXHC------,10,161197,00,15,Sustainment : Maintenance : Corps Support,Unspecified,Capability : Heavy,SPGPUSXHC------,pass
+S*GPUSXR--,SPGPUSXR-------,98,100000,00,00,,,,,Retired
+S*GPUSXRC-,SPGPUSXRC------,98,100000,00,00,,,,,Retired
+S*GPUSXRT-,SPGPUSXRT------,98,100000,00,00,,,,,Retired
+S*GPUSXHT-,SPGPUSXHT------,10,161198,00,15,Sustainment : Maintenance : Theater/Echelons Above Corps Support,Unspecified,Capability : Heavy,SPGPUSXHT------,pass
+S*GPUSXEC-,SPGPUSXEC------,10,161197,22,00,Sustainment : Maintenance : Corps Support,Capability : Electro-Optical,Unspecified,SPGPUSXEC------,pass
+S*GPUSXET-,SPGPUSXET------,10,161198,22,00,Sustainment : Maintenance : Theater/Echelons Above Corps Support,Capability : Electro-Optical,Unspecified,SPGPUSXET------,pass
+S*GPUSXOMC,SPGPUSXOMC-----,10,161197,34,00,Sustainment : Maintenance : Corps Support,Capability : Missile,Unspecified,SPGPUSXOMC-----,pass
+S*GPUSXOMT,SPGPUSXOMT-----,10,161198,34,00,Sustainment : Maintenance : Theater/Echelons Above Corps Support,Capability : Missile,Unspecified,SPGPUSXOMT-----,pass
+S*GPUSM---,SPGPUSM--------,10,161300,00,00,Sustainment : Medical : Unknown,Unspecified,Unspecified,SPGPUSM--------,pass
+S*GPUSMD--,SPGPUSMD-------,10,161300,00,11,Sustainment : Medical : Unknown,Unspecified,Capability : Dental,SPGPUSMD-------,pass
+S*GPUSMP--,SPGPUSMP-------,10,161300,00,34,Sustainment : Medical : Unknown,Unspecified,Capability : Psychological,SPGPUSMP-------,pass
+S*GPUSMV--,SPGPUSMV-------,10,161300,00,50,Sustainment : Medical : Unknown,Unspecified,Capability : Veterinary,SPGPUSMV-------,pass
+S*GPUSMC--,SPGPUSMC-------,10,161397,00,00,Sustainment : Medical : Corps Support,Unspecified,Unspecified,SPGPUSMC-------,pass
+S*GPUSMT--,SPGPUSMT-------,10,161398,00,00,Sustainment : Medical : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSMT-------,pass
+S*GPUSMDC-,SPGPUSMDC------,10,161497,00,11,Sustainment : Medical Treatment Facility : Corps Support,Unspecified,Capability : Dental,SPGPUSMDC------,pass
+S*GPUSMDT-,SPGPUSMDT------,10,161498,00,11,Sustainment : Medical Treatment Facility : Theater/Echelons Above Corps Support,Unspecified,Capability : Dental,SPGPUSMDT------,pass
+S*GPUSMPC-,SPGPUSMPC------,10,161497,00,34,Sustainment : Medical Treatment Facility : Corps Support,Unspecified,Capability : Psychological,SPGPUSMPC------,pass
+S*GPUSMPT-,SPGPUSMPT------,10,161498,00,34,Sustainment : Medical Treatment Facility : Theater/Echelons Above Corps Support,Unspecified,Capability : Psychological,SPGPUSMPT------,pass
+S*GPUSMVC-,SPGPUSMVC------,10,161497,00,50,Sustainment : Medical Treatment Facility : Corps Support,Unspecified,Capability : Veterinary,SPGPUSMVC------,pass
+S*GPUSMVT-,SPGPUSMVT------,10,161498,00,50,Sustainment : Medical Treatment Facility : Theater/Echelons Above Corps Support,Unspecified,Capability : Veterinary,SPGPUSMVT------,pass
+S*GPUSMM--,SPGPUSMM-------,10,161400,00,00,Sustainment : Medical Treatment Facility : Unknown,Unspecified,Unspecified,SPGPUSMM-------,pass
+S*GPUSMMC-,SPGPUSMMC------,10,161497,00,00,Sustainment : Medical Treatment Facility : Corps Support,Unspecified,Unspecified,SPGPUSMMC------,pass
+S*GPUSMMT-,SPGPUSMMT------,10,161498,00,00,Sustainment : Medical Treatment Facility : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSMMT------,pass
+S*GPUSAW--,SPGPUSAW-------,10,161500,00,00,Sustainment : Morale Welfare and Recreation,Unspecified,Unspecified,SPGPUSAW-------,pass
+S*GPUSAWC-,SPGPUSAWC------,10,161597,00,00,Sustainment : Morale Welfare and Recreation : Corps Support,Unspecified,Unspecified,SPGPUSAWC------,pass
+S*GPUSAWT-,SPGPUSAWT------,10,161598,00,00,Sustainment : Morale Welfare and Recreation : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAWT------,pass
+S*GPUSAM--,SPGPUSAM-------,10,161600,00,00,Sustainment : Mortuary Affairs/Graves Registration,Unspecified,Unspecified,SPGPUSAM-------,pass
+S*GPUSAMC-,SPGPUSAMC------,10,161697,00,00,Sustainment : Mortuary Affairs/Graves Registration : Corps Support,Unspecified,Unspecified,SPGPUSAMC------,pass
+S*GPUSAMT-,SPGPUSAMT------,10,161698,00,00,Sustainment : Mortuary Affairs/Graves Registration : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAMT------,pass
+S*GPUSXO--,SPGPUSXO-------,10,162300,00,00,Sustainment : Ordnance,Unspecified,Unspecified,SPGPUSXO-------,pass
+S*GPUSXOC-,SPGPUSXOC------,10,162397,00,00,Sustainment : Ordnance : Corps Support,Unspecified,Unspecified,SPGPUSXOC------,pass
+S*GPUSXOT-,SPGPUSXOT------,10,162398,00,00,Sustainment : Ordnance : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSXOT------,pass
+S*GPUSAS--,SPGPUSAS-------,10,162400,00,00,Sustainment : Personnel Services,Unspecified,Unspecified,SPGPUSAS-------,pass
+S*GPUSASC-,SPGPUSASC------,10,162497,00,00,Sustainment : Personnel Services : Corps Support,Unspecified,Unspecified,SPGPUSASC------,pass
+S*GPUSAST-,SPGPUSAST------,10,162498,00,00,Sustainment : Personnel Services : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAST------,pass
+S*GPUSAO--,SPGPUSAO-------,10,162700,00,00,Sustainment : Postal,Unspecified,Unspecified,SPGPUSAO-------,pass
+S*GPUSAOC-,SPGPUSAOC------,10,162797,00,00,Sustainment : Postal : Corps Support,Unspecified,Unspecified,SPGPUSAOC------,pass
+S*GPUSAOT-,SPGPUSAOT------,10,162798,00,00,Sustainment : Postal : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAOT------,pass
+S*GPUSAP--,SPGPUSAP-------,10,162800,00,00,Sustainment : Public Affairs/Public Information,Unspecified,Unspecified,SPGPUSAP-------,pass
+S*GPUSAPC-,SPGPUSAPC------,10,162897,00,00,Sustainment : Public Affairs/Public Information : Corps Support,Unspecified,Unspecified,SPGPUSAPC------,pass
+S*GPUSAPT-,SPGPUSAPT------,10,162898,00,00,Sustainment : Public Affairs/Public Information : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAPT------,pass
+S*GPUSAQ--,SPGPUSAQ-------,10,162900,00,00,Sustainment : Quartermaster,Unspecified,Unspecified,SPGPUSAQ-------,pass
+S*GPUSAQC-,SPGPUSAQC------,10,162997,00,00,Sustainment : Quartermaster : Corps Support,Unspecified,Unspecified,SPGPUSAQC------,pass
+S*GPUSAQT-,SPGPUSAQT------,10,162998,00,00,Sustainment : Quartermaster : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAQT------,pass
+S*GPUSTR--,SPGPUSTR-------,10,163000,00,00,Sustainment : Railhead,Unspecified,Unspecified,SPGPUSTR-------,pass
+S*GPUSTRC-,SPGPUSTRC------,10,163097,00,00,Sustainment : Railhead : Corps Support,Unspecified,Unspecified,SPGPUSTRC------,pass
+S*GPUSTRT-,SPGPUSTRT------,10,163098,00,00,Sustainment : Railhead : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSTRT------,pass
+S*GPUSAR--,SPGPUSAR-------,10,163100,00,00,Sustainment : Religious Support,Unspecified,Unspecified,SPGPUSAR-------,pass
+S*GPUSARC-,SPGPUSARC------,10,163197,00,00,Sustainment : Religious Support : Corps Support,Unspecified,Unspecified,SPGPUSARC------,pass
+S*GPUSART-,SPGPUSART------,10,163198,00,00,Sustainment : Religious Support : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSART------,pass
+S*GPUSAX--,SPGPUSAX-------,10,163200,00,00,Sustainment : Replacement Holding Unit,Unspecified,Unspecified,SPGPUSAX-------,pass
+S*GPUSAXC-,SPGPUSAXC------,10,163297,00,00,Sustainment : Replacement Holding Unit : Corps Support,Unspecified,Unspecified,SPGPUSAXC------,pass
+S*GPUSAXT-,SPGPUSAXT------,10,163298,00,00,Sustainment : Replacement Holding Unit : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAXT------,pass
+S*GPUSTS--,SPGPUSTS-------,10,163300,00,00,Sustainment : Sea Port of Debarkation/Sea Port of Embarkation,Unspecified,Unspecified,SPGPUSTS-------,pass
+S*GPUSTSC-,SPGPUSTSC------,10,163397,00,00,Sustainment : Sea Port of Debarkation/Sea Port of Embarkation : Corps Support,Unspecified,Unspecified,SPGPUSTSC------,pass
+S*GPUSTST-,SPGPUSTST------,10,163398,00,00,Sustainment : Sea Port of Debarkation/Sea Port of Embarkation : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSTST------,pass
+S*GPUSS---,SPGPUSS--------,10,163400,00,00,Sustainment : Supply : Unknown,Unspecified,Unspecified,SPGPUSS--------,pass
+S*GPUSSC--,SPGPUSSC-------,10,163497,00,00,Sustainment : Supply : Corps Support,Unspecified,Unspecified,SPGPUSSC-------,pass
+S*GPUSST--,SPGPUSST-------,10,163498,00,00,Sustainment : Supply : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSST-------,pass
+S*GPUSAPM-,SPGPUSAPM------,10,163500,00,00,Sustainment : Joint Information Bureau,Unspecified,Unspecified,SPGPUSAPM------,pass
+S*GPUSAPMC,SPGPUSAPMC-----,10,163597,00,00,Sustainment : Joint Information Bureau : Corps Support,Unspecified,Unspecified,SPGPUSAPMC-----,pass
+S*GPUSAPMT,SPGPUSAPMT-----,10,163598,00,00,Sustainment : Joint Information Bureau : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAPMT-----,pass
+S*GPUST---,SPGPUST--------,10,163600,00,00,Sustainment : Transportation,Unspecified,Unspecified,SPGPUST--------,pass
+S*GPUSTI--,SPGPUSTI-------,10,163600,34,00,Sustainment : Transportation,Capability : Missile,Unspecified,SPGPUSTI-------,pass
+S*GPUSTM--,SPGPUSTM-------,10,163600,38,00,Sustainment : Transportation,Capability : Movement Control Center,Unspecified,SPGPUSTM-------,pass
+S*GPUSTC--,SPGPUSTC-------,10,163697,00,00,Sustainment : Transportation : Corps Support,Unspecified,Unspecified,SPGPUSTC-------,pass
+S*GPUSTT--,SPGPUSTT-------,10,163698,00,00,Sustainment : Transportation : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSTT-------,pass
+S*GPUSTIC-,SPGPUSTIC------,10,163697,34,00,Sustainment : Transportation : Corps Support,Capability : Missile,Unspecified,SPGPUSTIC------,pass
+S*GPUSTIT-,SPGPUSTIT------,10,163698,34,00,Sustainment : Transportation : Theater/Echelons Above Corps Support,Capability : Missile,Unspecified,SPGPUSTIT------,pass
+S*GPUSTMC-,SPGPUSTMC------,10,163697,38,00,Sustainment : Transportation : Corps Support,Capability : Movement Control Center,Unspecified,SPGPUSTMC------,pass
+S*GPUSTMT-,SPGPUSTMT------,10,163698,38,00,Sustainment : Transportation : Theater/Echelons Above Corps Support,Capability : Movement Control Center,Unspecified,SPGPUSTMT------,pass
+S*GPUSS1--,SPGPUSS1-------,10,163700,00,00,Sustainment : US Supply Class I : Unknown,Unspecified,Unspecified,SPGPUSS1-------,pass
+S*GPUSS1C-,SPGPUSS1C------,10,163797,00,00,Sustainment : US Supply Class I : Corps Support,Unspecified,Unspecified,SPGPUSS1C------,pass
+S*GPUSS1T-,SPGPUSS1T------,10,163798,00,00,Sustainment : US Supply Class I : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS1T------,pass
+S*GPUSS2--,SPGPUSS2-------,10,163800,00,00,Sustainment : US Supply Class II : Unknown,Unspecified,Unspecified,SPGPUSS2-------,pass
+S*GPUSS2C-,SPGPUSS2C------,10,163897,00,00,Sustainment : US Supply Class II : Corps Support,Unspecified,Unspecified,SPGPUSS2C------,pass
+S*GPUSS2T-,SPGPUSS2T------,10,163898,00,00,Sustainment : US Supply Class II : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS2T------,pass
+S*GPUSS3--,SPGPUSS3-------,10,163900,00,00,Sustainment : US Supply Class III : Unknown,Unspecified,Unspecified,SPGPUSS3-------,pass
+S*GPUSS3A-,SPGPUSS3A------,10,163900,78,00,Sustainment : US Supply Class III : Unknown,Capability : Aviation,Unspecified,SPGPUSS3A------,pass
+S*GPUSS3AC,SPGPUSS3AC-----,98,100000,00,00,,,,,Retired
+S*GPUSS3AT,SPGPUSS3AT-----,98,100000,00,00,,,,,Retired
+S*GPUSS3C-,SPGPUSS3C------,10,163997,00,00,Sustainment : US Supply Class III : Corps Support,Unspecified,Unspecified,SPGPUSS3C------,pass
+S*GPUSS3T-,SPGPUSS3T------,10,163998,00,00,Sustainment : US Supply Class III : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS3T------,pass
+S*GPUSS4--,SPGPUSS4-------,10,164000,00,00,Sustainment : US Supply Class IV : Unknown,Unspecified,Unspecified,SPGPUSS4-------,pass
+S*GPUSS4C-,SPGPUSS4C------,10,164097,00,00,Sustainment : US Supply Class IV : Corps Support,Unspecified,Unspecified,SPGPUSS4C------,pass
+S*GPUSS4T-,SPGPUSS4T------,10,164098,00,00,Sustainment : US Supply Class IV : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS4T------,pass
+S*GPUSS5--,SPGPUSS5-------,10,164100,00,00,Sustainment : US Supply Class V : Unknown,Unspecified,Unspecified,SPGPUSS5-------,pass
+S*GPUSS5C-,SPGPUSS5C------,10,164197,00,00,Sustainment : US Supply Class V : Corps Support,Unspecified,Unspecified,SPGPUSS5C------,pass
+S*GPUSS5T-,SPGPUSS5T------,10,164198,00,00,Sustainment : US Supply Class V : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS5T------,pass
+S*GPUSS6--,SPGPUSS6-------,10,164200,00,00,Sustainment : US Supply Class VI : Unknown,Unspecified,Unspecified,SPGPUSS6-------,pass
+S*GPUSS6C-,SPGPUSS6C------,10,164297,00,00,Sustainment : US Supply Class VI : Corps Support,Unspecified,Unspecified,SPGPUSS6C------,pass
+S*GPUSS6T-,SPGPUSS6T------,10,164298,00,00,Sustainment : US Supply Class VI : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS6T------,pass
+S*GPUSS7--,SPGPUSS7-------,10,164300,00,00,Sustainment : US Supply Class VII : Unknown,Unspecified,Unspecified,SPGPUSS7-------,pass
+S*GPUSS7C-,SPGPUSS7C------,10,164397,00,00,Sustainment : US Supply Class VII : Corps Support,Unspecified,Unspecified,SPGPUSS7C------,pass
+S*GPUSS7T-,SPGPUSS7T------,10,164398,00,00,Sustainment : US Supply Class VII : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS7T------,pass
+S*GPUSS8--,SPGPUSS8-------,10,164400,00,00,Sustainment : US Supply Class VIII : Unknown,Unspecified,Unspecified,SPGPUSS8-------,pass
+S*GPUSS8C-,SPGPUSS8C------,10,164497,00,00,Sustainment : US Supply Class VIII : Corps Support,Unspecified,Unspecified,SPGPUSS8C------,pass
+S*GPUSS8T-,SPGPUSS8T------,10,164498,00,00,Sustainment : US Supply Class VIII : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS8T------,pass
+S*GPUSS9--,SPGPUSS9-------,10,164500,00,00,Sustainment : US Supply Class IX : Unknown,Unspecified,Unspecified,SPGPUSS9-------,pass
+S*GPUSS9C-,SPGPUSS9C------,10,164597,00,00,Sustainment : US Supply Class IX : Corps Support,Unspecified,Unspecified,SPGPUSS9C------,pass
+S*GPUSS9T-,SPGPUSS9T------,10,164598,00,00,Sustainment : US Supply Class IX : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSS9T------,pass
+S*GPUSSX--,SPGPUSSX-------,10,164600,00,00,Sustainment : US Supply Class X : Unknown,Unspecified,Unspecified,SPGPUSSX-------,pass
+S*GPUSSXC-,SPGPUSSXC------,10,164697,00,00,Sustainment : US Supply Class X : Corps Support,Unspecified,Unspecified,SPGPUSSXC------,pass
+S*GPUSSXT-,SPGPUSSXT------,10,164698,00,00,Sustainment : US Supply Class X : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSSXT------,pass
+S*GPUSSW--,SPGPUSSW-------,10,164700,00,00,Sustainment : Water,Unspecified,Unspecified,SPGPUSSW-------,pass
+S*GPUSSWC-,SPGPUSSWC------,10,164797,00,00,Sustainment : Water : Corps Support,Unspecified,Unspecified,SPGPUSSWC------,pass
+S*GPUSSWT-,SPGPUSSWT------,10,164798,00,00,Sustainment : Water : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSSWT------,pass
+S*GPUSSWP-,SPGPUSSWP------,10,164800,00,00,Sustainment : Water Purification,Unspecified,Unspecified,SPGPUSSWP------,pass
+S*GPUSSWPC,SPGPUSSWPC-----,10,164897,00,00,Sustainment : Water Purification : Corps Support,Unspecified,Unspecified,SPGPUSSWPC-----,pass
+S*GPUSSWPT,SPGPUSSWPT-----,10,164898,00,00,Sustainment : Water Purification : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSSWPT-----,pass
+S*GPUSAPB-,SPGPUSAPB------,10,164900,00,00,Sustainment : Broadcast,Unspecified,Unspecified,SPGPUSAPB------,pass
+S*GPUSAPBC,SPGPUSAPBC-----,10,164997,00,00,Sustainment : Broadcast : Corps Support,Unspecified,Unspecified,SPGPUSAPBC-----,pass
+S*GPUSAPBT,SPGPUSAPBT-----,10,164998,00,00,Sustainment : Broadcast : Theater/Echelons Above Corps Support,Unspecified,Unspecified,SPGPUSAPBT-----,pass
+S*FPN-----,SPFPN----------,10,170100,63,00,Naval : Naval,Capability : Special Operations Forces (SOF),Unspecified,SPFPN----------,pass
+E*OPBA----,EPOPBA---------,10,190000,00,00,Emergency Operation (Land Units),Unspecified,Unspecified,EPOPBA---------,pass
+E*OPDA----,EPOPDA---------,10,200000,00,00,Law Enforcement (Land Units),Unspecified,Unspecified,EPOPDA---------,pass
+EFOPDDA---,EFOPDDA--------,10,200100,00,00,Law Enforcement (Land Units) : ATF DOJ,Unspecified,Unspecified,EFOPDDA--------,pass
+E*OPDEA---,EPOPDEA--------,10,200200,00,00,Law Enforcement (Land Units) : Border Patrol,Unspecified,Unspecified,EPOPDEA--------,pass
+E*OPDFA---,EPOPDFA--------,10,200300,00,00,Law Enforcement (Land Units) : Customs Service,Unspecified,Unspecified,EPOPDFA--------,pass
+EFOPDGA---,EFOPDGA--------,10,200400,00,00,Law Enforcement (Land Units) : DEA,Unspecified,Unspecified,EFOPDGA--------,pass
+EFOPDHA---,EFOPDHA--------,10,200500,00,00,Law Enforcement (Land Units) : DOJ,Unspecified,Unspecified,EFOPDHA--------,pass
+EFOPDIA---,EFOPDIA--------,10,200600,00,00,Law Enforcement (Land Units) : FBI,Unspecified,Unspecified,EFOPDIA--------,pass
+S*GPUULC--,SPGPUULC-------,10,200700,00,00,Law Enforcement (Land Units) : Police,Unspecified,Unspecified,SPGPUULC-------,pass
+EFOPDLA---,EFOPDLA--------,10,200900,00,00,Law Enforcement (Land Units) : US Secret Service (USSS),Unspecified,Unspecified,EFOPDLA--------,pass
+EFOPDMA---,EFOPDMA--------,10,201000,00,00,Law Enforcement (Land Units) : TSA,Unspecified,Unspecified,EFOPDMA--------,pass
+E*OPDNA---,EPOPDNA--------,10,201100,00,00,Law Enforcement (Land Units) : Coast Guard,Unspecified,Unspecified,EPOPDNA--------,pass
+EFOPDOA---,EFOPDOA--------,10,201200,00,00,Law Enforcement (Land Units) : US Marshals Service,Unspecified,Unspecified,EFOPDOA--------,pass
+S*GPUCII--,SPGPUCII-------,10,121105,00,00,Movement and Maneuver : Infantry : Infantry Fighting Vehicle : Unknown,Unspecified,Unspecified,SPGPUCII-------,pass
+S*GPUCAWS-,SPGPUCAWS------,10,120400,01,51,Movement and Maneuver : Antitank/Antiarmor : Unknown,Mobility : Air Mobile/Air Assault (US Only),Mobility : Wheeled,SPGPUCAWS------,pass
+S*GPUCFRMR,SPGPUCFRMR-----,10,130301,41,51,Fires : Field Artillery : Self-propelled,Capability : Multiple Rocket Launcher,Mobility : Wheeled,SPGPUCFRMR-----,pass
+S*GPUCFRMT,SPGPUCFRMT-----,10,130302,41,47,Fires : Field Artillery : Target Acquisition : Unknown,Capability : Multiple Rocket Launcher,Mobility : Towed,SPGPUCFRMT-----,pass
+S*GPU-----,SPGPU----------,10,000000,00,00,Unspecified,Unspecified,Unspecified,SPGP-----------,FAIL
+S*GPUH----,SPGPUH---------,98,100000,00,00,,,,,Retired
+S*GPUCDSC-,SPGPUCDSC------,10,111100,00,00,Command and Control : Tactical Satellite,Unspecified,Unspecified,SPGPUCDSC------,pass
+S*GPUCDSS-,SPGPUCDSS------,98,100000,00,00,,,,,Retired
+S*GPUCDSV-,SPGPUCDSV------,98,100000,00,00,,,,,Retired
+S*GPUCDMLA,SPGPUCDMLA-----,98,100000,00,00,,,,,Retired
+S*GPUCDHH-,SPGPUCDHH------,98,100000,00,00,,,,,Retired
+S*GPUCDHP-,SPGPUCDHP------,98,100000,00,00,,,,,Retired
+S*GPUCVR--,SPGPUCVR-------,98,100000,00,00,,,,,Retired
+S*GPUCFHX-,SPGPUCFHX------,98,100000,00,00,,,,,Retired
+S*GPUCFR--,SPGPUCFR-------,98,100000,00,00,,,,,Retired
+S*GPUCFML-,SPGPUCFML------,98,100000,00,00,,,,,Retired
+O*PP------,OPPP-----------,11,110300,00,00,Civilian (Land Civilian) : Individual,Unspecified,Unspecified,OPPP-----------,pass
+O*OPK-----,OPOPK----------,11,110300,05,00,Civilian (Land Civilian) : Individual,Crime : Kidnapping (Land Civilian),Unspecified,OPOPK----------,pass
+O*PPA-----,OPPPA----------,11,110300,13,00,Civilian (Land Civilian) : Individual,Organization : Leader or Leadership 1,Unspecified,OPPPA----------,pass
+O*RP------,OPRP-----------,11,110300,07,00,Civilian (Land Civilian) : Individual,Crime : Rape (Land Civilian),Unspecified,OPRP-----------,pass
+O*PPB-----,OPPPB----------,11,110300,18,00,Civilian (Land Civilian) : Individual,Organization : Targeted Individual or Organization,Unspecified,OPPPB----------,pass
+O*PPC-----,OPPPC----------,11,110300,19,00,Civilian (Land Civilian) : Individual,Organization : Terrorist or Terrorist Organization,Unspecified,OPPPC----------,pass
+O*GP------,OPGP-----------,11,110400,00,00,Civilian (Land Civilian) : Organization or Group,Unspecified,Unspecified,OPGP-----------,pass
+O*IPR-----,OPIPR----------,11,110400,00,00,Civilian (Land Civilian) : Organization or Group,Unspecified,Unspecified,OPGP-----------,pass (multiple)
+O*GPA-----,OPGPA----------,11,110400,09,00,Civilian (Land Civilian) : Organization or Group,Organization : Displaced Person(s)- Refugee(s) and Evacuee(s),Unspecified,OPGPA----------,pass
+O*GPE-----,OPGPE----------,11,110400,10,00,Civilian (Land Civilian) : Organization or Group,Organization : Foreign Fighter(s),Unspecified,OPGPE----------,pass
+O*GPF-----,OPGPF----------,11,110400,11,00,Civilian (Land Civilian) : Organization or Group,Organization : Gang Member or Gang,Unspecified,OPGPF----------,pass
+O*GPB-----,OPGPB----------,11,110400,14,00,Civilian (Land Civilian) : Organization or Group,Organization : Nongovernmental Organization Member or Nongovernmental Organization,Unspecified,OPGPB----------,pass
+O*GPD-----,OPGPD----------,11,110400,17,00,Civilian (Land Civilian) : Organization or Group,Organization : Religious or Religious Organization,Unspecified,OPGPD----------,pass
+O*GPC-----,OPGPC----------,11,110400,18,00,Civilian (Land Civilian) : Organization or Group,Organization : Targeted Individual or Organization,Unspecified,OPGPC----------,pass
+E*IPBD----,EPIPBD---------,11,110400,24,00,Civilian (Land Civilian) : Organization or Group,Crime : Loot,Unspecified,EPIPBD---------,pass
+O*OPC-----,OPOPC----------,11,110900,00,00,Civilian (Land Civilian) : Composite Loss,Unspecified,Unspecified,OPOPC----------,pass
+O*OPCB----,OPOPCB---------,11,110900,21,00,Civilian (Land Civilian) : Composite Loss,Composite Loss : Accident (Land Civilian),Unspecified,OPOPCB---------,pass
+O*OPCA----,OPOPCA---------,11,110900,22,00,Civilian (Land Civilian) : Composite Loss,Composite Loss : Combat,Unspecified,OPOPCA---------,pass
+O*OPCC----,OPOPCC---------,11,110900,23,00,Civilian (Land Civilian) : Composite Loss,Composite Loss : Other (Land Civilian),Unspecified,OPOPCC---------,pass
+E*OPAA----,EPOPAA---------,11,111000,00,00,Civilian (Land Civilian) : Emergency Medical Operation,Unspecified,Unspecified,EPOPAA---------,pass
+S*GPEWR---,SPGPEWR--------,15,110100,00,00,Weapon/Weapon System : Rifle,Unspecified,,SPGPEWR--------,pass
+S*GPEWRR--,SPGPEWRR-------,15,110101,00,00,Weapon/Weapon System : Rifle : Single Shot Rifle,Unspecified,,SPGPEWRR-------,pass
+S*GPEWRL--,SPGPEWRL-------,15,110102,00,00,Weapon/Weapon System : Rifle : Semiautomatic Rifle,Unspecified,,SPGPEWRL-------,pass
+S*GPEWRH--,SPGPEWRH-------,15,110103,00,00,Weapon/Weapon System : Rifle : Automatic Rifle,Unspecified,,SPGPEWRH-------,pass
+S*GPEWZ---,SPGPEWZ--------,15,110300,00,00,Weapon/Weapon System : Grenade Launcher,Unspecified,,SPGPEWZ--------,pass
+S*GPEWZL--,SPGPEWZL-------,15,110301,00,00,Weapon/Weapon System : Grenade Launcher : Light,Unspecified,,SPGPEWZL-------,pass
+S*GPEWZM--,SPGPEWZM-------,15,110302,00,00,Weapon/Weapon System : Grenade Launcher : Medium,Unspecified,,SPGPEWZM-------,pass
+S*GPEWZH--,SPGPEWZH-------,15,110303,00,00,Weapon/Weapon System : Grenade Launcher : Heavy,Unspecified,,SPGPEWZH-------,pass
+S*GPEXF---,SPGPEXF--------,15,110400,00,00,Weapon/Weapon System : Flame Thrower,Unspecified,,SPGPEXF--------,pass
+S*GPEWA---,SPGPEWA--------,15,110500,00,00,Weapon/Weapon System : Air Defense Gun,Unspecified,,SPGPEWA--------,pass
+S*GPEWAL--,SPGPEWAL-------,15,110501,00,00,Weapon/Weapon System : Air Defense Gun : Light,Unspecified,,SPGPEWAL-------,pass
+S*GPEWAM--,SPGPEWAM-------,15,110502,00,00,Weapon/Weapon System : Air Defense Gun : Medium,Unspecified,,SPGPEWAM-------,pass
+S*GPEWAH--,SPGPEWAH-------,15,110503,00,00,Weapon/Weapon System : Air Defense Gun : Heavy,Unspecified,,SPGPEWAH-------,pass
+S*GPEWG---,SPGPEWG--------,15,110600,00,00,Weapon/Weapon System : Antitank Gun,Unspecified,,SPGPEWG--------,pass
+S*GPEWGL--,SPGPEWGL-------,15,110601,00,00,Weapon/Weapon System : Antitank Gun : Light,Unspecified,,SPGPEWGL-------,pass
+S*GPEWGM--,SPGPEWGM-------,15,110602,00,00,Weapon/Weapon System : Antitank Gun : Medium,Unspecified,,SPGPEWGM-------,pass
+S*GPEWGH--,SPGPEWGH-------,15,110603,00,00,Weapon/Weapon System : Antitank Gun : Heavy,Unspecified,,SPGPEWGH-------,pass
+S*GPEWD---,SPGPEWD--------,15,110700,00,00,Weapon/Weapon System : Direct Fire Gun,Unspecified,,SPGPEWD--------,pass
+S*GPEWDL--,SPGPEWDL-------,15,110701,00,00,Weapon/Weapon System : Direct Fire Gun : Light,Unspecified,,SPGPEWDL-------,pass
+S*GPEWDLS-,SPGPEWDLS------,98,100000,00,00,,,,,Retired
+S*GPEWDM--,SPGPEWDM-------,15,110702,00,00,Weapon/Weapon System : Direct Fire Gun : Medium,Unspecified,,SPGPEWDM-------,pass
+S*GPEWDMS-,SPGPEWDMS------,98,100000,00,00,,,,,Retired
+S*GPEWDH--,SPGPEWDH-------,15,110703,00,00,Weapon/Weapon System : Direct Fire Gun : Heavy,Unspecified,,SPGPEWDH-------,pass
+S*GPEWDHS-,SPGPEWDHS------,98,100000,00,00,,,,,Retired
+S*GPEWGR--,SPGPEWGR-------,15,110800,00,00,Weapon/Weapon System : Recoilless Gun,Unspecified,,SPGPEWGR-------,pass
+S*GPEWH---,SPGPEWH--------,15,110900,00,00,Weapon/Weapon System : Howitzer,Unspecified,,SPGPEWH--------,pass
+S*GPEWHL--,SPGPEWHL-------,15,110901,00,00,Weapon/Weapon System : Howitzer : Light,Unspecified,,SPGPEWHL-------,pass
+S*GPEWHLS-,SPGPEWHLS------,98,100000,00,00,,,,,Retired
+S*GPEWHM--,SPGPEWHM-------,15,110902,00,00,Weapon/Weapon System : Howitzer : Medium,Unspecified,,SPGPEWHM-------,pass
+S*GPEWHMS-,SPGPEWHMS------,98,100000,00,00,,,,,Retired
+S*GPEWHH--,SPGPEWHH-------,15,110903,00,00,Weapon/Weapon System : Howitzer : Heavy,Unspecified,,SPGPEWHH-------,pass
+S*GPEWHHS-,SPGPEWHHS------,98,100000,00,00,,,,,Retired
+S*GPEWM---,SPGPEWM--------,15,111000,00,00,Weapon/Weapon System : Missile Launcher,Unspecified,,SPGPEWM--------,pass
+S*GPEWMA--,SPGPEWMA-------,15,111100,00,00,Weapon/Weapon System : Air Defense Missile Launcher,Unspecified,,SPGPEWMA-------,pass
+S*GPEWMAT-,SPGPEWMAT------,15,111100,00,00,Weapon/Weapon System : Air Defense Missile Launcher,Unspecified,,SPGPEWMA-------,pass (multiple)
+S*GPEWMATR,SPGPEWMATR-----,98,100000,00,00,,,,,Retired
+S*GPEWMATE,SPGPEWMATE-----,98,100000,00,00,,,,,Retired
+S*GPEWMAS-,SPGPEWMAS------,15,111101,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Light,Unspecified,,SPGPEWMAS------,pass
+S*GPEWMASR,SPGPEWMASR-----,15,111102,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Light Transporter-Launcher and Radar (TLAR),Unspecified,,SPGPEWMASR-----,pass
+S*GPEWMASE,SPGPEWMASE-----,15,111103,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Light Tactical Landing Approach Radar (TELAR),Unspecified,,SPGPEWMASE-----,pass
+S*GPEWMAI-,SPGPEWMAI------,15,111104,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Medium,Unspecified,,SPGPEWMAI------,pass
+S*GPEWMAIR,SPGPEWMAIR-----,15,111105,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Medium TLAR,Unspecified,,SPGPEWMAIR-----,pass
+S*GPEWMAIE,SPGPEWMAIE-----,15,111106,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Medium TELAR Air Defense Missile Launcher,Unspecified,,SPGPEWMAIE-----,pass
+S*GPEWMAL-,SPGPEWMAL------,15,111107,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Heavy,Unspecified,,SPGPEWMAL------,pass
+S*GPEWMALR,SPGPEWMALR-----,15,111108,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Heavy TLAR,Unspecified,,SPGPEWMALR-----,pass
+S*GPEWMALE,SPGPEWMALE-----,15,111109,00,00,Weapon/Weapon System : Air Defense Missile Launcher : Heavy TELAR,Unspecified,,SPGPEWMALE-----,pass
+S*GPEWMT--,SPGPEWMT-------,15,111200,00,00,Weapon/Weapon System : Antitank Missile Launcher,Unspecified,,SPGPEWMT-------,pass
+S*GPEWMTL-,SPGPEWMTL------,15,111201,00,00,Weapon/Weapon System : Antitank Missile Launcher : Light,Unspecified,,SPGPEWMTL------,pass
+S*GPEWMTM-,SPGPEWMTM------,15,111202,00,00,Weapon/Weapon System : Antitank Missile Launcher : Medium,Unspecified,,SPGPEWMTM------,pass
+S*GPEWMTH-,SPGPEWMTH------,15,111203,00,00,Weapon/Weapon System : Antitank Missile Launcher : Heavy,Unspecified,,SPGPEWMTH------,pass
+S*GPEWMS--,SPGPEWMS-------,15,111300,00,00,Weapon/Weapon System : Surface-to-Surface Missile Launcher,Unspecified,,SPGPEWMS-------,pass
+S*GPEWMSS-,SPGPEWMSS------,15,111301,00,00,Weapon/Weapon System : Surface-to-Surface Missile Launcher : Light,Unspecified,,SPGPEWMSS------,pass
+S*GPEWMSI-,SPGPEWMSI------,15,111302,00,00,Weapon/Weapon System : Surface-to-Surface Missile Launcher : Medium,Unspecified,,SPGPEWMSI------,pass
+S*GPEWMSL-,SPGPEWMSL------,15,111303,00,00,Weapon/Weapon System : Surface-to-Surface Missile Launcher : Heavy,Unspecified,,SPGPEWMSL------,pass
+S*GPEWO---,SPGPEWO--------,15,111400,00,00,Weapon/Weapon System : Mortar,Unspecified,,SPGPEWO--------,pass
+S*GPEWOL--,SPGPEWOL-------,15,111401,00,00,Weapon/Weapon System : Mortar : Light,Unspecified,,SPGPEWOL-------,pass
+S*GPEWOM--,SPGPEWOM-------,15,111402,00,00,Weapon/Weapon System : Mortar : Medium,Unspecified,,SPGPEWOM-------,pass
+S*GPEWOH--,SPGPEWOH-------,15,111403,00,00,Weapon/Weapon System : Mortar : Heavy,Unspecified,,SPGPEWOH-------,pass
+S*GPEWS---,SPGPEWS--------,15,111500,00,00,Weapon/Weapon System : Single Rocket Launcher,Unspecified,,SPGPEWS--------,pass
+S*GPEWSL--,SPGPEWSL-------,15,111501,00,00,Weapon/Weapon System : Single Rocket Launcher : Light,Unspecified,,SPGPEWSL-------,pass
+S*GPEWSM--,SPGPEWSM-------,15,111502,00,00,Weapon/Weapon System : Single Rocket Launcher : Medium,Unspecified,,SPGPEWSM-------,pass
+S*GPEWSH--,SPGPEWSH-------,15,111503,00,00,Weapon/Weapon System : Single Rocket Launcher : Heavy,Unspecified,,SPGPEWSH-------,pass
+S*GPEWX---,SPGPEWX--------,15,111600,00,00,Weapon/Weapon System : Multiple Rocket Launcher,Unspecified,,SPGPEWX--------,pass
+S*GPEWXL--,SPGPEWXL-------,15,111601,00,00,Weapon/Weapon System : Multiple Rocket Launcher : Light,Unspecified,,SPGPEWXL-------,pass
+S*GPEWXM--,SPGPEWXM-------,15,111602,00,00,Weapon/Weapon System : Multiple Rocket Launcher : Medium,Unspecified,,SPGPEWXM-------,pass
+S*GPEWXH--,SPGPEWXH-------,15,111603,00,00,Weapon/Weapon System : Multiple Rocket Launcher : Heavy,Unspecified,,SPGPEWXH-------,pass
+S*GPEWT---,SPGPEWT--------,15,111700,00,00,Weapon/Weapon System : Antitank Rocket Launcher,Unspecified,,SPGPEWT--------,pass
+S*GPEWTL--,SPGPEWTL-------,15,111701,00,00,Weapon/Weapon System : Antitank Rocket Launcher : Light,Unspecified,,SPGPEWTL-------,pass
+S*GPEWTM--,SPGPEWTM-------,15,111702,00,00,Weapon/Weapon System : Antitank Rocket Launcher : Medium,Unspecified,,SPGPEWTM-------,pass
+S*GPEWTH--,SPGPEWTH-------,15,111703,00,00,Weapon/Weapon System : Antitank Rocket Launcher : Heavy,Unspecified,,SPGPEWTH-------,pass
+S*GPEV----,SPGPEV---------,15,120000,00,00,Vehicle,Unspecified,,SPGPEV---------,pass
+S*GPEVA---,SPGPEVA--------,15,120100,00,00,Vehicle : Armored Vehicle,Unspecified,,SPGPEVA--------,pass
+S*GPEVAI--,SPGPEVAI-------,15,120101,00,00,Vehicle : Armored Vehicle : Armored Fighting Vehicle,Unspecified,,SPGPEVAI-------,pass
+S*GPEVAC--,SPGPEVAC-------,15,120102,00,00,Vehicle : Armored Vehicle : Armored Fighting Vehicle C2,Unspecified,,SPGPEVAC-------,pass
+S*GPEVAA--,SPGPEVAA-------,15,120103,00,00,Vehicle : Armored Vehicle : Armored Personnel Carrier,Unspecified,,SPGPEVAA-------,pass
+S*GPEVUAA-,SPGPEVUAA------,15,120104,00,00,Vehicle : Armored Vehicle : Armored Personnel Carrier Ambulance,Unspecified,,SPGPEVUAA------,pass
+S*GPEVAAR-,SPGPEVAAR------,15,120108,00,00,Vehicle : Armored Vehicle : Armored Personnel Carrier-Recovery,Unspecified,,SPGPEVAAR------,pass
+S*GPEVAS--,SPGPEVAS-------,15,120109,00,00,Vehicle : Armored Vehicle : Combat Service Support Vehicle,Unspecified,,SPGPEVAS-------,pass
+S*GPEVAL--,SPGPEVAL-------,15,120110,00,00,Vehicle : Armored Vehicle : Light Wheeled Armored Vehicle,Unspecified,,SPGPEVAL-------,pass
+S*GPEVAT--,SPGPEVAT-------,15,120200,00,00,Vehicle : Tank,Unspecified,,SPGPEVAT-------,pass
+S*GPEVATL-,SPGPEVATL------,15,120201,00,00,Vehicle : Tank : Light,Unspecified,,SPGPEVATL------,pass
+S*GPEVATM-,SPGPEVATM------,15,120202,00,00,Vehicle : Tank : Medium,Unspecified,,SPGPEVATM------,pass
+S*GPEVATH-,SPGPEVATH------,15,120203,00,00,Vehicle : Tank : Heavy,Unspecified,,SPGPEVATH------,pass
+S*GPEVATLR,SPGPEVATLR-----,15,120301,00,00,Vehicle : Tank Recovery Vehicle : Light,Unspecified,,SPGPEVATLR-----,pass
+S*GPEVATMR,SPGPEVATMR-----,15,120302,00,00,Vehicle : Tank Recovery Vehicle : Medium,Unspecified,,SPGPEVATMR-----,pass
+S*GPEVATHR,SPGPEVATHR-----,15,120303,00,00,Vehicle : Tank Recovery Vehicle : Heavy,Unspecified,,SPGPEVATHR-----,pass
+S*GPEVE---,SPGPEVE--------,15,130000,00,00,Engineer Equipment,Unspecified,,SPGPEVE--------,pass
+S*GPEVEB--,SPGPEVEB-------,15,130100,00,00,Engineer Equipment : Bridge,Unspecified,,SPGPEVEB-------,pass
+S*GPEVEE--,SPGPEVEE-------,15,130800,00,00,Engineer Equipment : Earthmover,Unspecified,,SPGPEVEE-------,pass
+S*GPEVEA--,SPGPEVEA-------,15,130900,00,00,Engineer Equipment : Mine Clearing Equipment,Unspecified,,SPGPEVEA-------,pass
+S*GPEVEAT-,SPGPEVEAT------,15,130901,00,00,Engineer Equipment : Mine Clearing Equipment : Trailer Mounted,Unspecified,,SPGPEVEAT------,pass
+S*GPEVEAA-,SPGPEVEAA------,15,130902,00,00,Engineer Equipment : Mine Clearing Equipment : Mine Clearing Equipment on Tank Chassis,Unspecified,,SPGPEVEAA------,pass
+S*GPEVEMV-,SPGPEVEMV------,15,131002,00,00,Engineer Equipment : Mine Laying Equipment : Armored Carrier with Volcano,Unspecified,,SPGPEVEMV------,pass
+S*GPEVEML-,SPGPEVEML------,15,131003,00,00,Engineer Equipment : Mine Laying Equipment : Truck Mounted with Volcano,Unspecified,,SPGPEVEML------,pass
+S*GPEVED--,SPGPEVED-------,15,131100,00,00,Engineer Equipment : Dozer,Unspecified,,SPGPEVED-------,pass
+S*GPEVEDA-,SPGPEVEDA------,15,131101,00,00,Engineer Equipment : Dozer : Dozer-Armored,Unspecified,,SPGPEVEDA------,pass
+S*GPEVES--,SPGPEVES-------,15,131200,00,00,Engineer Equipment : Armored Assault,Unspecified,,SPGPEVES-------,pass
+S*GPEVER--,SPGPEVER-------,15,131300,00,00,Engineer Equipment : Armored Engineer Recon Vehicle (AERV),Unspecified,,SPGPEVER-------,pass
+S*GPEVEH--,SPGPEVEH-------,15,131400,00,00,Engineer Equipment : Backhoe,Unspecified,,SPGPEVEH-------,pass
+S*GPEVEC--,SPGPEVEC-------,15,131500,00,00,Engineer Equipment : Construction Vehicle,Unspecified,,SPGPEVEC-------,pass
+S*GPEVEF--,SPGPEVEF-------,15,131600,00,00,Engineer Equipment : Ferry Transporter,Unspecified,,SPGPEVEF-------,pass
+S*GPEVU---,SPGPEVU--------,15,140100,00,00,Utility Vehicles : Utility Vehicle,Unspecified,,SPGPEVU--------,pass
+S*GPEVUA--,SPGPEVUA-------,15,140300,00,00,Utility Vehicles : Medical Evacuation,Unspecified,,SPGPEVUA-------,pass
+S*GPEVUB--,SPGPEVUB-------,15,140500,00,00,Utility Vehicles : Bus,Unspecified,,SPGPEVUB-------,pass
+S*GPEVUS--,SPGPEVUS-------,15,140600,00,00,Utility Vehicles : Semi-Trailer and Truck,Unspecified,,SPGPEVUS-------,pass
+S*GPEVUSL-,SPGPEVUSL------,15,140601,00,00,Utility Vehicles : Semi-Trailer and Truck : Light,Unspecified,,SPGPEVUSL------,pass
+S*GPEVUSM-,SPGPEVUSM------,15,140602,00,00,Utility Vehicles : Semi-Trailer and Truck : Medium,Unspecified,,SPGPEVUSM------,pass
+S*GPEVUSH-,SPGPEVUSH------,15,140603,00,00,Utility Vehicles : Semi-Trailer and Truck : Heavy,Unspecified,,SPGPEVUSH------,pass
+S*GPEVUL--,SPGPEVUL-------,15,140700,00,00,Utility Vehicles : Limited Cross Country Truck,Unspecified,,SPGPEVUL-------,pass
+S*GPEVUX--,SPGPEVUX-------,15,140800,00,00,Utility Vehicles : Cross Country Truck,Unspecified,,SPGPEVUX-------,pass
+S*GPEVUR--,SPGPEVUR-------,15,141100,00,00,Utility Vehicles : Amphibious Utility Wheeled Vehicle,Unspecified,,SPGPEVUR-------,pass
+S*GPEVUT--,SPGPEVUT-------,15,141200,00,00,Utility Vehicles : Tow Truck,Unspecified,,SPGPEVUT-------,pass
+S*GPEVUTL-,SPGPEVUTL------,15,141201,00,00,Utility Vehicles : Tow Truck : Light,Unspecified,,SPGPEVUTL------,pass
+S*GPEVUTH-,SPGPEVUTH------,15,141202,00,00,Utility Vehicles : Tow Truck : Heavy,Unspecified,,SPGPEVUTH------,pass
+S*GPEVT---,SPGPEVT--------,15,150100,00,00,Train : Locomotive,Unspecified,,SPGPEVT--------,pass
+S*GPEVC---,SPGPEVC--------,98,100000,00,00,,,,,Retired
+S*GPEVCA--,SPGPEVCA-------,15,160100,00,00,Civilian Vehicle : Automobile,Unspecified,,SPGPEVCA-------,pass
+S*GPEVCAL-,SPGPEVCAL------,15,160101,00,00,Civilian Vehicle : Automobile : Compact,Unspecified,,SPGPEVCAL------,pass
+S*GPEVCAM-,SPGPEVCAM------,15,160102,00,00,Civilian Vehicle : Automobile : Midsize,Unspecified,,SPGPEVCAM------,pass
+S*GPEVCAH-,SPGPEVCAH------,15,160103,00,00,Civilian Vehicle : Automobile : Sedan,Unspecified,,SPGPEVCAH------,pass
+S*GPEVCO--,SPGPEVCO-------,15,160200,00,00,Civilian Vehicle : Open-Bed Truck,Unspecified,,SPGPEVCO-------,pass
+S*GPEVCOL-,SPGPEVCOL------,15,160201,00,00,Civilian Vehicle : Open-Bed Truck : Pickup,Unspecified,,SPGPEVCOL------,pass
+S*GPEVCOM-,SPGPEVCOM------,15,160202,00,00,Civilian Vehicle : Open-Bed Truck : Small,Unspecified,,SPGPEVCOM------,pass
+S*GPEVCOH-,SPGPEVCOH------,15,160203,00,00,Civilian Vehicle : Open-Bed Truck : Large,Unspecified,,SPGPEVCOH------,pass
+S*GPEVCM--,SPGPEVCM-------,15,160300,00,00,Civilian Vehicle : Multiple Passenger Vehicle,Unspecified,,SPGPEVCM-------,pass
+S*GPEVCML-,SPGPEVCML------,15,160301,00,00,Civilian Vehicle : Multiple Passenger Vehicle : Van,Unspecified,,SPGPEVCML------,pass
+S*GPEVCMM-,SPGPEVCMM------,15,160302,00,00,Civilian Vehicle : Multiple Passenger Vehicle : Small Bus,Unspecified,,SPGPEVCMM------,pass
+S*GPEVCMH-,SPGPEVCMH------,15,160303,00,00,Civilian Vehicle : Multiple Passenger Vehicle : Large Bus,Unspecified,,SPGPEVCMH------,pass
+S*GPEVCU--,SPGPEVCU-------,15,160400,00,00,Civilian Vehicle : Utility Vehicle,Unspecified,,SPGPEVCU-------,pass
+S*GPEVCUL-,SPGPEVCUL------,15,160401,00,00,Civilian Vehicle : Utility Vehicle : Sport Utility Vehicle (SUV),Unspecified,,SPGPEVCUL------,pass
+S*GPEVCUM-,SPGPEVCUM------,15,160402,00,00,Civilian Vehicle : Utility Vehicle : Small Box Truck,Unspecified,,SPGPEVCUM------,pass
+S*GPEVCUH-,SPGPEVCUH------,15,160403,00,00,Civilian Vehicle : Utility Vehicle : Large Box Truck,Unspecified,,SPGPEVCUH------,pass
+S*GPEVCJ--,SPGPEVCJ-------,15,160500,00,00,Civilian Vehicle : Jeep Type Vehicle,Unspecified,,SPGPEVCJ-------,pass
+S*GPEVCJL-,SPGPEVCJL------,15,160501,00,00,Civilian Vehicle : Jeep Type Vehicle : Small/Light,Unspecified,,SPGPEVCJL------,pass
+S*GPEVCJM-,SPGPEVCJM------,15,160502,00,00,Civilian Vehicle : Jeep Type Vehicle : Medium,Unspecified,,SPGPEVCJM------,pass
+S*GPEVCJH-,SPGPEVCJH------,15,160503,00,00,Civilian Vehicle : Jeep Type Vehicle : Large/Heavy,Unspecified,,SPGPEVCJH------,pass
+S*GPEVCT--,SPGPEVCT-------,15,160600,00,00,Civilian Vehicle : Tractor Trailer with Box,Unspecified,,SPGPEVCT-------,pass
+S*GPEVCTL-,SPGPEVCTL------,15,160601,00,00,Civilian Vehicle : Tractor Trailer with Box : Small/Light,Unspecified,,SPGPEVCTL------,pass
+S*GPEVCTM-,SPGPEVCTM------,15,160602,00,00,Civilian Vehicle : Tractor Trailer with Box : Medium,Unspecified,,SPGPEVCTM------,pass
+S*GPEVCTH-,SPGPEVCTH------,15,160603,00,00,Civilian Vehicle : Tractor Trailer with Box : Large/Heavy,Unspecified,,SPGPEVCTH------,pass
+S*GPEVCF--,SPGPEVCF-------,15,160700,00,00,Civilian Vehicle : Tractor Trailer with Flatbed,Unspecified,,SPGPEVCF-------,pass
+S*GPEVCFL-,SPGPEVCFL------,15,160701,00,00,Civilian Vehicle : Tractor Trailer with Flatbed : Small/Light,Unspecified,,SPGPEVCFL------,pass
+S*GPEVCFM-,SPGPEVCFM------,15,160702,00,00,Civilian Vehicle : Tractor Trailer with Flatbed : Medium,Unspecified,,SPGPEVCFM------,pass
+S*GPEVCFH-,SPGPEVCFH------,15,160703,00,00,Civilian Vehicle : Tractor Trailer with Flatbed : Large/Heavy,Unspecified,,SPGPEVCFH------,pass
+O*IPI-----,OPIPI----------,15,160800,00,00,Civilian Vehicle : Known Insurgent Vehicle,Unspecified,,OPIPI----------,pass
+O*IPD-----,OPIPD----------,15,160900,00,00,Civilian Vehicle : Drug Vehicle,Unspecified,,OPIPD----------,pass
+E*OPDB----,EPOPDB---------,15,170000,00,00,Law Enforcement (Land Equipment),Unspecified,,EPOPDB---------,pass
+E*OPDDB---,EPOPDDB--------,15,170100,00,00,Law Enforcement (Land Equipment) : ATF DOJ,Unspecified,,EPOPDDB--------,pass
+E*OPDEB---,EPOPDEB--------,15,170200,00,00,Law Enforcement (Land Equipment) : Border Patrol,Unspecified,,EPOPDEB--------,pass
+E*OPDFB---,EPOPDFB--------,15,170300,00,00,Law Enforcement (Land Equipment) : Customs Service,Unspecified,,EPOPDFB--------,pass
+E*OPDGB---,EPOPDGB--------,15,170400,00,00,Law Enforcement (Land Equipment) : DEA,Unspecified,,EPOPDGB--------,pass
+EFOPDHB---,EFOPDHB--------,15,170500,00,00,Law Enforcement (Land Equipment) : DOJ,Unspecified,,EFOPDHB--------,pass
+EFOPDIB---,EFOPDIB--------,15,170600,00,00,Law Enforcement (Land Equipment) : FBI,Unspecified,,EFOPDIB--------,pass
+EFOPDJB---,EFOPDJB--------,15,170700,00,00,Law Enforcement (Land Equipment) : Police,Unspecified,,EFOPDJB--------,pass
+EFOPDLB---,EFOPDLB--------,15,170800,00,00,Law Enforcement (Land Equipment) : US Secret Service (USSS),Unspecified,,EFOPDLB--------,pass
+EFOPDMB---,EFOPDMB--------,15,170900,00,00,Law Enforcement (Land Equipment) : TSA,Unspecified,,EFOPDMB--------,pass
+EFOPDOB---,EFOPDOB--------,15,171100,00,00,Law Enforcement (Land Equipment) : US Marshals Service,Unspecified,,EFOPDOB--------,pass
+S*GPEVM---,SPGPEVM--------,15,180000,00,00,Pack Animals,Unspecified,,SPGPEVM--------,pass
+S*GPEVS---,SPGPEVS--------,15,190000,00,00,Missile Support,Unspecified,,SPGPEVS--------,pass
+S*GPEVST--,SPGPEVST-------,15,190100,00,00,Missile Support : Transloader,Unspecified,,SPGPEVST-------,pass
+S*GPEVSR--,SPGPEVSR-------,15,190200,00,00,Missile Support : Transporter,Unspecified,,SPGPEVSR-------,pass
+S*GPEVSC--,SPGPEVSC-------,15,190300,00,00,Missile Support : Crane/Loading Device,Unspecified,,SPGPEVSC-------,pass
+S*GPEVSP--,SPGPEVSP-------,15,190400,00,00,Missile Support : Propellant Transporter,Unspecified,,SPGPEVSP-------,pass
+S*GPEVSW--,SPGPEVSW-------,15,190500,00,00,Missile Support : Warhead Transporter,Unspecified,,SPGPEVSW-------,pass
+S*GPEXN---,SPGPEXN--------,15,200400,00,00,Other Equipment : CBRN Equipment,Unspecified,,SPGPEXN--------,pass
+S*GPEXL---,SPGPEXL--------,15,201000,00,00,Other Equipment : Laser,Unspecified,,SPGPEXL--------,pass
+E*OPAB----,EPOPAB---------,15,201500,00,00,Other Equipment : Emergency Medical Operation,Unspecified,,EPOPAB---------,pass
+E*OPAF----,EPOPAF---------,15,201501,00,00,Other Equipment : Emergency Medical Operation : Medical Evacuation Helicopter,Unspecified,,EPOPAF---------,pass
+S*GPEXM---,SPGPEXM--------,15,210100,00,00,Land Mines : Land Mine,Unspecified,,SPGPEXM--------,pass
+S*GPEXMC--,SPGPEXMC-------,15,210200,00,00,Land Mines : Antipersonnel Land Mine (APL),Unspecified,,SPGPEXMC-------,pass
+S*GPEXI---,SPGPEXI--------,15,210400,00,00,Land Mines : Improvised Explosives Device (IED),Unspecified,,SPGPEXI--------,pass
+S*GPEXML--,SPGPEXML-------,15,210500,00,00,Land Mines : Less than lethal,Unspecified,,SPGPEXML-------,pass
+S*GPES----,SPGPES---------,15,220100,00,00,Sensors : Sensor,Unspecified,,SPGPES---------,pass
+E*OPEA----,EPOPEA---------,15,220100,01,00,Sensors : Sensor,Sensor Type : Biological,,EPOPEA---------,pass
+E*OPEB----,EPOPEB---------,15,220100,02,00,Sensors : Sensor,Sensor Type : Chemical,,EPOPEB---------,pass
+E*OPEC----,EPOPEC---------,15,220100,04,00,Sensors : Sensor,Sensor Type : Intrusion,,EPOPEC---------,pass
+E*OPED----,EPOPED---------,15,220100,05,00,Sensors : Sensor,Sensor Type : Nuclear,,EPOPED---------,pass
+E*OPEE----,EPOPEE---------,15,220100,06,00,Sensors : Sensor,Sensor Type : Radiological,,EPOPEE---------,pass
+S*GPESE---,SPGPESE--------,15,220200,00,00,Sensors : Sensor Emplaced,Unspecified,,SPGPESE--------,pass
+S*GPESR---,SPGPESR--------,15,220300,00,00,Sensors : Radar,Unspecified,,SPGPESR--------,pass
+E*OPBB----,EPOPBB---------,15,230000,00,00,Emergency Operation (Land Equipment),Unspecified,,EPOPBB---------,pass
+E*OPAE----,EPOPAE---------,15,230100,00,00,Emergency Operation (Land Equipment) : Ambulance,Unspecified,,EPOPAE---------,pass
+E*OPCB----,EPOPCB---------,15,230200,00,00,Emergency Operation (Land Equipment) : Fire Fighting/Fire Protection,Unspecified,,EPOPCB---------,pass
+S*GPE-----,SPGPE----------,15,000000,00,00,Unspecified,Unspecified,,SPGPE----------,pass
+S*GPEVEM--,SPGPEVEM-------,15,131000,00,00,Engineer Equipment : Mine Laying Equipment,Unspecified,,SPGPEVEM-------,pass
+S*GPIMA---,SPGPIMA---H----,20,110100,00,00,Installation : Aircraft Production/Assembly,Unspecified,Unspecified,SPGPIMA---H----,pass
+S*GPIME---,SPGPIME---H----,20,110200,00,00,Installation : Ammunition and Explosives/Assembly,Unspecified,Unspecified,SPGPIME---H----,pass
+S*GPIMG---,SPGPIMG---H----,20,110400,00,00,Installation : Armament Production,Unspecified,Unspecified,SPGPIMG---H----,pass
+O*LPB-----,OPLPB----------,20,110500,00,00,Installation : Black List Location,Unspecified,Unspecified,OPLPB----------,pass
+S*GPIRN---,SPGPIRN---H----,20,110600,00,00,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),Unspecified,Unspecified,SPGPIRN---H----,pass
+S*GPIRNB--,SPGPIRNB--H----,20,110600,01,00,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),CBRN Type : Biological,Unspecified,SPGPIRNB--H----,pass
+S*GPIRNC--,SPGPIRNC--H----,20,110600,02,00,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),CBRN Type : Chemical,Unspecified,SPGPIRNC--H----,pass
+S*GPIRNN--,SPGPIRNN--H----,20,110600,03,00,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),CBRN Type : Nuclear,Unspecified,SPGPIRNN--H----,pass
+S*GPIP----,SPGPIP----H----,98,100000,00,00,,,,,Retired
+S*GPIPD---,SPGPIPD---H----,20,110600,04,00,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),CBRN Type : Radiological,Unspecified,SPGPIPD---H----,pass
+S*GPIMC---,SPGPIMC---H----,20,110600,00,01,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),Unspecified,No Category Listed : Biological,SPGPIMC---H----,pass
+S*GPIMC---,SPGPIMC---H----,20,110600,00,01,Installation : Chemical-Biological-Radiological and Nuclear (CBRN),Unspecified,No Category Listed : Biological,SPGPIMC---H----,pass
+S*GPIMN---,SPGPIMN---H----,20,110700,00,00,Installation : Engineering Equipment Production,Unspecified,Unspecified,SPGPIMN---H----,pass
+S*GPIMNB--,SPGPIMNB--H----,20,110701,00,00,Installation : Engineering Equipment Production : Bridge,Unspecified,Unspecified,SPGPIMNB--H----,pass
+S*GPIE----,SPGPIE----H----,20,110800,00,00,Installation : Equipment Manufacture,Unspecified,Unspecified,SPGPIE----H----,pass
+S*GPIU----,SPGPIU----H----,98,100000,00,00,,,,,Retired
+S*GPIUR---,SPGPIUR---H----,98,100000,00,00,,,,,Retired
+S*GPIUT---,SPGPIUT---H----,98,100000,00,00,,,,,Retired
+S*GPIG----,SPGPIG----H----,20,110900,00,00,Installation : Government Leadership,Unspecified,Unspecified,SPGPIG----H----,pass
+O*LPG-----,OPLPG----------,20,111000,00,00,Installation : Gray List Location,Unspecified,Unspecified,OPLPG----------,pass
+O*LPM-----,OPLPM----------,20,111100,00,00,Installation : Mass Grave Site,Unspecified,Unspecified,OPLPM----------,pass
+S*GPIR----,SPGPIR----H----,98,100000,00,00,,,,,Retired
+S*GPIRM---,SPGPIRM---H----,20,111300,00,00,Installation : Mine,Unspecified,Unspecified,SPGPIRM---H----,pass
+S*GPIMM---,SPGPIMM---H----,20,111400,00,00,Installation : Missile and Space System Production,Unspecified,Unspecified,SPGPIMM---H----,pass
+S*GPIMF---,SPGPIMF---H----,20,111500,00,00,Installation : Nuclear (Non CBRN Defense),Unspecified,Unspecified,SPGPIMF---H----,pass
+S*GPIMFA--,SPGPIMFA--H----,20,111500,00,05,Installation : Nuclear (Non CBRN Defense),Unspecified,No Category Listed : Atomic Energy Reactor,SPGPIMFA--H----,pass
+S*GPIMFP--,SPGPIMFP--H----,20,111500,00,06,Installation : Nuclear (Non CBRN Defense),Unspecified,No Category Listed : Nuclear Material Production,SPGPIMFP--H----,pass
+S*GPIMFS--,SPGPIMFS--H----,20,111500,00,07,Installation : Nuclear (Non CBRN Defense),Unspecified,No Category Listed : Nuclear Material Storage,SPGPIMFS--H----,pass
+S*GPIMFPW-,SPGPIMFPW-H----,20,111500,00,08,Installation : Nuclear (Non CBRN Defense),Unspecified,No Category Listed : Weapons Grade,SPGPIMFPW-H----,pass
+O*IPS-----,OPIPS----------,20,111700,00,00,Installation : Safe House,Unspecified,Unspecified,OPIPS----------,pass
+O*LPW-----,OPLPW----------,20,111800,00,00,Installation : White List Location,Unspecified,Unspecified,OPLPW----------,pass
+E*OPDC----,EPOPDC----H----,20,112100,00,00,Installation : Law Enforcement,Unspecified,Unspecified,EPOPDC----H----,pass
+E*OPDDC---,EPOPDDC---H----,20,112101,00,00,Installation : Law Enforcement : Bureau of Alcohol-Tobacco-Firearms and Explosives (ATF) (Department of Justice),Unspecified,Unspecified,EPOPDDC---H----,pass
+E*OPDEC---,EPOPDEC---H----,20,112102,00,00,Installation : Law Enforcement : Border Patrol,Unspecified,Unspecified,EPOPDEC---H----,pass
+E*OPDFC---,EPOPDFC---H----,20,112103,00,00,Installation : Law Enforcement : Customs Service,Unspecified,Unspecified,EPOPDFC---H----,pass
+EFOPDGC---,EFOPDGC---H----,20,112104,00,00,Installation : Law Enforcement : Drug Enforcement Administration (DEA),Unspecified,Unspecified,EFOPDGC---H----,pass
+EFOPDHC---,EFOPDHC---H----,20,112105,00,00,Installation : Law Enforcement : Department of Justice (DOJ),Unspecified,Unspecified,EFOPDHC---H----,pass
+EFOPDIC---,EFOPDIC---H----,20,112106,00,00,Installation : Law Enforcement : Federal Bureau of Investigation (FBI),Unspecified,Unspecified,EFOPDIC---H----,pass
+E*OPDJC---,EPOPDJC---H----,20,112107,00,00,Installation : Law Enforcement : Police,Unspecified,Unspecified,EPOPDJC---H----,pass
+EFOPDLC---,EFOPDLC---H----,20,112109,00,00,Installation : Law Enforcement : United States Secret Service (USSS),Unspecified,Unspecified,EFOPDLC---H----,pass
+EFOPDMC---,EFOPDMC---H----,20,112110,00,00,Installation : Law Enforcement : Transportation Security Administration (TSA),Unspecified,Unspecified,EFOPDMC---H----,pass
+E*OPDNC---,EPOPDNC---H----,20,112111,00,00,Installation : Law Enforcement : Coast Guard,Unspecified,Unspecified,EPOPDNC---H----,pass
+E*OPDOC---,EPOPDOC---H----,20,112112,00,00,Installation : Law Enforcement : US Marshals Service,Unspecified,Unspecified,EPOPDOC---H----,pass
+E*OPBC----,EPOPBC----H----,20,112200,00,00,Installation : Emergency Operation,Unspecified,Unspecified,EPOPBC----H----,pass
+E*OPCE----,EPOPCE----H----,20,112201,00,00,Installation : Emergency Operation : Fire Station,Unspecified,Unspecified,EPOPCE----H----,pass
+E*OPAC----,EPOPAC----H----,20,112202,00,00,Installation : Emergency Operation : Emergency Medical Operation,Unspecified,Unspecified,EPOPAC----H----,pass
+E*FPA-----,EPFPA-----H----,20,120100,00,00,Infrastructure : Agriculture and Food,Unspecified,Unspecified,EPFPA-----H----,pass
+E*FPAA----,EPFPAA----H----,20,120101,00,00,Infrastructure : Agriculture and Food : Agriculture Laboratory,Unspecified,Unspecified,EPFPAA----H----,pass
+E*FPAB----,EPFPAB----H----,20,120102,00,00,Infrastructure : Agriculture and Food : Animal Feedlot,Unspecified,Unspecified,EPFPAB----H----,pass
+E*FPAC----,EPFPAC----H----,20,120103,00,00,Infrastructure : Agriculture and Food : Commercial Food Distribution Center : Unknown,Unspecified,Unspecified,EPFPAC----H----,pass
+E*FPAD----,EPFPAD----H----,20,120104,00,00,Infrastructure : Agriculture and Food : Farm/Ranch,Unspecified,Unspecified,EPFPAD----H----,pass
+E*OPBL----,EPOPBL----H----,20,120105,00,00,Infrastructure : Agriculture and Food : Food Distribution : Unknown,Unspecified,Unspecified,EPOPBL----H----,pass
+E*FPAE----,EPFPAE----H----,20,120106,00,00,Infrastructure : Agriculture and Food : Food Production Center : Unknown,Unspecified,Unspecified,EPFPAE----H----,pass
+E*FPAF----,EPFPAF----H----,20,120107,00,00,Infrastructure : Agriculture and Food : Food Retail : Unknown,Unspecified,Unspecified,EPFPAF----H----,pass
+E*FPAG----,EPFPAG----H----,20,120108,00,00,Infrastructure : Agriculture and Food : Grain Storage,Unspecified,Unspecified,EPFPAG----H----,pass
+E*FPB-----,EPFPB-----H----,20,120200,00,00,Infrastructure : Banking- Finance- and Insurance,Unspecified,Unspecified,EPFPB-----H----,pass
+E*FPBA----,EPFPBA---------,20,120201,00,00,Infrastructure : Banking- Finance- and Insurance : ATM,Unspecified,Unspecified,EPFPBA---------,pass
+E*FPBB----,EPFPBB----H----,20,120202,00,00,Infrastructure : Banking- Finance- and Insurance : Bank,Unspecified,Unspecified,EPFPBB----H----,pass
+E*FPBC----,EPFPBC----H----,20,120203,00,00,Infrastructure : Banking- Finance- and Insurance : Bullion Storage,Unspecified,Unspecified,EPFPBC----H----,pass
+E*FPBD----,EPFPBD----H----,20,120205,00,00,Infrastructure : Banking- Finance- and Insurance : Federal Reserve Bank,Unspecified,Unspecified,EPFPBD----H----,pass
+E*FPBE----,EPFPBE----H----,20,120206,00,00,Infrastructure : Banking- Finance- and Insurance : Financial Exchange,Unspecified,Unspecified,EPFPBE----H----,pass
+E*FPBF----,EPFPBF----H----,20,120207,00,00,Infrastructure : Banking- Finance- and Insurance : Financial Services-Other,Unspecified,Unspecified,EPFPBF----H----,pass
+E*FPC-----,EPFPC-----H----,20,120300,00,00,Infrastructure : Commercial,Unspecified,Unspecified,EPFPC-----H----,pass
+E*FPCA----,EPFPCA----H----,20,120301,00,00,Infrastructure : Commercial : Chemical Plant,Unspecified,Unspecified,EPFPCA----H----,pass
+E*FPCB----,EPFPCB----H----,20,120302,00,00,Infrastructure : Commercial : Firearms Manufacturer,Unspecified,Unspecified,EPFPCB----H----,pass
+E*FPCC----,EPFPCC----H----,20,120303,00,00,Infrastructure : Commercial : Firearms Retailer,Unspecified,Unspecified,EPFPCC----H----,pass
+E*FPCD----,EPFPCD----H----,20,120304,00,00,Infrastructure : Commercial : Hazardous Material Production,Unspecified,Unspecified,EPFPCD----H----,pass
+E*FPCE----,EPFPCE----H----,20,120305,00,00,Infrastructure : Commercial : Hazardous Material Storage,Unspecified,Unspecified,EPFPCE----H----,pass
+E*FPCF----,EPFPCF----H----,20,120306,00,00,Infrastructure : Commercial : Industrial Site,Unspecified,Unspecified,EPFPCF----H----,pass
+E*FPCG----,EPFPCG----H----,20,120307,00,00,Infrastructure : Commercial : Landfill,Unspecified,Unspecified,EPFPCG----H----,pass
+E*FPCH----,EPFPCH----H----,20,120308,00,00,Infrastructure : Commercial : Pharmaceutical Manufacturer,Unspecified,Unspecified,EPFPCH----H----,pass
+E*FPCI----,EPFPCI----H----,20,120309,00,00,Infrastructure : Commercial : Contaminated Hazardous Waste Site,Unspecified,Unspecified,EPFPCI----H----,pass
+E*FPCJ----,EPFPCJ----H----,20,120310,00,00,Infrastructure : Commercial : Toxic Release Inventory,Unspecified,Unspecified,EPFPCJ----H----,pass
+E*FPD-----,EPFPD-----H----,20,120400,00,00,Infrastructure : Educational Facilities,Unspecified,Unspecified,EPFPD-----H----,pass
+E*FPDA----,EPFPDA----H----,20,120401,00,00,Infrastructure : Educational Facilities : College/University,Unspecified,Unspecified,EPFPDA----H----,pass
+E*FPDB----,EPFPDB----H----,20,120402,00,00,Infrastructure : Educational Facilities : School,Unspecified,Unspecified,EPFPDB----H----,pass
+S*GPIUE---,SPGPIUE---H----,20,120500,00,00,Infrastructure : Energy Facility,Unspecified,Unspecified,SPGPIUE---H----,pass
+S*GPIUEN--,SPGPIUEN--H----,20,120501,03,00,Infrastructure : Energy Facility : Electric Power,CBRN Type : Nuclear,Unspecified,SPGPIUEN--H----,pass
+S*GPIUED--,SPGPIUED--H----,98,100000,00,00,,,,,Retired
+S*GPIUEF--,SPGPIUEF--H----,98,100000,00,00,,,,,Retired
+E*FPEA----,EPFPEA----H----,20,120502,00,00,Infrastructure : Energy Facility : Generation Station,Unspecified,Unspecified,EPFPEA----H----,pass
+E*FPEB----,EPFPEB----H----,20,120503,00,00,Infrastructure : Energy Facility : Natural Gas Facility,Unspecified,Unspecified,EPFPEB----H----,pass
+S*GPIRP---,SPGPIRP---H----,20,120505,00,00,Infrastructure : Energy Facility : Petroleum/Gas/Oil,Unspecified,Unspecified,SPGPIRP---H----,pass
+E*FPEE----,EPFPEE----H----,20,120506,00,00,Infrastructure : Energy Facility : Propane Facility,Unspecified,Unspecified,EPFPEE----H----,pass
+E*FPF-----,EPFPF-----H----,20,120600,00,00,Infrastructure : Government Site Infrastructure,Unspecified,Unspecified,EPFPF-----H----,pass
+S*GPIX----,SPGPIX----H----,20,120701,00,00,Infrastructure : Medical : Medical : Unknown,Unspecified,Unspecified,SPGPIX----H----,pass
+S*GPIXH---,SPGPIXH---H----,20,120702,00,00,Infrastructure : Medical : Medical Treatment Facility (Hospital) : Unknown,Unspecified,Unspecified,SPGPIXH---H----,pass
+E*FPG-----,EPFPG-----H----,20,120800,00,00,Infrastructure : Military,Unspecified,Unspecified,EPFPG-----H----,pass
+E*FPGA----,EPFPGA----H----,20,120801,00,00,Infrastructure : Military : Military Armory,Unspecified,Unspecified,EPFPGA----H----,pass
+S*GPIB----,SPGPIB----H----,20,120802,00,00,Infrastructure : Military : Military Base,Unspecified,Unspecified,SPGPIB----H----,pass
+E*FPH-----,EPFPH-----H----,20,120900,00,00,Infrastructure : Postal Services,Unspecified,Unspecified,EPFPH-----H----,pass
+E*FPHA----,EPFPHA----H----,20,120901,00,00,Infrastructure : Postal Services : Postal Distribution Center,Unspecified,Unspecified,EPFPHA----H----,pass
+E*FPHB----,EPFPHB----H----,20,120902,00,00,Infrastructure : Postal Services : Post Office,Unspecified,Unspecified,EPFPHB----H----,pass
+E*FPI-----,EPFPI-----H----,20,121000,00,00,Infrastructure : Public Venues,Unspecified,Unspecified,EPFPI-----H----,pass
+E*FPIA----,EPFPIA----H----,20,121001,00,00,Infrastructure : Public Venues : Enclosed Facility,Unspecified,Unspecified,EPFPIA----H----,pass
+E*FPIB----,EPFPIB----H----,20,121002,00,00,Infrastructure : Public Venues : Open Facility,Unspecified,Unspecified,EPFPIB----H----,pass
+E*FPIC----,EPFPIC----H----,20,121003,00,00,Infrastructure : Public Venues : Recreational Area,Unspecified,Unspecified,EPFPIC----H----,pass
+E*FPID----,EPFPID----H----,20,121004,00,00,Infrastructure : Public Venues : Religious Institution,Unspecified,Unspecified,EPFPID----H----,pass
+E*FPJ-----,EPFPJ-----H----,20,121100,00,00,Infrastructure : Special Needs,Unspecified,Unspecified,EPFPJ-----H----,pass
+E*FPJA----,EPFPJA----H----,20,121101,00,00,Infrastructure : Special Needs : Adult Day Care,Unspecified,Unspecified,EPFPJA----H----,pass
+E*FPJB----,EPFPJB----H----,20,121102,00,00,Infrastructure : Special Needs : Child Day Care,Unspecified,Unspecified,EPFPJB----H----,pass
+E*FPJC----,EPFPJC----H----,20,121103,00,00,Infrastructure : Special Needs : Elder Care,Unspecified,Unspecified,EPFPJC----H----,pass
+E*FPK-----,EPFPK-----H----,20,121200,00,00,Infrastructure : Telecommunications,Unspecified,Unspecified,EPFPK-----H----,pass
+E*FPKB----,EPFPKB----H----,20,121203,00,00,Infrastructure : Telecommunications : Telecommunications Tower,Unspecified,Unspecified,EPFPKB----H----,pass
+S*GPIT----,SPGPIT----H----,20,121300,00,00,Infrastructure : Transportation,Unspecified,Unspecified,SPGPIT----H----,pass
+S*GPIBA---,SPGPIBA---H----,20,121301,00,00,Infrastructure : Transportation : Airport/Air Base,Unspecified,Unspecified,SPGPIBA---H----,pass
+E*FPLA----,EPFPLA----H----,20,121302,00,00,Infrastructure : Transportation : Air Traffic Control Facility,Unspecified,Unspecified,EPFPLA----H----,pass
+E*FPLD----,EPFPLD----H----,20,121303,00,00,Infrastructure : Transportation : Bus Station,Unspecified,Unspecified,EPFPLD----H----,pass
+E*FPLE----,EPFPLE----H----,20,121304,00,00,Infrastructure : Transportation : Ferry Terminal,Unspecified,Unspecified,EPFPLE----H----,pass
+E*FPLF----,EPFPLF----H----,20,121305,00,00,Infrastructure : Transportation : Helicopter Landing Site,Unspecified,Unspecified,EPFPLF----H----,pass
+E*FPLH----,EPFPLH----H----,20,121306,00,00,Infrastructure : Transportation : Maintenance Facility,Unspecified,Unspecified,EPFPLH----H----,pass
+S*GPIMV---,SPGPIMV---H----,20,121306,00,00,Infrastructure : Transportation : Maintenance Facility,Unspecified,Unspecified,EPFPLH----H----,pass (multiple)
+E*FPLJ----,EPFPLJ----H----,20,121307,00,00,Infrastructure : Transportation : Railhead/Railroad Station,Unspecified,Unspecified,EPFPLJ----H----,pass
+E*FPLK----,EPFPLK----H----,20,121308,00,00,Infrastructure : Transportation : Rest Stop,Unspecified,Unspecified,EPFPLK----H----,pass
+S*GPIBN---,SPGPIBN---H----,20,121309,00,00,Infrastructure : Transportation : Sea Port/Naval Base,Unspecified,Unspecified,SPGPIBN---H----,pass
+S*GPIMS---,SPGPIMS---H----,20,121310,00,00,Infrastructure : Transportation : Ship Yard,Unspecified,Unspecified,SPGPIMS---H----,pass
+E*FPLM----,EPFPLM----H----,20,121311,00,00,Infrastructure : Transportation : Toll Facility,Unspecified,Unspecified,EPFPLM----H----,pass
+E*FPLO----,EPFPLO----H----,20,121312,00,00,Infrastructure : Transportation : Traffic Inspection Facility,Unspecified,Unspecified,EPFPLO----H----,pass
+E*FPLP----,EPFPLP----H----,20,121313,00,00,Infrastructure : Transportation : Tunnel,Unspecified,Unspecified,EPFPLP----H----,pass
+E*FPMA----,EPFPMA---------,20,121401,00,00,Infrastructure : Water Supply : Control Valve,Unspecified,Unspecified,EPFPMA---------,pass
+E*FPMB----,EPFPMB----H----,20,121402,00,00,Infrastructure : Water Supply : Dam,Unspecified,Unspecified,EPFPMB----H----,pass
+E*FPMC----,EPFPMC---------,20,121403,00,00,Infrastructure : Water Supply : Discharge Outfall,Unspecified,Unspecified,EPFPMC---------,pass
+E*FPMD----,EPFPMD----H----,20,121404,00,00,Infrastructure : Water Supply : Ground Water Well,Unspecified,Unspecified,EPFPMD----H----,pass
+E*FPME----,EPFPME----H----,20,121405,00,00,Infrastructure : Water Supply : Pumping Station,Unspecified,Unspecified,EPFPME----H----,pass
+E*FPMF----,EPFPMF----H----,20,121406,00,00,Infrastructure : Water Supply : Reservoir,Unspecified,Unspecified,EPFPMF----H----,pass
+E*FPMG----,EPFPMG----H----,20,121407,00,00,Infrastructure : Water Supply : Storage Tower,Unspecified,Unspecified,EPFPMG----H----,pass
+E*FPMH----,EPFPMH----H----,20,121408,00,00,Infrastructure : Water Supply : Surface Water Intake,Unspecified,Unspecified,EPFPMH----H----,pass
+E*FPMI----,EPFPMI----H----,20,121409,00,00,Infrastructure : Water Supply : Wastewater Treatment Facility,Unspecified,Unspecified,EPFPMI----H----,pass
+S*GPIUP---,SPGPIUP---H----,20,121410,00,00,Infrastructure : Water Supply : Water,Unspecified,Unspecified,SPGPIUP---H----,pass
+S*GPI-----,SPGPI-----H----,20,000000,00,00,Unspecified,Unspecified,Unspecified,SPGPI-----H----,pass
+S*GPIMV---,SPGPIMV---H----,20,121306,00,00,Infrastructure : Transportation : Maintenance Facility,Unspecified,Unspecified,EPFPLH----H----,pass (multiple)
+G*GPGLL---,GPGPGLL-------X,25,110200,00,00,Command and Control Lines : Light Line,,,GPGPGLL-------X,pass
+G*GPSAO---,GPGPSAO-------X,25,120100,00,00,Command and Control Areas : Area of Operations,,,GPGPSAO-------X,pass
+G*GPSAN---,GPGPSAN-------X,25,120200,00,00,Command and Control Areas : Named Area of Interest,,,GPGPSAN-------X,pass
+G*GPSAT---,GPGPSAT-------X,25,120300,00,00,Command and Control Areas : Targeted Area of Interest,,,GPGPSAT-------X,pass
+G*GPGAZ---,GPGPGAZ-------X,25,120400,00,00,Command and Control Areas : Airfield Zone,,,GPGPGAZ-------X,pass
+G*GPGPP---,GPGPGPP-------X,25,130100,00,00,Command and Control Points : Action Point (General),,,GPGPGPP-------X,pass
+G*GPGPPA--,GPGPGPPA------X,25,130200,00,00,Command and Control Points : Amnesty Point,,,GPGPGPPA------X,pass
+G*GPGPPK--,GPGPGPPK------X,25,130300,00,00,Command and Control Points : Checkpoint,,,GPGPGPPK------X,pass
+G*GPGPPC--,GPGPGPPC------X,25,130500,00,00,Command and Control Points : Contact Point,,,GPGPGPPC------X,pass
+G*GPGPPO--,GPGPGPPO------X,25,130600,00,00,Command and Control Points : Coordinating Point,,,GPGPGPPO------X,pass
+G*GPGPPD--,GPGPGPPD------X,25,130700,00,00,Command and Control Points : Decision Point,,,GPGPGPPD------X,pass
+G*GPGPPL--,GPGPGPPL------X,25,131100,00,00,Command and Control Points : Linkup Point,,,GPGPGPPL------X,pass
+G*GPGPPP--,GPGPGPPP------X,25,131200,00,00,Command and Control Points : Passage Point,,,GPGPGPPP------X,pass
+G*GPGPRI--,GPGPGPRI------X,25,131300,00,00,Command and Control Points : Point of Interest,,,GPGPGPRI------X,pass
+G*GPGPPR--,GPGPGPPR------X,25,131400,00,00,Command and Control Points : Rally Point,,,GPGPGPPR------X,pass
+G*GPGPPE--,GPGPGPPE------X,25,131500,00,00,Command and Control Points : Release Point,,,GPGPGPPE------X,pass
+G*GPGPPS--,GPGPGPPS------X,25,131600,00,00,Command and Control Points : Start Point,,,GPGPGPPS------X,pass
+G*GPGPPW--,GPGPGPPW------X,25,131800,00,00,Command and Control Points : Waypoint,,,GPGPGPPW------X,pass
+G*GPGPAM--,GPGPGPAM------X,98,100000,00,00,,,,,Retired
+G*GPGPAC--,GPGPGPAC------X,98,100000,00,00,,,,,Retired
+G*GPGLF---,GPGPGLF-------X,25,140101,00,00,Maneuver Lines : Forward Line of Troops : Friendly Present,,,GPGPGLF-------X,pass
+GFGAGLF---,GFGAGLF-------X,25,140101,00,00,Maneuver Lines : Forward Line of Troops : Friendly Present,,,GFGAGLF-------X,pass
+GHGPGLF---,GHGPGLF-------X,25,140101,00,00,Maneuver Lines : Forward Line of Troops : Friendly Present,,,GHGPGLF-------X,pass
+G*GPGLC---,GPGPGLC-------X,98,100000,00,00,,,,,Retired
+GHGAGLF---,GHGAGLF-------X,25,140101,00,00,Maneuver Lines : Forward Line of Troops : Friendly Present,,,GHGAGLF-------X,pass
+G*GPGLP---,GPGPGLP-------X,25,140300,00,00,Maneuver Lines : Phase Line,,,GPGPGLP-------X,pass
+G*GPDLF---,GPGPDLF-------X,25,140400,00,00,Maneuver Lines : Forward Edge of the Battle Area,,,GPGPDLF-------X,pass
+G*GPDLP---,GPGPDLP-------X,25,140500,00,00,Maneuver Lines : Principal Direction of Fire,,,GPGPDLP-------X,pass
+G*GPOLKA--,GPGPOLKA------X,25,140601,00,00,Maneuver Lines : Direction of Attack : Friendly Aviation,,,GPGPOLKA------X,pass
+G*GPOLKGM-,GPGPOLKGM-----X,25,140602,00,00,Maneuver Lines : Direction of Attack : Friendly Direction of Main Attack,,,GPGPOLKGM-----X,pass
+G*GPOLKGS-,GPGPOLKGS-----X,25,140603,00,00,Maneuver Lines : Direction of Attack : Friendly Direction of Supporting Attack,,,GPGPOLKGS-----X,pass
+G*GPPF----,GPGPPF--------X,25,140605,00,00,Maneuver Lines : Direction of Attack : Feint,,,GPGPPF--------X,pass
+G*GPOLF---,GPGPOLF-------X,25,140700,00,00,Maneuver Lines : Final Coordination Line,,,GPGPOLF-------X,pass
+G*GPOLI---,GPGPOLI-------X,25,140800,00,00,Maneuver Lines : Infiltration Lane,,,GPGPOLI-------X,pass
+G*GPOLL---,GPGPOLL-------X,25,140900,00,00,Maneuver Lines : Limit of Advance,,,GPGPOLL-------X,pass
+G*GPOLT---,GPGPOLT-------X,25,141000,00,00,Maneuver Lines : Line of Departure,,,GPGPOLT-------X,pass
+G*GPOLC---,GPGPOLC-------X,25,141100,00,00,Maneuver Lines : Line of Departure/Line of Contact,,,GPGPOLC-------X,pass
+G*GPOLP---,GPGPOLP-------X,25,141200,00,00,Maneuver Lines : Probable Line of Deployment,,,GPGPOLP-------X,pass
+G*GPSAA---,GPGPSAA-------X,25,141300,00,00,Maneuver Lines : Airhead Line,,,GPGPSAA-------X,pass
+G*GPSLB---,GPGPSLB-------X,25,141400,00,00,Maneuver Lines : Bridgehead Line,,,GPGPSLB-------X,pass
+G*GPSLH---,GPGPSLH-------X,25,141500,00,00,Maneuver Lines : Holding Line,,,GPGPSLH-------X,pass
+G*GPSLR---,GPGPSLR-------X,25,141600,00,00,Maneuver Lines : Release Line,,,GPGPSLR-------X,pass
+G*GPSLA---,GPGPSLA-------X,25,141700,00,00,Maneuver Lines : Ambush,,,GPGPSLA-------X,pass
+G*GPGAA---,GPGPGAA-------X,25,150200,00,00,Maneuver Areas : Assembly Area,,,GPGPGAA-------X,pass
+G*GPGAD---,GPGPGAD-------X,25,150600,00,00,Maneuver Areas : Drop Zone,,,GPGPGAD-------X,pass
+G*GPGAX---,GPGPGAX-------X,25,150700,00,00,Maneuver Areas : Extraction Zone,,,GPGPGAX-------X,pass
+G*GPGAL---,GPGPGAL-------X,25,150800,00,00,Maneuver Areas : Landing Zone,,,GPGPGAL-------X,pass
+G*GPGAP---,GPGPGAP-------X,25,150900,00,00,Maneuver Areas : Pick-Up Zone,,,GPGPGAP-------X,pass
+G*GPGAF---,GPGPGAF-------X,25,151000,00,00,Maneuver Areas : Fortified Area,,,GPGPGAF-------X,pass
+G*GPGAY---,GPGPGAY-------X,25,151100,00,00,Maneuver Areas : Limited Access Area,,,GPGPGAY-------X,pass
+G*GPDAB---,GPGPDAB-------X,25,151200,00,00,Maneuver Areas : Battle Position,,,GPGPDAB-------X,pass
+G*GADAB---,GPGADAB-------X,25,151200,00,00,Maneuver Areas : Battle Position,,,GPGADAB-------X,pass
+G*GPDABP--,GPGPDABP------X,25,151202,00,00,Maneuver Areas : Battle Position : Battle Position - Prepared (P) but not Occupied,,,GPGPDABP------X,pass
+G*MPSP----,GPMPSP--------X,25,151203,00,00,Maneuver Areas : Battle Position : Strong Point,,,GPMPSP--------X,pass
+G*TPJ-----,GPTPJ---------X,25,151204,00,00,Maneuver Areas : Battle Position : Contain,,,GPTPJ---------X,pass
+G*TPQ-----,GPTPQ---------X,25,151205,00,00,Maneuver Areas : Battle Position : Retain,,,GPTPQ---------X,pass
+G*GPGAE---,GPGPGAE-------X,25,151300,00,00,Maneuver Areas : Engagement Area (EA),,,GPGPGAE-------X,pass
+G*GPDAE---,GPGPDAE-------X,25,151300,00,00,Maneuver Areas : Engagement Area (EA),,,GPGPGAE-------X,pass (multiple)
+G*GPOLAV--,GPGPOLAV------X,25,151401,00,00,Maneuver Areas : Axis of Advance : Friendly Airborne/Aviation,,,GPGPOLAV------X,pass
+G*GPOLAA--,GPGPOLAA------X,25,151401,00,00,Maneuver Areas : Axis of Advance : Friendly Airborne/Aviation,,,GPGPOLAV------X,pass (multiple)
+G*GPOLAR--,GPGPOLAR------X,25,151402,00,00,Maneuver Areas : Axis of Advance : Attack Helicopter,,,GPGPOLAR------X,pass
+G*GPOLAGM-,GPGPOLAGM-----X,25,151403,00,00,Maneuver Areas : Axis of Advance : Main Attack,,,GPGPOLAGM-----X,pass
+G*GPOLAGS-,GPGPOLAGS-----X,25,151404,00,00,Maneuver Areas : Axis of Advance : Supporting Attack,,,GPGPOLAGS-----X,pass
+G*GPPA----,GPGPPA--------X,25,151406,00,00,Maneuver Areas : Axis of Advance : Feint,,,GPGPPA--------X,pass
+G*GPOAA---,GPGPOAA-------X,25,151500,00,00,Maneuver Areas : Assault Position,,,GPGPOAA-------X,pass
+G*GPOAK---,GPGPOAK-------X,25,151600,00,00,Maneuver Areas : Attack Position,,,GPGPOAK-------X,pass
+G*GPOAO---,GPGPOAO-------X,25,151700,00,00,Maneuver Areas : Objective,,,GPGPOAO-------X,pass
+G*GPSAE---,GPGPSAE-------X,25,151801,00,00,Maneuver Areas : Encirclement : Friendly,,,GPGPSAE-------X,pass
+G*GPOAP---,GPGPOAP-------X,25,151900,00,00,Maneuver Areas : Penetration Box,,,GPGPOAP-------X,pass
+G*GPOAF---,GPGPOAF-------X,25,152000,00,00,Maneuver Areas : Attack by Fire Position,,,GPGPOAF-------X,pass
+G*GPOAS---,GPGPOAS-------X,25,152100,00,00,Maneuver Areas : Support by Fire,,,GPGPOAS-------X,pass
+G*GPGAS---,GPGPGAS-------X,25,152200,00,00,Maneuver Areas : Search Area/Reconnaissance Area,,,GPGPGAS-------X,pass
+G*GPDPO---,GPGPDPO-------X,25,160100,00,00,Maneuver Points : Observation Post/Outpost (Unspecified),,,GPGPDPO-------X,pass
+G*GPDPOR--,GPGPDPOR------X,25,160201,00,00,Maneuver Points : Observation Post/Outpost (Specified) : Reconnaissance Outpost,,,GPGPDPOR------X,pass
+G*GPDPOF--,GPGPDPOF------X,25,160202,00,00,Maneuver Points : Observation Post/Outpost (Specified) : Forward Observer Outpost,,,GPGPDPOF------X,pass
+G*GPDPON--,GPGPDPON------X,25,160203,00,00,Maneuver Points : Observation Post/Outpost (Specified) : CBRN Observation Outpost,,,GPGPDPON------X,pass
+G*GPDPOS--,GPGPDPOS------X,25,160204,00,00,Maneuver Points : Observation Post/Outpost (Specified) : Sensor Outpost/Listening Post,,,GPGPDPOS------X,pass
+G*GPDPOC--,GPGPDPOC------X,25,160205,00,00,Maneuver Points : Observation Post/Outpost (Specified) : Combat Outpost,,,GPGPDPOC------X,pass
+G*GPDPT---,GPGPDPT-------X,25,160300,00,00,Maneuver Points : Target Reference Point,,,GPGPDPT-------X,pass
+G*GPOPP---,GPGPOPP-------X,25,160400,00,00,Maneuver Points : Point of Departure,,,GPGPOPP-------X,pass
+G*GPALC---,GPGPALC-------X,25,170100,00,00,Air Corridors : Air Corridor,,,GPGPALC-------X,pass
+G*GPALL---,GPGPALL-------X,25,170200,00,00,Air Corridors : Low Level Transit Route,,,GPGPALL-------X,pass
+G*GPALM---,GPGPALM-------X,25,170300,00,00,Air Corridors : Minimum-Risk Route,,,GPGPALM-------X,pass
+G*GPALS---,GPGPALS-------X,25,170500,00,00,Air Corridors : Standard Use Army Aircraft Flight Route,,,GPGPALS-------X,pass
+G*GPALU---,GPGPALU-------X,25,170700,00,00,Air Corridors : Unmanned Aircraft (UA) Route,,,GPGPALU-------X,pass
+G*GPAAH---,GPGPAAH-------X,25,170900,00,00,Air Corridors : High-Density Airspace Control Zone,,,GPGPAAH-------X,pass
+G*GPAAR---,GPGPAAR-------X,25,171000,00,00,Air Corridors : Restricted Operations Zone,,,GPGPAAR-------X,pass
+G*GPAAM---,GPGPAAM-------X,25,171600,00,00,Air Corridors : Missile Engagement Zone,,,GPGPAAM-------X,pass
+G*GPAAML--,GPGPAAML------X,25,171700,00,00,Air Corridors : Low Altitude Missile Engagement Zone,,,GPGPAAML------X,pass
+G*GPAAMH--,GPGPAAMH------X,25,171800,00,00,Air Corridors : High Altitude Missile Engagement Zone,,,GPGPAAMH------X,pass
+G*GPAAF---,GPGPAAF-------X,25,171900,00,00,Air Corridors : Short Range Air Defense Engagement Zone,,,GPGPAAF-------X,pass
+G*GPAAW---,GPGPAAW-------X,25,172000,00,00,Air Corridors : Weapons Free Zone,,,GPGPAAW-------X,pass
+G*GPGPA---,GPGPGPA-------X,25,180000,00,00,Airspace Control Points,,,GPGPGPA-------X,pass
+G*GPAPP---,GPGPAPP-------X,25,180100,00,00,Airspace Control Points : Air Control Point,,,GPGPAPP-------X,pass
+G*GPAPC---,GPGPAPC-------X,25,180200,00,00,Airspace Control Points : Communications Checkpoint,,,GPGPAPC-------X,pass
+G*GPAPD---,GPGPAPD-------X,25,180300,00,00,Airspace Control Points : Downed Aircrew Pick-Up Point,,,GPGPAPD-------X,pass
+G*GPAPU---,GPGPAPU-------X,25,180400,00,00,Airspace Control Points : Pop-up Point,,,GPGPAPU-------X,pass
+G*GPGPAT--,GPGPGPAT------X,25,180600,00,00,Airspace Control Points : TACAN,,,GPGPGPAT------X,pass
+G*GPGPAT--,GPGPGPAT------X,25,180600,00,00,Airspace Control Points : TACAN,,,GPGPGPAT------X,pass
+G*GPGPAP--,GPGPGPAP------X,25,180700,00,00,Airspace Control Points : CAP Station,,,GPGPGPAP------X,pass
+G*GPGPAW--,GPGPGPAW------X,25,180800,00,00,Airspace Control Points : AEW Station,,,GPGPGPAW------X,pass
+G*GPGPAA--,GPGPGPAA------X,25,180900,00,00,Airspace Control Points : ASW (Helo and F/W) Station,,,GPGPGPAA------X,pass
+G*GPGPAA--,GPGPGPAA------X,25,180900,00,00,Airspace Control Points : ASW (Helo and F/W) Station,,,GPGPGPAA------X,pass
+G*GPGPAS--,GPGPGPAS------X,25,181000,00,00,Airspace Control Points : Strike Initial Point,,,GPGPGPAS------X,pass
+G*GPGPAS--,GPGPGPAS------X,25,181000,00,00,Airspace Control Points : Strike Initial Point,,,GPGPGPAS------X,pass
+G*GPGPAL--,GPGPGPAL------X,25,181100,00,00,Airspace Control Points : Replenishment Station,,,GPGPGPAL------X,pass
+G*GPGPAL--,GPGPGPAL------X,25,181100,00,00,Airspace Control Points : Replenishment Station,,,GPGPGPAL------X,pass
+G*GPGPAK--,GPGPGPAK------X,25,181200,00,00,Airspace Control Points : Tanking,,,GPGPGPAK------X,pass
+G*GPGPAK--,GPGPGPAK------X,25,181200,00,00,Airspace Control Points : Tanking,,,GPGPGPAK------X,pass
+G*GPGPAH--,GPGPGPAH------X,25,181300,00,00,Airspace Control Points : Antisubmarine Warfare- Rotary Wing,,,GPGPGPAH------X,pass
+G*GPGPAH--,GPGPGPAH------X,25,181300,00,00,Airspace Control Points : Antisubmarine Warfare- Rotary Wing,,,GPGPGPAH------X,pass
+G*GPGPAB--,GPGPGPAB------X,25,181400,00,00,Airspace Control Points : SUCAP - Fixed Wing,,,GPGPGPAB------X,pass
+G*GPGPAC--,GPGPGPAC------X,98,100000,00,00,,,,,Retired
+G*GPGPAD--,GPGPGPAD------X,25,181600,00,00,Airspace Control Points : MIW - Fixed Wing,,,GPGPGPAD------X,pass
+G*GPGPAE--,GPGPGPAE------X,25,181700,00,00,Airspace Control Points : MIW - Rotary Wing,,,GPGPGPAE------X,pass
+G*GPGPAO--,GPGPGPAO------X,25,181800,00,00,Airspace Control Points : Tomcat,,,GPGPGPAO------X,pass
+G*GPGPAO--,GPGPGPAO------X,25,181800,00,00,Airspace Control Points : Tomcat,,,GPGPGPAO------X,pass
+G*GPGPAR--,GPGPGPAR------X,25,181900,00,00,Airspace Control Points : Rescue,,,GPGPGPAR------X,pass
+G*GPGPAR--,GPGPGPAR------X,25,181900,00,00,Airspace Control Points : Rescue,,,GPGPGPAR------X,pass
+G*GPGPAF--,GPGPGPAF------X,25,182000,00,00,Airspace Control Points : Unmanned Aerial System (UAS/UA),,,GPGPGPAF------X,pass
+G*GPGPAG--,GPGPGPAG------X,25,182100,00,00,Airspace Control Points : VTUA,,,GPGPGPAG------X,pass
+G*GPGPAI--,GPGPGPAI------X,25,182200,00,00,Airspace Control Points : Orbit,,,GPGPGPAI------X,pass
+G*GPGPAJ--,GPGPGPAJ------X,25,182300,00,00,Airspace Control Points : Orbit - Figure Eight,,,GPGPGPAJ------X,pass
+G*GPGPAM--,GPGPGPAM------X,98,100000,00,00,,,,,Retired
+G*GPGPAN--,GPGPGPAN------X,25,182500,00,00,Airspace Control Points : Orbit - Random Closed,,,GPGPGPAN------X,pass
+G*GPGPWA--,GPGPGPWA------X,25,210200,00,00,Maritime Points : Aim Point,,,GPGPGPWA------X,pass
+G*GPGPWD--,GPGPGPWD------X,25,210400,00,00,Maritime Points : Drop Point,,,GPGPGPWD------X,pass
+G*GPGPWE--,GPGPGPWE------X,25,210500,00,00,Maritime Points : Entry Point,,,GPGPGPWE------X,pass
+G*GPGPWG--,GPGPGPWG------X,25,210700,00,00,Maritime Points : Ground Zero,,,GPGPGPWG------X,pass
+G*GPGPWI--,GPGPGPWI------X,25,210800,00,00,Maritime Points : Impact Point,,,GPGPGPWI------X,pass
+G*GPGPWP--,GPGPGPWP------X,25,210900,00,00,Maritime Points : Predicted Impact Point,,,GPGPGPWP------X,pass
+G*GPGPWM--,GPGPGPWM------X,25,211100,00,00,Maritime Points : Missile Detection Point,,,GPGPGPWM------X,pass
+G*GPGPUUB-,GPGPGPUUB-----X,25,211400,00,00,Maritime Points : Brief Contact,,,GPGPGPUUB-----X,pass
+G*GPGPUUD-,GPGPGPUUD-----X,25,211500,00,00,Maritime Points : Datum Lost Contact,,,GPGPGPUUD-----X,pass
+G*GPGPUUL-,GPGPGPUUL-----X,25,212000,00,00,Maritime Points : Lost Contact,,,GPGPGPUUL-----X,pass
+G*GPGPUUS-,GPGPGPUUS-----X,25,212100,00,00,Maritime Points : Sinker,,,GPGPGPUUS-----X,pass
+G*OPFA----,GPOPFA--------X,25,212300,00,00,Maritime Points : Acoustic Fix,,,GPOPFA--------X,pass
+G*OPFE----,GPOPFE--------X,25,212400,00,00,Maritime Points : Electromagnetic Fix,,,GPOPFE--------X,pass
+G*OPFO----,GPOPFO--------X,25,212600,00,00,Maritime Points : Optical Fix,,,GPOPFO--------X,pass
+G*GPGPF---,GPGPGPF-------X,25,212700,00,00,Maritime Points : Formation,,,GPGPGPF-------X,pass
+G*GPGPH---,GPGPGPH-------X,25,212800,00,00,Maritime Points : Harbor,,,GPGPGPH-------X,pass
+G*GPGPHA--,GPGPGPHA------X,25,212901,00,00,Maritime Points : Harbor Entrance Point : A,,,GPGPGPHA------X,pass
+G*GPGPHQ--,GPGPGPHQ------X,25,212902,00,00,Maritime Points : Harbor Entrance Point : Q,,,GPGPGPHQ------X,pass
+G*GPGPHX--,GPGPGPHX------X,25,212903,00,00,Maritime Points : Harbor Entrance Point : X,,,GPGPGPHX------X,pass
+G*GPGPHY--,GPGPGPHY------X,25,212904,00,00,Maritime Points : Harbor Entrance Point : Y,,,GPGPGPHY------X,pass
+G*GPGPUSD-,GPGPGPUSD-----X,25,213000,00,00,Maritime Points : Dip Position,,,GPGPGPUSD-----X,pass
+G*GPGPUS--,GPGPGPUS------X,25,213100,00,00,Maritime Points : Search,,,GPGPGPUS------X,pass
+G*GPGPUSA-,GPGPGPUSA-----X,25,213200,00,00,Maritime Points : Search Area,,,GPGPGPUSA-----X,pass
+G*GPGPUSC-,GPGPGPUSC-----X,25,213300,00,00,Maritime Points : Search Center,,,GPGPGPUSC-----X,pass
+G*GPGPUY--,GPGPGPUY------X,25,213500,00,00,Maritime Points : Sonobuoy,,,GPGPGPUY------X,pass
+G*GPGPUYA-,GPGPGPUYA-----X,25,213501,00,00,Maritime Points : Sonobuoy : Ambient Noise,,,GPGPGPUYA-----X,pass
+G*GPGPUYT-,GPGPGPUYT-----X,25,213502,00,00,Maritime Points : Sonobuoy : Air Transportable Communication,,,GPGPGPUYT-----X,pass
+G*GPGPUYB-,GPGPGPUYB-----X,25,213504,00,00,Maritime Points : Sonobuoy : Bathythermograph Transmitting,,,GPGPGPUYB-----X,pass
+G*GPGPUYC-,GPGPGPUYC-----X,25,213506,00,00,Maritime Points : Sonobuoy : Command Active Sonobuoy Directional Command Active Sonobuoy System (CASS),,,GPGPGPUYC-----X,pass
+G*GPGPUYD-,GPGPGPUYD-----X,25,213507,00,00,Maritime Points : Sonobuoy : Digital Frequency Analysis and Recording (DIFAR),,,GPGPGPUYD-----X,pass
+G*GPGPUYS-,GPGPGPUYS-----X,25,213508,00,00,Maritime Points : Sonobuoy : Directional Command Active Sonobuoy System (DICASS),,,GPGPGPUYS-----X,pass
+G*GPGPUYX-,GPGPGPUYX-----X,25,213510,00,00,Maritime Points : Sonobuoy : Expired,,,GPGPGPUYX-----X,pass
+G*GPGPUYK-,GPGPGPUYK-----X,25,213511,00,00,Maritime Points : Sonobuoy : Kingpin,,,GPGPGPUYK-----X,pass
+G*GPGPUYL-,GPGPGPUYL-----X,25,213512,00,00,Maritime Points : Sonobuoy : Low Frequency Analysis and Recording (LOFAR),,,GPGPGPUYL-----X,pass
+G*GPGPUYP-,GPGPGPUYP-----X,25,213513,00,00,Maritime Points : Sonobuoy : Pattern Center,,,GPGPGPUYP-----X,pass
+G*GPGPUYR-,GPGPGPUYR-----X,25,213514,00,00,Maritime Points : Sonobuoy : Range Only,,,GPGPGPUYR-----X,pass
+G*GPGPUYV-,GPGPGPUYV-----X,25,213515,00,00,Maritime Points : Sonobuoy : Vertical Line Array Directional Frequency Analysis and Recording (DIFAR),,,GPGPGPUYV-----X,pass
+G*GPGPR---,GPGPGPR-------X,25,213600,00,00,Maritime Points : Reference Point,,,GPGPGPR-------X,pass
+G*GPGPRS--,GPGPGPRS------X,25,213700,00,00,Maritime Points : Special Point,,,GPGPGPRS------X,pass
+G*GPGPRN--,GPGPGPRN------X,25,213800,00,00,Maritime Points : Navigational Reference Point,,,GPGPGPRN------X,pass
+G*GPGPRD--,GPGPGPRD------X,25,213900,00,00,Maritime Points : Data Link Reference Point,,,GPGPGPRD------X,pass
+G*GPGPRC--,GPGPGPRC------X,25,214200,00,00,Maritime Points : Corridor Tab Point,,,GPGPGPRC------X,pass
+G*GPGPRM--,GPGPGPRM------X,25,214400,00,00,Maritime Points : Marshall Point,,,GPGPGPRM------X,pass
+G*GPGPRP--,GPGPGPRP------X,25,214500,00,00,Maritime Points : Position and Intended Movement (PIM),,,GPGPGPRP------X,pass
+G*GPGPRW--,GPGPGPRW------X,25,214800,00,00,Maritime Points : Waypoint,,,GPGPGPRW------X,pass
+G*GPGPB---,GPGPGPB-------X,25,214900,00,00,Maritime Points : General Subsurface Station,,,GPGPGPB-------X,pass
+G*GPGPBS--,GPGPGPBS------X,25,215000,00,00,Maritime Points : Submarine Subsurface Station,,,GPGPGPBS------X,pass
+G*GPGPBSA-,GPGPGPBSA-----X,25,215100,00,00,Maritime Points : Submarine Antisubmarine Warfare Subsurface Station,,,GPGPGPBSA-----X,pass
+G*GPGPBU--,GPGPGPBU------X,25,215200,00,00,Maritime Points : Unmanned Underwater Vehicle Subsurface Station,,,GPGPGPBU------X,pass
+G*GPGPBUA-,GPGPGPBUA-----X,25,215300,00,00,Maritime Points : Antisubmarine Warfare (ASW) Unmanned Underwater Vehicle Subsurface Station,,,GPGPGPBUA-----X,pass
+G*GPGPBUM-,GPGPGPBUM-----X,25,215400,00,00,Maritime Points : Mine Warfare Unmanned Underwater Vehicle Subsurface Station,,,GPGPGPBUM-----X,pass
+G*GPGPBUS-,GPGPGPBUS-----X,25,215500,00,00,Maritime Points : Surface Warfare Unmanned Underwater Vehicle Subsurface Station,,,GPGPGPBUS-----X,pass
+G*GPGPC---,GPGPGPC-------X,25,215600,00,00,Maritime Points : General Surface Station,,,GPGPGPC-------X,pass
+G*GPGPCA--,GPGPGPCA------X,25,215700,00,00,Maritime Points : Antisubmarine Warfare (ASW) Surface Station,,,GPGPGPCA------X,pass
+G*GPGPCM--,GPGPGPCM------X,25,215800,00,00,Maritime Points : Mine Warfare Surface Station,,,GPGPGPCM------X,pass
+G*GPGPCN--,GPGPGPCN------X,25,215900,00,00,Maritime Points : Non-Combatant Surface Station,,,GPGPGPCN------X,pass
+G*GPGPCP--,GPGPGPCP------X,25,216000,00,00,Maritime Points : Picket Surface Station,,,GPGPGPCP------X,pass
+G*GPGPCR--,GPGPGPCR------X,25,216100,00,00,Maritime Points : Rendezvous Surface Station,,,GPGPGPCR------X,pass
+G*GPGPCE--,GPGPGPCE------X,25,216200,00,00,Maritime Points : Replenishment at Sea Surface Station,,,GPGPGPCE------X,pass
+G*GPGPCC--,GPGPGPCC------X,25,216300,00,00,Maritime Points : Rescue Surface Station,,,GPGPGPCC------X,pass
+G*GPGPCS--,GPGPGPCS------X,25,216400,00,00,Maritime Points : Surface Warfare Surface Station,,,GPGPGPCS------X,pass
+G*GPGPCU--,GPGPGPCU------X,25,216500,00,00,Maritime Points : Unmanned Underwater Vehicle Surface Station,,,GPGPGPCU------X,pass
+G*GPGPCUA-,GPGPGPCUA-----X,25,216600,00,00,Maritime Points : Antisubmarine Warfare (ASW) Unmanned Underwater Vehicle Surface Station,,,GPGPGPCUA-----X,pass
+G*GPGPCUM-,GPGPGPCUM-----X,25,216700,00,00,Maritime Points : Mine Warfare Unmanned Underwater Vehicle Surface Station,,,GPGPGPCUM-----X,pass
+G*GPGPCUR-,GPGPGPCUR-----X,25,216800,00,00,Maritime Points : Remote Multi-Mission Vehicle Mine Warfare Unmanned Underwater,,,GPGPGPCUR-----X,pass
+G*GPGPCUS-,GPGPGPCUS-----X,25,216900,00,00,Maritime Points : Surface Warfare Mine Warfare Unmanned Underwater Vehicle,,,GPGPGPCUS-----X,pass
+G*GPGPO---,GPGPGPO-------X,25,217100,00,00,Maritime Points : General Route,,,GPGPGPO-------X,pass
+G*GPGPOD--,GPGPGPOD------X,25,217200,00,00,Maritime Points : Diversion Route,,,GPGPGPOD------X,pass
+G*GPGPOP--,GPGPGPOP------X,25,217300,00,00,Maritime Points : Position and Intended Movement (PIM) Route,,,GPGPGPOP------X,pass
+G*GPGPOR--,GPGPGPOR------X,25,217300,00,00,Maritime Points : Position and Intended Movement (PIM) Route,,,GPGPGPOP------X,FAIL
+G*GPGPOZ--,GPGPGPOZ------X,25,217600,00,00,Maritime Points : Rendezvous Route,,,GPGPGPOZ------X,pass
+G*GPGPOW--,GPGPGPOW------X,25,217700,00,00,Maritime Points : Waypoint Route,,,GPGPGPOW------X,pass
+G*OPEV----,GPOPEV--------X,25,218000,00,00,Maritime Points : Distressed Vessel,,,GPOPEV--------X,pass
+G*OPED----,GPOPED--------X,25,218100,00,00,Maritime Points : Ditched Aircraft/Downed Aircraft,,,GPOPED--------X,pass
+G*OPEP----,GPOPEP--------X,25,218200,00,00,Maritime Points : Person in Water/Bailout,,,GPOPEP--------X,pass
+G*OPHI----,GPOPHI--------X,25,218300,00,00,Maritime Points : Iceberg,,,GPOPHI--------X,pass
+G*OPHN----,GPOPHN--------X,25,218400,00,00,Maritime Points : Navigational,,,GPOPHN--------X,pass
+G*OPHO----,GPOPHO--------X,25,218500,00,00,Maritime Points : Oil Rig,,,GPOPHO--------X,pass
+G*OPHM----,GPOPHM--------X,25,218600,00,00,Maritime Points : Sea Mine-Like,,,GPOPHM--------X,pass
+G*OPSBN---,GPOPSBN-------X,25,218700,00,00,Maritime Points : Bottom Return/Non-Mine Like Bottom Object (NOMBO),,,GPOPSBN-------X,pass
+G*OPSB----,GPOPSB--------X,25,218700,00,00,Maritime Points : Bottom Return/Non-Mine Like Bottom Object (NOMBO),,,GPOPSBN-------X,pass (multiple)
+G*OPSBM---,GPOPSBM-------X,25,218800,00,00,Maritime Points : Bottom Return/Non-Mine Like Bottom Object (NOMBO)/Installation Manmade,,,GPOPSBM-------X,pass
+G*OPSM----,GPOPSM--------X,25,218900,00,00,Maritime Points : Marine Life,,,GPOPSM--------X,pass
+G*OPSS----,GPOPSS--------X,25,219000,00,00,Maritime Points : Sea Anomaly (Wake-Current-Knuckle),,,GPOPSS--------X,pass
+G*OPSBX---,GPOPSBX-------X,25,219100,00,00,Maritime Points : Bottom Return/Non-MILCO-Wreck-Dangerous,,,GPOPSBX-------X,pass
+G*OPSBWD--,GPOPSBWD------X,25,219100,00,00,Maritime Points : Bottom Return/Non-MILCO-Wreck-Dangerous,,,GPOPSBX-------X,pass (multiple)
+G*OPSBW---,GPOPSBW-------X,25,219200,00,00,Maritime Points : Bottom Return/Non-MILCO-Wreck-Non Dangerous,,,GPOPSBW-------X,pass
+G*OPB-----,GPOPB---------X,25,220100,00,00,Maritime Lines : Bearing Line,,,GPOPB---------X,pass
+G*OPBE----,GPOPBE--------X,25,220101,00,00,Maritime Lines : Bearing Line : Electronic,,,GPOPBE--------X,pass
+G*OPBA----,GPOPBA--------X,25,220103,00,00,Maritime Lines : Bearing Line : Acoustic,,,GPOPBA--------X,pass
+G*OPBT----,GPOPBT--------X,25,220105,00,00,Maritime Lines : Bearing Line : Torpedo,,,GPOPBT--------X,pass
+G*OPBO----,GPOPBO--------X,25,220106,00,00,Maritime Lines : Bearing Line : Electro-Optical Intercept,,,GPOPBO--------X,pass
+G*GPPD----,GPGPPD--------X,25,230100,00,00,Deception : Decoy/Dummy,,,GPGPPD--------X,pass
+G*FPACAI--,GPFPACAI------X,25,240101,00,00,Fires Areas : Airspace Coordination Area : Irregular,,,GPFPACAI------X,pass
+G*FPACAR--,GPFPACAR------X,25,240102,00,00,Fires Areas : Airspace Coordination Area : Rectangular,,,GPFPACAR------X,pass
+G*FPACAC--,GPFPACAC------X,25,240103,00,00,Fires Areas : Airspace Coordination Area : Circular,,,GPFPACAC------X,pass
+G*FPACFI--,GPFPACFI------X,25,240201,00,00,Fires Areas : Free Fire Area : Irregular,,,GPFPACFI------X,pass
+G*FPACFR--,GPFPACFR------X,25,240202,00,00,Fires Areas : Free Fire Area : Rectangular,,,GPFPACFR------X,pass
+G*FPACFC--,GPFPACFC------X,25,240203,00,00,Fires Areas : Free Fire Area : Circular,,,GPFPACFC------X,pass
+G*FPACNI--,GPFPACNI------X,25,240301,00,00,Fires Areas : No Fire Area : Irregular,,,GPFPACNI------X,pass
+G*FPACNR--,GPFPACNR------X,25,240302,00,00,Fires Areas : No Fire Area : Rectangular,,,GPFPACNR------X,pass
+G*FPACNC--,GPFPACNC------X,25,240303,00,00,Fires Areas : No Fire Area : Circular,,,GPFPACNC------X,pass
+G*FPACRI--,GPFPACRI------X,25,240401,00,00,Fires Areas : Restricted Fire Area : Irregular,,,GPFPACRI------X,pass
+G*FPACRR--,GPFPACRR------X,25,240402,00,00,Fires Areas : Restricted Fire Area : Rectangular,,,GPFPACRR------X,pass
+G*FPACRC--,GPFPACRC------X,25,240403,00,00,Fires Areas : Restricted Fire Area : Circular,,,GPFPACRC------X,pass
+G*FPACPR--,GPFPACPR------X,25,240501,00,00,Fires Areas : Position Area For Artillery (PAA) : Rectangular,,,GPFPACPR------X,pass
+G*FPACPC--,GPFPACPC------X,25,240502,00,00,Fires Areas : Position Area For Artillery (PAA) : Circular,,,GPFPACPC------X,pass
+G*FPPTS---,GPFPPTS-------X,25,240601,00,00,Fires Areas : Point Targets : Point or Single Target,,,GPFPPTS-------X,pass
+G*FPPTN---,GPFPPTN-------X,25,240602,00,00,Fires Areas : Point Targets : Nuclear Target,,,GPFPPTN-------X,pass
+G*FPLT----,GPFPLT--------X,25,240701,00,00,Fires Areas : Linear Targets : Linear Target,,,GPFPLT--------X,pass
+G*FPLTS---,GPFPLTS-------X,25,240702,00,00,Fires Areas : Linear Targets : Linear Smoke Target,,,GPFPLTS-------X,pass
+G*FPLTF---,GPFPLTF-------X,25,240703,00,00,Fires Areas : Linear Targets : Final Protective Fire (FPF),,,GPFPLTF-------X,pass
+G*FPAT----,GPFPAT--------X,25,240801,00,00,Fires Areas : Area Targets : Area Target,,,GPFPAT--------X,pass
+G*FPATR---,GPFPATR-------X,25,240802,00,00,Fires Areas : Area Targets : Rectangular Target,,,GPFPATR-------X,pass
+G*FPATC---,GPFPATC-------X,25,240803,00,00,Fires Areas : Area Targets : Circular Target,,,GPFPATC-------X,pass
+G*FPATG---,GPFPATG-------X,25,240805,00,00,Fires Areas : Area Targets : Series of Targets,,,GPFPATG-------X,pass
+G*FPATS---,GPFPATS-------X,25,240806,00,00,Fires Areas : Area Targets : Smoke Target,,,GPFPATS-------X,pass
+G*FPATB---,GPFPATB-------X,25,240808,00,00,Fires Areas : Area Targets : Bomb Area,,,GPFPATB-------X,pass
+G*FPPCF---,GPFPPCF-------X,25,240900,00,00,Fires Areas : Fire Support Station,,,GPFPPCF-------X,pass
+G*FPACSI--,GPFPACSI------X,25,241001,00,00,Fires Areas : Fire Support Area : Irregular,,,GPFPACSI------X,pass
+G*FPACSR--,GPFPACSR------X,25,241002,00,00,Fires Areas : Fire Support Area : Rectangular,,,GPFPACSR------X,pass
+G*FPACSC--,GPFPACSC------X,25,241003,00,00,Fires Areas : Fire Support Area : Circular,,,GPFPACSC------X,pass
+G*FPAZII--,GPFPAZII------X,25,241101,00,00,Fires Areas : Artillery Target Intelligence Zone : Irregular,,,GPFPAZII------X,pass
+G*FPAZIR--,GPFPAZIR------X,25,241102,00,00,Fires Areas : Artillery Target Intelligence Zone : Rectangular,,,GPFPAZIR------X,pass
+G*FPAZIC--,GPFPAZIC------X,25,241103,00,00,Fires Areas : Artillery Target Intelligence Zone : Circular,,,GPFPAZIC------X,pass
+G*FPAZXI--,GPFPAZXI------X,25,241201,00,00,Fires Areas : Call for Fire Zone (CFFZ) : Irregular,,,GPFPAZXI------X,pass
+G*FPAZXR--,GPFPAZXR------X,25,241202,00,00,Fires Areas : Call for Fire Zone (CFFZ) : Rectangular,,,GPFPAZXR------X,pass
+G*FPAZXC--,GPFPAZXC------X,25,241203,00,00,Fires Areas : Call for Fire Zone (CFFZ) : Circular,,,GPFPAZXC------X,pass
+G*FPAZSI--,GPFPAZSI------X,25,241601,00,00,Fires Areas : Sensor Zone : Irregular,,,GPFPAZSI------X,pass
+G*FPAZSR--,GPFPAZSR------X,25,241602,00,00,Fires Areas : Sensor Zone : Rectangular,,,GPFPAZSR------X,pass
+G*FPAZSC--,GPFPAZSC------X,25,241603,00,00,Fires Areas : Sensor Zone : Circular,,,GPFPAZSC------X,pass
+G*FPAZCI--,GPFPAZCI------X,25,241301,00,00,Fires Areas : Censor Zone : Irregular,,,GPFPAZCI------X,pass
+G*FPAZCR--,GPFPAZCR------X,25,241302,00,00,Fires Areas : Censor Zone : Rectangular,,,GPFPAZCR------X,pass
+G*FPAZCC--,GPFPAZCC------X,25,241303,00,00,Fires Areas : Censor Zone : Circular,,,GPFPAZCC------X,pass
+G*FPAZFI--,GPFPAZFI------X,25,241401,00,00,Fires Areas : Critical Friendly Zone : Irregular,,,GPFPAZFI------X,pass
+G*FPAZFR--,GPFPAZFR------X,25,241402,00,00,Fires Areas : Critical Friendly Zone : Rectangular,,,GPFPAZFR------X,pass
+G*FPAZFC--,GPFPAZFC------X,25,241403,00,00,Fires Areas : Critical Friendly Zone : Circular,,,GPFPAZFC------X,pass
+G*FPACDI--,GPFPACDI------X,25,241501,00,00,Fires Areas : Dead Space Area : Irregular,,,GPFPACDI------X,pass

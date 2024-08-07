@@ -34,24 +34,29 @@ public class COMMAND extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = -5662357406861380560L;
 
-    public static final Integer CMDTYPE_POWER_OFF = 0;
-    public static final Integer CMDTYPE_RESTART = 1;
-    public static final Integer CMDTYPE_STANDBY = 2;
-    public static final Integer CMDTYPE_WAKE_UP = 3;
-    public static final Integer CMDTYPE_SYNC_TIME = 4;
-    public static final Integer CMDTYPE_SEND_STATUS = 5;
-    public static final Integer CMDTYPE_MOVE = 6;
-    public static final Integer CMDTYPE_ROTATE = 7;
-    public static final Integer CMDTYPE_SCAN_AREA = 8;
-    public static final Integer CMDTYPE_TAKE_PHOTO = 9;
-    public static final Integer CMDTYPE_MAKE_VIDEO = 10;
-    public static final Integer CMDTYPE_SWITCH_ON_LIVE_VIDEO_STREAM = 11;
-    public static final Integer CMDTYPE_SWITCH_OFF_LIVE_VIDEO_STREAM = 12;
-    public static final Integer CMDTYPE_START_ENGAGEMENT = 13;
-    public static final Integer CMDTYPE_STOP_ENGAGEMENT = 14;
-    public static final Integer CMDTYPE_GENERIC_ACTION = 255;
+    public static final Integer CMDTYPE_Poweroff = 0;
+    public static final Integer CMDTYPE_Restart = 1;
+    public static final Integer CMDTYPE_Standby = 2;
+    public static final Integer CMDTYPE_Wake_up = 3;
+    public static final Integer CMDTYPE_Sync_time = 4;
+    public static final Integer CMDTYPE_Send_status = 5;
+    public static final Integer CMDTYPE_Move = 6;
+    public static final Integer CMDTYPE_Rotate = 7;
+    public static final Integer CMDTYPE_Scan_area = 8;
+    public static final Integer CMDTYPE_Take_photo = 9;
+    public static final Integer CMDTYPE_Make_video = 10;
+    public static final Integer CMDTYPE_Switch_on_video_stream = 11;
+    public static final Integer CMDTYPE_Switch_off_video_stream = 12;
+    public static final Integer CMDTYPE_Engagement = 13;
+    public static final Integer CMDTYPE_Generic_action = 255;
+
+    public static final String CMDTYPE_ENGAGEMENT_CMD_Start = "start-engagement";
+    public static final String CMDTYPE_ENGAGEMENT_CMD_Hold = "hold-engagement";
+    public static final String CMDTYPE_ENGAGEMENT_CMD_Stop = "stop-engagement";
 
     private String recipient;
+
+    private Integer cmdId;
 
     private Integer cmdType;
 
@@ -59,6 +64,14 @@ public class COMMAND extends SEDAPExpressMessage {
 
     public String getRecipient() {
 	return this.recipient;
+    }
+
+    public Integer getCmdId() {
+	return this.cmdId;
+    }
+
+    public void setCmdId(Integer cmdId) {
+	this.cmdId = cmdId;
     }
 
     public void setRecipient(String recipient) {
@@ -90,14 +103,17 @@ public class COMMAND extends SEDAPExpressMessage {
      * @param acknowledgement
      * @param mac
      * @param recipient
+     * @param cmdId
      * @param cmdType
      * @param cmdTypeDependentParameters
      */
-    public COMMAND(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, String recipient, Integer cmdType, List<String> cmdTypeDependentParameters) {
+    public COMMAND(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, String recipient,
+	    Integer cmdId, Integer cmdType, List<String> cmdTypeDependentParameters) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.recipient = recipient;
+	this.cmdId = cmdId;
 	this.cmdType = cmdType;
 	this.cmdTypeDependentParameters = cmdTypeDependentParameters;
     }
@@ -236,6 +252,8 @@ public class COMMAND extends SEDAPExpressMessage {
 	    return serializeHeader()
 		    .append((this.recipient != null) ? this.recipient : "")
 		    .append(";")
+		    .append((this.cmdId != null) ? this.cmdId : "")
+		    .append(";")
 		    .append((this.cmdType != null) ? this.cmdType : "")
 		    .append(";")
 		    .append((this.cmdTypeDependentParameters != null) ? parameters : "")
@@ -243,6 +261,8 @@ public class COMMAND extends SEDAPExpressMessage {
 	} else {
 	    return serializeHeader()
 		    .append((this.recipient != null) ? this.recipient : "")
+		    .append(";")
+		    .append((this.cmdId != null) ? this.cmdId : "")
 		    .append(";")
 		    .append((this.cmdType != null) ? this.cmdType : "")
 		    .toString();

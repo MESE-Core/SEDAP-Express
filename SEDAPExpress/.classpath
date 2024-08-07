@@ -27,23 +27,26 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/gson-2.10.1.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="libs/jakarta.validation-api-3.0.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/protobuf-java-4.26.1.jar">
+	<classpathentry kind="lib" path="libs/gson-2.11.0.jar">
 		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/gson-2.11.0-javadoc.jar!/"/>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/protobuf-java-util-4.26.1.jar">
+	<classpathentry kind="lib" path="libs/protobuf-java-4.27.3.jar">
 		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/protobuf-java-4.27.3-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/protobuf-java-util-4.27.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/protobuf-java-util-4.27.3-javadoc.jar!/"/>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>

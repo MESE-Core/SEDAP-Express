@@ -30,9 +30,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +50,41 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     protected static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     static {
 	SEDAPExpressMessage.logger.setLevel(Level.ALL);
+    }
+
+    public enum MessageType {
+
+	ACKNOWLEDGE("ACKNOWLEDGE"),
+	COMMAND("COMMAND"),
+	CONTACT("CONTACT"),
+	EMISSION("EMISSION"),
+	GENERIC("GENERIC"),
+	GRAPHIC("GRAPHIC"),
+	HEARTBEAT("HEARTBEAT"),
+	KEYEXCHANGE("KEYEXCHANGE"),
+	METEO("METEO"),
+	OWNUNIT("OWNUNIT"),
+	RESEND("RESEND"),
+	STATUS("STATUS"),
+	TEXT("TEXT"),;
+
+	private static final Map<String, MessageType> types = new HashMap<>();
+
+	static {
+	    for (MessageType e : MessageType.values()) {
+		MessageType.types.put(e.type, e);
+	    }
+	}
+
+	public static MessageType valueOfType(String type) {
+	    return MessageType.types.get(type);
+	}
+
+	public final String type;
+
+	private MessageType(String type) {
+	    this.type = type;
+	}
     }
 
     public static final String ENCODING_BASE64 = "BASE64";
@@ -118,7 +155,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	return pattern.matcher(value).matches();
     }
 
-    private Short number;
+    private Byte number;
 
     private Long time;
 
@@ -132,11 +169,11 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public static HexFormat formatter = HexFormat.of().withUpperCase();
 
-    public Short getNumber() {
+    public Byte getNumber() {
 	return this.number;
     }
 
-    public void setNumber(Short number) {
+    public void setNumber(Byte number) {
 	this.number = number;
     }
 
@@ -178,6 +215,10 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public void setMAC(String mac) {
 	this.mac = mac;
+    }
+
+    public MessageType getMessageType() {
+	return MessageType.valueOfType(this.getClass().getSimpleName());
     }
 
     @Override
@@ -552,7 +593,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      * @param acknowledgement
      * @param mac             Message Authentification Code
      */
-    protected SEDAPExpressMessage(Short number, Long time, String sender, Character classification,
+    protected SEDAPExpressMessage(Byte number, Long time, String sender, Character classification,
 	    Boolean acknowledgement, String mac) {
 	super();
 	this.number = number;
@@ -584,7 +625,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 				  "Optional field \"number\" is empty!",
 				  value);
 		} else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
-		    this.number = Short.parseShort(value, 16);
+		    this.number = Byte.parseByte(value, 16);
 		} else if (!value.isBlank()) {
 		    SEDAPExpressMessage.logger
 			    .logp(
@@ -778,7 +819,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	StringBuilder result = new StringBuilder(this.getClass().getSimpleName()).append(';');
 
 	if (this.number != null) {
-	    result.append(SEDAPExpressMessage.HEXFOMATER.toHexDigits((this.number.byteValue())));
+	    result.append(SEDAPExpressMessage.HEXFOMATER.toHexDigits((this.number)));
 	}
 	result.append(';');
 

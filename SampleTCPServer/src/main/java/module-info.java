@@ -28,7 +28,5 @@
  */
 module SampleTCPServer {
 
-    requires sedap_datamodel_cms;
-    requires sedap_framework;
-    requires SEDAPExpress;
+    requires transitive SEDAPExpress;
 }

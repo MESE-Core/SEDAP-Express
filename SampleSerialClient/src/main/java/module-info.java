@@ -28,5 +28,7 @@
  */
 module SampleSerialClient {
 
-    requires jssc;
+    requires transitive jssc;
+    requires transitive SEDAPExpress;
+
 }

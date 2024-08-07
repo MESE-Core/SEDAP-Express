@@ -94,7 +94,7 @@ public class TEXT extends SEDAPExpressMessage {
      * @param text
      * @param recipient
      */
-    public TEXT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public TEXT(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer type, String encoding, String text, String recipient) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
