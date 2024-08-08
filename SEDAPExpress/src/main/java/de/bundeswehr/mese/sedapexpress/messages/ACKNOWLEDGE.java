@@ -74,7 +74,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
      * @param nameOfTheMessage
      * @param numberOfTheMessage
      */
-    public ACKNOWLEDGE(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public ACKNOWLEDGE(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    String recipient, String nameOfTheMessage, Short numberOfTheMessage) {
 
 	super(number, time, sender, classification, acknowledgement, mac);

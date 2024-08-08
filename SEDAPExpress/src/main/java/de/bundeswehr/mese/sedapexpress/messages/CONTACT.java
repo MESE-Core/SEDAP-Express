@@ -36,6 +36,9 @@ public class CONTACT extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 5990524206762624628L;
 
+    public static final Boolean DELETE_FLAG_NO = Boolean.FALSE;
+    public static final Boolean DELETE_FLAG_YES = Boolean.TRUE;
+
     public static final String SOURCE_Radar = "R";
     public static final String SOURCE_AIS = "A";
     public static final String SOURCE_IFF = "I";
@@ -263,6 +266,7 @@ public class CONTACT extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new CONTACT message
      *
      * @param number
      * @param time
@@ -291,13 +295,15 @@ public class CONTACT extends SEDAPExpressMessage {
      * @param sidc
      * @param mmsi
      * @param icao
+     * @param imageData
      * @param comment
      */
-    public CONTACT(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public CONTACT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    String contactID, Boolean deleteFlag, Double latitude, Double longitude, Double altitude,
 	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance,
 	    Double speed, Double course, Double heading, Double roll, Double pitch,
-	    Double width, Double length, Double height, String name, String source, char[] sidc, String mmsi, String icao, String comment) {
+	    Double width, Double length, Double height,
+	    String name, String source, char[] sidc, String mmsi, String icao, byte[] imageData, String comment) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -322,10 +328,12 @@ public class CONTACT extends SEDAPExpressMessage {
 	this.sidc = sidc;
 	this.mmsi = mmsi;
 	this.icao = icao;
+	this.imageData = imageData;
 	this.comment = comment;
     }
 
     /**
+     * Instantiate a new CONTACT message from a serialized message
      *
      * @param message
      */
@@ -335,6 +343,7 @@ public class CONTACT extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new CONTACT message from a paramter list
      *
      * @param message
      */
@@ -848,14 +857,25 @@ public class CONTACT extends SEDAPExpressMessage {
 
 	// Comment
 	if (message.hasNext()) {
-	    this.comment = message.next();
-	    if (this.comment.isBlank()) {
+	    value = message.next();
+	    if ((value == null) || value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.INFO,
 			      "CONTACT",
 			      "CONTACT(Iterator<String> message)",
 			      "Optional field \"comment\" is empty!");
+	    } else {
+		try {
+		    this.comment = new String(Base64.decode(value));
+		} catch (DecoderException e) {
+		    SEDAPExpressMessage.logger
+			    .logp(
+				  Level.SEVERE,
+				  "STATUS",
+				  "STATUS(Iterator<String> message)",
+				  "Optional field \"comment\" could not be decoded from Base64!");
+		}
 	    }
 	}
     }
@@ -982,7 +1002,7 @@ public class CONTACT extends SEDAPExpressMessage {
 		.append(this.imageData != null ? Base64.toBase64String(this.imageData) : "")
 		.append(";")
 
-		.append(this.comment != null ? this.comment : "")
+		.append((this.comment != null) ? Base64.toBase64String(this.comment.getBytes()) : "")
 		.toString();
     }
 

@@ -182,7 +182,7 @@ public class METEO extends SEDAPExpressMessage {
      * @param cloudHeight
      * @param cloudCover
      */
-    public METEO(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, Double speedThroughWater, Double waterSpeed, Double waterDirection, Double waterTemperature, Double waterDepth,
+    public METEO(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, Double speedThroughWater, Double waterSpeed, Double waterDirection, Double waterTemperature, Double waterDepth,
 	    Double airTemperature, Double dewPoint, Double humidityRel, Double pressure, Double windSpeed, Double windDirection, Double visibility, Double cloudHeight, Double cloudCover) {
 
 	super(number, time, sender, classification, acknowledgement, mac);

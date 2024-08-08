@@ -1,20 +1,28 @@
-/*******************************************************************************
- * Copyright (C)2012-2024, German Federal Armed Forces - All rights reserved.
+/**
+ * Note: This license has also been called the “Simplified BSD License” and the “FreeBSD License”.
  *
- * MUKdo II
- * Wibbelhofstraße 3
- * 26384 Wilhelmshaven
- * Germany
+ * Copyright 2024 MESE POC: Volker Voß, Federal Armed Forces of Germany
  *
- * This source code is part of the MEDAS/SEDAP Project.
- * Person of contact (POC): Volker Voß, MUKdo II A, Wilhelmshaven
+ * Redistribution and use in source and binary forms, with or without modification, are permitted
+ * provided that the following conditions are met:
  *
- * Unauthorized use, modification, redistributing, copying, selling and
- * printing of this file in source and binary form including accompanying
- * materials is STRICTLY prohibited.
+ * 1. Redistributions of source code must retain the above copyright notice, this list of
+ * conditions and the following disclaimer.
  *
- * This source code and it's parts is classified as OFFEN / NATO UNCLASSIFIED!
- *******************************************************************************/
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of
+ * conditions and the following disclaimer in the documentation and/or other materials provided with
+ * the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ * FITNESS FOR A PARTICULAR PURPOSEnARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ * CONTRIBUTORS BEn LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+ * OF SUCH DAMAGE.
+ */
 package de.bundeswehr.mese.sedapexpress.crypto;
 
 import java.security.Security;
@@ -31,8 +39,6 @@ import org.bouncycastle.crypto.modes.GCMBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.crypto.params.ParametersWithIV;
 
-import de.bundeswehr.mese.sedapexpress.messages.CONTACT;
-import de.bundeswehr.mese.sedapexpress.messages.OWNUNIT;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
 
 public class MACUtils {
@@ -217,15 +223,6 @@ public class MACUtils {
 		    MACUtils.calc32BitGMAC(key, initVector, message).equals(message.getMAC());
 	}
 
-    }
-
-    public static void main(final String[] args) {
-
-	final CONTACT con = new CONTACT("CONTACT;01;18FC9EC4BFC;43962;P;;8888;0;54.46372567240966;9.922788177159617;;;;;;;;");
-	System.err.println(con);
-
-	final OWNUNIT own = new OWNUNIT("OWNUNIT;5E;02;18FC9EC4BAC;R;True;;53.32;8.11;0.0;5.5;21.0;22.0;33.0;44.0;FGS Bayern;sfspfclff------");
-	System.err.println(own);
     }
 
 }

@@ -94,7 +94,7 @@ public class TEXT extends SEDAPExpressMessage {
      * @param text
      * @param recipient
      */
-    public TEXT(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public TEXT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer type, String encoding, String text, String recipient) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
@@ -123,6 +123,30 @@ public class TEXT extends SEDAPExpressMessage {
 	super(message);
 
 	String value;
+
+	// Recipient
+	if (message.hasNext()) {
+	    value = message.next();
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
+		this.recipient = value;
+	    } else if (!value.isBlank()) {
+		this.recipient = value;
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.INFO,
+			      "SEDAPExpressMessage",
+			      "SEDAPExpressMessage(Iterator<String> message)",
+			      "Optional field \"recipient\" contains not a valid number, but free text is allowed!",
+			      value);
+	    }
+	} else {
+	    SEDAPExpressMessage.logger
+		    .logp(
+			  Level.SEVERE,
+			  "TEXT",
+			  "TEXT(Iterator<String> message)",
+			  "Incomplete message!");
+	}
 
 	// Type
 	if (message.hasNext()) {
@@ -211,23 +235,6 @@ public class TEXT extends SEDAPExpressMessage {
 			  "TEXT",
 			  "TEXT(Iterator<String> message)",
 			  "Incomplete message!");
-	}
-
-	// Recipient
-	if (message.hasNext()) {
-	    value = message.next();
-	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
-		this.recipient = String.valueOf(Integer.parseInt(value, 16));
-	    } else if (!value.isBlank()) {
-		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Optional field \"recipient\" contains not a valid number, but free text is allowed!",
-			      value);
-	    }
 	}
 
     }

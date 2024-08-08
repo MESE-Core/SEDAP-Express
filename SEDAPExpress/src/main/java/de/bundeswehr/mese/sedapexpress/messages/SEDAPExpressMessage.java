@@ -130,6 +130,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern NUMBER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,2}$"); // Number
     public static final Pattern TIME_MATCHER = Pattern.compile("^[A-Fa-f0-9]{8,16}$"); // Time
     public static final Pattern SENDER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,4}$"); // Sender-Recipient
+    public static final Pattern MAC_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,32}$"); // Sender-Recipient
     public static final Pattern TEXTTYPE_MATCHER = Pattern.compile("^[0-4]$"); // Text type
 
     public static final Pattern DOUBLE_MATCHER = Pattern.compile("^-?\\d+.?\\d*$"); // Double
@@ -141,9 +142,9 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern BEARING_MATCHER = Pattern.compile("^(\\d+\\.?\\d*|[012]\\d\\d\\.\\d*|3[0-5]\\d\\\\.\\d*)$"); // 000.00-359.999
     public static final Pattern SIDC_MATCHER = Pattern.compile("^[a-zA-Z-]{15}$"); // SIDC
     public static final Pattern MMSI_MATCHER = SEDAPExpressMessage.INTEGER_MATCHER; // Integer
-    public static final Pattern ICAO_MATCHER = Pattern.compile("^[A-Z]{1}[A-Z0-9]{1,3}$"); // ICAO
+    public static final Pattern ICAO_MATCHER = Pattern.compile("^[A-F0-9]{1,6}$"); // ICAO
     public static final Pattern SOURCE_MATCHER = Pattern.compile("^[R,A,I,S,E,O,Y,M]+$"); // Source type
-    public static final Pattern CMDTYPE_MATCHER = Pattern.compile("^[0-255]$"); // Command type
+    public static final Pattern CMDTYPE_MATCHER = Pattern.compile("^[A-Fa-f0-9]+$"); // Command type
     public static final Pattern GRAPHICTYPE_MATCHER = Pattern.compile("^[0-14]$"); // Graphic type
     public static final Pattern RGBA_MATCHER = Pattern.compile("^[0-9A-F]{8}$"); // RGBA Format´
     public static final Pattern TECSTATUS_MATCHER = Pattern.compile("^[0-5]$"); // TecStatus
@@ -155,7 +156,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	return pattern.matcher(value).matches();
     }
 
-    private Byte number;
+    private Short number;
 
     private Long time;
 
@@ -169,11 +170,11 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public static HexFormat formatter = HexFormat.of().withUpperCase();
 
-    public Byte getNumber() {
+    public Short getNumber() {
 	return this.number;
     }
 
-    public void setNumber(Byte number) {
+    public void setNumber(Short number) {
 	this.number = number;
     }
 
@@ -593,7 +594,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      * @param acknowledgement
      * @param mac             Message Authentification Code
      */
-    protected SEDAPExpressMessage(Byte number, Long time, String sender, Character classification,
+    protected SEDAPExpressMessage(Short number, Long time, String sender, Character classification,
 	    Boolean acknowledgement, String mac) {
 	super();
 	this.number = number;
@@ -625,7 +626,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 				  "Optional field \"number\" is empty!",
 				  value);
 		} else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
-		    this.number = Byte.parseByte(value, 16);
+		    this.number = Short.parseShort(value, 16);
 		} else if (!value.isBlank()) {
 		    SEDAPExpressMessage.logger
 			    .logp(
@@ -677,7 +678,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    if (message.hasNext()) {
 		value = message.next();
 		if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
-		    this.sender = String.valueOf(Integer.parseInt(value, 16));
+		    this.sender = value;
 		} else if (!value.isBlank()) {
 		    this.sender = value;
 		    SEDAPExpressMessage.logger
@@ -733,7 +734,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
 	    if (message.hasNext()) {
 		value = message.next();
-		if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
+		if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.MAC_MATCHER, value)) {
 		    this.mac = value;
 		} else if (!value.isBlank()) {
 		    SEDAPExpressMessage.logger
@@ -741,7 +742,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 				  Level.INFO,
 				  "SEDAPExpressMessage",
 				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"mac\" contains not a valid number, but free text is allowed!",
+				  "Optional field \"mac\" contains not a valid 32bit mac number!",
 				  value);
 		}
 	    } else if (this instanceof HEARTBEAT) {
@@ -850,6 +851,19 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	result.append(';');
 
 	return result;
+    }
+
+    /**
+     * Remove useless semicolons
+     *
+     * @param message Original message
+     * @return Shortend message
+     */
+    protected static String removeSemicolons(String message) {
+	while (message.endsWith(";")) {
+	    message = message.substring(0, message.length() - 1);
+	}
+	return message;
     }
 
 }

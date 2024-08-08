@@ -151,6 +151,7 @@ public class STATUS extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new STATUS message
      *
      * @param number
      * @param time
@@ -167,7 +168,7 @@ public class STATUS extends SEDAPExpressMessage {
      * @param mediaUrls
      * @param freeText
      */
-    public STATUS(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public STATUS(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer tecStatus, Integer opsStatus, Double ammunitionLevel, Double fuelLevel, Double batterieLevel,
 	    String hostname, List<String> mediaUrls, String freeText) {
 	super(number, time, sender, classification, acknowledgement, mac);
@@ -182,6 +183,7 @@ public class STATUS extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new STATUS message from a serialized message
      *
      * @param message
      */
@@ -191,6 +193,7 @@ public class STATUS extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new STATUS message from a paramter list
      *
      * @param message
      */
@@ -416,7 +419,7 @@ public class STATUS extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.cmdState != null) ? this.cmdState : "")
 		.append(";")
-		.append((this.hostname != null) ? this.hostname : "")
+		.append((this.hostname != null) ? Base64.toBase64String(this.hostname.getBytes()) : "")
 		.append(";")
 		.append((this.mediaUrls != null) ? urls.subSequence(0, urls.length() - 1) : "")
 		.append(";")

@@ -23,43 +23,19 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
  * OF SUCH DAMAGE.
  */
-package de.bundeswehr.mese.sedapexpress.crypto;
-
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.KeyPair;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.InvalidParameterSpecException;
-import java.util.HexFormat;
+package de.bundeswehr.mese.sedapexpress.messages;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ECDHUtilsTest {
+class SEDAPExpressMessageTest {
 
     @Test
-    void testKeyGeneration() throws InvalidParameterSpecException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, InvalidKeyException, InvalidKeySpecException {
+    final void testRemoveSemicolons() {
 
-	// Client Key (private / public)
-	KeyPair clientKeyPair = ECDHUtils.generateKeyPair();
-
-	// Server Key (private / public)
-	KeyPair serverKeyPair = ECDHUtils.generateKeyPair();
-
-	// Client
-	byte[] secretClient = ECDHUtils.getSharedSecret(clientKeyPair.getPrivate(), serverKeyPair.getPublic());
-
-	// Server
-	byte[] secretServer = ECDHUtils.getSharedSecret(serverKeyPair.getPrivate(), clientKeyPair.getPublic());
-
-	Assertions.assertArrayEquals(secretClient, secretServer);
-
-	System.out.println("Public key client: " + HexFormat.of().withUpperCase().formatHex(clientKeyPair.getPublic().getEncoded()));
-	System.out.println("Public key server: " + HexFormat.of().withUpperCase().formatHex(serverKeyPair.getPublic().getEncoded()));
-	System.out.println();
-	System.out.println("Secret client: " + HexFormat.of().withUpperCase().formatHex(secretClient));
-	System.out.println("Secret sever:  " + HexFormat.of().withUpperCase().formatHex(secretServer));
+	Assertions.assertEquals("HEARTBEAT;42;661D5420;89AD;U;;;FE2A", SEDAPExpressMessage.removeSemicolons("HEARTBEAT;42;661D5420;89AD;U;;;FE2A"));
+	Assertions.assertEquals("HEARTBEAT;;;89AD;U", SEDAPExpressMessage.removeSemicolons("HEARTBEAT;;;89AD;U;;;"));
+	Assertions.assertEquals("HEARTBEAT;;661D5420", SEDAPExpressMessage.removeSemicolons("HEARTBEAT;;661D5420;;;;;"));
     }
+
 }

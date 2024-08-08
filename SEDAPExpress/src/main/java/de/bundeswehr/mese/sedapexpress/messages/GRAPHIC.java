@@ -110,7 +110,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
      * @param encoding
      * @param annotation
      */
-    public GRAPHIC(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public GRAPHIC(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer graphicType, Double lineWidth, Integer lineColor, Integer fillColor, String encoding, String annotation) {
 
 	super(number, time, sender, classification, acknowledgement, mac);

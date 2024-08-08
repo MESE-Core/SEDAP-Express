@@ -126,7 +126,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
      * @param publicKey
      * @param encryptedKey
      */
-    public KEYEXCHANGE(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public KEYEXCHANGE(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
 	    Integer algorithm, Integer phase, Integer keyLength, BigInteger primeNumber, BigInteger naturalNumber, PublicKey publicKey, SecretKey encryptedKey) {
 	super(number, time, sender, classification, acknowledgement, mac);
 	this.algorithm = algorithm;

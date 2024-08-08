@@ -25,6 +25,10 @@
  */
 package de.bundeswehr.mese.sedapexpress.messages;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -32,16 +36,128 @@ import org.junit.jupiter.api.Test;
  * @author Volker Voß
  *
  */
-public class OWNUNITTest {
+class OWNUNITTest {
 
     @Test
     final void testConstructorValues() {
+
+	final OWNUNIT ownunit = new OWNUNIT(
+		(short) 11,
+		456465543L,
+		"22AA",
+		'U',
+		SEDAPExpressMessage.ACKNOWLEDGE_NO,
+		"4389F10D",
+		77.88d, -10.12d, 5577.0d,
+		33.44d,
+		55.66d,
+		1.1d, -2.2d, 3.3d,
+		"Ownunit",
+		"SFGPIB----H----".toCharArray());
+
+	Assertions.assertEquals((short) 11, ownunit.getNumber());
+	Assertions.assertEquals(456465543L, ownunit.getTime());
+	Assertions.assertEquals("22AA", ownunit.getSender());
+	Assertions.assertEquals('U', ownunit.getClassification());
+	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals("4389F10D", ownunit.getMAC());
+	Assertions.assertEquals(77.88d, ownunit.getLatitude());
+	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
+	Assertions.assertEquals(5577.0d, ownunit.getAltitude());
+	Assertions.assertEquals(33.44d, ownunit.getSpeed());
+	Assertions.assertEquals(55.66d, ownunit.getCourse());
+	Assertions.assertEquals(1.1d, ownunit.getHeading());
+	Assertions.assertEquals(-2.2d, ownunit.getRoll());
+	Assertions.assertEquals(3.3d, ownunit.getPitch());
+	Assertions.assertEquals("Ownunit", ownunit.getName());
+	Assertions.assertArrayEquals("SFGPIB----H----".toCharArray(), ownunit.getSIDC());
+
+    }
+
+    @Test
+    final void testConstructorString() {
+
+	String message = "OWNUNIT;11;1B351C87;22AA;U;FALSE;4389F10D;77.88;-10.12;5577.0;33.44;55.66;1.1;-2.2;3.3;Ownunit;SFGPIB----H----";
+
+	OWNUNIT ownunit = new OWNUNIT(message);
+
+	Assertions.assertEquals((short) 0x11, ownunit.getNumber());
+	Assertions.assertEquals(0x1B351C87L, ownunit.getTime());
+	Assertions.assertEquals("22AA", ownunit.getSender());
+	Assertions.assertEquals('U', ownunit.getClassification());
+	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals("4389F10D", ownunit.getMAC());
+	Assertions.assertEquals(77.88d, ownunit.getLatitude());
+	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
+	Assertions.assertEquals(5577.0d, ownunit.getAltitude());
+	Assertions.assertEquals(33.44d, ownunit.getSpeed());
+	Assertions.assertEquals(55.66d, ownunit.getCourse());
+	Assertions.assertEquals(1.1d, ownunit.getHeading());
+	Assertions.assertEquals(-2.2d, ownunit.getRoll());
+	Assertions.assertEquals(3.3d, ownunit.getPitch());
+	Assertions.assertEquals("Ownunit", ownunit.getName());
+	Assertions.assertArrayEquals("SFGPIB----H----".toCharArray(), ownunit.getSIDC());
+
+	message = "OWNUNIT;5E;661D4410;66A3;R;;;53.32;8.11;0;5.5;21;22;;;FGS Bayern;SFSPFCLFF------";
+
+	ownunit = new OWNUNIT(message);
+
+	Assertions.assertEquals((short) 0x5E, ownunit.getNumber());
+	Assertions.assertEquals(0x661D4410L, ownunit.getTime());
+	Assertions.assertEquals("66A3", ownunit.getSender());
+	Assertions.assertEquals(SEDAPExpressMessage.RESTRICTED, ownunit.getClassification());
+	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(53.32d, ownunit.getLatitude());
+	Assertions.assertEquals(8.11d, ownunit.getLongitude());
+	Assertions.assertEquals(0d, ownunit.getAltitude());
+	Assertions.assertEquals(5.5d, ownunit.getSpeed());
+	Assertions.assertEquals(21d, ownunit.getCourse());
+	Assertions.assertEquals(22d, ownunit.getHeading());
+	Assertions.assertEquals("FGS Bayern", ownunit.getName());
+	Assertions.assertArrayEquals("SFSPFCLFF------".toCharArray(), ownunit.getSIDC());
 
     }
 
     @Test
     final void testConstructorIterator() {
 
-//	Assertions.assertEquals(testSU, SEDAPLinkableMessage.getSUfromBinarySU(SEDAPLinkableMessage.getBinarySU(testSU)));
+	Iterator<String> it = Arrays
+		.asList(
+			"11",
+			"1B351C87",
+			"22AA",
+			"U",
+			"FALSE", // SEDAPExpressMessage.ACKNOWLEDGE_NO
+			"4389F10D",
+			"77.88",
+			"-10.12",
+			"5577.0",
+			"33.44",
+			"55.66",
+			"1.1",
+			"-2.2",
+			"3.3",
+			"Ownunit",
+			"SFGPIB----H----")
+		.iterator();
+
+	OWNUNIT ownunit = new OWNUNIT(it);
+
+	Assertions.assertEquals((short) 0x11, ownunit.getNumber());
+	Assertions.assertEquals(0x1B351C87L, ownunit.getTime());
+	Assertions.assertEquals("22AA", ownunit.getSender());
+	Assertions.assertEquals('U', ownunit.getClassification());
+	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals("4389F10D", ownunit.getMAC());
+	Assertions.assertEquals(77.88d, ownunit.getLatitude());
+	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
+	Assertions.assertEquals(5577.0d, ownunit.getAltitude());
+	Assertions.assertEquals(33.44d, ownunit.getSpeed());
+	Assertions.assertEquals(55.66d, ownunit.getCourse());
+	Assertions.assertEquals(1.1d, ownunit.getHeading());
+	Assertions.assertEquals(-2.2d, ownunit.getRoll());
+	Assertions.assertEquals(3.3d, ownunit.getPitch());
+	Assertions.assertEquals("Ownunit", ownunit.getName());
+	Assertions.assertArrayEquals("SFGPIB----H----".toCharArray(), ownunit.getSIDC());
     }
 }

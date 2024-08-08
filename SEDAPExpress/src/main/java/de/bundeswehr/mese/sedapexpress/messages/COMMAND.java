@@ -95,6 +95,7 @@ public class COMMAND extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new COMMAND message
      *
      * @param number
      * @param time
@@ -107,7 +108,7 @@ public class COMMAND extends SEDAPExpressMessage {
      * @param cmdType
      * @param cmdTypeDependentParameters
      */
-    public COMMAND(Byte number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, String recipient,
+    public COMMAND(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac, String recipient,
 	    Integer cmdId, Integer cmdType, List<String> cmdTypeDependentParameters) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
@@ -119,7 +120,7 @@ public class COMMAND extends SEDAPExpressMessage {
     }
 
     /**
-     *
+     * Instantiate a new COMMAND message from a serialized message
      *
      * @param message
      */
@@ -129,6 +130,7 @@ public class COMMAND extends SEDAPExpressMessage {
     }
 
     /**
+     * Instantiate a new COMMAND message from a paramter list
      *
      * @param message
      */
@@ -142,7 +144,7 @@ public class COMMAND extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
-		this.recipient = String.valueOf(Integer.parseInt(value, 16));
+		this.recipient = value;
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
 		SEDAPExpressMessage.logger
@@ -162,25 +164,19 @@ public class COMMAND extends SEDAPExpressMessage {
 			  "Incomplete message!");
 	}
 
-	// CmdType
+	// CmdID
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (value.isBlank()) {
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
+		this.cmdId = Integer.valueOf(value, 16);
+	    } else if (!value.isBlank()) {
+		this.recipient = value;
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.INFO,
 			      "COMMAND",
 			      "COMMAND(Iterator<String> message)",
-			      "Mandatory field \"cmdType\" is empty!");
-	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.CMDTYPE_MATCHER, value)) {
-		this.cmdType = Integer.valueOf(value);
-	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "COMMAND",
-			      "COMMAND(Iterator<String> message)",
-			      "Mandatory field \"cmdType\" contains invalid value!",
+			      "Optional field \"CmdID\" contains not a valid number!",
 			      value);
 	    }
 	} else {
@@ -190,6 +186,29 @@ public class COMMAND extends SEDAPExpressMessage {
 			  "COMMAND",
 			  "COMMAND(Iterator<String> message)",
 			  "Incomplete message!");
+	}
+
+	// CmdType
+	if (message.hasNext()) {
+	    value = message.next();
+	    if (value.isBlank()) {
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.SEVERE,
+			      "COMMAND",
+			      "COMMAND(Iterator<String> message)",
+			      "Mandatory field \"cmdType\" is empty!");
+	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.CMDTYPE_MATCHER, value)) {
+		this.cmdType = Integer.valueOf(value, 16);
+	    } else {
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.SEVERE,
+			      "COMMAND",
+			      "COMMAND(Iterator<String> message)",
+			      "Mandatory field \"cmdType\" contains invalid value!",
+			      value);
+	    }
 	}
 
 	// CmdTypeDependentParameters
@@ -252,9 +271,9 @@ public class COMMAND extends SEDAPExpressMessage {
 	    return serializeHeader()
 		    .append((this.recipient != null) ? this.recipient : "")
 		    .append(";")
-		    .append((this.cmdId != null) ? this.cmdId : "")
+		    .append((this.cmdId != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdId) : "")
 		    .append(";")
-		    .append((this.cmdType != null) ? this.cmdType : "")
+		    .append((this.cmdType != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdType) : "")
 		    .append(";")
 		    .append((this.cmdTypeDependentParameters != null) ? parameters : "")
 		    .toString();
