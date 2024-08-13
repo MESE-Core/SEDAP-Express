@@ -119,6 +119,19 @@ public class GENERIC extends SEDAPExpressMessage {
 			      "Optional field \"contentType\" is empty!");
 	    } else {
 		this.contentType = value;
+		if (!("SEDAP".equals(this.contentType) ||
+			"ASCII".equals(this.contentType) ||
+			"NMEA".equals(this.contentType) ||
+			"XML".equals(this.contentType) ||
+			"JSON".equals(this.contentType) ||
+			"BINARY".equals(this.contentType))) {
+		    SEDAPExpressMessage.logger
+			    .logp(
+				  Level.INFO,
+				  "GENERIC",
+				  "GENERIC(Iterator<String> message)",
+				  "Optional field \"contentType\" has an invalid value > " + this.contentType);
+		}
 	    }
 	} else {
 	    SEDAPExpressMessage.logger
