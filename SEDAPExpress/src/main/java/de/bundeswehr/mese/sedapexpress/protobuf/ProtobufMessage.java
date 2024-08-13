@@ -286,6 +286,7 @@ public final class ProtobufMessage {
 		return true;
 	    }
 
+	    @SuppressWarnings("unchecked")
 	    @java.lang.Override
 	    public int hashCode() {
 		if (this.memoizedHashCode != 0) {
@@ -788,6 +789,7 @@ public final class ProtobufMessage {
 	    return true;
 	}
 
+	@SuppressWarnings({ "unchecked" })
 	@java.lang.Override
 	public int hashCode() {
 	    if (this.memoizedHashCode != 0) {

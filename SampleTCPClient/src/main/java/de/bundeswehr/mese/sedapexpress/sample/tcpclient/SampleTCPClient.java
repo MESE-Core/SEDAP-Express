@@ -25,6 +25,8 @@
  */
 package de.bundeswehr.mese.sedapexpress.sample.tcpclient;
 
+import java.util.Arrays;
+
 import de.bundeswehr.mese.sedapexpress.messages.CONTACT;
 import de.bundeswehr.mese.sedapexpress.messages.HEARTBEAT;
 import de.bundeswehr.mese.sedapexpress.messages.OWNUNIT;
@@ -41,17 +43,77 @@ public class SampleTCPClient implements SEDAPExpressSubscriber {
 
     private final String senderId;
 
-    private final byte numberCOMMAND = 0;
-    private final byte numberOWNUNIT = 0;
-    private final byte numberCONTACT = 0;
-    private final byte numberSTATUS = 0;
+    private short numberSTATUS = 0;
 
+    /**
+     * Instantiate a sample TCP client
+     *
+     */
     public SampleTCPClient() {
 
 	this.communicator = new SEDAPExpressTCPClient("localhost", 50000);
 
 	this.communicator.subscribeMessages(this, MessageType.OWNUNIT, MessageType.CONTACT, MessageType.HEARTBEAT, MessageType.STATUS);
 	this.senderId = this.communicator.createSenderId();
+
+	// Sample thread as example for how producing messages
+	new Thread(() -> {
+
+	    final STATUS status = new STATUS(this.numberSTATUS++,
+		    System.currentTimeMillis(),
+		    this.senderId,
+		    SEDAPExpressMessage.CONFIDENTIAL,
+		    SEDAPExpressMessage.ACKNOWLEDGE_NO,
+		    null,
+		    STATUS.TECSTATUS_Operational,
+		    STATUS.OPSSTATUS_Operational,
+		    50.0,
+		    75.3,
+		    10.8,
+		    "10.8.0.6",
+		    Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
+		    "This is a sample!");
+
+	    this.communicator.sendSEDAPExpressMessage(status);
+
+	    if (this.numberSTATUS == 7f) {
+		this.numberSTATUS = 0;
+	    }
+
+	}).start();
+
+    }
+
+    @Override
+    public void processSEDAPExpressMessage(SEDAPExpressMessage message) {
+
+	System.out.println("Received: " + message); // Use e.g. a Logger or output in a HMI
+
+	switch (message) {
+
+	case OWNUNIT ownunitMessage -> {
+	    // Write here your own processing code
+	}
+
+	case CONTACT contactMessage -> {
+
+	    // Write here your own processing code
+	}
+
+	case HEARTBEAT heartbeat -> {
+
+	    // Write here your own processing code
+	    this.communicator.sendSEDAPExpressMessage(new HEARTBEAT());
+	    System.out.println("Answered: HEARTBEAT");
+	}
+
+	case STATUS status -> {
+	    // Write here your own processing code
+	}
+
+	default -> throw new IllegalArgumentException("Unexpected value: " + message);
+
+	}
 
     }
 
@@ -64,36 +126,4 @@ public class SampleTCPClient implements SEDAPExpressSubscriber {
 
 	}
     }
-
-    @Override
-    public void processSEDAPExpressMessage(SEDAPExpressMessage message) {
-
-	System.out.println("Received: " + message);
-
-	switch (message) {
-
-	case OWNUNIT ownunitMessage -> {
-
-	}
-
-	case CONTACT contactMessage -> {
-
-	}
-
-	case HEARTBEAT heartbeat -> {
-
-	    this.communicator.sendSEDAPExpressMessage(new HEARTBEAT());
-	    System.out.println("Answered: HEARTBEAT");
-	}
-
-	case STATUS statusMessage -> {
-
-	}
-
-	default -> throw new IllegalArgumentException("Unexpected value: " + message);
-
-	}
-
-    }
-
 }

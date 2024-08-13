@@ -25,6 +25,8 @@
  */
 package de.bundeswehr.mese.sedapexpress.samples.udpclient;
 
+import java.util.Arrays;
+
 import de.bundeswehr.mese.sedapexpress.messages.CONTACT;
 import de.bundeswehr.mese.sedapexpress.messages.HEARTBEAT;
 import de.bundeswehr.mese.sedapexpress.messages.OWNUNIT;
@@ -35,50 +37,77 @@ import de.bundeswehr.mese.sedapexpress.network.SEDAPExpressCommunicator;
 import de.bundeswehr.mese.sedapexpress.network.SEDAPExpressUDPClient;
 import de.bundeswehr.mese.sedapexpress.processing.SEDAPExpressSubscriber;
 
-public class UDPClient implements SEDAPExpressSubscriber {
+public class SampleUDPClient implements SEDAPExpressSubscriber {
 
     private final SEDAPExpressCommunicator communicator;
 
-    public UDPClient() {
+    private final String senderId;
+
+    private short numberSTATUS = 0;
+
+    /**
+     * Instantiate a sample UDP client
+     */
+    public SampleUDPClient() {
 
 	this.communicator = new SEDAPExpressUDPClient("192.168.168.12", 10000);
 
 	this.communicator.subscribeMessages(this, MessageType.OWNUNIT, MessageType.CONTACT, MessageType.HEARTBEAT, MessageType.STATUS);
+	this.senderId = this.communicator.createSenderId();
 
-    }
+	// Sample thread as example for how producing messages
+	new Thread(() -> {
 
-    public static void main(String[] args) {
-	new UDPClient();
+	    final STATUS status = new STATUS(this.numberSTATUS++,
+		    System.currentTimeMillis(),
+		    this.senderId,
+		    SEDAPExpressMessage.CONFIDENTIAL,
+		    SEDAPExpressMessage.ACKNOWLEDGE_NO,
+		    null,
+		    STATUS.TECSTATUS_Operational,
+		    STATUS.OPSSTATUS_Operational,
+		    50.0,
+		    75.3,
+		    10.8,
+		    "10.8.0.6",
+		    Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
+		    "This is a sample!");
 
-	try {
-	    Thread.sleep(Integer.MAX_VALUE);
-	} catch (InterruptedException e) {
-	}
+	    this.communicator.sendSEDAPExpressMessage(status);
+
+	    if (this.numberSTATUS == 7f) {
+		this.numberSTATUS = 0;
+	    }
+
+	}).start();
+
     }
 
     @Override
     public void processSEDAPExpressMessage(SEDAPExpressMessage message) {
 
-	System.out.println("Received: " + message);
+	System.out.println("Received: " + message); // Use e.g. a Logger or output in a HMI
 
 	switch (message) {
 
 	case OWNUNIT ownunitMessage -> {
-
+	    // Write here your own processing code
 	}
 
 	case CONTACT contactMessage -> {
 
+	    // Write here your own processing code
 	}
 
 	case HEARTBEAT heartbeat -> {
 
+	    // Write here your own processing code
 	    this.communicator.sendSEDAPExpressMessage(new HEARTBEAT());
 	    System.out.println("Answered: HEARTBEAT");
 	}
 
 	case STATUS status -> {
-
+	    // Write here your own processing code
 	}
 
 	default -> throw new IllegalArgumentException("Unexpected value: " + message);
@@ -87,4 +116,12 @@ public class UDPClient implements SEDAPExpressSubscriber {
 
     }
 
+    public static void main(String[] args) {
+	new SampleUDPClient();
+
+	try {
+	    Thread.sleep(Integer.MAX_VALUE);
+	} catch (InterruptedException e) {
+	}
+    }
 }
