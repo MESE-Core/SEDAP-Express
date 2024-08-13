@@ -30,6 +30,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
 
@@ -40,6 +42,11 @@ import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
  *
  */
 public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements Runnable {
+
+    protected static Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    static {
+	SEDAPExpressTCPClient.logger.setLevel(Level.ALL);
+    }
 
     private DatagramSocket socket;
 
@@ -92,17 +99,9 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
 	} catch (final IOException e) {
 	    e.printStackTrace();
-	}
-
-    }
-
-    public void stopAISUDPReceiver() {
-
-	if (this.socket != null) {
+	} finally {
 	    this.socket.close();
 	}
-
-	this.status = false;
 
     }
 
@@ -123,4 +122,15 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 	return false;
     }
 
+    @Override
+    public void stopCommunicator() {
+
+	this.status = false;
+
+	if (this.socket != null) {
+	    this.socket.close();
+	}
+
+	SEDAPExpressUDPClient.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "stopCommunicator()", "Communicator stopped");
+    }
 }

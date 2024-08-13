@@ -172,6 +172,11 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 		if (this.clients != null) {
 		    this.clients.remove(this);
 		}
+	    } finally {
+		try {
+		    this.socket.close();
+		} catch (IOException e) {
+		}
 	    }
 	}
     }
@@ -191,5 +196,18 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
     public boolean isStatus() {
 
 	return this.status;
+    }
+
+    @Override
+    public void stopCommunicator() {
+
+	this.status = false;
+
+	try {
+	    this.socket.close();
+	} catch (IOException e) {
+	}
+
+	SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "stopCommunicator()", "Communicator stopped");
     }
 }

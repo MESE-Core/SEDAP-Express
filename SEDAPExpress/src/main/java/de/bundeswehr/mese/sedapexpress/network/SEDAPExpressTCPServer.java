@@ -25,6 +25,7 @@
  */
 package de.bundeswehr.mese.sedapexpress.network;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -46,6 +47,7 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	SEDAPExpressTCPServer.logger.setLevel(Level.ALL);
     }
 
+    private ServerSocketChannel serverSocket;
     private final String intf;
     private final int port;
 
@@ -82,18 +84,25 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
     public void run() {
 	while (this.status) {
 
-	    try (ServerSocketChannel serverSocket = ServerSocketChannel.open()) {
-		serverSocket.configureBlocking(true);
-		serverSocket.bind(new InetSocketAddress(this.intf, this.port));
+	    try {
+
+		this.serverSocket = ServerSocketChannel.open();
+		this.serverSocket.configureBlocking(true);
+		this.serverSocket.bind(new InetSocketAddress(this.intf, this.port));
 
 		SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "Listening on port: " + this.port);
-		SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(serverSocket.accept(), this.clients, this.subscriptions);
+		SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(this.serverSocket.accept(), this.clients, this.subscriptions);
 		this.clients.add(newClient);
 
 	    } catch (Exception e) {
 		e.printStackTrace();
 		this.status = false;
 		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()", "Could not listening on port: " + this.port, e);
+	    } finally {
+		try {
+		    this.serverSocket.close();
+		} catch (IOException e) {
+		}
 	    }
 	}
 
@@ -111,5 +120,20 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	});
 
 	return false;
+    }
+
+    @Override
+    public void stopCommunicator() {
+
+	this.status = false;
+
+	try {
+	    this.serverSocket.close();
+	} catch (IOException e) {
+	}
+
+	this.clients.forEach(SEDAPExpressTCPClient::stopCommunicator);
+
+	SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "stopCommunicator()", "Communicator stopped");
     }
 }

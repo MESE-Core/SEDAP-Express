@@ -122,4 +122,5 @@ public abstract class SEDAPExpressCommunicator {
 	return HexFormat.of().toHexDigits((short) Math.round(Math.random() * 65535));
     }
 
+    public abstract void stopCommunicator();
 }
