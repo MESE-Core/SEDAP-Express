@@ -447,23 +447,23 @@ public class OWNUNIT extends SEDAPExpressMessage {
 
 	return serializeHeader()
 
-		.append((this.latitude != null) ? this.latitude : "")
+		.append((this.latitude != null) ? SEDAPExpressMessage.numberFormatter.format(this.latitude) : "")
 		.append(";")
-		.append(this.longitude != null ? this.longitude : "")
+		.append(this.longitude != null ? SEDAPExpressMessage.numberFormatter.format(this.longitude) : "")
 		.append(";")
-		.append(this.altitude != null ? this.altitude : "")
-		.append(";")
-
-		.append(this.speed != null ? this.speed : "")
-		.append(";")
-		.append(this.course != null ? this.course : "")
+		.append(this.altitude != null ? SEDAPExpressMessage.numberFormatter.format(this.altitude) : "")
 		.append(";")
 
-		.append(this.heading != null ? this.heading : "")
+		.append(this.speed != null ? SEDAPExpressMessage.numberFormatter.format(this.speed) : "")
 		.append(";")
-		.append(this.roll != null ? this.roll : "")
+		.append(this.course != null ? SEDAPExpressMessage.numberFormatter.format(this.course) : "")
 		.append(";")
-		.append(this.pitch != null ? this.pitch : "")
+
+		.append(this.heading != null ? SEDAPExpressMessage.numberFormatter.format(this.heading) : "")
+		.append(";")
+		.append(this.roll != null ? SEDAPExpressMessage.numberFormatter.format(this.roll) : "")
+		.append(";")
+		.append(this.pitch != null ? SEDAPExpressMessage.numberFormatter.format(this.pitch) : "")
 		.append(";")
 
 		.append(this.name != null ? this.name : "")

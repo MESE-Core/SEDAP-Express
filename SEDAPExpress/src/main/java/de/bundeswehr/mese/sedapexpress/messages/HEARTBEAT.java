@@ -77,7 +77,6 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 
     /**
      *
-     * @param message
      */
     public HEARTBEAT() {
 

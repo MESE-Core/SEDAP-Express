@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,8 +78,14 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
     public void run() {
 
 	try {
-	    this.socket = new DatagramSocket(this.port);
-	    // this.socket.setBroadcast(true);
+
+	    if (InetAddress.getByName(this.receiver).isMulticastAddress()) {
+		this.socket = new MulticastSocket(this.port);
+	    } else {
+		this.socket = new DatagramSocket(this.port);
+	    }
+
+	    this.socket.setBroadcast(true);
 	    this.socket.setReuseAddress(true);
 
 	    while (this.status) {
@@ -89,12 +96,7 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
 		Arrays
 			.asList(new String(packet.getData(), 0, packet.getLength()).split("\n"))
-			.forEach(
-				 message -> {
-				     System.out.println(message);
-
-				     distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage.deserialize(message));
-				 });
+			.forEach(message -> distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage.deserialize(message)));
 	    }
 
 	} catch (final IOException e) {

@@ -84,14 +84,12 @@ public abstract class SEDAPExpressCommunicator {
      * @param clazzes    Collection of message types which should be unsubscribe
      */
     public void unsubscribeMessages(SEDAPExpressSubscriber subscriber, Collection<MessageType> clazzes) {
-	clazzes.forEach(clazz -> {
+	clazzes.forEach(clazz ->
 
-	    this.subscriptions.computeIfPresent(clazz, (key, value) -> {
-		value.remove(subscriber);
-		return value;
-	    });
-
-	});
+	this.subscriptions.computeIfPresent(clazz, (key, value) -> {
+	    value.remove(subscriber);
+	    return value;
+	}));
     }
 
     /**

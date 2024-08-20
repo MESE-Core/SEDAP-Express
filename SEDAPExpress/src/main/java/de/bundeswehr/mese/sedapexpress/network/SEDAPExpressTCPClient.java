@@ -80,7 +80,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 	this.host = host;
 	this.port = port;
 
-	this.clients = new ConcurrentLinkedDeque<SEDAPExpressTCPClient>();
+	this.clients = new ConcurrentLinkedDeque<>();
 	this.subscriptions = new ConcurrentHashMap<MessageType, Set<SEDAPExpressSubscriber>>();
 
 	new Thread(this).start();
@@ -159,7 +159,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 			}
 		    }
 		} catch (Exception e) {
-		    e.printStackTrace();
+		    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage(), e);
 		    this.status = false;
 		    if (this.clients != null) {
 			this.clients.remove(this);
@@ -167,7 +167,8 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 		}
 
 	    } catch (Exception e) {
-		e.printStackTrace();
+
+		SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage(), e);
 		this.status = false;
 		if (this.clients != null) {
 		    this.clients.remove(this);

@@ -53,7 +53,7 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 
     private boolean status = true;
 
-    private final ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients = new ConcurrentLinkedDeque<SEDAPExpressTCPClient>();
+    private final ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients = new ConcurrentLinkedDeque<>();
 
     /**
      * Instantiate a new SEDAP-Express TCP Server on the given interface
@@ -95,7 +95,6 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 		this.clients.add(newClient);
 
 	    } catch (Exception e) {
-		e.printStackTrace();
 		this.status = false;
 		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()", "Could not listening on port: " + this.port, e);
 	    } finally {

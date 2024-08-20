@@ -28,12 +28,16 @@ package de.bundeswehr.mese.sedapexpress.messages;
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -86,6 +90,8 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    this.type = type;
 	}
     }
+
+    public static final NumberFormat numberFormatter = new DecimalFormat("##.############", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
     public static final String ENCODING_BASE64 = "BASE64";
     public static final String ENCODING_NONE = "NONE";
@@ -168,7 +174,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     private String mac;
 
-    public static HexFormat formatter = HexFormat.of().withUpperCase();
+    public static final HexFormat formatter = HexFormat.of().withUpperCase();
 
     public Short getNumber() {
 	return this.number;
@@ -865,5 +871,4 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	}
 	return message;
     }
-
 }

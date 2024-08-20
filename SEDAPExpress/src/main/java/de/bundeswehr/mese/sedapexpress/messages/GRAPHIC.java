@@ -291,7 +291,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	return serializeHeader()
 		.append((this.graphicType != null) ? this.graphicType : "")
 		.append(";")
-		.append((this.lineWidth != null) ? this.lineWidth : "")
+		.append((this.lineWidth != null) ? SEDAPExpressMessage.numberFormatter.format(this.lineWidth) : "")
 		.append(";")
 		.append((this.lineColor != null) ? this.lineColor : "")
 		.append(";")
@@ -299,7 +299,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.encoding != null) ? this.encoding : "")
 		.append(";")
-		.append((this.annotation != null) ? ((SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.annotation.getBytes()) : "")) : "")
+		.append((this.annotation != null) ? (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.annotation.getBytes()) : "") : "")
 		.toString();
     }
 

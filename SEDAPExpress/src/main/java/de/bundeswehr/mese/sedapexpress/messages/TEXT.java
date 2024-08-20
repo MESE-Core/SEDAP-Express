@@ -45,7 +45,7 @@ public class TEXT extends SEDAPExpressMessage {
 
     private String encoding;
 
-    private String text;
+    private String textContent;
 
     private String recipient;
 
@@ -65,12 +65,12 @@ public class TEXT extends SEDAPExpressMessage {
 	this.encoding = encoding;
     }
 
-    public String getText() {
-	return this.text;
+    public String getTextContent() {
+	return this.textContent;
     }
 
-    public void setText(String text) {
-	this.text = text;
+    public void setTextContent(String text) {
+	this.textContent = text;
     }
 
     public String getRecipient() {
@@ -91,17 +91,17 @@ public class TEXT extends SEDAPExpressMessage {
      * @param mac
      * @param type
      * @param encoding
-     * @param text
+     * @param textContent
      * @param recipient
      */
     public TEXT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
-	    Integer type, String encoding, String text, String recipient) {
+	    Integer type, String encoding, String textContent, String recipient) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.type = type;
 	this.encoding = encoding;
-	this.text = text;
+	this.textContent = textContent;
 	this.recipient = recipient;
     }
 
@@ -214,7 +214,7 @@ public class TEXT extends SEDAPExpressMessage {
 	    } else {
 		if (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding)) {
 		    try {
-			this.text = new String(Base64.decode(value));
+			this.textContent = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
 			SEDAPExpressMessage.logger
 				.logp(
@@ -225,7 +225,7 @@ public class TEXT extends SEDAPExpressMessage {
 		    }
 
 		} else {
-		    this.text = value;
+		    this.textContent = value;
 		}
 	    }
 	} else {
@@ -254,8 +254,8 @@ public class TEXT extends SEDAPExpressMessage {
 			    ((this.encoding != null) && this.encoding.equals(((TEXT) obj).encoding)))
 		    &&
 
-		    (((this.text == null) && (((TEXT) obj).text == null)) ||
-			    ((this.text != null) && this.text.equals(((TEXT) obj).text)))
+		    (((this.textContent == null) && (((TEXT) obj).textContent == null)) ||
+			    ((this.textContent != null) && this.textContent.equals(((TEXT) obj).textContent)))
 		    &&
 
 		    (((this.recipient == null) && (((TEXT) obj).recipient == null)) ||
@@ -276,7 +276,7 @@ public class TEXT extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.encoding != null) ? this.encoding : "")
 		.append(";")
-		.append((this.text != null) ? ((SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.text.getBytes()) : "")) : "")
+		.append((this.textContent != null) ? (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.textContent.getBytes()) : "") : "")
 		.append(";")
 		.append((this.recipient != null) ? this.recipient : "")
 		.toString();

@@ -76,7 +76,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TEXT.TYPE_Alert, text.getType());
 	Assertions.assertEquals(TEXT.ENCODING_NONE, text.getEncoding());
-	Assertions.assertEquals("\"This is an alert!\"", text.getText());
+	Assertions.assertEquals("\"This is an alert!\"", text.getTextContent());
 
 	message = "TEXT;D4;661D458E;324E;C;TRUE;;;2;NONE;\"This is a warning!\"";
 
@@ -91,7 +91,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TEXT.TYPE_Warning, text.getType());
 	Assertions.assertEquals(TEXT.ENCODING_NONE, text.getEncoding());
-	Assertions.assertEquals("\"This is a warning!\"", text.getText());
+	Assertions.assertEquals("\"This is a warning!\"", text.getTextContent());
 
 	message = "TEXT;D5;661D6565;324E;R;;;;3;;\"This is a notice!\"";
 
@@ -106,7 +106,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TEXT.TYPE_Notice, text.getType());
 	Assertions.assertEquals(TEXT.ENCODING_NONE, text.getEncoding());
-	Assertions.assertEquals("\"This is a notice!\"", text.getText());
+	Assertions.assertEquals("\"This is a notice!\"", text.getTextContent());
 
 	message = "TEXT;D6;661D7032;324E;U;;;E4F1;4;BASE64;IlRoaXMgaXMgYSBjaGF0IG1lc3NhZ2UhIg==";
 
@@ -121,7 +121,7 @@ class TEXTTest {
 	Assertions.assertEquals("E4F1", text.getRecipient());
 	Assertions.assertEquals(TEXT.TYPE_Chat, text.getType());
 	Assertions.assertEquals(TEXT.ENCODING_BASE64, text.getEncoding());
-	Assertions.assertEquals("\"This is a chat message!\"", text.getText());
+	Assertions.assertEquals("\"This is a chat message!\"", text.getTextContent());
     }
 
     @Test
