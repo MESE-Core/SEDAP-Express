@@ -826,7 +826,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	StringBuilder result = new StringBuilder(this.getClass().getSimpleName()).append(';');
 
 	if (this.number != null) {
-	    result.append(SEDAPExpressMessage.HEXFOMATER.toHexDigits((this.number)));
+	    result.append(SEDAPExpressMessage.HEXFOMATER.toHexDigits((this.number)).substring(2));
 	}
 	result.append(';');
 
