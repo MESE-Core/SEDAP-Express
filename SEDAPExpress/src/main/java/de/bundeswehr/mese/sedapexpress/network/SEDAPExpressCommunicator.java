@@ -115,10 +115,15 @@ public abstract class SEDAPExpressCommunicator {
 	}
     }
 
+    public abstract boolean connect();
+
     public String createSenderId() {
 
 	return HexFormat.of().toHexDigits((short) Math.round(Math.random() * 65535));
     }
 
     public abstract void stopCommunicator();
+
+    public abstract Exception getLastException();
+
 }

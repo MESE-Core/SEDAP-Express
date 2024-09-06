@@ -31,6 +31,9 @@ import java.util.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
+
 /**
  *
  * @author Volker Voß
@@ -45,8 +48,8 @@ class OWNUNITTest {
 		(short) 11,
 		456465543L,
 		"22AA",
-		'U',
-		SEDAPExpressMessage.ACKNOWLEDGE_NO,
+		Classification.UNCLAS,
+		Acknowledgement.NO,
 		"4389F10D",
 		77.88d, -10.12d, 5577.0d,
 		33.44d,
@@ -58,8 +61,8 @@ class OWNUNITTest {
 	Assertions.assertEquals((short) 11, ownunit.getNumber());
 	Assertions.assertEquals(456465543L, ownunit.getTime());
 	Assertions.assertEquals("22AA", ownunit.getSender());
-	Assertions.assertEquals('U', ownunit.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", ownunit.getMAC());
 	Assertions.assertEquals(77.88d, ownunit.getLatitude());
 	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
@@ -84,8 +87,8 @@ class OWNUNITTest {
 	Assertions.assertEquals((short) 0x11, ownunit.getNumber());
 	Assertions.assertEquals(0x1B351C87L, ownunit.getTime());
 	Assertions.assertEquals("22AA", ownunit.getSender());
-	Assertions.assertEquals('U', ownunit.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", ownunit.getMAC());
 	Assertions.assertEquals(77.88d, ownunit.getLatitude());
 	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
@@ -105,8 +108,8 @@ class OWNUNITTest {
 	Assertions.assertEquals((short) 0x5E, ownunit.getNumber());
 	Assertions.assertEquals(0x661D4410L, ownunit.getTime());
 	Assertions.assertEquals("66A3", ownunit.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.RESTRICTED, ownunit.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.RESTRICTED, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
 	Assertions.assertEquals(53.32d, ownunit.getLatitude());
 	Assertions.assertEquals(8.11d, ownunit.getLongitude());
 	Assertions.assertEquals(0d, ownunit.getAltitude());
@@ -146,8 +149,8 @@ class OWNUNITTest {
 	Assertions.assertEquals((short) 0x11, ownunit.getNumber());
 	Assertions.assertEquals(0x1B351C87L, ownunit.getTime());
 	Assertions.assertEquals("22AA", ownunit.getSender());
-	Assertions.assertEquals('U', ownunit.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", ownunit.getMAC());
 	Assertions.assertEquals(77.88d, ownunit.getLatitude());
 	Assertions.assertEquals(-10.12d, ownunit.getLongitude());

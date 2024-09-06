@@ -33,12 +33,10 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,79 +56,165 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public enum MessageType {
 
-	ACKNOWLEDGE("ACKNOWLEDGE"),
-	COMMAND("COMMAND"),
-	CONTACT("CONTACT"),
-	EMISSION("EMISSION"),
-	GENERIC("GENERIC"),
-	GRAPHIC("GRAPHIC"),
-	HEARTBEAT("HEARTBEAT"),
-	KEYEXCHANGE("KEYEXCHANGE"),
-	METEO("METEO"),
-	OWNUNIT("OWNUNIT"),
-	RESEND("RESEND"),
-	STATUS("STATUS"),
-	TEXT("TEXT"),;
+	ACKNOWLEDGE,
+	COMMAND,
+	CONTACT,
+	EMISSION,
+	GENERIC,
+	GRAPHIC,
+	HEARTBEAT,
+	KEYEXCHANGE,
+	METEO,
+	OWNUNIT,
+	RESEND,
+	STATUS,
+	TEXT;
 
-	private static final Map<String, MessageType> types = new HashMap<>();
-
-	static {
-	    for (MessageType e : MessageType.values()) {
-		MessageType.types.put(e.type, e);
-	    }
-	}
-
-	public static MessageType valueOfType(String type) {
-	    return MessageType.types.get(type);
-	}
-
-	public final String type;
-
-	private MessageType(String type) {
-	    this.type = type;
+	public static MessageType valueOfMessageType(String type) {
+	    return MessageType.valueOf(type.toUpperCase());
 	}
     }
 
     public static final NumberFormat numberFormatter = new DecimalFormat("##.############", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
-    public static final String ENCODING_BASE64 = "BASE64";
-    public static final String ENCODING_NONE = "NONE";
+    public enum TextEncoding {
+	NONE, BASE64;
 
-    public static final char NONE = '-';
-    public static final char PUBLIC = 'P';
-    public static final char UNCLAS = 'U';
-    public static final char RESTRICTED = 'R';
-    public static final char CONFIDENTIAL = 'C';
-    public static final char SECRET = 'S';
-    public static final char TOP_SECRET = 'T';
+	public static TextEncoding valueOfTextEncoding(String type) {
+	    if ("BASE64".equalsIgnoreCase(type)) {
+		return BASE64;
+	    } else {
+		return NONE;
+	    }
+	}
 
-    public static final char NATO_RESTRICTED = SEDAPExpressMessage.RESTRICTED;
-    public static final char NATO_CONFIDENTIAL = SEDAPExpressMessage.CONFIDENTIAL;
-    public static final char NATO_SECRET = SEDAPExpressMessage.SECRET;
-    public static final char COSMIC_TOP_SECRET = SEDAPExpressMessage.TOP_SECRET;
+	public static TextEncoding valueOfTextEncoding(int type) {
+	    if (type == 1) {
+		return BASE64;
+	    } else {
+		return NONE;
+	    }
+	}
 
-    public static final char EU_RESTRICTED = SEDAPExpressMessage.RESTRICTED;
-    public static final char EU_CONFIDENTIAL = SEDAPExpressMessage.CONFIDENTIAL;
-    public static final char EU_SECRET = SEDAPExpressMessage.SECRET;
-    public static final char EU_TOP_SECRET = SEDAPExpressMessage.TOP_SECRET;
+    }
 
-    public static final char RESTREINT_UE = SEDAPExpressMessage.RESTRICTED;
-    public static final char CONFIDENTIEL_UE = SEDAPExpressMessage.CONFIDENTIAL;
-    public static final char SECRET_UE = SEDAPExpressMessage.SECRET;
-    public static final char TRES_SECRET_UE = SEDAPExpressMessage.TOP_SECRET;
+    public enum Classification {
+	NONE('-'),
+	PUBLIC('P'),
+	UNCLAS('U'),
+	RESTRICTED('R'),
+	CONFIDENTIAL('C'),
+	SECRET('S'),
+	TOP_SECRET('T');
 
-    public static final char KEINE = SEDAPExpressMessage.NONE;
-    public static final char OEFFENTLICH = SEDAPExpressMessage.PUBLIC;
-    public static final char OFFEN = SEDAPExpressMessage.UNCLAS;
-    public static final char VS_NFD = SEDAPExpressMessage.RESTRICTED;
-    public static final char VS_VERTRAULICH = SEDAPExpressMessage.CONFIDENTIAL;
-    public static final char GEHEIM = SEDAPExpressMessage.SECRET;
-    public static final char STRENG_GEHEIM = SEDAPExpressMessage.TOP_SECRET;
+	public static Classification getValueOfClassificationChar(char character) {
+	    return switch (character) {
+	    case '-' -> Classification.NONE;
+	    case 'P', 'p' -> Classification.PUBLIC;
+	    case 'U', 'u' -> Classification.UNCLAS;
+	    case 'R', 'r' -> Classification.RESTRICTED;
+	    case 'C', 'c' -> Classification.CONFIDENTIAL;
+	    case 'S', 's' -> Classification.SECRET;
+	    case 'T', 't' -> Classification.TOP_SECRET;
+	    default -> Classification.NONE;
+	    };
+	}
 
-    public static final boolean ACKNOWLEDGE_YES = true;
-    public static final boolean ACKNOWLEDGE_NO = false;
+	char value;
+
+	public char getValue() {
+	    return this.value;
+	}
+
+	Classification(char classification) {
+	    this.value = classification;
+	}
+
+    }
+
+    public static final Classification NATO_RESTRICTED = Classification.RESTRICTED;
+    public static final Classification NATO_CONFIDENTIAL = Classification.CONFIDENTIAL;
+    public static final Classification NATO_SECRET = Classification.SECRET;
+    public static final Classification COSMIC_TOP_SECRET = Classification.TOP_SECRET;
+
+    public static final Classification EU_RESTRICTED = Classification.RESTRICTED;
+    public static final Classification EU_CONFIDENTIAL = Classification.CONFIDENTIAL;
+    public static final Classification EU_SECRET = Classification.SECRET;
+    public static final Classification EU_TOP_SECRET = Classification.TOP_SECRET;
+
+    public static final Classification RESTREINT_UE = Classification.RESTRICTED;
+    public static final Classification CONFIDENTIEL_UE = Classification.CONFIDENTIAL;
+    public static final Classification SECRET_UE = Classification.SECRET;
+    public static final Classification TRES_SECRET_UE = Classification.TOP_SECRET;
+
+    public static final Classification KEINE = Classification.NONE;
+    public static final Classification OEFFENTLICH = Classification.PUBLIC;
+    public static final Classification OFFEN = Classification.UNCLAS;
+    public static final Classification VS_NFD = Classification.RESTRICTED;
+    public static final Classification VS_VERTRAULICH = Classification.CONFIDENTIAL;
+    public static final Classification GEHEIM = Classification.SECRET;
+    public static final Classification STRENG_GEHEIM = Classification.TOP_SECRET;
+
+    public enum Acknowledgement {
+	NO, YES;
+
+	public static Acknowledgement valueOfAcknowledgement(String acknowledgement) {
+
+	    if ("YES".equalsIgnoreCase(acknowledgement)) {
+		return YES;
+	    } else {
+		return NO;
+	    }
+	}
+
+	public static Acknowledgement valueOfAcknowledgement(int acknowledgement) {
+
+	    if (acknowledgement == 1) {
+		return YES;
+	    } else {
+		return NO;
+	    }
+	}
+
+    }
 
     public static final HexFormat HEXFOMATER = HexFormat.of().withUpperCase();
+
+    // Environment
+    public static final char ENVIRONMENT_UNKNOWN = 'z';
+    public static final char ENVIRONMENT_SPACE = 'p';
+    public static final char ENVIRONMENT_AIR = 'a';
+    public static final char ENVIRONMENT_SURFACE = 's';
+    public static final char ENVIRONMENT_SUBSURFACE = 'u';
+    public static final char ENVIRONMENT_GROUND = 'g';
+
+    public static final List<String> dimensionsList = new ArrayList<>(Arrays
+	    .asList(
+		    "Unknown",
+		    "Space",
+		    "Air",
+		    "Surface",
+		    "SubSurface",
+		    "Ground"));
+
+    // Identity
+    public static final char IDENT_PENDING = 'p';
+    public static final char IDENT_UNKNOWN = 'u';
+    public static final char IDENT_HOSTILE = 'h';
+    public static final char IDENT_SUSPECT = 's';
+    public static final char IDENT_NEUTRAL = 'n';
+    public static final char IDENT_ASSFRIEND = 'a';
+    public static final char IDENT_FRIEND = 'f';
+
+    public static final List<String> identitiesList = new ArrayList<>(Arrays
+	    .asList(
+		    "Pending",
+		    "Unknown",
+		    "Hostile",
+		    "Suspect",
+		    "Neutral",
+		    "Assumed friend",
+		    "Friend"));
 
     public static final Pattern NAME_MATCHER = Pattern.compile("^[a-zA-Z]+$"); // Name
     public static final Pattern NUMBER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,2}$"); // Number
@@ -142,6 +226,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern DOUBLE_MATCHER = Pattern.compile("^-?\\d+.?\\d*$"); // Double
     public static final Pattern POSITIVE_DOUBLE_MATCHER = Pattern.compile("^\\d+.?\\d*$"); // Double
     public static final Pattern DOUBLE_LIST_MATCHER = Pattern.compile("^[\\d.?\\d?#]*$"); // Double
+    public static final Pattern POS_INTEGER_MATCHER = Pattern.compile("^\\d+$"); // Positive Integer
     public static final Pattern INTEGER_MATCHER = Pattern.compile("^-?\\d+$"); // Integer
     public static final Pattern BIGINTEGER_MATCHER = Pattern.compile("^([A-Fa-f0-9][A-Fa-f0-9])+$"); // Hexadecimal BigInteger
 
@@ -168,9 +253,9 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     private String sender;
 
-    private Character classification;
+    private Classification classification;
 
-    private Boolean acknowledgement;
+    private Acknowledgement acknowledgement;
 
     private String mac;
 
@@ -200,19 +285,19 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	this.sender = sender;
     }
 
-    public Character getClassification() {
+    public Classification getClassification() {
 	return this.classification;
     }
 
-    public void setClassification(Character classification) {
+    public void setClassification(Classification classification) {
 	this.classification = classification;
     }
 
-    public Boolean getAcknowledgement() {
+    public Acknowledgement getAcknowledgement() {
 	return this.acknowledgement;
     }
 
-    public void setAcknowledgement(Boolean acknowledgement) {
+    public void setAcknowledgement(Acknowledgement acknowledgement) {
 	this.acknowledgement = acknowledgement;
     }
 
@@ -225,7 +310,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     public MessageType getMessageType() {
-	return MessageType.valueOfType(this.getClass().getSimpleName());
+	return MessageType.valueOfMessageType(this.getClass().getSimpleName());
     }
 
     @Override
@@ -256,12 +341,12 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static char getClassificationFromIndex(final int selectedIndex) {
 
 	return switch (selectedIndex) {
-	case 0 -> SEDAPExpressMessage.PUBLIC;
-	case 1 -> SEDAPExpressMessage.UNCLAS;
-	case 2 -> SEDAPExpressMessage.RESTRICTED;
-	case 3 -> SEDAPExpressMessage.CONFIDENTIAL;
-	case 4 -> SEDAPExpressMessage.SECRET;
-	case 5 -> SEDAPExpressMessage.TOP_SECRET;
+	case 0 -> Classification.PUBLIC.value;
+	case 1 -> Classification.UNCLAS.value;
+	case 2 -> Classification.RESTRICTED.value;
+	case 3 -> Classification.CONFIDENTIAL.value;
+	case 4 -> Classification.SECRET.value;
+	case 5 -> Classification.TOP_SECRET.value;
 	default -> '-';
 	};
     }
@@ -275,21 +360,21 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      */
     public static char getMaxClassification(final char classification1, final char classification2) {
 
-	return switch (classification1) {
+	return switch (Classification.getValueOfClassificationChar(classification1)) {
 	case NONE, PUBLIC -> classification2;
-	case UNCLAS -> switch (classification2) {
+	case UNCLAS -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC -> classification1;
 	default -> classification2;
 	};
-	case RESTRICTED -> switch (classification2) {
+	case RESTRICTED -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC, UNCLAS -> classification1;
 	default -> classification2;
 	};
-	case CONFIDENTIAL -> switch (classification2) {
+	case CONFIDENTIAL -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC, UNCLAS, RESTRICTED -> classification1;
 	default -> classification2;
 	};
-	case SECRET -> switch (classification2) {
+	case SECRET -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC, UNCLAS, RESTRICTED, CONFIDENTIAL -> classification1;
 	default -> classification2;
 	};
@@ -307,21 +392,21 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      */
     public static char getMinClassification(final char classification1, final char classification2) {
 
-	return switch (classification1) {
+	return switch (Classification.getValueOfClassificationChar(classification1)) {
 	case PUBLIC -> classification1;
-	case UNCLAS -> switch (classification2) {
+	case UNCLAS -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC -> classification2;
 	default -> classification1;
 	};
-	case RESTRICTED -> switch (classification2) {
+	case RESTRICTED -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC, UNCLAS -> classification2;
 	default -> classification1;
 	};
-	case CONFIDENTIAL -> switch (classification2) {
+	case CONFIDENTIAL -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC, UNCLAS, RESTRICTED -> classification2;
 	default -> classification1;
 	};
-	case SECRET -> switch (classification2) {
+	case SECRET -> switch (Classification.getValueOfClassificationChar(classification2)) {
 	case PUBLIC, UNCLAS, RESTRICTED, CONFIDENTIAL -> classification2;
 	default -> classification1;
 	};
@@ -337,6 +422,25 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      * @return the matching textual representation
      */
     public static String getClassificationFullNameFromClassification(final char classification) {
+
+	return switch (Classification.getValueOfClassificationChar(classification)) {
+	case PUBLIC -> "public";
+	case UNCLAS -> "unclas";
+	case RESTRICTED -> "restricted";
+	case CONFIDENTIAL -> "confidential";
+	case SECRET -> "secret";
+	case TOP_SECRET -> "top secret";
+	default -> "-";
+	};
+    }
+
+    /**
+     * Returns the textual representation of the given classification code.
+     *
+     * @param classification
+     * @return the matching textual representation
+     */
+    public static String getClassificationFullNameFromClassification(final Classification classification) {
 
 	return switch (classification) {
 	case PUBLIC -> "public";
@@ -365,12 +469,12 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 		.replace(
 			 " ",
 			 "")) {
-	case "OEFFENTLICH", "PUBLIC" -> SEDAPExpressMessage.PUBLIC;
-	case "OFFEN", "UNCLAS" -> SEDAPExpressMessage.UNCLAS;
-	case "VS-NFD", "RESTRICTED" -> SEDAPExpressMessage.RESTRICTED;
-	case "VS-VERTRAULICH", "CONFIDENTIAL" -> SEDAPExpressMessage.CONFIDENTIAL;
-	case "GEHEIM", "VS-GEHEIM", "SECRET" -> SEDAPExpressMessage.SECRET;
-	case "STRENGGEHEIM", "VS-STRENGGEHEIM", "TOP SECRET" -> SEDAPExpressMessage.TOP_SECRET;
+	case "OEFFENTLICH", "PUBLIC" -> Classification.PUBLIC.value;
+	case "OFFEN", "UNCLAS" -> Classification.UNCLAS.value;
+	case "VS-NFD", "RESTRICTED" -> Classification.RESTRICTED.value;
+	case "VS-VERTRAULICH", "CONFIDENTIAL" -> Classification.CONFIDENTIAL.value;
+	case "GEHEIM", "VS-GEHEIM", "SECRET" -> Classification.SECRET.value;
+	case "STRENGGEHEIM", "VS-STRENGGEHEIM", "TOP SECRET" -> Classification.TOP_SECRET.value;
 	default -> '-';
 	};
     }
@@ -385,25 +489,28 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      */
     public static boolean isClassificationIncluded(final char classification, final char maxClassification) {
 
-	return switch (classification) {
-	case NONE -> false;
-	case PUBLIC -> true; // Always permitted
-	case UNCLAS ->
-	    (maxClassification == SEDAPExpressMessage.UNCLAS) || (maxClassification == SEDAPExpressMessage.RESTRICTED)
-		    || (maxClassification == SEDAPExpressMessage.CONFIDENTIAL)
-		    || (maxClassification == SEDAPExpressMessage.SECRET)
-		    || (maxClassification == SEDAPExpressMessage.TOP_SECRET);
-	case RESTRICTED -> (maxClassification == SEDAPExpressMessage.RESTRICTED)
-		|| (maxClassification == SEDAPExpressMessage.CONFIDENTIAL)
-		|| (maxClassification == SEDAPExpressMessage.SECRET)
-		|| (maxClassification == SEDAPExpressMessage.TOP_SECRET);
-	case CONFIDENTIAL ->
-	    (maxClassification == SEDAPExpressMessage.CONFIDENTIAL) || (maxClassification == SEDAPExpressMessage.SECRET)
-		    || (maxClassification == SEDAPExpressMessage.TOP_SECRET);
-	case SECRET ->
-	    (maxClassification == SEDAPExpressMessage.SECRET) || (maxClassification == SEDAPExpressMessage.TOP_SECRET);
-	case TOP_SECRET -> maxClassification == SEDAPExpressMessage.TOP_SECRET;
-	default -> throw new IllegalArgumentException("Unexpected value: " + classification);
+	Classification classificationEnum = Classification.getValueOfClassificationChar(classification);
+	Classification maxClassificationEnum = Classification.getValueOfClassificationChar(maxClassification);
+
+	return switch (classificationEnum) {
+	case Classification.NONE -> false;
+	case Classification.PUBLIC -> true; // Always permitted
+	case Classification.UNCLAS ->
+	    (maxClassificationEnum == Classification.UNCLAS) || (maxClassificationEnum == Classification.RESTRICTED)
+		    || (maxClassificationEnum == Classification.CONFIDENTIAL)
+		    || (maxClassificationEnum == Classification.SECRET)
+		    || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.RESTRICTED -> (maxClassificationEnum == Classification.RESTRICTED)
+		|| (maxClassificationEnum == Classification.CONFIDENTIAL)
+		|| (maxClassificationEnum == Classification.SECRET)
+		|| (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.CONFIDENTIAL ->
+	    (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET)
+		    || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.SECRET ->
+	    (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.TOP_SECRET -> maxClassificationEnum == Classification.TOP_SECRET;
+	default -> throw new IllegalArgumentException("Unexpected value: " + classificationEnum);
 	};
     }
 
@@ -600,8 +707,8 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      * @param acknowledgement
      * @param mac             Message Authentification Code
      */
-    protected SEDAPExpressMessage(Short number, Long time, String sender, Character classification,
-	    Boolean acknowledgement, String mac) {
+    protected SEDAPExpressMessage(Short number, Long time, String sender,
+	    Classification classification, Acknowledgement acknowledgement, String mac) {
 	super();
 	this.number = number;
 	this.time = time;
@@ -707,7 +814,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    if (message.hasNext()) {
 		String classChar = message.next().trim();
 		if (!classChar.isBlank()) {
-		    this.classification = classChar.charAt(0);
+		    this.classification = Classification.getValueOfClassificationChar(classChar.charAt(0));
 		}
 	    } else {
 		SEDAPExpressMessage.logger
@@ -721,9 +828,9 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    if (message.hasNext()) {
 		value = message.next();
 		if ("true".equalsIgnoreCase(value)) {
-		    this.acknowledgement = Boolean.TRUE;
+		    this.acknowledgement = Acknowledgement.YES;
 		} else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
-		    this.acknowledgement = Boolean.FALSE;
+		    this.acknowledgement = Acknowledgement.NO;
 		} else {
 		    SEDAPExpressMessage.logger.severe("Optional field \"acknowledgement\" invalid value: \"" + value + "\"");
 		}
@@ -841,11 +948,11 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	result.append(';');
 
 	if (this.classification != null) {
-	    result.append(this.classification);
+	    result.append(this.classification.getValue());
 	}
 	result.append(';');
 
-	if ((this.acknowledgement != null) && this.acknowledgement.booleanValue()) {
+	if ((this.acknowledgement != null) && (this.acknowledgement == Acknowledgement.YES)) {
 	    result.append(this.acknowledgement);
 	}
 	result.append(';');

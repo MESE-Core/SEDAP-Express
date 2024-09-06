@@ -31,6 +31,11 @@ import java.util.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import de.bundeswehr.mese.sedapexpress.messages.CONTACT.DeleteFlag;
+import de.bundeswehr.mese.sedapexpress.messages.CONTACT.Source;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
+
 /**
  *
  * @author Volker Voß
@@ -123,8 +128,8 @@ class CONTACTTest {
 		(short) 66,
 		85435438782L,
 		"59CE",
-		'U',
-		SEDAPExpressMessage.ACKNOWLEDGE_NO,
+		Classification.UNCLAS,
+		Acknowledgement.NO,
 		"FFAA327B",
 		"1000",
 		false,
@@ -153,8 +158,8 @@ class CONTACTTest {
 	Assertions.assertEquals((short) 66, contact.getNumber());
 	Assertions.assertEquals(85435438782L, contact.getTime());
 	Assertions.assertEquals("59CE", contact.getSender());
-	Assertions.assertEquals('U', contact.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, contact.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, contact.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, contact.getAcknowledgement());
 	Assertions.assertEquals("FFAA327B", contact.getMAC());
 	Assertions.assertEquals("1000", contact.getContactID());
 	Assertions.assertEquals(false, contact.isDeleteFlag());
@@ -192,8 +197,8 @@ class CONTACTTest {
 	Assertions.assertEquals((short) 0x66, contact.getNumber());
 	Assertions.assertEquals(0x1B351C87L, contact.getTime());
 	Assertions.assertEquals("59CE", contact.getSender());
-	Assertions.assertEquals('U', contact.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, contact.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, contact.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, contact.getAcknowledgement());
 	Assertions.assertEquals("FFAA327B", contact.getMAC());
 	Assertions.assertEquals("1000", contact.getContactID());
 	Assertions.assertEquals(false, contact.isDeleteFlag());
@@ -226,8 +231,8 @@ class CONTACTTest {
 	Assertions.assertEquals((short) 0x5E, contact.getNumber());
 	Assertions.assertEquals(0x661D4410L, contact.getTime());
 	Assertions.assertEquals("66A3", contact.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.RESTRICTED, contact.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, contact.getAcknowledgement());
+	Assertions.assertEquals(Classification.RESTRICTED, contact.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, contact.getAcknowledgement());
 	Assertions.assertNull(contact.getMAC());
 	Assertions.assertEquals("100", contact.getContactID());
 	Assertions.assertEquals(false, contact.isDeleteFlag());
@@ -246,7 +251,7 @@ class CONTACTTest {
 	Assertions.assertNull(contact.getLength());
 	Assertions.assertNull(contact.getHeight());
 	Assertions.assertEquals("FGS Bayern", contact.getName());
-	Assertions.assertEquals(CONTACT.SOURCE_AIS + CONTACT.SOURCE_Radar, contact.getSource());
+	Assertions.assertEquals(Source.AIS.value + Source.Radar.value, contact.getSource());
 	Assertions.assertArrayEquals("SFSPFCLFF------".toCharArray(), contact.getSIDC());
 	Assertions.assertNull(contact.getMMSI());
 	Assertions.assertNull(contact.getICAO());
@@ -260,8 +265,8 @@ class CONTACTTest {
 	Assertions.assertEquals((short) 0x5f, contact.getNumber());
 	Assertions.assertEquals(0x661D5420L, contact.getTime());
 	Assertions.assertEquals("83C5", contact.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.UNCLAS, contact.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, contact.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, contact.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, contact.getAcknowledgement());
 	Assertions.assertNull(contact.getMAC());
 	Assertions.assertEquals("101", contact.getContactID());
 	Assertions.assertEquals(false, contact.isDeleteFlag());
@@ -280,7 +285,7 @@ class CONTACTTest {
 	Assertions.assertNull(contact.getLength());
 	Assertions.assertNull(contact.getHeight());
 	Assertions.assertEquals("Unknown", contact.getName());
-	Assertions.assertEquals(CONTACT.SOURCE_Optical, contact.getSource());
+	Assertions.assertEquals(Source.Optical.value, contact.getSource());
 	Assertions.assertNull(contact.getSIDC());
 	Assertions.assertEquals("221333201", contact.getMMSI());
 	Assertions.assertNull(contact.getICAO());
@@ -294,11 +299,11 @@ class CONTACTTest {
 	Assertions.assertEquals((short) 0x60, contact.getNumber());
 	Assertions.assertEquals(0x54742310L, contact.getTime());
 	Assertions.assertEquals("4371", contact.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, contact.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, contact.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, contact.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, contact.getAcknowledgement());
 	Assertions.assertNull(contact.getMAC());
 	Assertions.assertEquals("102", contact.getContactID());
-	Assertions.assertEquals(CONTACT.DELETE_FLAG_YES, contact.isDeleteFlag());
+	Assertions.assertEquals(DeleteFlag.DELETE_YES.value, contact.isDeleteFlag());
 	Assertions.assertEquals(53.32, contact.getLatitude());
 	Assertions.assertEquals(8.11, contact.getLongitude());
 	Assertions.assertNull(contact.getAltitude());
@@ -364,11 +369,11 @@ class CONTACTTest {
 	Assertions.assertEquals((short) 0x66, contact.getNumber());
 	Assertions.assertEquals(0x1B351C87L, contact.getTime());
 	Assertions.assertEquals("59CE", contact.getSender());
-	Assertions.assertEquals('U', contact.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, contact.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, contact.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, contact.getAcknowledgement());
 	Assertions.assertEquals("FFAA327B", contact.getMAC());
 	Assertions.assertEquals("1000", contact.getContactID());
-	Assertions.assertEquals(false, contact.isDeleteFlag());
+	Assertions.assertEquals(DeleteFlag.DELETE_NO.value, contact.isDeleteFlag());
 	Assertions.assertEquals(43.21, contact.getLatitude());
 	Assertions.assertEquals(-111.22d, contact.getLongitude());
 	Assertions.assertEquals(10011.0d, contact.getAltitude());

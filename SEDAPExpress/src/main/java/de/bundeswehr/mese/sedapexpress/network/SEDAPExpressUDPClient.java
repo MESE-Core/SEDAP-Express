@@ -49,6 +49,8 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 	SEDAPExpressTCPClient.logger.setLevel(Level.ALL);
     }
 
+    private Exception lastException = null;
+
     private DatagramSocket socket;
 
     private final String receiver;
@@ -69,16 +71,12 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
 	this.receiver = receiver;
 	this.port = port;
-
-	new Thread(this).start();
-
     }
 
     @Override
-    public void run() {
+    public boolean connect() {
 
 	try {
-
 	    if (InetAddress.getByName(this.receiver).isMulticastAddress()) {
 		this.socket = new MulticastSocket(this.port);
 	    } else {
@@ -87,6 +85,24 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
 	    this.socket.setBroadcast(true);
 	    this.socket.setReuseAddress(true);
+
+	    this.lastException = null;
+
+	    new Thread(this).start();
+
+	    return true;
+	} catch (final Exception e) {
+	    e.printStackTrace();
+	    this.lastException = e;
+	    return false;
+	}
+
+    }
+
+    @Override
+    public void run() {
+
+	try {
 
 	    while (this.status) {
 
@@ -100,6 +116,7 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 	    }
 
 	} catch (final IOException e) {
+	    this.lastException = e;
 	    e.printStackTrace();
 	} finally {
 	    this.socket.close();
@@ -117,7 +134,7 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 			  new DatagramPacket(data,
 				  data.length, InetAddress.getByName(this.receiver), this.port));
 	} catch (IOException e) {
-
+	    this.lastException = e;
 	    e.printStackTrace();
 	}
 
@@ -135,4 +152,11 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
 	SEDAPExpressUDPClient.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "stopCommunicator()", "Communicator stopped");
     }
+
+    @Override
+    public Exception getLastException() {
+
+	return this.lastException;
+    }
+
 }

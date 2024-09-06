@@ -31,6 +31,11 @@ import java.util.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.TextEncoding;
+import de.bundeswehr.mese.sedapexpress.messages.TEXT.TextType;
+
 class TEXTTest {
 
     @Test
@@ -40,8 +45,8 @@ class TEXTTest {
 		(short) 55,
 		641244434L,
 		"8F3A",
-		SEDAPExpressMessage.SECRET,
-		SEDAPExpressMessage.ACKNOWLEDGE_YES,
+		Classification.SECRET,
+		Acknowledgement.YES,
 		"4389F10D",
 		"7D31",
 		0x1111,
@@ -51,8 +56,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 55, command.getNumber());
 	Assertions.assertEquals(641244434L, command.getTime());
 	Assertions.assertEquals("8F3A", command.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, command.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x1111, command.getCmdId());
@@ -70,12 +75,12 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD3, text.getNumber());
 	Assertions.assertEquals(0x661D44D2L, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, text.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
-	Assertions.assertEquals(TEXT.TYPE_Alert, text.getType());
-	Assertions.assertEquals(TEXT.ENCODING_NONE, text.getEncoding());
+	Assertions.assertEquals(TextType.Alert, text.getType());
+	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("\"This is an alert!\"", text.getTextContent());
 
 	message = "TEXT;D4;661D458E;324E;C;TRUE;;;2;NONE;\"This is a warning!\"";
@@ -85,12 +90,12 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD4, text.getNumber());
 	Assertions.assertEquals(0x661D458EL, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.CONFIDENTIAL, text.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.CONFIDENTIAL, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
-	Assertions.assertEquals(TEXT.TYPE_Warning, text.getType());
-	Assertions.assertEquals(TEXT.ENCODING_NONE, text.getEncoding());
+	Assertions.assertEquals(TextType.Warning, text.getType());
+	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("\"This is a warning!\"", text.getTextContent());
 
 	message = "TEXT;D5;661D6565;324E;R;;;;3;;\"This is a notice!\"";
@@ -100,12 +105,12 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD5, text.getNumber());
 	Assertions.assertEquals(0x661D6565L, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.RESTRICTED, text.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.RESTRICTED, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
-	Assertions.assertEquals(TEXT.TYPE_Notice, text.getType());
-	Assertions.assertEquals(TEXT.ENCODING_NONE, text.getEncoding());
+	Assertions.assertEquals(TextType.Notice, text.getType());
+	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("\"This is a notice!\"", text.getTextContent());
 
 	message = "TEXT;D6;661D7032;324E;U;;;E4F1;4;BASE64;IlRoaXMgaXMgYSBjaGF0IG1lc3NhZ2UhIg==";
@@ -115,12 +120,12 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD6, text.getNumber());
 	Assertions.assertEquals(0x661D7032L, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.UNCLAS, text.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_NO, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.UNCLAS, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertEquals("E4F1", text.getRecipient());
-	Assertions.assertEquals(TEXT.TYPE_Chat, text.getType());
-	Assertions.assertEquals(TEXT.ENCODING_BASE64, text.getEncoding());
+	Assertions.assertEquals(TextType.Chat, text.getType());
+	Assertions.assertEquals(TextEncoding.BASE64, text.getEncoding());
 	Assertions.assertEquals("\"This is a chat message!\"", text.getTextContent());
     }
 
@@ -146,8 +151,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0x55, command.getNumber());
 	Assertions.assertEquals(0x1B351C87L, command.getTime());
 	Assertions.assertEquals("5BCD", command.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, command.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x2892, command.getCmdId());

@@ -25,7 +25,9 @@
  */
 package de.bundeswehr.mese.sedapexpress.messages;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -35,33 +37,57 @@ public class TEXT extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 1140074068439618568L;
 
-    public static final Integer TYPE_Undefined = 0;
-    public static final Integer TYPE_Alert = 1;
-    public static final Integer TYPE_Warning = 2;
-    public static final Integer TYPE_Notice = 3;
-    public static final Integer TYPE_Chat = 4;
+    public enum TextType {
+	Undefined(0),
+	Alert(1),
+	Warning(2),
+	Notice(3),
+	Chat(4);
 
-    private Integer type;
+	private static final Map<Integer, TextType> types = new HashMap<>();
 
-    private String encoding;
+	static {
+	    for (TextType e : TextType.values()) {
+		TextType.types.put(e.type, e);
+	    }
+	}
+
+	public static TextType valueOfTextType(int type) {
+	    return TextType.types.get(type);
+	}
+
+	public static TextType valueOfTextType(String type) {
+	    return TextType.types.get(Integer.parseInt(type));
+	}
+
+	public final Integer type;
+
+	private TextType(int type) {
+	    this.type = type;
+	}
+    }
+
+    private TextType type;
+
+    private TextEncoding encoding;
 
     private String textContent;
 
     private String recipient;
 
-    public Integer getType() {
+    public TextType getType() {
 	return this.type;
     }
 
-    public void setType(Integer type) {
+    public void setType(TextType type) {
 	this.type = type;
     }
 
-    public String getEncoding() {
+    public TextEncoding getEncoding() {
 	return this.encoding;
     }
 
-    public void setEncoding(String encoding) {
+    public void setEncoding(TextEncoding encoding) {
 	this.encoding = encoding;
     }
 
@@ -94,8 +120,8 @@ public class TEXT extends SEDAPExpressMessage {
      * @param textContent
      * @param recipient
      */
-    public TEXT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
-	    Integer type, String encoding, String textContent, String recipient) {
+    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
+	    TextType type, TextEncoding encoding, String textContent, String recipient) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -159,7 +185,7 @@ public class TEXT extends SEDAPExpressMessage {
 			      "TEXT(Iterator<String> message)",
 			      "Optional field \"type\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXTTYPE_MATCHER, value)) {
-		this.type = Integer.valueOf(value);
+		this.type = TextType.valueOfTextType(value);
 	    } else {
 		SEDAPExpressMessage.logger
 			.logp(
@@ -180,10 +206,10 @@ public class TEXT extends SEDAPExpressMessage {
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
-	    if ("base64".equalsIgnoreCase(value)) {
-		this.encoding = SEDAPExpressMessage.ENCODING_BASE64;
+	    if (TextEncoding.valueOfTextEncoding(value) == TextEncoding.BASE64) {
+		this.encoding = TextEncoding.BASE64;
 	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
-		this.encoding = SEDAPExpressMessage.ENCODING_NONE;
+		this.encoding = TextEncoding.NONE;
 	    } else {
 		SEDAPExpressMessage.logger
 			.logp(
@@ -212,7 +238,7 @@ public class TEXT extends SEDAPExpressMessage {
 			      "TEXT(Iterator<String> message)",
 			      "Mandatory field \"text\" is empty!");
 	    } else {
-		if (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding)) {
+		if (this.encoding == TextEncoding.BASE64) {
 		    try {
 			this.textContent = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
@@ -276,7 +302,7 @@ public class TEXT extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.encoding != null) ? this.encoding : "")
 		.append(";")
-		.append((this.textContent != null) ? (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.textContent.getBytes()) : "") : "")
+		.append((this.textContent != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "")
 		.append(";")
 		.append((this.recipient != null) ? this.recipient : "")
 		.toString();

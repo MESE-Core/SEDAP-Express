@@ -31,6 +31,12 @@ import java.util.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
+import de.bundeswehr.mese.sedapexpress.messages.STATUS.CommandState;
+import de.bundeswehr.mese.sedapexpress.messages.STATUS.OperationalState;
+import de.bundeswehr.mese.sedapexpress.messages.STATUS.TechnicalState;
+
 /**
  *
  * @author Volker Voß
@@ -45,14 +51,16 @@ class STATUSTest {
 		(short) 41,
 		7865454543L,
 		"BB91",
-		SEDAPExpressMessage.CONFIDENTIAL,
-		SEDAPExpressMessage.ACKNOWLEDGE_YES,
+		Classification.CONFIDENTIAL,
+		Acknowledgement.YES,
 		"93B37ACC",
-		STATUS.TECSTATUS_Operational,
-		STATUS.OPSSTATUS_Operational,
+		TechnicalState.Operational,
+		OperationalState.Operational,
 		50.0,
 		75.3,
 		10.8,
+		34,
+		CommandState.Executed_successfully,
 		"10.8.0.6",
 		Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
 		"This is a sample!");
@@ -60,12 +68,11 @@ class STATUSTest {
 	Assertions.assertEquals((short) 41, status.getNumber());
 	Assertions.assertEquals(7865454543L, status.getTime());
 	Assertions.assertEquals("BB91", status.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, status.getAcknowledgement());
 	Assertions.assertEquals("93B37ACC", status.getMAC());
-
-	Assertions.assertEquals(STATUS.TECSTATUS_Operational, status.getTecStatus());
-	Assertions.assertEquals(STATUS.OPSSTATUS_Operational, status.getOpsStatus());
+	Assertions.assertEquals(TechnicalState.Operational, status.getTecState());
+	Assertions.assertEquals(OperationalState.Operational, status.getOpsState());
 	Assertions.assertEquals(50.0, status.getAmmunitionLevel());
 	Assertions.assertEquals(75.3, status.getFuelLevel());
 	Assertions.assertEquals(10.8, status.getBatterieLevel());
@@ -85,12 +92,11 @@ class STATUSTest {
 	Assertions.assertEquals((short) 0x41, status.getNumber());
 	Assertions.assertEquals(0x50505050L, status.getTime());
 	Assertions.assertEquals("BB91", status.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, status.getAcknowledgement());
 	Assertions.assertEquals("93B37ACC", status.getMAC());
-
-	Assertions.assertEquals(STATUS.TECSTATUS_Degraded, status.getTecStatus());
-	Assertions.assertEquals(STATUS.OPSSTATUS_Degraded, status.getOpsStatus());
+	Assertions.assertEquals(TechnicalState.Degraded, status.getTecState());
+	Assertions.assertEquals(OperationalState.Degraded, status.getOpsState());
 	Assertions.assertEquals(20.3, status.getAmmunitionLevel());
 	Assertions.assertEquals(30.4, status.getFuelLevel());
 	Assertions.assertEquals(40.5, status.getBatterieLevel());
@@ -125,12 +131,11 @@ class STATUSTest {
 	Assertions.assertEquals((short) 0x41, status.getNumber());
 	Assertions.assertEquals(0xA0B0C0D0L, status.getTime());
 	Assertions.assertEquals("BB91", status.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, status.getAcknowledgement());
 	Assertions.assertEquals("93B37ACC", status.getMAC());
-
-	Assertions.assertEquals(STATUS.TECSTATUS_Degraded, status.getTecStatus());
-	Assertions.assertEquals(STATUS.OPSSTATUS_Degraded, status.getOpsStatus());
+	Assertions.assertEquals(TechnicalState.Degraded, status.getTecState());
+	Assertions.assertEquals(OperationalState.Degraded, status.getOpsState());
 	Assertions.assertEquals(20.3, status.getAmmunitionLevel());
 	Assertions.assertEquals(30.4, status.getFuelLevel());
 	Assertions.assertEquals(40.5, status.getBatterieLevel());

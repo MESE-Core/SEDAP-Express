@@ -31,8 +31,13 @@ import de.bundeswehr.mese.sedapexpress.messages.CONTACT;
 import de.bundeswehr.mese.sedapexpress.messages.HEARTBEAT;
 import de.bundeswehr.mese.sedapexpress.messages.OWNUNIT;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.MessageType;
 import de.bundeswehr.mese.sedapexpress.messages.STATUS;
+import de.bundeswehr.mese.sedapexpress.messages.STATUS.CommandState;
+import de.bundeswehr.mese.sedapexpress.messages.STATUS.OperationalState;
+import de.bundeswehr.mese.sedapexpress.messages.STATUS.TechnicalState;
 import de.bundeswehr.mese.sedapexpress.network.SEDAPExpressCommunicator;
 import de.bundeswehr.mese.sedapexpress.network.SEDAPExpressTCPClient;
 import de.bundeswehr.mese.sedapexpress.processing.SEDAPExpressSubscriber;
@@ -62,14 +67,16 @@ public class SampleTCPClient implements SEDAPExpressSubscriber {
 	    final STATUS status = new STATUS(this.numberSTATUS++,
 		    System.currentTimeMillis(),
 		    this.senderId,
-		    SEDAPExpressMessage.CONFIDENTIAL,
-		    SEDAPExpressMessage.ACKNOWLEDGE_NO,
+		    Classification.CONFIDENTIAL,
+		    Acknowledgement.NO,
 		    null,
-		    STATUS.TECSTATUS_Operational,
-		    STATUS.OPSSTATUS_Operational,
+		    TechnicalState.Operational,
+		    OperationalState.Operational,
 		    50.0,
 		    75.3,
 		    10.8,
+		    23,
+		    CommandState.Executed_successfully,
 		    "10.8.0.6",
 		    Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
 		    "This is a sample!");

@@ -43,7 +43,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 
     private Integer fillColor;
 
-    private String encoding;
+    private TextEncoding encoding;
 
     private String annotation;
 
@@ -79,11 +79,11 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	this.fillColor = fillColor;
     }
 
-    public String getEncoding() {
+    public TextEncoding getEncoding() {
 	return this.encoding;
     }
 
-    public void setEncoding(String encoding) {
+    public void setEncoding(TextEncoding encoding) {
 	this.encoding = encoding;
     }
 
@@ -110,8 +110,8 @@ public class GRAPHIC extends SEDAPExpressMessage {
      * @param encoding
      * @param annotation
      */
-    public GRAPHIC(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
-	    Integer graphicType, Double lineWidth, Integer lineColor, Integer fillColor, String encoding, String annotation) {
+    public GRAPHIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
+	    Integer graphicType, Double lineWidth, Integer lineColor, Integer fillColor, TextEncoding encoding, String annotation) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -212,10 +212,10 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
-	    if ("base64".equalsIgnoreCase(value)) {
-		this.encoding = SEDAPExpressMessage.ENCODING_BASE64;
+	    if (TextEncoding.valueOfTextEncoding(value) == TextEncoding.BASE64) {
+		this.encoding = TextEncoding.BASE64;
 	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
-		this.encoding = SEDAPExpressMessage.ENCODING_NONE;
+		this.encoding = TextEncoding.NONE;
 	    } else {
 		SEDAPExpressMessage.logger
 			.logp(
@@ -237,7 +237,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 			      "GRAPHIC(Iterator<String> message)",
 			      "Optional field \"text\" is empty!");
 	    } else {
-		if (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding)) {
+		if (this.encoding == TextEncoding.BASE64) {
 		    try {
 			this.annotation = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
@@ -299,7 +299,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.encoding != null) ? this.encoding : "")
 		.append(";")
-		.append((this.annotation != null) ? (SEDAPExpressMessage.ENCODING_BASE64.equals(this.encoding) ? Base64.toBase64String(this.annotation.getBytes()) : "") : "")
+		.append((this.annotation != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.annotation.getBytes()) : this.annotation) : "")
 		.toString();
     }
 

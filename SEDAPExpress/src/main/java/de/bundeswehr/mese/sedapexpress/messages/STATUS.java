@@ -37,32 +37,93 @@ public class STATUS extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = -6681575300891302102L;
 
-    public static final int TECSTATUS_Off_absent = 0;
-    public static final int TECSTATUS_Initializing = 1;
-    public static final int TECSTATUS_Degraded = 2;
-    public static final int TECSTATUS_Operational = 3;
-    public static final int TECSTATUS_Fault = 4;
+    public enum TechnicalState {
 
-    public static final int OPSSTATUS_Not_operational = 0;
-    public static final int OPSSTATUS_Degraded = 1;
-    public static final int OPSSTATUS_Operational = 2;
+	Off_absent(0),
+	Initializing(1),
+	Degraded(2),
+	Operational(3),
+	Fault(4);
 
-    public static final int CMDSTATUS_Undefined = 0;
-    public static final int CMDSTATUS_Executed_successfully = 1;
-    public static final int CMDSTATUS_Partially_executed_successfully = 2;
-    public static final int CMDSTATUS_Executed_not_successfully = 3;
-    public static final int CMDSTATUS_Execution_not_possible = 4;
-    public static final int CMDSTATUS_Will_execute_at = 5;
+	public static TechnicalState valueOfTechnicalState(int state) {
+	    return switch (state) {
+	    case 0 -> Off_absent;
+	    case 1 -> Initializing;
+	    case 2 -> Degraded;
+	    case 3 -> Operational;
+	    case 4 -> Fault;
+	    default -> Off_absent;
+	    };
+	}
 
-    private Integer tecStatus;
-    private Integer opsStatus;
+	int value;
+
+	TechnicalState(int status) {
+	    this.value = status;
+	}
+
+    }
+
+    public enum OperationalState {
+
+	Not_operational(0),
+	Degraded(1),
+	Operational(2);
+
+	public static OperationalState valueOfOperationalState(int state) {
+	    return switch (state) {
+	    case 0 -> Not_operational;
+	    case 1 -> Degraded;
+	    case 2 -> Operational;
+	    default -> Not_operational;
+	    };
+	}
+
+	int value;
+
+	OperationalState(int status) {
+	    this.value = status;
+	}
+
+    }
+
+    public enum CommandState {
+
+	Undefined(0),
+	Executed_successfully(1),
+	Partially_executed_successfully(2),
+	Executed_not_successfully(3),
+	Execution_not_possible(4),
+	Will_execute_at(5);
+
+	public static CommandState valueOfMessageType(int state) {
+	    return switch (state) {
+	    case 0 -> Undefined;
+	    case 1 -> Executed_successfully;
+	    case 2 -> Partially_executed_successfully;
+	    case 3 -> Executed_not_successfully;
+	    case 4 -> Execution_not_possible;
+	    case 5 -> Will_execute_at;
+	    default -> Undefined;
+	    };
+	}
+
+	int value;
+
+	CommandState(int status) {
+	    this.value = status;
+	}
+    }
+
+    private TechnicalState tecState;
+    private OperationalState opsState;
 
     private Double ammunitionLevel;
     private Double fuelLevel;
     private Double batterieLevel;
 
     private Integer cmdId;
-    private Integer cmdState;
+    private CommandState cmdState;
 
     private String hostname;
 
@@ -70,20 +131,20 @@ public class STATUS extends SEDAPExpressMessage {
 
     private String freeText;
 
-    public Integer getTecStatus() {
-	return this.tecStatus;
+    public TechnicalState getTecState() {
+	return this.tecState;
     }
 
-    public void setTecStatus(Integer tecStatus) {
-	this.tecStatus = tecStatus;
+    public void setTecState(TechnicalState tecState) {
+	this.tecState = tecState;
     }
 
-    public Integer getOpsStatus() {
-	return this.opsStatus;
+    public OperationalState getOpsState() {
+	return this.opsState;
     }
 
-    public void setOpsStatus(Integer opsStatus) {
-	this.opsStatus = opsStatus;
+    public void setOpsState(OperationalState opsState) {
+	this.opsState = opsState;
     }
 
     public Double getAmmunitionLevel() {
@@ -118,11 +179,11 @@ public class STATUS extends SEDAPExpressMessage {
 	this.cmdId = cmdId;
     }
 
-    public Integer getCmdState() {
+    public CommandState getCmdState() {
 	return this.cmdState;
     }
 
-    public void setCmdState(Integer cmdState) {
+    public void setCmdState(CommandState cmdState) {
 	this.cmdState = cmdState;
     }
 
@@ -159,22 +220,27 @@ public class STATUS extends SEDAPExpressMessage {
      * @param classification
      * @param acknowledgement
      * @param mac
-     * @param tecStatus
-     * @param opsStatus
+     * @param tecState
+     * @param opsState
      * @param ammunitionLevel
      * @param fuelLevel
      * @param batterieLevel
+     * @param cmdId
+     * @param cmdState
      * @param hostname
      * @param mediaUrls
      * @param freeText
      */
-    public STATUS(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
-	    Integer tecStatus, Integer opsStatus, Double ammunitionLevel, Double fuelLevel, Double batterieLevel,
+    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
+	    TechnicalState tecState, OperationalState opsState, Double ammunitionLevel, Double fuelLevel, Double batterieLevel,
+	    Integer cmdId, CommandState cmdState,
 	    String hostname, List<String> mediaUrls, String freeText) {
 	super(number, time, sender, classification, acknowledgement, mac);
-	this.tecStatus = tecStatus;
-	this.opsStatus = opsStatus;
+	this.tecState = tecState;
+	this.opsState = opsState;
 	this.ammunitionLevel = ammunitionLevel;
+	this.cmdId = cmdId;
+	this.cmdState = cmdState;
 	this.fuelLevel = fuelLevel;
 	this.batterieLevel = batterieLevel;
 	this.hostname = hostname;
@@ -203,34 +269,34 @@ public class STATUS extends SEDAPExpressMessage {
 
 	String value;
 
-	// TecStatus
+	// TecState
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TECSTATUS_MATCHER, value)) {
-		this.tecStatus = Integer.parseInt(value);
+		this.tecState = TechnicalState.valueOfTechnicalState(Integer.parseInt(value));
 	    } else if (!value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.SEVERE,
 			      "STATUS",
 			      "STATUS(Iterator<String> message)",
-			      "Optional field \"tecStatus\" contains not a valid number!",
+			      "Optional field \"tecState\" contains not a valid number!",
 			      value);
 	    }
 	}
 
-	// OpsStatus
+	// OpsState
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.OPSSTATUS_MATCHER, value)) {
-		this.opsStatus = Integer.parseInt(value);
+		this.opsState = OperationalState.valueOfOperationalState(Integer.parseInt(value));
 	    } else if (!value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.SEVERE,
 			      "STATUS",
 			      "STATUS(Iterator<String> message)",
-			      "Optional field \"opsStatus\" contains not a valid number!",
+			      "Optional field \"opsState\" contains not a valid number!",
 			      value);
 	    }
 	}
@@ -371,8 +437,8 @@ public class STATUS extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (this.tecStatus == ((STATUS) obj).tecStatus) &&
-		    (this.opsStatus == ((STATUS) obj).opsStatus) &&
+		    (this.tecState == ((STATUS) obj).tecState) &&
+		    (this.opsState == ((STATUS) obj).opsState) &&
 
 		    (this.ammunitionLevel == ((STATUS) obj).ammunitionLevel) &&
 		    (this.fuelLevel == ((STATUS) obj).fuelLevel) &&
@@ -401,13 +467,15 @@ public class STATUS extends SEDAPExpressMessage {
     public String toString() {
 
 	StringBuilder urls = new StringBuilder();
-	this.mediaUrls.forEach(entry -> urls.append(Base64.toBase64String(entry.getBytes()) + "#"));
+	if (this.mediaUrls != null) {
+	    this.mediaUrls.forEach(entry -> urls.append(Base64.toBase64String(entry.getBytes()) + "#"));
+	}
 
 	return serializeHeader()
 
-		.append((this.tecStatus != null) ? this.tecStatus : "")
+		.append((this.tecState != null) ? this.tecState : "")
 		.append(";")
-		.append((this.opsStatus != null) ? this.opsStatus : "")
+		.append((this.opsState != null) ? this.opsState : "")
 		.append(";")
 		.append((this.ammunitionLevel != null) ? SEDAPExpressMessage.numberFormatter.format(this.ammunitionLevel) : "")
 		.append(";")

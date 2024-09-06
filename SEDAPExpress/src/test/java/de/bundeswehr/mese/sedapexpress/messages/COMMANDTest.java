@@ -31,6 +31,9 @@ import java.util.Iterator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
+
 /**
  *
  * @author Volker Voß
@@ -45,8 +48,8 @@ class COMMANDTest {
 		(short) 55,
 		641244434L,
 		"8F3A",
-		SEDAPExpressMessage.SECRET,
-		SEDAPExpressMessage.ACKNOWLEDGE_YES,
+		Classification.SECRET,
+		Acknowledgement.YES,
 		"4389F10D",
 		"7D31",
 		0x1111,
@@ -56,8 +59,8 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 55, command.getNumber());
 	Assertions.assertEquals(641244434L, command.getTime());
 	Assertions.assertEquals("8F3A", command.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, command.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x1111, command.getCmdId());
@@ -75,8 +78,8 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 0x55, command.getNumber());
 	Assertions.assertEquals(0x1B351C87L, command.getTime());
 	Assertions.assertEquals("5BCD", command.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, command.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x1111, command.getCmdId());
@@ -91,8 +94,8 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 0x29, command.getNumber());
 	Assertions.assertEquals(0x661D44C0L, command.getTime());
 	Assertions.assertEquals("E4B3", command.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.CONFIDENTIAL, command.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.CONFIDENTIAL, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
 	Assertions.assertEquals(null, command.getMAC());
 	Assertions.assertEquals("Drone1", command.getRecipient());
 	Assertions.assertEquals(0xFF, command.getCmdType());
@@ -122,8 +125,8 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 0x55, command.getNumber());
 	Assertions.assertEquals(0x1B351C87L, command.getTime());
 	Assertions.assertEquals("5BCD", command.getSender());
-	Assertions.assertEquals(SEDAPExpressMessage.SECRET, command.getClassification());
-	Assertions.assertEquals(SEDAPExpressMessage.ACKNOWLEDGE_YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.SECRET, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x2892, command.getCmdId());

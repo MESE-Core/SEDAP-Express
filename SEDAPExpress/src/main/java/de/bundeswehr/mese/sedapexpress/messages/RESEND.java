@@ -74,7 +74,7 @@ public class RESEND extends SEDAPExpressMessage {
      * @param nameOfTheMissingMessage
      * @param numberOfTheMissingMessage
      */
-    public RESEND(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public RESEND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
 	    String recipient, String nameOfTheMissingMessage, Short numberOfTheMissingMessage) {
 
 	super(number, time, sender, classification, acknowledgement, mac);

@@ -47,6 +47,8 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	SEDAPExpressTCPServer.logger.setLevel(Level.ALL);
     }
 
+    private Exception lastException = null;
+
     private ServerSocketChannel serverSocket;
     private final String intf;
     private final int port;
@@ -68,7 +70,6 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	this.intf = intf;
 	this.port = port;
 
-	new Thread(this).start();
     }
 
     /**
@@ -81,21 +82,40 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
     }
 
     @Override
+    public boolean connect() {
+
+	try {
+
+	    this.serverSocket = ServerSocketChannel.open();
+	    this.serverSocket.configureBlocking(true);
+	    this.serverSocket.bind(new InetSocketAddress(this.intf, this.port));
+
+	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "Listening on port: " + this.port);
+
+	    this.lastException = null;
+
+	    new Thread(this).start();
+
+	    return true;
+
+	} catch (Exception e) {
+	    this.lastException = e;
+	    return false;
+	}
+    }
+
+    @Override
     public void run() {
+
 	while (this.status) {
 
 	    try {
-
-		this.serverSocket = ServerSocketChannel.open();
-		this.serverSocket.configureBlocking(true);
-		this.serverSocket.bind(new InetSocketAddress(this.intf, this.port));
-
-		SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "Listening on port: " + this.port);
 		SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(this.serverSocket.accept(), this.clients, this.subscriptions);
 		this.clients.add(newClient);
 
 	    } catch (Exception e) {
 		this.status = false;
+		this.lastException = e;
 		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()", "Could not listening on port: " + this.port, e);
 	    } finally {
 		try {
@@ -135,4 +155,11 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 
 	SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "stopCommunicator()", "Communicator stopped");
     }
+
+    @Override
+    public Exception getLastException() {
+
+	return this.lastException;
+    }
+
 }

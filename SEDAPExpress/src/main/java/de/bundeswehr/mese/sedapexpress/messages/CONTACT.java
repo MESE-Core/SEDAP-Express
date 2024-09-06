@@ -36,17 +36,37 @@ public class CONTACT extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 5990524206762624628L;
 
-    public static final Boolean DELETE_FLAG_NO = Boolean.FALSE;
-    public static final Boolean DELETE_FLAG_YES = Boolean.TRUE;
+    public enum DeleteFlag {
 
-    public static final String SOURCE_Radar = "R";
-    public static final String SOURCE_AIS = "A";
-    public static final String SOURCE_IFF = "I";
-    public static final String SOURCE_Sonar = "S";
-    public static final String SOURCE_EW = "E§";
-    public static final String SOURCE_Optical = "O";
-    public static final String SOURCE_Synthetic = "Y";
-    public static final String SOURCE_Manual = "M";
+	DELETE_NO(Boolean.FALSE),
+	DELETE_YES(Boolean.TRUE);
+
+	boolean value;
+
+	DeleteFlag(Boolean flag) {
+	    this.value = flag;
+	}
+
+    }
+
+    public enum Source {
+
+	Radar("R"),
+	AIS("A"),
+	IFF("I"),
+	Sonar("S"),
+	EW("E"),
+	Optical("O"),
+	Synthetic("Y"),
+	Manual("M");
+
+	String value;
+
+	Source(String source) {
+	    this.value = source;
+	}
+
+    }
 
     private String contactID;
 
@@ -298,7 +318,7 @@ public class CONTACT extends SEDAPExpressMessage {
      * @param imageData
      * @param comment
      */
-    public CONTACT(Short number, Long time, String sender, Character classification, Boolean acknowledgement, String mac,
+    public CONTACT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
 	    String contactID, Boolean deleteFlag, Double latitude, Double longitude, Double altitude,
 	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance,
 	    Double speed, Double course, Double heading, Double roll, Double pitch,
