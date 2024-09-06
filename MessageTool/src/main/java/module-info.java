@@ -28,5 +28,14 @@
  */
 module MessageTool {
 
+    exports de.bundeswehr.mese.sedapexpress.messagetool;
+    exports de.bundeswehr.mese.sedapexpress.messagetool.controller;
+
+    opens de.bundeswehr.mese.sedapexpress.messagetool;
+    opens de.bundeswehr.mese.sedapexpress.messagetool.controller;
+
+    requires transitive javafx.controls;
     requires transitive SEDAPExpress;
+    requires javafx.fxml;
+    requires javafx.graphics;
 }

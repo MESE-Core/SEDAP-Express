@@ -11,11 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/SEDAPExpress/dist/SEDAPExpress-v1.0.0.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="/SEDAPExpress/libs/bcpkix-jdk18on-1.78.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -56,6 +51,16 @@
 	<classpathentry kind="lib" path="/SEDAPExpress/libs/protobuf-java-util-4.27.3.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/protobuf-java-util-4.27.3-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/SEDAPExpress">
+		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="730.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/22.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.bundeswehr.mese.sedapexpress.messagetool.MessageTool">
+   <center>
+      <GridPane prefHeight="327.0" prefWidth="773.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="350.0" />
+            <ColumnConstraints hgrow="NEVER" />
+            <ColumnConstraints hgrow="NEVER" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="1.7976931348623157E308" valignment="CENTER" vgrow="NEVER" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="1.7976931348623157E308" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="25.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <GridPane hgap="5.0" vgap="5.0" GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" vgrow="NEVER" />
+                  <RowConstraints valignment="CENTER" vgrow="NEVER" />
+                  <RowConstraints maxHeight="1.7976931348623157E308" vgrow="NEVER" />
+                  <RowConstraints minHeight="10.0" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="ipTextField" text="localhost" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="portTextField" text="50000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="IP/Host:" GridPane.rowIndex="1" />
+                  <Label text="Port:" GridPane.rowIndex="2" />
+                  <HBox spacing="10.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="4">
+                     <children>
+                        <CheckBox fx:id="authenticationCheckBox" mnemonicParsing="false" text="Authentication" />
+                        <CheckBox fx:id="encryptedCheckBox" mnemonicParsing="false" text="Encrypted" />
+                        <CheckBox fx:id="protobufCheckBox" mnemonicParsing="false" text="Use protobuf" />
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="keyTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin></TextArea>
+                  <GridPane hgap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="3" GridPane.rowIndex="6">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" percentWidth="50.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button fx:id="connectButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#connectToSEDAPExpress" text="Connect" />
+                        <Button fx:id="disconnectButton" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#disconnectFromSEDAPExpress" text="Disconnect" GridPane.columnIndex="1" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets right="5.0" />
+                     </GridPane.margin>
+                  </GridPane>
+                  <Label maxWidth="1.7976931348623157E308" text="Key:" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                  <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
+                  <Label text="Configuration:" />
+               </children>
+            </GridPane>
+            <BorderPane GridPane.rowIndex="5">
+               <top>
+                  <Label text="Input log:" BorderPane.alignment="CENTER_LEFT" />
+               </top>
+               <center>
+                  <TextArea fx:id="inputLogTextArea" editable="false" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="5.0" />
+                     </BorderPane.margin></TextArea>
+               </center>
+            </BorderPane>
+            <BorderPane GridPane.rowIndex="6">
+               <top>
+                  <Label text="Output log:" BorderPane.alignment="CENTER_LEFT" />
+               </top>
+               <center>
+                  <TextArea fx:id="outputLogTextArea" editable="false" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="5.0" />
+                     </BorderPane.margin></TextArea>
+               </center>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </BorderPane>
+            <Separator GridPane.rowIndex="4">
+               <padding>
+                  <Insets bottom="5.0" top="8.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Separator>
+            <BorderPane GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="2147483647" GridPane.vgrow="ALWAYS">
+               <bottom>
+                  <GridPane hgap="5.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="sendMessageButton" disable="true" mnemonicParsing="false" onAction="#sendMessage" text="Send message" GridPane.halignment="RIGHT" />
+                        <Button fx:id="copyClipboardButton" disable="true" mnemonicParsing="false" onAction="#copyToClipboard" text="Copy to clipboard" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+               </bottom>
+               <center>
+                  <GridPane prefHeight="109.0" prefWidth="382.0" vgap="5.0" BorderPane.alignment="CENTER">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" />
+                        <RowConstraints minHeight="10.0" />
+                        <RowConstraints minHeight="10.0" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Create message:" />
+                        <GridPane hgap="5.0" vgap="5.0" GridPane.rowIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createOWNUNIT" text="OWNUNIT" />
+                            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCONTACT" text="CONTACT" GridPane.columnIndex="1" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createEMISSION" text="EMISSION" GridPane.columnIndex="2" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createMETEO" text="METEO" GridPane.columnIndex="3" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createSTATUS" text="STATUS" GridPane.rowIndex="1" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createCOMMAND" text="COMMAND" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createTEXT" text="TEXT" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createGRAPHIC" text="GRAPHIC" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createACKNOWLEDGE" text="ACKNOWLEDGE" GridPane.rowIndex="2" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createRESEND" text="RESEND" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createHEARTBEAT" text="HEARTBEAT" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createKEYEXCHANGE" text="KEYEXCHANGE" GridPane.rowIndex="3" />
+                              <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createGENERIC" text="GENERIC" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <top>
+                              <Label text="Message parameters:" BorderPane.alignment="TOP_LEFT" />
+                           </top>
+                           <center>
+                              <AnchorPane fx:id="messageBorderPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                        <BorderPane layoutX="10.0" layoutY="298.0" prefHeight="110.0" prefWidth="767.0" GridPane.rowIndex="2">
+                           <top>
+                              <Label text="Message header:" BorderPane.alignment="TOP_LEFT" />
+                           </top>
+                           <center>
+                              <GridPane hgap="5.0" vgap="5.0" BorderPane.alignment="CENTER">
+                                 <columnConstraints>
+                                    <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
+                                    <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="150.0" />
+                                    <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="120.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="150.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="30.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" />
+                                    <RowConstraints minHeight="10.0" />
+                                    <RowConstraints minHeight="10.0" percentHeight="0.0" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Number:" />
+                                    <Label text="Time:" GridPane.rowIndex="1" />
+                                    <Label text="Sender:" GridPane.rowIndex="2" />
+                                    <Label text="Classification:" GridPane.columnIndex="5" />
+                                    <Label text="Acknowledgement:" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                    <Label text="MAC:" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                    <TextField fx:id="numberTextField" GridPane.columnIndex="1" />
+                                    <GridPane hgap="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="timeTextField" maxWidth="1.7976931348623157E308" prefColumnCount="6" />
+                                          <CheckBox fx:id="autoTimeCheckBox" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" selected="true" text="auto" GridPane.columnIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <TextField fx:id="senderTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <ComboBox fx:id="classificationComboBox" prefWidth="150.0" GridPane.columnIndex="6" />
+                                    <TextField fx:id="macTextField" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                                    <Label fx:id="numberLabel" layoutX="321.0" layoutY="320.0" text="invalid" GridPane.columnIndex="3">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@invalid.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                    <Label fx:id="timeLabel" layoutX="321.0" layoutY="360.0" text="invalid" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@invalid.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                    <Label fx:id="senderLabel" layoutX="321.0" layoutY="391.0" text="invalid" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@invalid.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                    <ComboBox fx:id="acknowledgmentComboBox" layoutX="135.0" layoutY="68.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                    <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="4" GridPane.rowSpan="3" />
+                                    <Label fx:id="macLabel" text="invalid" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@invalid.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </GridPane>
+               </center>
+            </BorderPane>
+            <Separator maxWidth="1.7976931348623157E308" orientation="VERTICAL" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Separator>
+            <Separator layoutX="375.0" layoutY="10.0" maxWidth="1.7976931348623157E308" orientation="VERTICAL" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2147483647" />
+            <HBox spacing="30.0" GridPane.columnSpan="2147483647">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@SEDAPExpress.png" />
+                     </image>
+                  </ImageView>
+                  <VBox>
+                     <children>
+                        <Label text="Message Tool v1.0">
+                           <font>
+                              <Font name="System Bold Italic" size="40.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" text="Licensed under the Simplified BSD (or BSD 2-clause) license, Copyright 2024, Bundeswehr">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+</BorderPane>
