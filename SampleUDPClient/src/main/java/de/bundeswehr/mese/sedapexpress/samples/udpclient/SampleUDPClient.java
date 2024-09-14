@@ -25,7 +25,7 @@
  */
 package de.bundeswehr.mese.sedapexpress.samples.udpclient;
 
-import java.util.Arrays;
+import java.io.IOException;
 
 import de.bundeswehr.mese.sedapexpress.messages.CONTACT;
 import de.bundeswehr.mese.sedapexpress.messages.HEARTBEAT;
@@ -57,30 +57,25 @@ public class SampleUDPClient implements SEDAPExpressSubscriber {
 
 	this.communicator = new SEDAPExpressUDPClient("192.168.168.12", 10000);
 
-	this.communicator.subscribeMessages(this, MessageType.OWNUNIT, MessageType.CONTACT, MessageType.HEARTBEAT, MessageType.STATUS);
+	// this.communicator.subscribeMessages(this, MessageType.OWNUNIT,
+	// MessageType.CONTACT, MessageType.HEARTBEAT, MessageType.STATUS);
+	this.communicator.subscribeMessages(this, MessageType.STATUS);
 	this.senderId = this.communicator.createSenderId();
+	this.communicator.connect();
 
 	// Sample thread as example for how producing messages
 	new Thread(() -> {
 
-	    final STATUS status = new STATUS(this.numberSTATUS++,
-		    System.currentTimeMillis(),
-		    this.senderId,
-		    Classification.CONFIDENTIAL,
-		    Acknowledgement.NO,
-		    null,
-		    TechnicalState.Operational,
-		    OperationalState.Operational,
-		    50.0,
-		    75.3,
-		    10.8,
-		    23,
-		    CommandState.Executed_successfully,
-		    "10.8.0.6",
-		    Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
-		    "This is a sample!");
+	    final STATUS status = new STATUS(this.numberSTATUS++, System.currentTimeMillis(), this.senderId,
+		    Classification.CONFIDENTIAL, Acknowledgement.NO, null, TechnicalState.Operational,
+		    OperationalState.Operational, "MLG", 50.0, "Tank", 75.3, "MainAkku", 10.8, 23,
+		    CommandState.Executed_successfully, "10.8.0.6", "rtsp://10.8.0.6/stream1", "This is a sample!");
 
-	    this.communicator.sendSEDAPExpressMessage(status);
+	    try {
+		this.communicator.sendSEDAPExpressMessage(status);
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
 
 	    if (this.numberSTATUS == 7f) {
 		this.numberSTATUS = 0;
@@ -109,7 +104,11 @@ public class SampleUDPClient implements SEDAPExpressSubscriber {
 	case HEARTBEAT heartbeat -> {
 
 	    // Write here your own processing code
-	    this.communicator.sendSEDAPExpressMessage(new HEARTBEAT());
+	    try {
+		this.communicator.sendSEDAPExpressMessage(new HEARTBEAT());
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
 	    System.out.println("Answered: HEARTBEAT");
 	}
 

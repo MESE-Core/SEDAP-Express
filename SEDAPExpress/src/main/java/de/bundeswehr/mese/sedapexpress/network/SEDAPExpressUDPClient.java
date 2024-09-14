@@ -73,7 +73,6 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 	this.port = port;
     }
 
-    @Override
     public boolean connect() {
 
 	try {
@@ -83,12 +82,15 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 		this.socket = new DatagramSocket(this.port);
 	    }
 
+	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "run()",
+		    "Started listening on port: " + this.port);
+
 	    this.socket.setBroadcast(true);
 	    this.socket.setReuseAddress(true);
 
 	    this.lastException = null;
 
-	    new Thread(this).start();
+	    new Thread(this).start(); // Starting receiving thread
 
 	    return true;
 	} catch (final Exception e) {
@@ -102,40 +104,39 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
     @Override
     public void run() {
 
-	try {
+	while (this.status) {
 
-	    while (this.status) {
+	    try {
 
 		final DatagramPacket packet = new DatagramPacket(new byte[65000], 65000);
 
 		this.socket.receive(packet);
 
-		Arrays
-			.asList(new String(packet.getData(), 0, packet.getLength()).split("\n"))
-			.forEach(message -> distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage.deserialize(message)));
+		Arrays.asList(new String(packet.getData(), 0, packet.getLength()).split("\n")).forEach(
+			message -> distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage.deserialize(message)));
+
+	    } catch (final Exception e) {
+		this.lastException = e;
+		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPClient", "run()",
+			"Waiting 2 seconds for reconnect on port:" + this.port);
+		try {
+		    Thread.sleep(2000);
+		} catch (InterruptedException ex) {
+		}
 	    }
 
-	} catch (final IOException e) {
-	    this.lastException = e;
-	    e.printStackTrace();
-	} finally {
-	    this.socket.close();
 	}
-
     }
 
     @Override
-    public boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) {
+    public boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) throws IOException {
 
 	byte[] data = SEDAPExpressMessage.serialize(message).getBytes();
 	try {
-	    this.socket
-		    .send(
-			  new DatagramPacket(data,
-				  data.length, InetAddress.getByName(this.receiver), this.port));
+	    this.socket.send(new DatagramPacket(data, data.length, InetAddress.getByName(this.receiver), this.port));
 	} catch (IOException e) {
 	    this.lastException = e;
-	    e.printStackTrace();
+	    throw e;
 	}
 
 	return false;
@@ -150,7 +151,8 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 	    this.socket.close();
 	}
 
-	SEDAPExpressUDPClient.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "stopCommunicator()", "Communicator stopped");
+	SEDAPExpressUDPClient.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "stopCommunicator()",
+		"Communicator stopped");
     }
 
     @Override

@@ -25,6 +25,7 @@
  */
 package de.bundeswehr.mese.sedapexpress.messages;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -62,6 +63,10 @@ public class STATUS extends SEDAPExpressMessage {
 	    this.value = status;
 	}
 
+	@Override
+	public String toString() {
+	    return String.valueOf(this.value);
+	}
     }
 
     public enum OperationalState {
@@ -85,6 +90,10 @@ public class STATUS extends SEDAPExpressMessage {
 	    this.value = status;
 	}
 
+	@Override
+	public String toString() {
+	    return String.valueOf(this.value);
+	}
     }
 
     public enum CommandState {
@@ -113,14 +122,23 @@ public class STATUS extends SEDAPExpressMessage {
 	CommandState(int status) {
 	    this.value = status;
 	}
+
+	@Override
+	public String toString() {
+	    return String.valueOf(this.value);
+	}
     }
 
     private TechnicalState tecState;
     private OperationalState opsState;
 
-    private Double ammunitionLevel;
-    private Double fuelLevel;
-    private Double batterieLevel;
+    private List<Double> ammunitionLevels;
+    private List<Double> fuelLevels;
+    private List<Double> batterieLevels;
+
+    private List<String> ammunitionLevelNames;
+    private List<String> fuelLevelNames;
+    private List<String> batterieLevelNames;
 
     private Integer cmdId;
     private CommandState cmdState;
@@ -147,28 +165,52 @@ public class STATUS extends SEDAPExpressMessage {
 	this.opsState = opsState;
     }
 
-    public Double getAmmunitionLevel() {
-	return this.ammunitionLevel;
+    public List<Double> getAmmunitionLevels() {
+	return this.ammunitionLevels;
     }
 
-    public void setAmmunitionLevel(Double ammunitionLevel) {
-	this.ammunitionLevel = ammunitionLevel;
+    public void setAmmunitionLevels(List<Double> ammunitionLevels) {
+	this.ammunitionLevels = ammunitionLevels;
     }
 
-    public Double getFuelLevel() {
-	return this.fuelLevel;
+    public List<Double> getFuelLevels() {
+	return this.fuelLevels;
     }
 
-    public void setFuelLevel(Double fuelLevel) {
-	this.fuelLevel = fuelLevel;
+    public void setFuelLevels(List<Double> fuelLevels) {
+	this.fuelLevels = fuelLevels;
     }
 
-    public Double getBatterieLevel() {
-	return this.batterieLevel;
+    public List<Double> getBatterieLevels() {
+	return this.batterieLevels;
     }
 
-    public void setBatterieLevel(Double batterieLevel) {
-	this.batterieLevel = batterieLevel;
+    public void setBatterieLevels(List<Double> batterieLevels) {
+	this.batterieLevels = batterieLevels;
+    }
+
+    public List<String> getAmmunitionLevelNames() {
+	return this.ammunitionLevelNames;
+    }
+
+    public void setAmmunitionLevelNames(List<String> ammunitionLevelNames) {
+	this.ammunitionLevelNames = ammunitionLevelNames;
+    }
+
+    public List<String> getFuelLevelNames() {
+	return this.fuelLevelNames;
+    }
+
+    public void setFuelLevelNames(List<String> fuelLevelNames) {
+	this.fuelLevelNames = fuelLevelNames;
+    }
+
+    public List<String> getBatterieLevelNames() {
+	return this.batterieLevelNames;
+    }
+
+    public void setBatterieLevelNames(List<String> batterieLevelNames) {
+	this.batterieLevelNames = batterieLevelNames;
     }
 
     public Integer getCmdId() {
@@ -212,7 +254,6 @@ public class STATUS extends SEDAPExpressMessage {
     }
 
     /**
-     * Instantiate a new STATUS message
      *
      * @param number
      * @param time
@@ -222,8 +263,48 @@ public class STATUS extends SEDAPExpressMessage {
      * @param mac
      * @param tecState
      * @param opsState
+     * @param ammunitionLevelNames
+     * @param ammunitionLevels
+     * @param fuelLevelNames
+     * @param fuelLevels
+     * @param batterieLevelNames
+     * @param batterieLevels
+     * @param cmdId
+     * @param cmdState
+     * @param hostname
+     * @param mediaUrls
+     * @param freeText
+     */
+    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
+	    TechnicalState tecState, OperationalState opsState,
+	    String[] ammunitionLevelNames, Double[] ammunitionLevels,
+	    String[] fuelLevelNames, Double[] fuelLevels,
+	    String[] batterieLevelNames, Double[] batterieLevels,
+	    Integer cmdId, CommandState cmdState, String hostname, String mediaUrls, String freeText) {
+
+	this(number, time, sender, classification, acknowledgement, mac,
+		tecState, opsState,
+		Arrays.asList(ammunitionLevelNames), Arrays.asList(ammunitionLevels),
+		Arrays.asList(fuelLevelNames), Arrays.asList(fuelLevels),
+		Arrays.asList(batterieLevelNames), Arrays.asList(batterieLevels),
+		cmdId, cmdState, hostname, Arrays.asList(mediaUrls), freeText);
+    }
+
+    /**
+     *
+     * @param number
+     * @param time
+     * @param sender
+     * @param classification
+     * @param acknowledgement
+     * @param mac
+     * @param tecState
+     * @param opsState
+     * @param ammunitionLevelName
      * @param ammunitionLevel
+     * @param fuelLevelName
      * @param fuelLevel
+     * @param batterieLevelName
      * @param batterieLevel
      * @param cmdId
      * @param cmdState
@@ -232,17 +313,61 @@ public class STATUS extends SEDAPExpressMessage {
      * @param freeText
      */
     public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    TechnicalState tecState, OperationalState opsState, Double ammunitionLevel, Double fuelLevel, Double batterieLevel,
-	    Integer cmdId, CommandState cmdState,
-	    String hostname, List<String> mediaUrls, String freeText) {
+	    TechnicalState tecState, OperationalState opsState,
+	    String ammunitionLevelName, Double ammunitionLevel,
+	    String fuelLevelName, Double fuelLevel,
+	    String batterieLevelName, Double batterieLevel,
+	    Integer cmdId, CommandState cmdState, String hostname, String mediaUrls, String freeText) {
+
+	this(number, time, sender, classification, acknowledgement, mac,
+		tecState, opsState,
+		Arrays.asList(ammunitionLevelName), Arrays.asList(ammunitionLevel),
+		Arrays.asList(fuelLevelName), Arrays.asList(fuelLevel),
+		Arrays.asList(batterieLevelName), Arrays.asList(batterieLevel),
+		cmdId, cmdState, hostname, Arrays.asList(mediaUrls), freeText);
+    }
+
+    /**
+     *
+     * @param number
+     * @param time
+     * @param sender
+     * @param classification
+     * @param acknowledgement
+     * @param mac
+     * @param tecState
+     * @param opsState
+     * @param ammunitionLevelNames
+     * @param ammunitionLevels
+     * @param fuelLevelNames
+     * @param fuelLevels
+     * @param batterieLevelNames
+     * @param batterieLevels
+     * @param cmdId
+     * @param cmdState
+     * @param hostname
+     * @param mediaUrls
+     * @param freeText
+     */
+    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
+	    TechnicalState tecState, OperationalState opsState,
+	    List<String> ammunitionLevelNames, List<Double> ammunitionLevels,
+	    List<String> fuelLevelNames, List<Double> fuelLevels,
+	    List<String> batterieLevelNames, List<Double> batterieLevels,
+	    Integer cmdId, CommandState cmdState, String hostname, List<String> mediaUrls, String freeText) {
+
 	super(number, time, sender, classification, acknowledgement, mac);
+
 	this.tecState = tecState;
 	this.opsState = opsState;
-	this.ammunitionLevel = ammunitionLevel;
+	this.ammunitionLevels = ammunitionLevels;
+	this.fuelLevels = fuelLevels;
+	this.batterieLevels = batterieLevels;
+	this.ammunitionLevelNames = ammunitionLevelNames;
+	this.fuelLevelNames = fuelLevelNames;
+	this.batterieLevelNames = batterieLevelNames;
 	this.cmdId = cmdId;
 	this.cmdState = cmdState;
-	this.fuelLevel = fuelLevel;
-	this.batterieLevel = batterieLevel;
 	this.hostname = hostname;
 	this.mediaUrls = mediaUrls;
 	this.freeText = freeText;
@@ -305,14 +430,21 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.PERCENT_MATCHER, value)) {
-		this.ammunitionLevel = Double.parseDouble(value);
+
+		Iterator<String> it = Arrays.asList(value.split("#")).iterator();
+		this.ammunitionLevelNames = new LinkedList<>();
+		this.ammunitionLevels = new LinkedList<>();
+		while (it.hasNext()) {
+		    this.ammunitionLevelNames.add(it.next());
+		    this.ammunitionLevels.add(Double.parseDouble(it.next()));
+		}
 	    } else if (!value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.SEVERE,
 			      "STATUS",
 			      "STATUS(Iterator<String> message)",
-			      "Optional field \"ammunitionLevel\" contains not a valid number!",
+			      "Optional field \"ammunitionLevels\" contains not a valid number!",
 			      value);
 	    }
 	}
@@ -321,14 +453,22 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.PERCENT_MATCHER, value)) {
-		this.fuelLevel = Double.parseDouble(value);
+
+		Iterator<String> it = Arrays.asList(value.split("#")).iterator();
+		this.fuelLevelNames = new LinkedList<>();
+		this.fuelLevels = new LinkedList<>();
+		while (it.hasNext()) {
+		    this.fuelLevelNames.add(it.next());
+		    this.fuelLevels.add(Double.parseDouble(it.next()));
+		}
+
 	    } else if (!value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.SEVERE,
 			      "STATUS",
 			      "STATUS(Iterator<String> message)",
-			      "Optional field \"fuelLevel\" contains not a valid number!",
+			      "Optional field \"fuelLevels\" contains not a valid number!",
 			      value);
 	    }
 	}
@@ -337,15 +477,73 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.PERCENT_MATCHER, value)) {
-		this.batterieLevel = Double.parseDouble(value);
+
+		Iterator<String> it = Arrays.asList(value.split("#")).iterator();
+		this.batterieLevelNames = new LinkedList<>();
+		this.batterieLevels = new LinkedList<>();
+		while (it.hasNext()) {
+		    this.batterieLevelNames.add(it.next());
+		    this.batterieLevels.add(Double.parseDouble(it.next()));
+		}
+
 	    } else if (!value.isBlank()) {
 		SEDAPExpressMessage.logger
 			.logp(
 			      Level.SEVERE,
 			      "STATUS",
 			      "STATUS(Iterator<String> message)",
-			      "Optional field \"batterieLevel\" contains not a valid number!",
+			      "Optional field \"batterieLevels\" contains not a valid number!",
 			      value);
+	    }
+	}
+
+	// CmdID
+	if (message.hasNext()) {
+	    value = message.next();
+	    if (value.isBlank()) {
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.INFO,
+			      "STATUS",
+			      "STATUS(Iterator<String> message)",
+			      "Optional field \"cmdId\" is empty!");
+	    } else {
+		try {
+		    this.cmdId = Integer.valueOf(value);
+		} catch (DecoderException e) {
+		    SEDAPExpressMessage.logger
+			    .logp(
+				  Level.SEVERE,
+				  "STATUS",
+				  "STATUS(Iterator<String> message)",
+				  "Optional field \"cmdId\" contains not a valid number!"
+					  + value);
+		}
+	    }
+	}
+
+	// CmdState
+	if (message.hasNext()) {
+	    value = message.next();
+	    if (value.isBlank()) {
+		SEDAPExpressMessage.logger
+			.logp(
+			      Level.INFO,
+			      "STATUS",
+			      "STATUS(Iterator<String> message)",
+			      "Optional field \"cmdState\" is empty!");
+	    } else {
+		try {
+		    this.cmdState = CommandState.valueOfMessageType(Integer.parseInt(value));
+		} catch (DecoderException e) {
+		    SEDAPExpressMessage.logger
+			    .logp(
+				  Level.SEVERE,
+				  "STATUS",
+				  "STATUS(Iterator<String> message)",
+				  "Optional field \"cmdState\" contains not a valid number!",
+				  value);
+		}
 	    }
 	}
 
@@ -430,6 +628,7 @@ public class STATUS extends SEDAPExpressMessage {
 
     @Override
     public boolean equals(Object obj) {
+
 	if (obj == null) {
 	    return false;
 	} else if (!(obj instanceof STATUS)) {
@@ -440,9 +639,13 @@ public class STATUS extends SEDAPExpressMessage {
 		    (this.tecState == ((STATUS) obj).tecState) &&
 		    (this.opsState == ((STATUS) obj).opsState) &&
 
-		    (this.ammunitionLevel == ((STATUS) obj).ammunitionLevel) &&
-		    (this.fuelLevel == ((STATUS) obj).fuelLevel) &&
-		    (this.batterieLevel == ((STATUS) obj).batterieLevel) &&
+		    (this.ammunitionLevelNames.equals(((STATUS) obj).ammunitionLevelNames)) &&
+		    (this.fuelLevelNames.equals(((STATUS) obj).fuelLevelNames)) &&
+		    (this.batterieLevelNames.equals(((STATUS) obj).batterieLevelNames)) &&
+
+		    (this.ammunitionLevels.equals(((STATUS) obj).ammunitionLevels)) &&
+		    (this.fuelLevels.equals(((STATUS) obj).fuelLevels)) &&
+		    (this.batterieLevels.equals(((STATUS) obj).batterieLevels)) &&
 
 		    (((this.hostname == null) && (((STATUS) obj).hostname == null)) ||
 			    ((this.hostname != null) && this.hostname.equals(((STATUS) obj).hostname)))
@@ -466,6 +669,33 @@ public class STATUS extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
+	String ammunitionStr = "";
+	if (this.ammunitionLevelNames != null) {
+	    Iterator<String> itString = this.ammunitionLevelNames.iterator();
+	    Iterator<Double> itDouble = this.ammunitionLevels.iterator();
+	    while (itString.hasNext()) {
+		ammunitionStr = "#" + itString.next() + "#" + itDouble.next();
+	    }
+	}
+
+	String fuelStr = "";
+	if (this.fuelLevelNames != null) {
+	    Iterator<String> itString = this.fuelLevelNames.iterator();
+	    Iterator<Double> itDouble = this.fuelLevels.iterator();
+	    while (itString.hasNext()) {
+		fuelStr = "#" + itString.next() + "#" + itDouble.next();
+	    }
+	}
+
+	String batterieStr = "";
+	if (this.batterieLevelNames != null) {
+	    Iterator<String> itString = this.batterieLevelNames.iterator();
+	    Iterator<Double> itDouble = this.batterieLevels.iterator();
+	    while (itString.hasNext()) {
+		batterieStr = "#" + itString.next() + "#" + itDouble.next();
+	    }
+	}
+
 	StringBuilder urls = new StringBuilder();
 	if (this.mediaUrls != null) {
 	    this.mediaUrls.forEach(entry -> urls.append(Base64.toBase64String(entry.getBytes()) + "#"));
@@ -477,11 +707,11 @@ public class STATUS extends SEDAPExpressMessage {
 		.append(";")
 		.append((this.opsState != null) ? this.opsState : "")
 		.append(";")
-		.append((this.ammunitionLevel != null) ? SEDAPExpressMessage.numberFormatter.format(this.ammunitionLevel) : "")
+		.append(ammunitionStr.isBlank() ? "" : ammunitionStr.substring(2))
 		.append(";")
-		.append((this.fuelLevel != null) ? SEDAPExpressMessage.numberFormatter.format(this.fuelLevel) : "")
+		.append(fuelStr.isBlank() ? "" : fuelStr.substring(2))
 		.append(";")
-		.append((this.batterieLevel != null) ? SEDAPExpressMessage.numberFormatter.format(this.batterieLevel) : "")
+		.append(batterieStr.isBlank() ? "" : batterieStr.substring(2))
 		.append(";")
 		.append((this.cmdId != null) ? this.cmdId : "")
 		.append(";")

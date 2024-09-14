@@ -55,7 +55,7 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 
     private boolean status = true;
 
-    private final ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients = new ConcurrentLinkedDeque<>();
+    private ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients = new ConcurrentLinkedDeque<>();
 
     /**
      * Instantiate a new SEDAP-Express TCP Server on the given interface
@@ -81,7 +81,6 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	this("0.0.0.0", port);
     }
 
-    @Override
     public boolean connect() {
 
 	try {
@@ -90,7 +89,8 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	    this.serverSocket.configureBlocking(true);
 	    this.serverSocket.bind(new InetSocketAddress(this.intf, this.port));
 
-	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "Listening on port: " + this.port);
+	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
+		    "Listening on port: " + this.port);
 
 	    this.lastException = null;
 
@@ -110,13 +110,19 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	while (this.status) {
 
 	    try {
-		SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(this.serverSocket.accept(), this.clients, this.subscriptions);
-		this.clients.add(newClient);
+		while (true) {
+		    SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(this.serverSocket.accept(),
+			    this.clients, this.subscriptions);
+		    this.clients.add(newClient);
 
+		    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
+			    "Added new client " + newClient);
+		}
 	    } catch (Exception e) {
 		this.status = false;
 		this.lastException = e;
-		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()", "Could not listening on port: " + this.port, e);
+		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()",
+			"Could not listening on port: " + this.port, e);
 	    } finally {
 		try {
 		    this.serverSocket.close();
@@ -128,13 +134,23 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
     }
 
     @Override
-    public boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) {
+    public boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) throws IOException {
+
+	ConcurrentLinkedDeque<SEDAPExpressTCPClient> removeClients = new ConcurrentLinkedDeque<>();
 
 	this.clients.forEach(client -> {
 
 	    if (client.isStatus()) {
-		client.sendSEDAPExpressMessage(message);
+		try {
+		    client.sendSEDAPExpressMessage(message);
+		} catch (Exception e) {
+		    removeClients.add(client);
+		    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
+			    "Remove client " + client);
+		}
 	    }
+
+	    this.clients.removeAll(removeClients);
 
 	});
 
@@ -153,7 +169,8 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 
 	this.clients.forEach(SEDAPExpressTCPClient::stopCommunicator);
 
-	SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "stopCommunicator()", "Communicator stopped");
+	SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "stopCommunicator()",
+		"Communicator stopped");
     }
 
     @Override

@@ -56,9 +56,12 @@ class STATUSTest {
 		"93B37ACC",
 		TechnicalState.Operational,
 		OperationalState.Operational,
-		50.0,
-		75.3,
-		10.8,
+		Arrays.asList("MLG"),
+		Arrays.asList(50.0),
+		Arrays.asList("Tank1"),
+		Arrays.asList(75.3),
+		Arrays.asList("MainAkku"),
+		Arrays.asList(10.8),
 		34,
 		CommandState.Executed_successfully,
 		"10.8.0.6",
@@ -73,9 +76,14 @@ class STATUSTest {
 	Assertions.assertEquals("93B37ACC", status.getMAC());
 	Assertions.assertEquals(TechnicalState.Operational, status.getTecState());
 	Assertions.assertEquals(OperationalState.Operational, status.getOpsState());
-	Assertions.assertEquals(50.0, status.getAmmunitionLevel());
-	Assertions.assertEquals(75.3, status.getFuelLevel());
-	Assertions.assertEquals(10.8, status.getBatterieLevel());
+	Assertions.assertEquals("MLG", status.getAmmunitionLevelNames().getFirst());
+	Assertions.assertEquals(50.0, status.getAmmunitionLevels().getFirst());
+	Assertions.assertEquals("Tank1", status.getFuelLevelNames().getFirst());
+	Assertions.assertEquals(75.3, status.getFuelLevels().getFirst());
+	Assertions.assertEquals("MainAkku", status.getBatterieLevelNames().getFirst());
+	Assertions.assertEquals(10.8, status.getBatterieLevels().getFirst());
+	Assertions.assertEquals(34, status.getCmdId());
+	Assertions.assertEquals(CommandState.Executed_successfully, status.getCmdState());
 	Assertions.assertEquals("10.8.0.6", status.getHostname());
 	Assertions.assertArrayEquals(new String[] { "rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2" }, status.getMediaUrls().toArray());
 	Assertions.assertEquals("This is a sample!", status.getFreeText());
@@ -85,9 +93,9 @@ class STATUSTest {
     @Test
     final void testConstructorString() {
 
-	String message = "STATUS;41;50505050;BB91;C;TRUE;93B37ACC;2;1;20.3;30.4;40.5;MTAuOC4wLjY=;cnRzcDovLzEwLjguMC42L3N0cmVhbTE=#cnRzcDovLzEwLjguMC42L3N0cmVhbTI=;U2FtcGxlVGV4dCE=";
+	String message = "STATUS;41;50505050;BB91;C;TRUE;93B37ACC;2;1;#20.3;#30.4;#40.5;;;MTAuOC4wLjY=;cnRzcDovLzEwLjguMC42L3N0cmVhbTE=;U2FtcGxlVGV4dCE=";
 
-	final STATUS status = new STATUS(message);
+	STATUS status = new STATUS(message);
 
 	Assertions.assertEquals((short) 0x41, status.getNumber());
 	Assertions.assertEquals(0x50505050L, status.getTime());
@@ -97,12 +105,42 @@ class STATUSTest {
 	Assertions.assertEquals("93B37ACC", status.getMAC());
 	Assertions.assertEquals(TechnicalState.Degraded, status.getTecState());
 	Assertions.assertEquals(OperationalState.Degraded, status.getOpsState());
-	Assertions.assertEquals(20.3, status.getAmmunitionLevel());
-	Assertions.assertEquals(30.4, status.getFuelLevel());
-	Assertions.assertEquals(40.5, status.getBatterieLevel());
+	Assertions.assertEquals("", status.getAmmunitionLevelNames().getFirst());
+	Assertions.assertEquals(20.3, status.getAmmunitionLevels().getFirst());
+	Assertions.assertEquals("", status.getFuelLevelNames().getFirst());
+	Assertions.assertEquals(30.4, status.getFuelLevels().getFirst());
+	Assertions.assertEquals("", status.getBatterieLevelNames().getFirst());
+	Assertions.assertEquals(40.5, status.getBatterieLevels().getFirst());
+	Assertions.assertNull(status.getCmdId());
+	Assertions.assertNull(status.getCmdState());
 	Assertions.assertEquals("10.8.0.6", status.getHostname());
-	Assertions.assertArrayEquals(new String[] { "rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2" }, status.getMediaUrls().toArray());
+	Assertions.assertArrayEquals(new String[] { "rtsp://10.8.0.6/stream1" }, status.getMediaUrls().toArray());
 	Assertions.assertEquals("SampleText!", status.getFreeText());
+
+	message = "STATUS;15;66e2d520;LASSY;C;;;3;2;;;MainBattery#100;;;MTkyLjE2OC4xNjguMTA1;aHR0cDovLzE5Mi4xNjguMTY4LjEwNTo4MDgwL3N0cmVhbT90b3BpYz0vYXJndXMvYXIwMjM0X2Zyb250X2xlZnQvaW1hZ2VfcmF3";
+
+	status = new STATUS(message);
+
+	Assertions.assertEquals((short) 0x15, status.getNumber());
+	Assertions.assertEquals(0x66e2d520L, status.getTime());
+	Assertions.assertEquals("LASSY", status.getSender());
+	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.NO, status.getAcknowledgement());
+	Assertions.assertNull(status.getMAC());
+	Assertions.assertEquals(TechnicalState.Operational, status.getTecState());
+	Assertions.assertEquals(OperationalState.Operational, status.getOpsState());
+	Assertions.assertNull(status.getAmmunitionLevelNames());
+	Assertions.assertNull(status.getAmmunitionLevels());
+	Assertions.assertNull(status.getFuelLevelNames());
+	Assertions.assertNull(status.getFuelLevels());
+	Assertions.assertEquals("MainBattery", status.getBatterieLevelNames().getFirst());
+	Assertions.assertEquals(100.0, status.getBatterieLevels().getFirst());
+	Assertions.assertNull(status.getCmdId());
+	Assertions.assertNull(status.getCmdState());
+	Assertions.assertEquals("192.168.168.105", status.getHostname());
+	Assertions.assertArrayEquals(new String[] { "http://192.168.168.105:8080/stream?topic=/argus/ar0234_front_left/image_raw" }, status.getMediaUrls().toArray());
+	Assertions.assertNull(status.getFreeText());
+
     }
 
     @Test
@@ -118,9 +156,11 @@ class STATUSTest {
 			"93B37ACC",
 			"2",
 			"1",
-			"20.3",
-			"30.4",
-			"40.5",
+			"#20.3",
+			"#30.4",
+			"#40.5",
+			"",
+			"",
 			"MTAuOC4wLjY=",
 			"cnRzcDovLzEwLjguMC42L3N0cmVhbTE=#cnRzcDovLzEwLjguMC42L3N0cmVhbTI=",
 			"U2FtcGxlVGV4dCE=")
@@ -136,9 +176,12 @@ class STATUSTest {
 	Assertions.assertEquals("93B37ACC", status.getMAC());
 	Assertions.assertEquals(TechnicalState.Degraded, status.getTecState());
 	Assertions.assertEquals(OperationalState.Degraded, status.getOpsState());
-	Assertions.assertEquals(20.3, status.getAmmunitionLevel());
-	Assertions.assertEquals(30.4, status.getFuelLevel());
-	Assertions.assertEquals(40.5, status.getBatterieLevel());
+	Assertions.assertEquals("", status.getAmmunitionLevelNames().getFirst());
+	Assertions.assertEquals(20.3, status.getAmmunitionLevels().getFirst());
+	Assertions.assertEquals("", status.getFuelLevelNames().getFirst());
+	Assertions.assertEquals(30.4, status.getFuelLevels().getFirst());
+	Assertions.assertEquals("", status.getBatterieLevelNames().getFirst());
+	Assertions.assertEquals(40.5, status.getBatterieLevels().getFirst());
 	Assertions.assertEquals("10.8.0.6", status.getHostname());
 	Assertions.assertArrayEquals(new String[] { "rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2" }, status.getMediaUrls().toArray());
 	Assertions.assertEquals("SampleText!", status.getFreeText());

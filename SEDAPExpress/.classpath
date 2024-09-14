@@ -12,41 +12,61 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="libs/bcpkix-jdk18on-1.78.1.jar">
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcpkix-jdk18on-1.78.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Bouncycastle/bcpkix-jdk18on-1.78.1-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcprov-jdk18on-1.78.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Bouncycastle/bcprov-jdk18on-1.78.1-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcutil-jdk18on-1.78.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Bouncycastle/bcutil-jdk18on-1.78.1-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Gson/gson-2.11.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Gson/gson-2.11.0-javadoc.jar!/"/>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/JavaFx/lib/javafx.base.jar" sourcepath="libs/JavaFx/src.zip">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="SEDAPExpress/libs/JavaFx/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/JavaFx/lib/javafx.controls.jar" sourcepath="libs/JavaFx/src.zip">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="SEDAPExpress/libs/JavaFx/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/JavaFx/lib/javafx.fxml.jar" sourcepath="libs/JavaFx/src.zip">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="SEDAPExpress/libs/JavaFx/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/JavaFx/lib/javafx.graphics.jar" sourcepath="libs/JavaFx/src.zip">
+		<attributes>
+			<attribute name="module" value="true"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="SEDAPExpress/libs/JavaFx/bin"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Protobuf/protobuf-java-4.28.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/bcprov-jdk18on-1.78.1.jar" sourcepath="libs/bcprov-jdk18on-1.78.1.jar">
+	<classpathentry kind="lib" path="libs/Protobuf/protobuf-java-util-4.28.1.jar">
 		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/bcutil-jdk18on-1.78.1.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/jakarta.validation-api-3.0.2.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/gson-2.11.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/gson-2.11.0-javadoc.jar!/"/>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/protobuf-java-4.27.3.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/protobuf-java-4.27.3-javadoc.jar!/"/>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/protobuf-java-util-4.27.3.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/protobuf-java-util-4.27.3-javadoc.jar!/"/>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>

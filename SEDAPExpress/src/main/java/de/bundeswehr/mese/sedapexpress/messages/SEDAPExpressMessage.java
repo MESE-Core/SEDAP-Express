@@ -63,6 +63,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	GENERIC,
 	GRAPHIC,
 	HEARTBEAT,
+	TIMESYNC,
 	KEYEXCHANGE,
 	METEO,
 	OWNUNIT,
@@ -240,7 +241,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern RGBA_MATCHER = Pattern.compile("^[0-9A-F]{8}$"); // RGBA Format´
     public static final Pattern TECSTATUS_MATCHER = Pattern.compile("^[0-5]$"); // TecStatus
     public static final Pattern OPSSTATUS_MATCHER = Pattern.compile("^[0-4]$"); // OpsStatus
-    public static final Pattern PERCENT_MATCHER = Pattern.compile("^(100(\\.0+)?|(\\d{1,2})(\\.\\d+)?)$"); // Percent
+    public static final Pattern PERCENT_MATCHER = Pattern.compile("^([A-Za-z0-9]*#(100(\\\\.0+)?|(\\d{1,2}(.\\d+)*))#*)+$"); // Percent
     public static final Pattern ENCODING_MATCHER = Pattern.compile("^[BASE64]|[ASCII]|[BINARY]$");
 
     public static boolean matchesPattern(Pattern pattern, String value) {
@@ -674,18 +675,21 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
 	Arrays
 		.asList(
-			OWNUNIT.class,
+
+			ACKNOWLEDGE.class,
+			COMMAND.class,
 			CONTACT.class,
 			EMISSION.class,
-			METEO.class,
-			TEXT.class,
-			COMMAND.class,
+			GENERIC.class,
 			GRAPHIC.class,
-			STATUS.class,
-			ACKNOWLEDGE.class,
-			RESEND.class,
 			HEARTBEAT.class,
-			GENERIC.class)
+			TIMESYNC.class,
+			KEYEXCHANGE.class,
+			METEO.class,
+			OWNUNIT.class,
+			RESEND.class,
+			STATUS.class,
+			TEXT.class)
 		.forEach(clazz -> {
 		    try {
 			SEDAPExpressMessage.messageNameToConstructor
@@ -696,6 +700,13 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 			e.printStackTrace();
 		    }
 		});
+    }
+
+    static {
+	System.out.println("""
+		***************************************************
+		SEDAP-Express v1.0, ©2024 - Bundeswehr, Volker Voss
+		***************************************************""");
     }
 
     /**

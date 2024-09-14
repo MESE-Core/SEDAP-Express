@@ -50,7 +50,7 @@ class TEXTTest {
 		"4389F10D",
 		"7D31",
 		0x1111,
-		COMMAND.CMDTYPE_Sync_time,
+		COMMAND.CommandType.Restart,
 		Arrays.asList("10.8.0.6"));
 
 	Assertions.assertEquals((short) 55, command.getNumber());
@@ -61,7 +61,7 @@ class TEXTTest {
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x1111, command.getCmdId());
-	Assertions.assertEquals(COMMAND.CMDTYPE_Sync_time, command.getCmdType());
+	Assertions.assertEquals(COMMAND.CommandType.Restart, command.getCmdType());
 	Assertions.assertEquals("10.8.0.6", command.getCmdTypeDependentParameters().getFirst());
     }
 
@@ -141,22 +141,23 @@ class TEXTTest {
 			"TRUE",
 			"4389F10D",
 			"7D31",
-			"2892",
-			"4",
+			"3",
+			"NONE",
 			"10.0.0.1")
 		.iterator();
 
-	final COMMAND command = new COMMAND(it);
+	final TEXT text = new TEXT(it);
 
-	Assertions.assertEquals((short) 0x55, command.getNumber());
-	Assertions.assertEquals(0x1B351C87L, command.getTime());
-	Assertions.assertEquals("5BCD", command.getSender());
-	Assertions.assertEquals(Classification.SECRET, command.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
-	Assertions.assertEquals("4389F10D", command.getMAC());
-	Assertions.assertEquals("7D31", command.getRecipient());
-	Assertions.assertEquals(0x2892, command.getCmdId());
-	Assertions.assertEquals(COMMAND.CMDTYPE_Sync_time, command.getCmdType());
-	Assertions.assertEquals("10.0.0.1", command.getCmdTypeDependentParameters().getFirst());
+	Assertions.assertEquals((short) 0x55, text.getNumber());
+	Assertions.assertEquals(0x1B351C87L, text.getTime());
+	Assertions.assertEquals("5BCD", text.getSender());
+	Assertions.assertEquals(Classification.SECRET, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
+	Assertions.assertEquals("4389F10D", text.getMAC());
+	Assertions.assertEquals(TEXT.TextType.Notice, text.getType());
+	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
+	Assertions.assertEquals("10.0.0.1", text.getTextContent());
+	Assertions.assertEquals("7D31", text.getRecipient());
+
     }
 }

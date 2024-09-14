@@ -34,21 +34,59 @@ public class COMMAND extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = -5662357406861380560L;
 
-    public static final Integer CMDTYPE_Poweroff = 0;
-    public static final Integer CMDTYPE_Restart = 1;
-    public static final Integer CMDTYPE_Standby = 2;
-    public static final Integer CMDTYPE_Wake_up = 3;
-    public static final Integer CMDTYPE_Sync_time = 4;
-    public static final Integer CMDTYPE_Send_status = 5;
-    public static final Integer CMDTYPE_Move = 6;
-    public static final Integer CMDTYPE_Rotate = 7;
-    public static final Integer CMDTYPE_Scan_area = 8;
-    public static final Integer CMDTYPE_Take_photo = 9;
-    public static final Integer CMDTYPE_Make_video = 10;
-    public static final Integer CMDTYPE_Switch_on_video_stream = 11;
-    public static final Integer CMDTYPE_Switch_off_video_stream = 12;
-    public static final Integer CMDTYPE_Engagement = 13;
-    public static final Integer CMDTYPE_Generic_action = 255;
+    public enum CommandType {
+	Poweroff(0),
+	Restart(1),
+	Standby(2),
+	Wake_up(3),
+	Sync_time(4),
+	Send_status(5),
+	Move(6),
+	Rotate(7),
+	Scan_area(8),
+	Take_photo(9),
+	Make_video(10),
+	Live_video(11),
+	Engagement(12),
+	Generic_action(255);
+
+	public static CommandType valueOfCommandType(int type) {
+	    return switch (type) {
+	    case 0 -> Poweroff;
+	    case 1 -> Restart;
+	    case 2 -> Standby;
+	    case 3 -> Wake_up;
+	    case 4 -> Sync_time;
+	    case 5 -> Send_status;
+	    case 6 -> Move;
+	    case 7 -> Rotate;
+	    case 8 -> Scan_area;
+	    case 9 -> Take_photo;
+	    case 10 -> Make_video;
+	    case 11 -> Live_video;
+	    case 12 -> Engagement;
+	    case 255 -> Generic_action;
+	    default -> Generic_action;
+	    };
+	}
+
+	int type;
+
+	CommandType(int type) {
+	    this.type = type;
+	}
+
+	@Override
+	public String toString() {
+	    return String.valueOf(this.type);
+	}
+
+	public int getTypeValue() {
+
+	    return this.type;
+	}
+
+    }
 
     public static final String CMDTYPE_ENGAGEMENT_CMD_Start = "start-engagement";
     public static final String CMDTYPE_ENGAGEMENT_CMD_Hold = "hold-engagement";
@@ -58,7 +96,7 @@ public class COMMAND extends SEDAPExpressMessage {
 
     private Integer cmdId;
 
-    private Integer cmdType;
+    private CommandType cmdType;
 
     private List<String> cmdTypeDependentParameters;
 
@@ -78,11 +116,11 @@ public class COMMAND extends SEDAPExpressMessage {
 	this.recipient = recipient;
     }
 
-    public Integer getCmdType() {
+    public CommandType getCmdType() {
 	return this.cmdType;
     }
 
-    public void setCmdType(Integer cmdType) {
+    public void setCmdType(CommandType cmdType) {
 	this.cmdType = cmdType;
     }
 
@@ -109,7 +147,7 @@ public class COMMAND extends SEDAPExpressMessage {
      * @param cmdTypeDependentParameters
      */
     public COMMAND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient,
-	    Integer cmdId, Integer cmdType, List<String> cmdTypeDependentParameters) {
+	    Integer cmdId, CommandType cmdType, List<String> cmdTypeDependentParameters) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -199,7 +237,7 @@ public class COMMAND extends SEDAPExpressMessage {
 			      "COMMAND(Iterator<String> message)",
 			      "Mandatory field \"cmdType\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.CMDTYPE_MATCHER, value)) {
-		this.cmdType = Integer.valueOf(value, 16);
+		this.cmdType = CommandType.valueOfCommandType(Integer.parseInt(value, 16));
 	    } else {
 		SEDAPExpressMessage.logger
 			.logp(
@@ -273,7 +311,7 @@ public class COMMAND extends SEDAPExpressMessage {
 		    .append(";")
 		    .append((this.cmdId != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdId) : "")
 		    .append(";")
-		    .append((this.cmdType != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdType) : "")
+		    .append((this.cmdType != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdType.getTypeValue()) : "")
 		    .append(";")
 		    .append((this.cmdTypeDependentParameters != null) ? parameters : "")
 		    .toString();
