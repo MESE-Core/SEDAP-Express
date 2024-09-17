@@ -26,7 +26,7 @@
       <Label text="Recipient:" />
       <Label text="Name:" GridPane.rowIndex="2" />
       <Label text="Number:" GridPane.rowIndex="3" />
-      <Label fx:id="contactIdLabel" text="invalid" GridPane.columnIndex="3">
+      <Label fx:id="recipientIdLabel" text="invalid" GridPane.columnIndex="3">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,7 +44,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label fx:id="nameLabel" layoutX="321.0" layoutY="47.0" text="invalid" GridPane.columnIndex="3" GridPane.rowIndex="3">
+      <Label fx:id="numberLabel" layoutX="321.0" layoutY="47.0" text="invalid" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,7 +53,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <TextField fx:id="contactIdTextField" GridPane.columnIndex="1" />
+      <TextField fx:id="recipientTextField" GridPane.columnIndex="1" />
       <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="numberTextField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">

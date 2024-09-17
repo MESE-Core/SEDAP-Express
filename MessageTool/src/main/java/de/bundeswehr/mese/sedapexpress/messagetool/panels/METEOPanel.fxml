@@ -35,19 +35,19 @@
   </rowConstraints>
    <children>
       <Label text="Speed through water:" />
-      <Label text="Water speed:" GridPane.rowIndex="2" />
-      <Label text="Water direction:" GridPane.rowIndex="3" />
-      <Label layoutX="10.0" layoutY="118.0" text="Water temperature" GridPane.rowIndex="4" />
-      <Label layoutX="10.0" layoutY="148.0" text="Water depth" GridPane.rowIndex="5" />
-      <Label layoutX="10.0" layoutY="179.0" text="Air temperature" GridPane.rowIndex="7" />
-      <Label layoutX="10.0" layoutY="209.0" text="Dew point" GridPane.rowIndex="8" />
+      <Label text="Water speed [m/s]:" GridPane.rowIndex="2" />
+      <Label text="Water direction [°]:" GridPane.rowIndex="3" />
+      <Label layoutX="10.0" layoutY="118.0" text="Water temperature [°]" GridPane.rowIndex="4" />
+      <Label layoutX="10.0" layoutY="148.0" text="Water depth [m]:" GridPane.rowIndex="5" />
+      <Label layoutX="10.0" layoutY="179.0" text="Air temperature [°]:" GridPane.rowIndex="7" />
+      <Label layoutX="10.0" layoutY="209.0" text="Dew point [°]:" GridPane.rowIndex="8" />
       <Label text="Humidity relative:" GridPane.rowIndex="9" />
-      <Label text="Pressure:" GridPane.rowIndex="10" />
-      <Label text="Wind speed:" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-      <Label text="Wind direction:" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+      <Label text="Pressure [hPa]:" GridPane.rowIndex="10" />
+      <Label text="Wind speed [m/s]:" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+      <Label text="Wind direction [°]::" GridPane.columnIndex="5" GridPane.rowIndex="3" />
       <Label text="Visibility:" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-      <Label text="Cloud height:" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-      <Label text="Cloud cover:" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+      <Label text="Cloud height [m]:" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+      <Label text="Cloud cover [%]:" GridPane.columnIndex="5" GridPane.rowIndex="9" />
       <TextField fx:id="speedThroughWaterTextfield" GridPane.columnIndex="1" />
       <TextField fx:id="waterSpeedTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="waterDirectionTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />

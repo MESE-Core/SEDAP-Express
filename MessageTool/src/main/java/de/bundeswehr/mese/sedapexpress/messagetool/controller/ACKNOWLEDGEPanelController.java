@@ -10,27 +10,31 @@ import javafx.scene.control.TextField;
 public class ACKNOWLEDGEPanelController extends MessagePanelController {
 
     @FXML
-    private Label contactIdLabel;
-
-    @FXML
-    private TextField contactIdTextField;
-
-    @FXML
     private Label nameLabel;
 
     @FXML
     private TextField nameTextField;
 
     @FXML
+    private Label numberLabel;
+
+    @FXML
     private TextField numberTextField;
 
     @FXML
+    private Label recipientIdLabel;
+
+    @FXML
+    private TextField recipientTextField;
+
+    @FXML
     void initialize() {
-	assert this.contactIdLabel != null : "fx:id=\"contactIdLabel\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
-	assert this.contactIdTextField != null : "fx:id=\"contactIdTextField\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
 	assert this.nameLabel != null : "fx:id=\"nameLabel\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
 	assert this.nameTextField != null : "fx:id=\"nameTextField\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
+	assert this.numberLabel != null : "fx:id=\"numberLabel\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
 	assert this.numberTextField != null : "fx:id=\"numberTextField\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
+	assert this.recipientIdLabel != null : "fx:id=\"recipientIdLabel\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
+	assert this.recipientTextField != null : "fx:id=\"recipientTextField\" was not injected: check your FXML file 'ACKNOWLEDGEPanel.fxml'.";
 
     }
 

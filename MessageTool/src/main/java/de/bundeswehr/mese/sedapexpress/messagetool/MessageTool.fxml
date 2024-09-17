@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -145,7 +146,7 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" />
+                        <RowConstraints minHeight="10.0" vgrow="NEVER" />
                         <RowConstraints minHeight="10.0" />
                         <RowConstraints minHeight="10.0" />
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -179,6 +180,7 @@
                               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createHEARTBEAT" text="HEARTBEAT" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createKEYEXCHANGE" text="KEYEXCHANGE" GridPane.rowIndex="3" />
                               <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createGENERIC" text="GENERIC" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createTIMESYNC" text="TIMESYNC" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">

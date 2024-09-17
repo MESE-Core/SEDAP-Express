@@ -61,6 +61,7 @@ public class SampleTCPServer implements SEDAPExpressSubscriber {
 	this.communicator.subscribeMessages(this, MessageType.OWNUNIT, MessageType.CONTACT, MessageType.HEARTBEAT,
 		MessageType.STATUS);
 	this.senderId = this.communicator.createSenderId();
+	this.communicator.connect();
 
 	// Sample thread as example for how producing messages
 	new Thread(() -> {

@@ -18,6 +18,9 @@ import javafx.scene.control.TextField;
 public class STATUSPanelController extends MessagePanelController {
 
     @FXML
+    private TextField ammunitionNameTextField;
+
+    @FXML
     private TextField ammunitionLevelTextField;
 
     @FXML
@@ -25,6 +28,9 @@ public class STATUSPanelController extends MessagePanelController {
 
     @FXML
     private Label batterieLevelLabel;
+
+    @FXML
+    private TextField batterieNameTextField;
 
     @FXML
     private TextField batterieLevelTextField;
@@ -43,6 +49,9 @@ public class STATUSPanelController extends MessagePanelController {
 
     @FXML
     private Label fuelLevelLabel;
+
+    @FXML
+    private TextField fuelNameTextField;
 
     @FXML
     private TextField fuelLevelTextField;
@@ -99,20 +108,22 @@ public class STATUSPanelController extends MessagePanelController {
     public STATUS createMessage(Short number, Long time, String sender,
 	    Classification classification, Acknowledgement acknowledgement, String mac) {
 
-	STATUS status = new STATUS(number, time, sender,
+	return new STATUS(number, time, sender,
 		classification, acknowledgement, mac,
 		this.tecStateComboBox.getValue(),
 		this.opsStateComboBox.getValue(),
+		(this.ammunitionNameTextField.getText().isBlank()) ? null : this.ammunitionNameTextField.getText(),
 		(this.ammunitionLevelTextField.getText().isBlank()) ? null : Double.valueOf(this.ammunitionLevelTextField.getText()),
+		(this.fuelNameTextField.getText().isBlank()) ? null : this.fuelNameTextField.getText(),
 		(this.fuelLevelTextField.getText().isBlank()) ? null : Double.valueOf(this.fuelLevelTextField.getText()),
+		(this.batterieNameTextField.getText().isBlank()) ? null : this.batterieNameTextField.getText(),
 		(this.batterieLevelTextField.getText().isBlank()) ? null : Double.valueOf(this.batterieLevelTextField.getText()),
 		(this.cmdIdTextField.getText().isBlank()) ? null : Integer.valueOf(this.cmdIdTextField.getText()),
 		this.cmdStateComboBox.getValue(),
 		this.ipHostTextField.getText(),
-		Arrays.asList(this.mediaTextField.getText()),
+		this.mediaTextField.getText(),
 		this.textTextArea.getText());
 
-	return status;
     }
 
     @Override

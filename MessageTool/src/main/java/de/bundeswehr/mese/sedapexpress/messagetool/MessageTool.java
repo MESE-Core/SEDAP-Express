@@ -25,6 +25,7 @@
  */
 package de.bundeswehr.mese.sedapexpress.messagetool;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
@@ -44,6 +45,7 @@ import de.bundeswehr.mese.sedapexpress.messagetool.controller.OWNUNITPanelContro
 import de.bundeswehr.mese.sedapexpress.messagetool.controller.RESENDPanelController;
 import de.bundeswehr.mese.sedapexpress.messagetool.controller.STATUSPanelController;
 import de.bundeswehr.mese.sedapexpress.messagetool.controller.TEXTPanelController;
+import de.bundeswehr.mese.sedapexpress.messagetool.controller.TIMESYNCPanelController;
 import de.bundeswehr.mese.sedapexpress.network.SEDAPExpressCommunicator;
 import de.bundeswehr.mese.sedapexpress.network.SEDAPExpressTCPClient;
 import javafx.application.Application;
@@ -258,6 +260,14 @@ public class MessageTool extends Application {
     }
 
     @FXML
+    void createTIMESYNC(ActionEvent event) {
+	this.messageBorderPane.getChildren().clear();
+	this.messageBorderPane.getChildren().add(this.timesyncPanel);
+
+	this.currentController = this.timesyncController;
+    }
+
+    @FXML
     void createGENERIC(ActionEvent event) {
 	this.messageBorderPane.getChildren().clear();
 	this.messageBorderPane.getChildren().add(this.genericPanel);
@@ -268,6 +278,11 @@ public class MessageTool extends Application {
     @FXML
     void sendMessage(ActionEvent event) {
 
+	try {
+	    this.communicator
+		    .sendSEDAPExpressMessage(this.currentController.createMessage(null, null, null, null, null, null));
+	} catch (IOException e) {
+	}
     }
 
     @FXML
@@ -286,14 +301,9 @@ public class MessageTool extends Application {
 	    time = null;
 	}
 
-	SEDAPExpressMessage message = this.currentController
-		.createMessage(
-			       number,
-			       time,
-			       this.senderTextField.getText(),
-			       this.classificationComboBox.getSelectionModel().getSelectedItem(),
-			       this.acknowledgmentComboBox.getSelectionModel().getSelectedItem(),
-			       this.macTextField.getText());
+	SEDAPExpressMessage message = this.currentController.createMessage(number, time, this.senderTextField.getText(),
+		this.classificationComboBox.getSelectionModel().getSelectedItem(),
+		this.acknowledgmentComboBox.getSelectionModel().getSelectedItem(), this.macTextField.getText());
 
 	System.out.println(message);
     }
@@ -310,6 +320,7 @@ public class MessageTool extends Application {
     private GridPane resendPanel;
     private GridPane genericPanel;
     private GridPane heartbeatPanel;
+    private GridPane timesyncPanel;
     private GridPane keyexchangePanel;
 
     private OWNUNITPanelController ownunitController;
@@ -324,23 +335,35 @@ public class MessageTool extends Application {
     private RESENDPanelController resendController;
     private GENERICPanelController genericController;
     private HEARTBEATPanelController heartbeatController;
+    private TIMESYNCPanelController timesyncController;
     private KEYEXCHANGEPanelController keyexchangeController;
 
     private MessagePanelController currentController;
 
     @FXML
     void initialize() {
-	assert this.authenticationCheckBox != null : "fx:id=\"authenticationCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.connectButton != null : "fx:id=\"connectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.disconnectButton != null : "fx:id=\"disconnectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.encryptedCheckBox != null : "fx:id=\"encryptedCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.inputLogTextArea != null : "fx:id=\"inputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.ipTextField != null : "fx:id=\"ipTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.keyTextField != null : "fx:id=\"keyTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.messageBorderPane != null : "fx:id=\"messageBorderPane\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.outputLogTextArea != null : "fx:id=\"outputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.portTextField != null : "fx:id=\"portTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.protobufCheckBox != null : "fx:id=\"protobufCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.authenticationCheckBox != null
+		: "fx:id=\"authenticationCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.connectButton != null
+		: "fx:id=\"connectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.disconnectButton != null
+		: "fx:id=\"disconnectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.encryptedCheckBox != null
+		: "fx:id=\"encryptedCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.inputLogTextArea != null
+		: "fx:id=\"inputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.ipTextField != null
+		: "fx:id=\"ipTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.keyTextField != null
+		: "fx:id=\"keyTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.messageBorderPane != null
+		: "fx:id=\"messageBorderPane\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.outputLogTextArea != null
+		: "fx:id=\"outputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.portTextField != null
+		: "fx:id=\"portTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.protobufCheckBox != null
+		: "fx:id=\"protobufCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
 
 	this.classificationComboBox.setItems(FXCollections.observableList(Arrays.asList(Classification.values())));
 	this.classificationComboBox.getSelectionModel().select(1);
@@ -442,6 +465,11 @@ public class MessageTool extends Application {
 	    loader.setController(this.heartbeatController);
 	    this.heartbeatPanel = loader.load();
 
+	    loader = new FXMLLoader(getClass().getResource("panels/HEARTBEATPanel.fxml"));
+	    this.timesyncController = new TIMESYNCPanelController();
+	    loader.setController(this.timesyncController);
+	    this.timesyncPanel = loader.load();
+
 	    loader = new FXMLLoader(getClass().getResource("panels/GENERICPanel.fxml"));
 	    this.genericController = new GENERICPanelController();
 	    loader.setController(this.genericController);
@@ -455,38 +483,6 @@ public class MessageTool extends Application {
     public static void main(String[] args) {
 
 	Application.launch(args);
-//	COMMAND command = new COMMAND(this.numberCOMMAND,
-//		System.currentTimeMillis(),
-//		this.senderId,
-//		SEDAPExpressMessage.RESTRICTED,
-//		SEDAPExpressMessage.ACKNOWLEDGE_YES,
-//		null,
-//		"7D31",
-//		COMMAND.CMDTYPE_SYNC_TIME,
-//		Arrays.asList("10.8.0.6"));
-//
-//	this.communicator.sendSEDAPExpressMessage(command);
-//
-//	if (this.numberSTATUS++ == 255) {
-//	    this.numberSTATUS = 0;
-//	}
-
-//	STATUS status = new STATUS(this.numberSTATUS,
-//		System.currentTimeMillis(),
-//		this.senderId,
-//		SEDAPExpressMessage.CONFIDENTIAL,
-//		SEDAPExpressMessage.ACKNOWLEDGE_NO,
-//		null,
-//		STATUS.TECSTATUS_OPERATIONAL,
-//		STATUS.OPSSTATUS_OPERATIONAL,
-//		50.0,
-//		75.3,
-//		10.8,
-//		"10.8.0.6",
-//		Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
-//		"This is a sample!");
-
-//	this.communicator.sendSEDAPExpressMessage(status);
     }
 
     @Override
