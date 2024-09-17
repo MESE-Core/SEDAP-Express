@@ -78,8 +78,7 @@ public class GENERIC extends SEDAPExpressMessage {
      * @param encoding
      * @param content
      */
-    public GENERIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    String contentType, String encoding, String content) {
+    public GENERIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String contentType, String encoding, String content) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -111,85 +110,39 @@ public class GENERIC extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "GENERIC",
-			      "GENERIC(Iterator<String> message)",
-			      "Optional field \"contentType\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" is empty!");
 	    } else {
 		this.contentType = value;
-		if (!("SEDAP".equals(this.contentType) ||
-			"ASCII".equals(this.contentType) ||
-			"NMEA".equals(this.contentType) ||
-			"XML".equals(this.contentType) ||
-			"JSON".equals(this.contentType) ||
-			"BINARY".equals(this.contentType))) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.INFO,
-				  "GENERIC",
-				  "GENERIC(Iterator<String> message)",
-				  "Optional field \"contentType\" has an invalid value > " + this.contentType);
+		if (!("SEDAP".equals(this.contentType) || "ASCII".equals(this.contentType) || "NMEA".equals(this.contentType) || "XML".equals(this.contentType) || "JSON".equals(this.contentType) || "BINARY".equals(this.contentType))) {
+		    SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" has an invalid value > " + this.contentType);
 		}
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "GENERIC",
-			  "GENERIC(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Incomplete message!");
 	}
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "GENERIC",
-			      "GENERIC(Iterator<String> message)",
-			      "Optional field \"encoding\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"encoding\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.ENCODING_MATCHER, value)) {
 		this.encoding = value;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "GENERIC",
-			      "GENERIC(Iterator<String> message)",
-			      "Mandatory field \"encoding\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Mandatory field \"encoding\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "GENERIC",
-			  "GENERIC(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Content
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "GENERIC",
-			      "GENERIC(Iterator<String> message)",
-			      "Mandatory field \"content\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Mandatory field \"content\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
 		this.content = value;
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "GENERIC",
-			      "GENERIC(Iterator<String> message)",
-			      "Mandatory field \"content\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Mandatory field \"content\" contains invalid value!", value);
 	    }
 	}
     }
@@ -204,16 +157,11 @@ public class GENERIC extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.contentType == null) && (((GENERIC) obj).contentType == null)) ||
-			    ((this.contentType != null) && this.contentType.equals(((GENERIC) obj).contentType)))
-		    &&
+		    (((this.contentType == null) && (((GENERIC) obj).contentType == null)) || ((this.contentType != null) && this.contentType.equals(((GENERIC) obj).contentType))) &&
 
-		    (((this.encoding == null) && (((GENERIC) obj).encoding == null)) ||
-			    ((this.encoding != null) && this.encoding.equals(((GENERIC) obj).encoding)))
-		    &&
+		    (((this.encoding == null) && (((GENERIC) obj).encoding == null)) || ((this.encoding != null) && this.encoding.equals(((GENERIC) obj).encoding))) &&
 
-		    (((this.content == null) && (((GENERIC) obj).content == null)) ||
-			    ((this.content != null) && this.content.equals(((GENERIC) obj).content)));
+		    (((this.content == null) && (((GENERIC) obj).content == null)) || ((this.content != null) && this.content.equals(((GENERIC) obj).content)));
 	}
     }
 
@@ -225,13 +173,8 @@ public class GENERIC extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
-		.append((this.contentType != null) ? this.contentType : "")
-		.append(";")
-		.append((this.encoding != null) ? this.encoding : "")
-		.append(";")
-		.append((this.content != null) ? this.content : "")
-		.toString();
+	return SEDAPExpressMessage.removeSemicolons(
+		serializeHeader().append((this.contentType != null) ? this.contentType : "").append(";").append((this.encoding != null) ? this.encoding : "").append(";").append((this.content != null) ? this.content : "").toString());
     }
 
 }

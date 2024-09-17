@@ -38,8 +38,7 @@ public class CONTACT extends SEDAPExpressMessage {
 
     public enum DeleteFlag {
 
-	DELETE_NO(Boolean.FALSE),
-	DELETE_YES(Boolean.TRUE);
+	DELETE_NO(Boolean.FALSE), DELETE_YES(Boolean.TRUE);
 
 	boolean value;
 
@@ -51,14 +50,7 @@ public class CONTACT extends SEDAPExpressMessage {
 
     public enum Source {
 
-	Radar("R"),
-	AIS("A"),
-	IFF("I"),
-	Sonar("S"),
-	EW("E"),
-	Optical("O"),
-	Synthetic("Y"),
-	Manual("M");
+	Radar("R"), AIS("A"), IFF("I"), Sonar("S"), EW("E"), Optical("O"), Synthetic("Y"), Manual("M");
 
 	String value;
 
@@ -318,12 +310,9 @@ public class CONTACT extends SEDAPExpressMessage {
      * @param imageData
      * @param comment
      */
-    public CONTACT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    String contactID, Boolean deleteFlag, Double latitude, Double longitude, Double altitude,
-	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance,
-	    Double speed, Double course, Double heading, Double roll, Double pitch,
-	    Double width, Double length, Double height,
-	    String name, String source, char[] sidc, String mmsi, String icao, byte[] imageData, String comment) {
+    public CONTACT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String contactID, Boolean deleteFlag, Double latitude, Double longitude, Double altitude,
+	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance, Double speed, Double course, Double heading, Double roll, Double pitch, Double width, Double length, Double height, String name, String source,
+	    char[] sidc, String mmsi, String icao, byte[] imageData, String comment) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -377,20 +366,10 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    this.contactID = message.next();
 	    if (this.contactID.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field \"contactID\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"contactID\" is empty!");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "CONTACT",
-			  "CONTACT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// DeleteFlag
@@ -401,102 +380,49 @@ public class CONTACT extends SEDAPExpressMessage {
 	    } else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
 		this.deleteFlag = false;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field \"deleteFlag\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"deleteFlag\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "CONTACT",
-			  "CONTACT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Latitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field latitude is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field latitude is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.latitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field \"latitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"latitude\" contains invalid value!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "CONTACT",
-			  "CONTACT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Longitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field \"longitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"longitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.longitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Mandatory field \"longitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"longitude\" contains invalid value!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "CONTACT",
-			  "CONTACT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Altitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"altitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"altitude\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.altitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"altitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"altitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -504,22 +430,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"relativeXDistance\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"relativeXDistance\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.relativeXDistance = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"relativeXDistance\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"relativeXDistance\" contains invalid value!", value);
 	    }
 	}
 
@@ -527,22 +442,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"relativeYDistance\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"relativeYDistance\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.relativeYDistance = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"relativeYDistance\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"relativeYDistance\" contains invalid value!", value);
 	    }
 	}
 
@@ -550,22 +454,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"relativeZDistance\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"relativeZDistance\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.relativeZDistance = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"relativeZDistance\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"relativeZDistance\" contains invalid value!", value);
 	    }
 	}
 
@@ -573,22 +466,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"speed\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"speed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.POSITIVE_DOUBLE_MATCHER, value)) {
 		this.speed = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"speed\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"speed\" contains invalid value!", value);
 	    }
 	}
 
@@ -596,22 +478,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"course\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"course\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
 		this.course = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"course\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"course\" contains invalid value!", value);
 	    }
 	}
 
@@ -621,13 +492,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
 		this.heading = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"heading\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"heading\" contains invalid value!", value);
 	    }
 	}
 
@@ -635,22 +500,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"roll\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"roll\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.roll = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"roll\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"roll\" contains invalid value!", value);
 	    }
 	}
 
@@ -658,22 +512,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"pitch\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"pitch\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.pitch = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"pitch\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"pitch\" contains invalid value!", value);
 	    }
 	}
 
@@ -681,22 +524,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"width\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"width\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.POSITIVE_DOUBLE_MATCHER, value)) {
 		this.width = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"width\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"width\" contains invalid value!", value);
 	    }
 	}
 
@@ -704,22 +536,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"length\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"length\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.POSITIVE_DOUBLE_MATCHER, value)) {
 		this.length = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"length\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"length\" contains invalid value!", value);
 	    }
 	}
 
@@ -727,22 +548,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"height\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"height\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.POSITIVE_DOUBLE_MATCHER, value)) {
 		this.height = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"height\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"height\" contains invalid value!", value);
 	    }
 	}
 
@@ -750,12 +560,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    this.name = message.next();
 	    if (this.name.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"name\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"name\" is empty!");
 	    }
 	}
 
@@ -763,22 +568,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"source\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"source\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SOURCE_MATCHER, value)) {
 		this.source = value;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"source\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"source\" contains invalid value!", value);
 	    }
 	}
 
@@ -786,22 +580,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"SIDC\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"SIDC\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SIDC_MATCHER, value)) {
 		this.sidc = value.toCharArray();
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"SIDC\" contains invalid value - length: " + value.length() + " bytes!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"SIDC\" contains invalid value - length: " + value.length() + " bytes!", value);
 	    }
 	}
 
@@ -809,22 +592,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"MMSI\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"MMSI\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.MMSI_MATCHER, value)) {
 		this.mmsi = value;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"MMSI\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"MMSI\" contains invalid value!", value);
 	    }
 	}
 
@@ -832,22 +604,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"ICAO\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"ICAO\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.ICAO_MATCHER, value)) {
 		this.icao = value;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"ICAO\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"ICAO\" contains invalid value!", value);
 	    }
 	}
 
@@ -855,22 +616,12 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"imageData\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"imageData\" is empty!");
 	    } else {
 		try {
 		    this.imageData = Base64.decode(value);
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "CONTACT",
-				  "CONTACT(Iterator<String> message)",
-				  "Optional field \"imageData\" could not be decoded from Base64!");
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"imageData\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -879,22 +630,12 @@ public class CONTACT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if ((value == null) || value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "CONTACT",
-			      "CONTACT(Iterator<String> message)",
-			      "Optional field \"comment\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"comment\" is empty!");
 	    } else {
 		try {
 		    this.comment = new String(Base64.decode(value));
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "STATUS",
-				  "STATUS(Iterator<String> message)",
-				  "Optional field \"comment\" could not be decoded from Base64!");
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"comment\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -910,53 +651,33 @@ public class CONTACT extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.contactID == null) && (((CONTACT) obj).contactID == null)) ||
-			    ((this.contactID != null) && this.contactID.equals(((CONTACT) obj).contactID)))
-		    &&
+		    (((this.contactID == null) && (((CONTACT) obj).contactID == null)) || ((this.contactID != null) && this.contactID.equals(((CONTACT) obj).contactID))) &&
 
 		    (this.deleteFlag == ((CONTACT) obj).deleteFlag) &&
 
-		    (this.latitude == ((CONTACT) obj).latitude) &&
-		    (this.longitude == ((CONTACT) obj).longitude) &&
-		    (this.altitude == ((CONTACT) obj).altitude) &&
+		    (this.latitude == ((CONTACT) obj).latitude) && (this.longitude == ((CONTACT) obj).longitude) && (this.altitude == ((CONTACT) obj).altitude) &&
 
-		    (this.relativeXDistance == ((CONTACT) obj).relativeXDistance) &&
-		    (this.relativeYDistance == ((CONTACT) obj).relativeYDistance) &&
-		    (this.relativeZDistance == ((CONTACT) obj).relativeZDistance) &&
+		    (this.relativeXDistance == ((CONTACT) obj).relativeXDistance) && (this.relativeYDistance == ((CONTACT) obj).relativeYDistance) && (this.relativeZDistance == ((CONTACT) obj).relativeZDistance) &&
 
-		    (this.speed == ((CONTACT) obj).speed) &&
-		    (this.course == ((CONTACT) obj).course) &&
+		    (this.speed == ((CONTACT) obj).speed) && (this.course == ((CONTACT) obj).course) &&
 
-		    (this.heading == ((CONTACT) obj).heading) &&
-		    (this.roll == ((CONTACT) obj).roll) &&
-		    (this.pitch == ((CONTACT) obj).pitch) &&
+		    (this.heading == ((CONTACT) obj).heading) && (this.roll == ((CONTACT) obj).roll) && (this.pitch == ((CONTACT) obj).pitch) &&
 
-		    (this.width == ((CONTACT) obj).width) &&
-		    (this.length == ((CONTACT) obj).length) &&
-		    (this.height == ((CONTACT) obj).height) &&
+		    (this.width == ((CONTACT) obj).width) && (this.length == ((CONTACT) obj).length) && (this.height == ((CONTACT) obj).height) &&
 
-		    (((this.name == null) && (((CONTACT) obj).name == null)) ||
-			    ((this.name != null) && this.name.equals(((CONTACT) obj).name)))
-		    &&
+		    (((this.name == null) && (((CONTACT) obj).name == null)) || ((this.name != null) && this.name.equals(((CONTACT) obj).name))) &&
 
-		    (((this.source == null) && (((CONTACT) obj).source == null)) ||
-			    ((this.source != null) && this.source.equals(((CONTACT) obj).source)))
-		    &&
+		    (((this.source == null) && (((CONTACT) obj).source == null)) || ((this.source != null) && this.source.equals(((CONTACT) obj).source))) &&
 
 		    Arrays.equals(this.sidc, ((CONTACT) obj).sidc) &&
 
-		    (((this.mmsi == null) && (((CONTACT) obj).mmsi == null)) ||
-			    ((this.mmsi != null) && this.mmsi.equals(((CONTACT) obj).mmsi)))
-		    &&
+		    (((this.mmsi == null) && (((CONTACT) obj).mmsi == null)) || ((this.mmsi != null) && this.mmsi.equals(((CONTACT) obj).mmsi))) &&
 
-		    (((this.icao == null) && (((CONTACT) obj).icao == null)) ||
-			    ((this.icao != null) && this.icao.equals(((CONTACT) obj).icao)))
-		    &&
+		    (((this.icao == null) && (((CONTACT) obj).icao == null)) || ((this.icao != null) && this.icao.equals(((CONTACT) obj).icao))) &&
 
 		    Arrays.equals(this.imageData, ((CONTACT) obj).imageData) &&
 
-		    (((this.comment == null) && (((CONTACT) obj).comment == null)) ||
-			    ((this.comment != null) && this.comment.equals(((CONTACT) obj).comment)));
+		    (((this.comment == null) && (((CONTACT) obj).comment == null)) || ((this.comment != null) && this.comment.equals(((CONTACT) obj).comment)));
 
 	}
     }
@@ -969,64 +690,34 @@ public class CONTACT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
-		.append(this.contactID)
-		.append(";")
+		.append(this.contactID).append(";")
 
-		.append((this.deleteFlag != null) ? this.deleteFlag : "")
-		.append(";")
+		.append((this.deleteFlag != null) ? this.deleteFlag : "").append(";")
 
-		.append((this.latitude != null) ? SEDAPExpressMessage.numberFormatter.format(this.latitude) : "")
-		.append(";")
-		.append(this.longitude != null ? SEDAPExpressMessage.numberFormatter.format(this.longitude) : "")
-		.append(";")
-		.append(this.altitude != null ? SEDAPExpressMessage.numberFormatter.format(this.altitude) : "")
-		.append(";")
+		.append((this.latitude != null) ? SEDAPExpressMessage.numberFormatter.format(this.latitude) : "").append(";").append(this.longitude != null ? SEDAPExpressMessage.numberFormatter.format(this.longitude) : "").append(";")
+		.append(this.altitude != null ? SEDAPExpressMessage.numberFormatter.format(this.altitude) : "").append(";")
 
-		.append(this.relativeXDistance != null ? SEDAPExpressMessage.numberFormatter.format(this.relativeXDistance) : "")
-		.append(";")
-		.append(this.relativeYDistance != null ? SEDAPExpressMessage.numberFormatter.format(this.relativeYDistance) : "")
-		.append(";")
-		.append(this.relativeZDistance != null ? SEDAPExpressMessage.numberFormatter.format(this.relativeZDistance) : "")
-		.append(";")
+		.append(this.relativeXDistance != null ? SEDAPExpressMessage.numberFormatter.format(this.relativeXDistance) : "").append(";")
+		.append(this.relativeYDistance != null ? SEDAPExpressMessage.numberFormatter.format(this.relativeYDistance) : "").append(";")
+		.append(this.relativeZDistance != null ? SEDAPExpressMessage.numberFormatter.format(this.relativeZDistance) : "").append(";")
 
-		.append(this.speed != null ? SEDAPExpressMessage.numberFormatter.format(this.speed) : "")
-		.append(";")
-		.append(this.course != null ? SEDAPExpressMessage.numberFormatter.format(this.course) : "")
-		.append(";")
+		.append(this.speed != null ? SEDAPExpressMessage.numberFormatter.format(this.speed) : "").append(";").append(this.course != null ? SEDAPExpressMessage.numberFormatter.format(this.course) : "").append(";")
 
-		.append(this.heading != null ? SEDAPExpressMessage.numberFormatter.format(this.heading) : "")
-		.append(";")
-		.append(this.roll != null ? SEDAPExpressMessage.numberFormatter.format(this.roll) : "")
-		.append(";")
-		.append(this.pitch != null ? SEDAPExpressMessage.numberFormatter.format(this.pitch) : "")
-		.append(";")
+		.append(this.heading != null ? SEDAPExpressMessage.numberFormatter.format(this.heading) : "").append(";").append(this.roll != null ? SEDAPExpressMessage.numberFormatter.format(this.roll) : "").append(";")
+		.append(this.pitch != null ? SEDAPExpressMessage.numberFormatter.format(this.pitch) : "").append(";")
 
-		.append(this.width != null ? SEDAPExpressMessage.numberFormatter.format(this.width) : "")
-		.append(";")
-		.append(this.length != null ? SEDAPExpressMessage.numberFormatter.format(this.length) : "")
-		.append(";")
-		.append(this.height != null ? SEDAPExpressMessage.numberFormatter.format(this.height) : "")
-		.append(";")
+		.append(this.width != null ? SEDAPExpressMessage.numberFormatter.format(this.width) : "").append(";").append(this.length != null ? SEDAPExpressMessage.numberFormatter.format(this.length) : "").append(";")
+		.append(this.height != null ? SEDAPExpressMessage.numberFormatter.format(this.height) : "").append(";")
 
-		.append(this.name != null ? this.name : "")
-		.append(";")
-		.append(this.source != null ? this.source : "")
-		.append(";")
+		.append(this.name != null ? this.name : "").append(";").append(this.source != null ? this.source : "").append(";")
 
-		.append(this.sidc != null ? String.valueOf(this.sidc) : "")
-		.append(";")
-		.append(this.mmsi != null ? this.mmsi : "")
-		.append(";")
-		.append(this.icao != null ? this.icao : "")
-		.append(";")
+		.append(this.sidc != null ? String.valueOf(this.sidc) : "").append(";").append(this.mmsi != null ? this.mmsi : "").append(";").append(this.icao != null ? this.icao : "").append(";")
 
-		.append(this.imageData != null ? Base64.toBase64String(this.imageData) : "")
-		.append(";")
+		.append(this.imageData != null ? Base64.toBase64String(this.imageData) : "").append(";")
 
-		.append((this.comment != null) ? Base64.toBase64String(this.comment.getBytes()) : "")
-		.toString();
+		.append((this.comment != null) ? Base64.toBase64String(this.comment.getBytes()) : "").toString());
     }
 
 }

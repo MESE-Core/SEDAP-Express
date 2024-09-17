@@ -34,7 +34,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 
     private String recipient;
 
-    private String nameOfTheMessage;
+    private MessageType nameOfTheMessage;
 
     private Short numberOfTheMessage;
 
@@ -46,11 +46,11 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	this.recipient = recipient;
     }
 
-    public String getNameOfTheMessage() {
+    public MessageType getNameOfTheMessage() {
 	return this.nameOfTheMessage;
     }
 
-    public void setNameOfTheMessage(String nameOfTheMessage) {
+    public void setNameOfTheMessage(MessageType nameOfTheMessage) {
 	this.nameOfTheMessage = nameOfTheMessage;
     }
 
@@ -74,14 +74,14 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
      * @param nameOfTheMessage
      * @param numberOfTheMessage
      */
-    public ACKNOWLEDGE(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    String recipient, String nameOfTheMessage, Short numberOfTheMessage) {
+    public ACKNOWLEDGE(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, MessageType nameOfTheMessage, Short numberOfTheMessage) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.recipient = recipient;
 	this.nameOfTheMessage = nameOfTheMessage;
 	this.numberOfTheMessage = numberOfTheMessage;
+
     }
 
     /**
@@ -110,65 +110,33 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 		this.recipient = String.valueOf(Integer.parseInt(value, 16));
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "ACKNOWLEDGE",
-			      "ACKNOWLEDGE(Iterator<String> message)",
-			      "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.INFO, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "ACKNOWLEDGE",
-			  "ACKNOWLEDGE(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Name
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NAME_MATCHER, value)) {
-		this.nameOfTheMessage = value;
+		this.nameOfTheMessage = MessageType.valueOfMessageType(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "ACKNOWLEDGE",
-			      "ACKNOWLEDGE(Iterator<String> message)",
-			      "Mandatory field \"nameOfTheMessage\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"nameOfTheMessage\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "ACKNOWLEDGE",
-			  "ACKNOWLEDGE(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Number
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Mandatory field \"numberOfTheMessage\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMessage\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
 		this.numberOfTheMessage = Short.parseShort(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Mandatory field \"numberOfTheMessage\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMessage\" contains invalid value!", value);
 	    }
 	}
     }
@@ -183,13 +151,9 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.recipient == null) && (((ACKNOWLEDGE) obj).recipient == null)) ||
-			    ((this.recipient != null) && this.recipient.equals(((ACKNOWLEDGE) obj).recipient)))
-		    &&
+		    (((this.recipient == null) && (((ACKNOWLEDGE) obj).recipient == null)) || ((this.recipient != null) && this.recipient.equals(((ACKNOWLEDGE) obj).recipient))) &&
 
-		    (((this.nameOfTheMessage == null) && (((ACKNOWLEDGE) obj).nameOfTheMessage == null)) ||
-			    ((this.nameOfTheMessage != null) && this.nameOfTheMessage.equals(((ACKNOWLEDGE) obj).nameOfTheMessage)))
-		    &&
+		    (((this.nameOfTheMessage == null) && (((ACKNOWLEDGE) obj).nameOfTheMessage == null)) || ((this.nameOfTheMessage != null) && this.nameOfTheMessage.equals(((ACKNOWLEDGE) obj).nameOfTheMessage))) &&
 
 		    (this.numberOfTheMessage == (((ACKNOWLEDGE) obj).numberOfTheMessage));
 	}
@@ -203,13 +167,8 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
-		.append((this.recipient != null) ? this.recipient : "")
-		.append(";")
-		.append((this.nameOfTheMessage != null) ? this.nameOfTheMessage : "")
-		.append(";")
-		.append((this.numberOfTheMessage != null) ? this.numberOfTheMessage : "")
-		.toString();
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.nameOfTheMessage != null) ? this.nameOfTheMessage : "").append(";")
+		.append((this.numberOfTheMessage != null) ? this.numberOfTheMessage : "").toString());
     }
 
 }

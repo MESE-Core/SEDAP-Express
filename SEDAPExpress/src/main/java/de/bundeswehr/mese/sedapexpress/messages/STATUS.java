@@ -40,11 +40,7 @@ public class STATUS extends SEDAPExpressMessage {
 
     public enum TechnicalState {
 
-	Off_absent(0),
-	Initializing(1),
-	Degraded(2),
-	Operational(3),
-	Fault(4);
+	Off_absent(0), Initializing(1), Degraded(2), Operational(3), Fault(4);
 
 	public static TechnicalState valueOfTechnicalState(int state) {
 	    return switch (state) {
@@ -71,9 +67,7 @@ public class STATUS extends SEDAPExpressMessage {
 
     public enum OperationalState {
 
-	Not_operational(0),
-	Degraded(1),
-	Operational(2);
+	Not_operational(0), Degraded(1), Operational(2);
 
 	public static OperationalState valueOfOperationalState(int state) {
 	    return switch (state) {
@@ -98,12 +92,7 @@ public class STATUS extends SEDAPExpressMessage {
 
     public enum CommandState {
 
-	Undefined(0),
-	Executed_successfully(1),
-	Partially_executed_successfully(2),
-	Executed_not_successfully(3),
-	Execution_not_possible(4),
-	Will_execute_at(5);
+	Undefined(0), Executed_successfully(1), Partially_executed_successfully(2), Executed_not_successfully(3), Execution_not_possible(4), Will_execute_at(5);
 
 	public static CommandState valueOfMessageType(int state) {
 	    return switch (state) {
@@ -275,19 +264,11 @@ public class STATUS extends SEDAPExpressMessage {
      * @param mediaUrls
      * @param freeText
      */
-    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    TechnicalState tecState, OperationalState opsState,
-	    String[] ammunitionLevelNames, Double[] ammunitionLevels,
-	    String[] fuelLevelNames, Double[] fuelLevels,
-	    String[] batterieLevelNames, Double[] batterieLevels,
-	    Integer cmdId, CommandState cmdState, String hostname, String mediaUrls, String freeText) {
+    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, TechnicalState tecState, OperationalState opsState, String[] ammunitionLevelNames,
+	    Double[] ammunitionLevels, String[] fuelLevelNames, Double[] fuelLevels, String[] batterieLevelNames, Double[] batterieLevels, Integer cmdId, CommandState cmdState, String hostname, String mediaUrls, String freeText) {
 
-	this(number, time, sender, classification, acknowledgement, mac,
-		tecState, opsState,
-		Arrays.asList(ammunitionLevelNames), Arrays.asList(ammunitionLevels),
-		Arrays.asList(fuelLevelNames), Arrays.asList(fuelLevels),
-		Arrays.asList(batterieLevelNames), Arrays.asList(batterieLevels),
-		cmdId, cmdState, hostname, Arrays.asList(mediaUrls), freeText);
+	this(number, time, sender, classification, acknowledgement, mac, tecState, opsState, Arrays.asList(ammunitionLevelNames), Arrays.asList(ammunitionLevels), Arrays.asList(fuelLevelNames), Arrays.asList(fuelLevels),
+		Arrays.asList(batterieLevelNames), Arrays.asList(batterieLevels), cmdId, cmdState, hostname, Arrays.asList(mediaUrls), freeText);
     }
 
     /**
@@ -312,19 +293,11 @@ public class STATUS extends SEDAPExpressMessage {
      * @param mediaUrls
      * @param freeText
      */
-    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    TechnicalState tecState, OperationalState opsState,
-	    String ammunitionLevelName, Double ammunitionLevel,
-	    String fuelLevelName, Double fuelLevel,
-	    String batterieLevelName, Double batterieLevel,
-	    Integer cmdId, CommandState cmdState, String hostname, String mediaUrls, String freeText) {
+    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, TechnicalState tecState, OperationalState opsState, String ammunitionLevelName, Double ammunitionLevel,
+	    String fuelLevelName, Double fuelLevel, String batterieLevelName, Double batterieLevel, Integer cmdId, CommandState cmdState, String hostname, String mediaUrls, String freeText) {
 
-	this(number, time, sender, classification, acknowledgement, mac,
-		tecState, opsState,
-		Arrays.asList(ammunitionLevelName), Arrays.asList(ammunitionLevel),
-		Arrays.asList(fuelLevelName), Arrays.asList(fuelLevel),
-		Arrays.asList(batterieLevelName), Arrays.asList(batterieLevel),
-		cmdId, cmdState, hostname, Arrays.asList(mediaUrls), freeText);
+	this(number, time, sender, classification, acknowledgement, mac, tecState, opsState, Arrays.asList(ammunitionLevelName), Arrays.asList(ammunitionLevel), Arrays.asList(fuelLevelName), Arrays.asList(fuelLevel),
+		Arrays.asList(batterieLevelName), Arrays.asList(batterieLevel), cmdId, cmdState, hostname, Arrays.asList(mediaUrls), freeText);
     }
 
     /**
@@ -349,12 +322,9 @@ public class STATUS extends SEDAPExpressMessage {
      * @param mediaUrls
      * @param freeText
      */
-    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    TechnicalState tecState, OperationalState opsState,
-	    List<String> ammunitionLevelNames, List<Double> ammunitionLevels,
-	    List<String> fuelLevelNames, List<Double> fuelLevels,
-	    List<String> batterieLevelNames, List<Double> batterieLevels,
-	    Integer cmdId, CommandState cmdState, String hostname, List<String> mediaUrls, String freeText) {
+    public STATUS(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, TechnicalState tecState, OperationalState opsState, List<String> ammunitionLevelNames,
+	    List<Double> ammunitionLevels, List<String> fuelLevelNames, List<Double> fuelLevels, List<String> batterieLevelNames, List<Double> batterieLevels, Integer cmdId, CommandState cmdState, String hostname, List<String> mediaUrls,
+	    String freeText) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -400,13 +370,7 @@ public class STATUS extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TECSTATUS_MATCHER, value)) {
 		this.tecState = TechnicalState.valueOfTechnicalState(Integer.parseInt(value));
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"tecState\" contains not a valid number!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"tecState\" contains not a valid number!", value);
 	    }
 	}
 
@@ -416,13 +380,7 @@ public class STATUS extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.OPSSTATUS_MATCHER, value)) {
 		this.opsState = OperationalState.valueOfOperationalState(Integer.parseInt(value));
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"opsState\" contains not a valid number!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"opsState\" contains not a valid number!", value);
 	    }
 	}
 
@@ -439,13 +397,7 @@ public class STATUS extends SEDAPExpressMessage {
 		    this.ammunitionLevels.add(Double.parseDouble(it.next()));
 		}
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"ammunitionLevels\" contains not a valid number!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"ammunitionLevels\" contains not a valid number!", value);
 	    }
 	}
 
@@ -463,13 +415,7 @@ public class STATUS extends SEDAPExpressMessage {
 		}
 
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"fuelLevels\" contains not a valid number!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"fuelLevels\" contains not a valid number!", value);
 	    }
 	}
 
@@ -487,13 +433,7 @@ public class STATUS extends SEDAPExpressMessage {
 		}
 
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"batterieLevels\" contains not a valid number!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"batterieLevels\" contains not a valid number!", value);
 	    }
 	}
 
@@ -501,23 +441,12 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"cmdId\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"cmdId\" is empty!");
 	    } else {
 		try {
 		    this.cmdId = Integer.valueOf(value);
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "STATUS",
-				  "STATUS(Iterator<String> message)",
-				  "Optional field \"cmdId\" contains not a valid number!"
-					  + value);
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"cmdId\" contains not a valid number!" + value);
 		}
 	    }
 	}
@@ -526,23 +455,12 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"cmdState\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"cmdState\" is empty!");
 	    } else {
 		try {
 		    this.cmdState = CommandState.valueOfMessageType(Integer.parseInt(value));
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "STATUS",
-				  "STATUS(Iterator<String> message)",
-				  "Optional field \"cmdState\" contains not a valid number!",
-				  value);
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"cmdState\" contains not a valid number!", value);
 		}
 	    }
 	}
@@ -551,22 +469,12 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"hostname\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"hostname\" is empty!");
 	    } else {
 		try {
 		    this.hostname = new String(Base64.decode(value));
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "STATUS",
-				  "STATUS(Iterator<String> message)",
-				  "Optional field \"hostname\" could not be decoded from Base64!");
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"hostname\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -575,12 +483,7 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"mediaUrls\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"mediaUrls\" is empty!");
 	    } else {
 		try {
 
@@ -590,12 +493,7 @@ public class STATUS extends SEDAPExpressMessage {
 			this.mediaUrls.add(new String(Base64.decode(url)));
 		    }
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "STATUS",
-				  "STATUS(Iterator<String> message)",
-				  "Optional field \"mediaUrls\" could not be decoded from Base64!");
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"mediaUrls\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -604,22 +502,12 @@ public class STATUS extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "STATUS",
-			      "STATUS(Iterator<String> message)",
-			      "Optional field \"freeText\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"freeText\" is empty!");
 	    } else {
 		try {
 		    this.freeText = new String(Base64.decode(value));
 		} catch (DecoderException e) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "STATUS",
-				  "STATUS(Iterator<String> message)",
-				  "Optional field \"freeText\" could not be decoded from Base64!");
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "STATUS", "STATUS(Iterator<String> message)", "Optional field \"freeText\" could not be decoded from Base64!");
 		}
 	    }
 	}
@@ -636,27 +524,17 @@ public class STATUS extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (this.tecState == ((STATUS) obj).tecState) &&
-		    (this.opsState == ((STATUS) obj).opsState) &&
+		    (this.tecState == ((STATUS) obj).tecState) && (this.opsState == ((STATUS) obj).opsState) &&
 
-		    (this.ammunitionLevelNames.equals(((STATUS) obj).ammunitionLevelNames)) &&
-		    (this.fuelLevelNames.equals(((STATUS) obj).fuelLevelNames)) &&
-		    (this.batterieLevelNames.equals(((STATUS) obj).batterieLevelNames)) &&
+		    (this.ammunitionLevelNames.equals(((STATUS) obj).ammunitionLevelNames)) && (this.fuelLevelNames.equals(((STATUS) obj).fuelLevelNames)) && (this.batterieLevelNames.equals(((STATUS) obj).batterieLevelNames)) &&
 
-		    (this.ammunitionLevels.equals(((STATUS) obj).ammunitionLevels)) &&
-		    (this.fuelLevels.equals(((STATUS) obj).fuelLevels)) &&
-		    (this.batterieLevels.equals(((STATUS) obj).batterieLevels)) &&
+		    (this.ammunitionLevels.equals(((STATUS) obj).ammunitionLevels)) && (this.fuelLevels.equals(((STATUS) obj).fuelLevels)) && (this.batterieLevels.equals(((STATUS) obj).batterieLevels)) &&
 
-		    (((this.hostname == null) && (((STATUS) obj).hostname == null)) ||
-			    ((this.hostname != null) && this.hostname.equals(((STATUS) obj).hostname)))
-		    &&
+		    (((this.hostname == null) && (((STATUS) obj).hostname == null)) || ((this.hostname != null) && this.hostname.equals(((STATUS) obj).hostname))) &&
 
-		    (((this.mediaUrls == null) && (((STATUS) obj).mediaUrls == null)) ||
-			    ((this.mediaUrls != null) && this.mediaUrls.equals(((STATUS) obj).mediaUrls)))
-		    &&
+		    (((this.mediaUrls == null) && (((STATUS) obj).mediaUrls == null)) || ((this.mediaUrls != null) && this.mediaUrls.equals(((STATUS) obj).mediaUrls))) &&
 
-		    (((this.freeText == null) && (((STATUS) obj).freeText == null)) ||
-			    ((this.freeText != null) && this.freeText.equals(((STATUS) obj).freeText)));
+		    (((this.freeText == null) && (((STATUS) obj).freeText == null)) || ((this.freeText != null) && this.freeText.equals(((STATUS) obj).freeText)));
 
 	}
     }
@@ -701,27 +579,11 @@ public class STATUS extends SEDAPExpressMessage {
 	    this.mediaUrls.forEach(entry -> urls.append(Base64.toBase64String(entry.getBytes()) + "#"));
 	}
 
-	return serializeHeader()
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
-		.append((this.tecState != null) ? this.tecState : "")
-		.append(";")
-		.append((this.opsState != null) ? this.opsState : "")
-		.append(";")
-		.append(ammunitionStr.isBlank() ? "" : ammunitionStr.substring(2))
-		.append(";")
-		.append(fuelStr.isBlank() ? "" : fuelStr.substring(2))
-		.append(";")
-		.append(batterieStr.isBlank() ? "" : batterieStr.substring(2))
-		.append(";")
-		.append((this.cmdId != null) ? this.cmdId : "")
-		.append(";")
-		.append((this.cmdState != null) ? this.cmdState : "")
-		.append(";")
-		.append((this.hostname != null) ? Base64.toBase64String(this.hostname.getBytes()) : "")
-		.append(";")
-		.append((this.mediaUrls != null) ? urls.subSequence(0, urls.length() - 1) : "")
-		.append(";")
-		.append((this.freeText != null) ? Base64.toBase64String(this.freeText.getBytes()) : "")
-		.toString();
+		.append((this.tecState != null) ? this.tecState : "").append(";").append((this.opsState != null) ? this.opsState : "").append(";").append(ammunitionStr.isBlank() ? "" : ammunitionStr.substring(2)).append(";")
+		.append(fuelStr.isBlank() ? "" : fuelStr.substring(2)).append(";").append(batterieStr.isBlank() ? "" : batterieStr.substring(2)).append(";").append((this.cmdId != null) ? this.cmdId : "").append(";")
+		.append((this.cmdState != null) ? this.cmdState : "").append(";").append((this.hostname != null) ? Base64.toBase64String(this.hostname.getBytes()) : "").append(";")
+		.append((this.mediaUrls != null) ? urls.subSequence(0, urls.length() - 1) : "").append(";").append((this.freeText != null) ? Base64.toBase64String(this.freeText.getBytes()) : "").toString());
     }
 }

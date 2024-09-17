@@ -247,7 +247,7 @@ public abstract class SEDAPExpressCommunicator {
     };
 
     /**
-     * Do a time synchronizaion via TIMESYNC message. (Please notice, that this
+     * Do a time synchronization via TIMESYNC message. (Please notice, that this
      * requiries the right on the system to change the system time, which is
      * disabled by default on windows system)
      */

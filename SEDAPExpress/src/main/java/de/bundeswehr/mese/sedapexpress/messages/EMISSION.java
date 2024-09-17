@@ -269,10 +269,9 @@ public class EMISSION extends SEDAPExpressMessage {
      * @param sidc
      * @param comment
      */
-    public EMISSION(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    String emissionID, Boolean deleteFlag, Double sensorLatitude, Double sensorLongitude, Double sensorAltitude,
-	    Double emitterLatitude, Double emitterLongitude, Double emitterAltitude, Double bearing, List<Double> frequency, Double bandwidth, Double power, Integer freqAgility, Integer prfAgility, Integer function, Integer spotNumber, char[] sidc,
-	    String comment) {
+    public EMISSION(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String emissionID, Boolean deleteFlag, Double sensorLatitude, Double sensorLongitude,
+	    Double sensorAltitude, Double emitterLatitude, Double emitterLongitude, Double emitterAltitude, Double bearing, List<Double> frequency, Double bandwidth, Double power, Integer freqAgility, Integer prfAgility, Integer function,
+	    Integer spotNumber, char[] sidc, String comment) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -319,12 +318,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    this.emissionID = message.next();
 	    if (this.emissionID.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"emissionID\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"emissionID\" is empty!");
 	    }
 	}
 
@@ -336,42 +330,21 @@ public class EMISSION extends SEDAPExpressMessage {
 	    } else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
 		this.deleteFlag = false;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"deleteFlag\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"deleteFlag\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "EMISSION",
-			  "EMISSION(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// SensorLatitude
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"sensorLatitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"sensorLatitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.sensorLatitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"sensorLatitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"sensorLatitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -379,22 +352,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"sensorLongitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"sensorLongitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.sensorLongitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"sensorLongitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"sensorLongitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -402,22 +364,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"sensorAltitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"sensorAltitude\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.sensorAltitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"sensorAltitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"sensorAltitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -425,22 +376,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"emitterLatitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"emitterLatitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.emitterLatitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"emitterLatitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"emitterLatitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -448,22 +388,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"emitterLongitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"emitterLongitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.emitterLongitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"emitterLongitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"emitterLongitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -471,22 +400,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"emitterAltitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"emitterAltitude\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.emitterAltitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"emitterAltitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"emitterAltitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -494,22 +412,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"bearing\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"bearing\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
 		this.bearing = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Mandatory field \"bearing\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"bearing\" contains invalid value!", value);
 	    }
 	}
 
@@ -517,22 +424,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"frequencies\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"frequencies\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_LIST_MATCHER, value)) {
 		this.frequencies = SEDAPExpressMessage.splitDoubleDataHashTag(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"frequencies\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"frequencies\" contains invalid value!", value);
 	    }
 
 	}
@@ -541,22 +437,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"bandwidth\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"bandwidth\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.bandwidth = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"bandwidth\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"bandwidth\" contains invalid value!", value);
 	    }
 	}
 
@@ -564,22 +449,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"power\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"power\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.power = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"power\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"power\" contains invalid value!", value);
 	    }
 	}
 
@@ -587,22 +461,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"freqAgility\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"freqAgility\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.INTEGER_MATCHER, value)) {
 		this.freqAgility = Integer.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"freqAgility\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"freqAgility\" contains invalid value!", value);
 	    }
 	}
 
@@ -610,22 +473,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"prfAgility\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"prfAgility\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.INTEGER_MATCHER, value)) {
 		this.prfAgility = Integer.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"prfAgility\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"prfAgility\" contains invalid value!", value);
 	    }
 	}
 
@@ -633,22 +485,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"function\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"function\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.INTEGER_MATCHER, value)) {
 		this.function = Integer.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"function\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"function\" contains invalid value!", value);
 	    }
 	}
 
@@ -656,22 +497,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"spotNumber\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"spotNumber\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.INTEGER_MATCHER, value)) {
 		this.spotNumber = Integer.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"spotNumber\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"spotNumber\" contains invalid value!", value);
 	    }
 	}
 
@@ -679,22 +509,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"SIDC\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"SIDC\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SIDC_MATCHER, value)) {
 		this.sidc = value.toCharArray();
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"SIDC\" contains invalid value - length: " + this.sidc.length + " bytes!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"SIDC\" contains invalid value - length: " + this.sidc.length + " bytes!", value);
 	    }
 	}
 
@@ -702,12 +521,7 @@ public class EMISSION extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    this.comment = message.next();
 	    if (this.comment.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "EMISSION",
-			      "EMISSION(Iterator<String> message)",
-			      "Optional field \"comment\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"comment\" is empty!");
 	    }
 	}
     }
@@ -721,29 +535,15 @@ public class EMISSION extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.emissionID == null) && (((EMISSION) obj).emissionID == null)) ||
-			    ((this.emissionID != null) && this.emissionID.equals(((EMISSION) obj).emissionID)))
-		    &&
+		    (((this.emissionID == null) && (((EMISSION) obj).emissionID == null)) || ((this.emissionID != null) && this.emissionID.equals(((EMISSION) obj).emissionID))) &&
 
-		    (this.deleteFlag == ((EMISSION) obj).deleteFlag) &&
-		    (this.sensorLatitude == ((EMISSION) obj).sensorLatitude) &&
-		    (this.sensorLongitude == ((EMISSION) obj).sensorLongitude) &&
-		    (this.sensorAltitude == ((EMISSION) obj).sensorAltitude) &&
-		    (this.emitterLatitude == ((EMISSION) obj).emitterLatitude) &&
-		    (this.emitterLongitude == ((EMISSION) obj).emitterLongitude) &&
-		    (this.emitterAltitude == ((EMISSION) obj).emitterAltitude) &&
-		    (this.bearing == ((EMISSION) obj).bearing) &&
-		    (this.frequencies == ((EMISSION) obj).frequencies) &&
-		    (this.bandwidth == ((EMISSION) obj).bandwidth) &&
-		    (this.power == ((EMISSION) obj).power) &&
-		    (this.freqAgility == ((EMISSION) obj).freqAgility) &&
-		    (this.prfAgility == ((EMISSION) obj).prfAgility) &&
-		    (this.function == ((EMISSION) obj).function) &&
-		    (this.spotNumber == ((EMISSION) obj).spotNumber) &&
-		    Arrays.equals(this.sidc, ((EMISSION) obj).sidc) &&
+		    (this.deleteFlag == ((EMISSION) obj).deleteFlag) && (this.sensorLatitude == ((EMISSION) obj).sensorLatitude) && (this.sensorLongitude == ((EMISSION) obj).sensorLongitude)
+		    && (this.sensorAltitude == ((EMISSION) obj).sensorAltitude) && (this.emitterLatitude == ((EMISSION) obj).emitterLatitude) && (this.emitterLongitude == ((EMISSION) obj).emitterLongitude)
+		    && (this.emitterAltitude == ((EMISSION) obj).emitterAltitude) && (this.bearing == ((EMISSION) obj).bearing) && (this.frequencies == ((EMISSION) obj).frequencies) && (this.bandwidth == ((EMISSION) obj).bandwidth)
+		    && (this.power == ((EMISSION) obj).power) && (this.freqAgility == ((EMISSION) obj).freqAgility) && (this.prfAgility == ((EMISSION) obj).prfAgility) && (this.function == ((EMISSION) obj).function)
+		    && (this.spotNumber == ((EMISSION) obj).spotNumber) && Arrays.equals(this.sidc, ((EMISSION) obj).sidc) &&
 
-		    (((this.comment == null) && (((EMISSION) obj).comment == null)) ||
-			    ((this.comment != null) && this.comment.equals(((EMISSION) obj).comment)));
+		    (((this.comment == null) && (((EMISSION) obj).comment == null)) || ((this.comment != null) && this.comment.equals(((EMISSION) obj).comment)));
 
 	}
     }
@@ -756,53 +556,33 @@ public class EMISSION extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
-		.append((this.emissionID != null) ? this.emissionID : "")
-		.append(";")
+		.append((this.emissionID != null) ? this.emissionID : "").append(";")
 
-		.append(this.deleteFlag != null ? this.deleteFlag : "")
-		.append(";")
+		.append(this.deleteFlag != null ? this.deleteFlag : "").append(";")
 
-		.append(this.sensorLatitude != null ? SEDAPExpressMessage.numberFormatter.format(this.sensorLatitude) : "")
-		.append(";")
-		.append(this.sensorLongitude != null ? SEDAPExpressMessage.numberFormatter.format(this.sensorLongitude) : "")
-		.append(";")
-		.append(this.sensorAltitude != null ? SEDAPExpressMessage.numberFormatter.format(this.sensorAltitude) : "")
-		.append(";")
+		.append(this.sensorLatitude != null ? SEDAPExpressMessage.numberFormatter.format(this.sensorLatitude) : "").append(";")
+		.append(this.sensorLongitude != null ? SEDAPExpressMessage.numberFormatter.format(this.sensorLongitude) : "").append(";")
+		.append(this.sensorAltitude != null ? SEDAPExpressMessage.numberFormatter.format(this.sensorAltitude) : "").append(";")
 
-		.append(this.emitterLatitude != null ? SEDAPExpressMessage.numberFormatter.format(this.emitterLatitude) : "")
-		.append(";")
-		.append(this.emitterLongitude != null ? SEDAPExpressMessage.numberFormatter.format(this.emitterLongitude) : "")
-		.append(";")
-		.append(this.emitterAltitude != null ? SEDAPExpressMessage.numberFormatter.format(this.emitterAltitude) : "")
-		.append(";")
+		.append(this.emitterLatitude != null ? SEDAPExpressMessage.numberFormatter.format(this.emitterLatitude) : "").append(";")
+		.append(this.emitterLongitude != null ? SEDAPExpressMessage.numberFormatter.format(this.emitterLongitude) : "").append(";")
+		.append(this.emitterAltitude != null ? SEDAPExpressMessage.numberFormatter.format(this.emitterAltitude) : "").append(";")
 
-		.append(this.bearing != null ? SEDAPExpressMessage.numberFormatter.format(this.bearing) : "")
-		.append(";")
+		.append(this.bearing != null ? SEDAPExpressMessage.numberFormatter.format(this.bearing) : "").append(";")
 
-		.append(this.frequencies != null ? getStringFromList(this.frequencies) : "")
-		.append(";")
-		.append(this.bandwidth != null ? SEDAPExpressMessage.numberFormatter.format(this.bandwidth) : "")
-		.append(";")
-		.append(this.power != null ? SEDAPExpressMessage.numberFormatter.format(this.power) : "")
-		.append(";")
-		.append(this.freqAgility != null ? this.freqAgility : "")
-		.append(";")
-		.append(this.prfAgility != null ? this.prfAgility : "")
-		.append(";")
+		.append(this.frequencies != null ? getStringFromList(this.frequencies) : "").append(";").append(this.bandwidth != null ? SEDAPExpressMessage.numberFormatter.format(this.bandwidth) : "").append(";")
+		.append(this.power != null ? SEDAPExpressMessage.numberFormatter.format(this.power) : "").append(";").append(this.freqAgility != null ? this.freqAgility : "").append(";")
+		.append(this.prfAgility != null ? this.prfAgility : "").append(";")
 
-		.append(this.function != null ? this.function : "")
-		.append(";")
+		.append(this.function != null ? this.function : "").append(";")
 
-		.append(this.spotNumber != null ? this.spotNumber : "")
-		.append(";")
+		.append(this.spotNumber != null ? this.spotNumber : "").append(";")
 
-		.append(this.sidc != null ? String.valueOf(this.sidc) : "")
-		.append(";")
+		.append(this.sidc != null ? String.valueOf(this.sidc) : "").append(";")
 
-		.append(this.comment != null ? this.comment : "")
-		.toString();
+		.append(this.comment != null ? this.comment : "").toString());
     }
 
 }

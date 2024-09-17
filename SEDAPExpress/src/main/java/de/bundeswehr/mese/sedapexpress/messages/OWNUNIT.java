@@ -148,8 +148,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
      * @param name
      * @param sidc
      */
-    public OWNUNIT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    Double latitude, Double longitude, Double altitude, Double speed, Double course, Double heading,
+    public OWNUNIT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, Double latitude, Double longitude, Double altitude, Double speed, Double course, Double heading,
 	    Double roll, Double pitch, String name, char[] sidc) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
@@ -191,22 +190,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field \"latitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Mandatory field \"latitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.latitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field \"longitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Mandatory field \"longitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -214,22 +202,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field \"longitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Mandatory field \"longitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.longitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Mandatory field \"longitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Mandatory field \"longitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -237,22 +214,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"altitude\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"altitude\" is empty!");
 	    } else if (!value.isEmpty() && SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.altitude = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"altitude\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"altitude\" contains invalid value!", value);
 	    }
 	}
 
@@ -260,22 +226,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"speed\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"speed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.speed = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"speed\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"speed\" contains invalid value!", value);
 	    }
 	}
 
@@ -283,22 +238,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"course\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"course\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.course = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"course\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"course\" contains invalid value!", value);
 	    }
 	}
 
@@ -306,22 +250,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"heading\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"heading\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
 		this.heading = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"heading\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"heading\" contains invalid value!", value);
 	    }
 	}
 
@@ -329,22 +262,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"roll\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"roll\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.roll = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"roll\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"roll\" contains invalid value!", value);
 	    }
 	}
 
@@ -352,22 +274,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"pitch\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"pitch\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.pitch = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"pitch\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"pitch\" contains invalid value!", value);
 	    }
 	}
 
@@ -375,12 +286,7 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    this.name = message.next();
 	    if (this.name.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"name\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"name\" is empty!");
 	    }
 	}
 
@@ -388,20 +294,9 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"SIDC\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"SIDC\" is empty!");
 	    } else if (value.length() != 15) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "OWNUNIT",
-			      "OWNUNIT(Iterator<String> message)",
-			      "Optional field \"SIDC\" contains invalid value - length: " + value.length() + " bytes!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "OWNUNIT", "OWNUNIT(Iterator<String> message)", "Optional field \"SIDC\" contains invalid value - length: " + value.length() + " bytes!", value);
 	    } else {
 		this.sidc = value.toCharArray();
 	    }
@@ -419,16 +314,11 @@ public class OWNUNIT extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (this.latitude == ((OWNUNIT) obj).latitude) &&
-		    (this.longitude == ((OWNUNIT) obj).longitude) &&
-		    (this.altitude == ((OWNUNIT) obj).altitude) &&
+		    (this.latitude == ((OWNUNIT) obj).latitude) && (this.longitude == ((OWNUNIT) obj).longitude) && (this.altitude == ((OWNUNIT) obj).altitude) &&
 
-		    (this.speed == ((OWNUNIT) obj).speed) &&
-		    (this.course == ((OWNUNIT) obj).course) &&
+		    (this.speed == ((OWNUNIT) obj).speed) && (this.course == ((OWNUNIT) obj).course) &&
 
-		    (this.heading == ((OWNUNIT) obj).heading) &&
-		    (this.roll == ((OWNUNIT) obj).roll) &&
-		    (this.pitch == ((OWNUNIT) obj).pitch) &&
+		    (this.heading == ((OWNUNIT) obj).heading) && (this.roll == ((OWNUNIT) obj).roll) && (this.pitch == ((OWNUNIT) obj).pitch) &&
 
 		    this.name.equals(((OWNUNIT) obj).name) &&
 
@@ -445,32 +335,19 @@ public class OWNUNIT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
-		.append((this.latitude != null) ? SEDAPExpressMessage.numberFormatter.format(this.latitude) : "")
-		.append(";")
-		.append(this.longitude != null ? SEDAPExpressMessage.numberFormatter.format(this.longitude) : "")
-		.append(";")
-		.append(this.altitude != null ? SEDAPExpressMessage.numberFormatter.format(this.altitude) : "")
-		.append(";")
+		.append((this.latitude != null) ? SEDAPExpressMessage.numberFormatter.format(this.latitude) : "").append(";").append(this.longitude != null ? SEDAPExpressMessage.numberFormatter.format(this.longitude) : "").append(";")
+		.append(this.altitude != null ? SEDAPExpressMessage.numberFormatter.format(this.altitude) : "").append(";")
 
-		.append(this.speed != null ? SEDAPExpressMessage.numberFormatter.format(this.speed) : "")
-		.append(";")
-		.append(this.course != null ? SEDAPExpressMessage.numberFormatter.format(this.course) : "")
-		.append(";")
+		.append(this.speed != null ? SEDAPExpressMessage.numberFormatter.format(this.speed) : "").append(";").append(this.course != null ? SEDAPExpressMessage.numberFormatter.format(this.course) : "").append(";")
 
-		.append(this.heading != null ? SEDAPExpressMessage.numberFormatter.format(this.heading) : "")
-		.append(";")
-		.append(this.roll != null ? SEDAPExpressMessage.numberFormatter.format(this.roll) : "")
-		.append(";")
-		.append(this.pitch != null ? SEDAPExpressMessage.numberFormatter.format(this.pitch) : "")
-		.append(";")
+		.append(this.heading != null ? SEDAPExpressMessage.numberFormatter.format(this.heading) : "").append(";").append(this.roll != null ? SEDAPExpressMessage.numberFormatter.format(this.roll) : "").append(";")
+		.append(this.pitch != null ? SEDAPExpressMessage.numberFormatter.format(this.pitch) : "").append(";")
 
-		.append(this.name != null ? this.name : "")
-		.append(";")
+		.append(this.name != null ? this.name : "").append(";")
 
-		.append(this.sidc != null ? String.valueOf(this.sidc) : "")
-		.toString();
+		.append(this.sidc != null ? String.valueOf(this.sidc) : "").toString());
 
     }
 

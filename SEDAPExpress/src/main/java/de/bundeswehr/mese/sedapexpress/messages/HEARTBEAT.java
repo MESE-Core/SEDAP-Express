@@ -106,31 +106,15 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Optional field \"recipient\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"recipient\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
 		this.recipient = String.valueOf(Integer.parseInt(value, 16));
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Optional field \"recipient\" contains not a valid number, but free text is allowed!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.INFO,
-			  "SEDAPExpressMessage",
-			  "SEDAPExpressMessage(Iterator<String> message)",
-			  "Optional field \"recipient\" is empty!");
+	    SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"recipient\" is empty!");
 	}
     }
 
@@ -144,8 +128,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.recipient == null) && (((HEARTBEAT) obj).recipient == null)) ||
-			    ((this.recipient != null) && this.recipient.equals(((HEARTBEAT) obj).recipient)));
+		    (((this.recipient == null) && (((HEARTBEAT) obj).recipient == null)) || ((this.recipient != null) && this.recipient.equals(((HEARTBEAT) obj).recipient)));
 
 	}
     }
@@ -158,9 +141,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
-		.append(this.recipient != null ? this.recipient : "")
-		.toString();
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append(this.recipient != null ? this.recipient : "").toString());
 
     }
 

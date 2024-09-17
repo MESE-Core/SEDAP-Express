@@ -182,8 +182,8 @@ public class METEO extends SEDAPExpressMessage {
      * @param cloudHeight
      * @param cloudCover
      */
-    public METEO(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, Double speedThroughWater, Double waterSpeed, Double waterDirection, Double waterTemperature, Double waterDepth,
-	    Double airTemperature, Double dewPoint, Double humidityRel, Double pressure, Double windSpeed, Double windDirection, Double visibility, Double cloudHeight, Double cloudCover) {
+    public METEO(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, Double speedThroughWater, Double waterSpeed, Double waterDirection, Double waterTemperature,
+	    Double waterDepth, Double airTemperature, Double dewPoint, Double humidityRel, Double pressure, Double windSpeed, Double windDirection, Double visibility, Double cloudHeight, Double cloudCover) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -222,22 +222,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"speedThroughWater\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"speedThroughWater\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.speedThroughWater = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"speedThroughWater\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"speedThroughWater\" contains invalid value!", value);
 	    }
 	}
 
@@ -245,22 +234,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterSpeed\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterSpeed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterSpeed = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterSpeed\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterSpeed\" contains invalid value!", value);
 	    }
 	}
 
@@ -268,22 +246,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterDirection\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterDirection\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterDirection = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterDirection\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterDirection\" contains invalid value!", value);
 	    }
 	}
 
@@ -291,22 +258,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterTemperature\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterTemperature\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterTemperature = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterTemperature\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterTemperature\" contains invalid value!", value);
 	    }
 	}
 
@@ -314,22 +270,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterDepth\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterDepth\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.waterDepth = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"waterDepth\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"waterDepth\" contains invalid value!", value);
 	    }
 	}
 
@@ -337,22 +282,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"airTemperature\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"airTemperature\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.airTemperature = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"airTemperature\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"airTemperature\" contains invalid value!", value);
 	    }
 	}
 
@@ -360,22 +294,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"dewPoint\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"dewPoint\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.dewPoint = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"dewPoint\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"dewPoint\" contains invalid value!", value);
 	    }
 	}
 
@@ -383,22 +306,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"humidityRel\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"humidityRel\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.humidityRel = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"humidityRel\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"humidityRel\" contains invalid value!", value);
 	    }
 	}
 
@@ -406,22 +318,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"pressure\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"pressure\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.pressure = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"pressure\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"pressure\" contains invalid value!", value);
 	    }
 	}
 
@@ -429,22 +330,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"windSpeed\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"windSpeed\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.windSpeed = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"windSpeed\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"windSpeed\" contains invalid value!", value);
 	    }
 	}
 
@@ -452,22 +342,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"windDirection\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"windDirection\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.windDirection = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"windDirection\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"windDirection\" contains invalid value!", value);
 	    }
 	}
 
@@ -475,22 +354,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"visibility\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"visibility\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.visibility = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"visibility\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"visibility\" contains invalid value!", value);
 	    }
 	}
 
@@ -498,22 +366,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"cloudHeight\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"cloudHeight\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.cloudHeight = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"cloudHeight\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"cloudHeight\" contains invalid value!", value);
 	    }
 	}
 
@@ -521,22 +378,11 @@ public class METEO extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"cloudCover\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "METEO", "METEO(Iterator<String> message)", "Optional field \"cloudCover\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.cloudCover = Double.valueOf(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "METEO",
-			      "METEO(Iterator<String> message)",
-			      "Optional field \"cloudCover\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "METEO", "METEO(Iterator<String> message)", "Optional field \"cloudCover\" contains invalid value!", value);
 	    }
 	}
     }
@@ -548,21 +394,10 @@ public class METEO extends SEDAPExpressMessage {
 	} else if (!(obj instanceof METEO)) {
 	    return false;
 	} else {
-	    return super.equals(obj) &&
-		    (this.speedThroughWater == ((METEO) obj).speedThroughWater) &&
-		    (this.waterSpeed == ((METEO) obj).waterSpeed) &&
-		    (this.waterDirection == ((METEO) obj).waterDirection) &&
-		    (this.waterTemperature == ((METEO) obj).waterTemperature) &&
-		    (this.waterDepth == ((METEO) obj).waterDepth) &&
-		    (this.airTemperature == ((METEO) obj).airTemperature) &&
-		    (this.dewPoint == ((METEO) obj).dewPoint) &&
-		    (this.humidityRel == ((METEO) obj).humidityRel) &&
-		    (this.pressure == ((METEO) obj).pressure) &&
-		    (this.windSpeed == ((METEO) obj).windSpeed) &&
-		    (this.windDirection == ((METEO) obj).windDirection) &&
-		    (this.visibility == ((METEO) obj).visibility) &&
-		    (this.cloudHeight == ((METEO) obj).cloudHeight) &&
-		    (this.cloudCover == ((METEO) obj).cloudCover);
+	    return super.equals(obj) && (this.speedThroughWater == ((METEO) obj).speedThroughWater) && (this.waterSpeed == ((METEO) obj).waterSpeed) && (this.waterDirection == ((METEO) obj).waterDirection)
+		    && (this.waterTemperature == ((METEO) obj).waterTemperature) && (this.waterDepth == ((METEO) obj).waterDepth) && (this.airTemperature == ((METEO) obj).airTemperature) && (this.dewPoint == ((METEO) obj).dewPoint)
+		    && (this.humidityRel == ((METEO) obj).humidityRel) && (this.pressure == ((METEO) obj).pressure) && (this.windSpeed == ((METEO) obj).windSpeed) && (this.windDirection == ((METEO) obj).windDirection)
+		    && (this.visibility == ((METEO) obj).visibility) && (this.cloudHeight == ((METEO) obj).cloudHeight) && (this.cloudCover == ((METEO) obj).cloudCover);
 	}
     }
 
@@ -573,39 +408,23 @@ public class METEO extends SEDAPExpressMessage {
 
     @Override
     public String toString() {
-	return serializeHeader()
 
-		.append((this.speedThroughWater != null) ? SEDAPExpressMessage.numberFormatter.format(this.speedThroughWater) : "")
-		.append(";")
-		.append(this.waterSpeed != null ? SEDAPExpressMessage.numberFormatter.format(this.waterSpeed) : "")
-		.append(";")
-		.append(this.waterDirection != null ? SEDAPExpressMessage.numberFormatter.format(this.waterDirection) : "")
-		.append(";")
-		.append(this.waterTemperature != null ? SEDAPExpressMessage.numberFormatter.format(this.waterTemperature) : "")
-		.append(";")
-		.append(this.waterDepth != null ? SEDAPExpressMessage.numberFormatter.format(this.waterDepth) : "")
-		.append(";")
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
-		.append(this.airTemperature != null ? SEDAPExpressMessage.numberFormatter.format(this.airTemperature) : "")
-		.append(";")
-		.append(this.dewPoint != null ? SEDAPExpressMessage.numberFormatter.format(this.dewPoint) : "")
-		.append(";")
-		.append(this.humidityRel != null ? SEDAPExpressMessage.numberFormatter.format(this.humidityRel) : "")
-		.append(";")
-		.append(this.pressure != null ? SEDAPExpressMessage.numberFormatter.format(this.pressure) : "")
+		.append((this.speedThroughWater != null) ? SEDAPExpressMessage.numberFormatter.format(this.speedThroughWater) : "").append(";")
+		.append(this.waterSpeed != null ? SEDAPExpressMessage.numberFormatter.format(this.waterSpeed) : "").append(";").append(this.waterDirection != null ? SEDAPExpressMessage.numberFormatter.format(this.waterDirection) : "")
+		.append(";").append(this.waterTemperature != null ? SEDAPExpressMessage.numberFormatter.format(this.waterTemperature) : "").append(";")
+		.append(this.waterDepth != null ? SEDAPExpressMessage.numberFormatter.format(this.waterDepth) : "").append(";")
+
+		.append(this.airTemperature != null ? SEDAPExpressMessage.numberFormatter.format(this.airTemperature) : "").append(";").append(this.dewPoint != null ? SEDAPExpressMessage.numberFormatter.format(this.dewPoint) : "")
+		.append(";").append(this.humidityRel != null ? SEDAPExpressMessage.numberFormatter.format(this.humidityRel) : "").append(";").append(this.pressure != null ? SEDAPExpressMessage.numberFormatter.format(this.pressure) : "")
 		.append(";")
 
-		.append(this.windSpeed != null ? SEDAPExpressMessage.numberFormatter.format(this.windSpeed) : "")
-		.append(";")
-		.append(this.windDirection != null ? SEDAPExpressMessage.numberFormatter.format(this.windDirection) : "")
+		.append(this.windSpeed != null ? SEDAPExpressMessage.numberFormatter.format(this.windSpeed) : "").append(";").append(this.windDirection != null ? SEDAPExpressMessage.numberFormatter.format(this.windDirection) : "")
 		.append(";")
 
-		.append(this.visibility != null ? SEDAPExpressMessage.numberFormatter.format(this.visibility) : "")
-		.append(";")
-		.append(this.cloudHeight != null ? SEDAPExpressMessage.numberFormatter.format(this.cloudHeight) : "")
-		.append(";")
-		.append(this.cloudCover != null ? SEDAPExpressMessage.numberFormatter.format(this.cloudCover) : "")
-		.toString();
+		.append(this.visibility != null ? SEDAPExpressMessage.numberFormatter.format(this.visibility) : "").append(";").append(this.cloudHeight != null ? SEDAPExpressMessage.numberFormatter.format(this.cloudHeight) : "").append(";")
+		.append(this.cloudCover != null ? SEDAPExpressMessage.numberFormatter.format(this.cloudCover) : "").toString());
     }
 
 }

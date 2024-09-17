@@ -52,8 +52,7 @@ public class TIMESYNC extends SEDAPExpressMessage {
      * @param acknowledgement
      * @param mac
      */
-    public TIMESYNC(Short number, Long time, String sender, Classification classification,
-	    Acknowledgement acknowledgement, String mac) {
+    public TIMESYNC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
 	super(number, time, sender, classification, acknowledgement, mac);
 	this.timestamp = null;
     }
@@ -69,8 +68,7 @@ public class TIMESYNC extends SEDAPExpressMessage {
      * @param mac
      * @param timestamp
      */
-    public TIMESYNC(Short number, Long time, String sender, Classification classification,
-	    Acknowledgement acknowledgement, String mac, Long timestamp) {
+    public TIMESYNC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, Long timestamp) {
 	super(number, time, sender, classification, acknowledgement, mac);
 	this.timestamp = timestamp;
     }
@@ -98,14 +96,11 @@ public class TIMESYNC extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage",
-			"SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"timestamp\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"timestamp\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TIME_MATCHER, value)) {
 		this.timestamp = Long.parseLong(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage",
-			"SEDAPExpressMessage(Iterator<String> message)",
-			"Mandatory field \"timestamp\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"timestamp\" contains invalid value!", value);
 	    }
 	}
     }
@@ -120,8 +115,7 @@ public class TIMESYNC extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.timestamp == null) && (((TIMESYNC) obj).timestamp == null))
-			    || ((this.timestamp != null) && this.timestamp.equals(((TIMESYNC) obj).timestamp)));
+		    (((this.timestamp == null) && (((TIMESYNC) obj).timestamp == null)) || ((this.timestamp != null) && this.timestamp.equals(((TIMESYNC) obj).timestamp)));
 	}
     }
 
@@ -133,9 +127,7 @@ public class TIMESYNC extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
-		.append((this.timestamp != null) ? SEDAPExpressMessage.HEXFOMATER.toHexDigits(this.timestamp) : "")
-		.toString();
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.timestamp != null) ? SEDAPExpressMessage.HEXFOMATER.toHexDigits(this.timestamp) : "").toString());
     }
 
 }

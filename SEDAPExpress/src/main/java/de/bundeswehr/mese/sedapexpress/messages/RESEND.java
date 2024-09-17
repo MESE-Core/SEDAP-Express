@@ -74,8 +74,7 @@ public class RESEND extends SEDAPExpressMessage {
      * @param nameOfTheMissingMessage
      * @param numberOfTheMissingMessage
      */
-    public RESEND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    String recipient, String nameOfTheMissingMessage, Short numberOfTheMissingMessage) {
+    public RESEND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, String nameOfTheMissingMessage, Short numberOfTheMissingMessage) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -110,21 +109,10 @@ public class RESEND extends SEDAPExpressMessage {
 		this.recipient = String.valueOf(Integer.parseInt(value, 16));
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "ACKNOWLEDGE",
-			      "ACKNOWLEDGE(Iterator<String> message)",
-			      "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.INFO, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "ACKNOWLEDGE",
-			  "ACKNOWLEDGE(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Name
@@ -133,42 +121,21 @@ public class RESEND extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NAME_MATCHER, value)) {
 		this.nameOfTheMissingMessage = value;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "ACKNOWLEDGE",
-			      "ACKNOWLEDGE(Iterator<String> message)",
-			      "Mandatory field \"nameOfTheMissingMessage\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"nameOfTheMissingMessage\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "ACKNOWLEDGE",
-			  "ACKNOWLEDGE(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Number
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Mandatory field \"numberOfTheMissingMessage\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMissingMessage\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
 		this.numberOfTheMissingMessage = Short.parseShort(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Mandatory field \"numberOfTheMissingMessage\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMissingMessage\" contains invalid value!", value);
 	    }
 	}
     }
@@ -183,13 +150,9 @@ public class RESEND extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.recipient == null) && (((RESEND) obj).recipient == null)) ||
-			    ((this.recipient != null) && this.recipient.equals(((RESEND) obj).recipient)))
-		    &&
+		    (((this.recipient == null) && (((RESEND) obj).recipient == null)) || ((this.recipient != null) && this.recipient.equals(((RESEND) obj).recipient))) &&
 
-		    (((this.nameOfTheMissingMessage == null) && (((RESEND) obj).nameOfTheMissingMessage == null)) ||
-			    ((this.nameOfTheMissingMessage != null) && this.nameOfTheMissingMessage.equals(((RESEND) obj).nameOfTheMissingMessage)))
-		    &&
+		    (((this.nameOfTheMissingMessage == null) && (((RESEND) obj).nameOfTheMissingMessage == null)) || ((this.nameOfTheMissingMessage != null) && this.nameOfTheMissingMessage.equals(((RESEND) obj).nameOfTheMissingMessage))) &&
 
 		    (this.numberOfTheMissingMessage == (((RESEND) obj).numberOfTheMissingMessage));
 	}
@@ -203,13 +166,8 @@ public class RESEND extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
-		.append((this.recipient != null) ? this.recipient : "")
-		.append(";")
-		.append((this.nameOfTheMissingMessage != null) ? this.nameOfTheMissingMessage : "")
-		.append(";")
-		.append((this.numberOfTheMissingMessage != null) ? this.numberOfTheMissingMessage : "")
-		.toString();
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.nameOfTheMissingMessage != null) ? this.nameOfTheMissingMessage : "").append(";")
+		.append((this.numberOfTheMissingMessage != null) ? this.numberOfTheMissingMessage : "").toString());
     }
 
 }

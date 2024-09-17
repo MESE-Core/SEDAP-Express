@@ -38,11 +38,7 @@ public class TEXT extends SEDAPExpressMessage {
     private static final long serialVersionUID = 1140074068439618568L;
 
     public enum TextType {
-	Undefined(0),
-	Alert(1),
-	Warning(2),
-	Notice(3),
-	Chat(4);
+	Undefined(0), Alert(1), Warning(2), Notice(3), Chat(4);
 
 	private static final Map<Integer, TextType> types = new HashMap<>();
 
@@ -120,8 +116,7 @@ public class TEXT extends SEDAPExpressMessage {
      * @param textContent
      * @param recipient
      */
-    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac,
-	    TextType type, TextEncoding encoding, String textContent, String recipient) {
+    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, TextType type, TextEncoding encoding, String textContent, String recipient) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -157,50 +152,24 @@ public class TEXT extends SEDAPExpressMessage {
 		this.recipient = value;
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Optional field \"recipient\" contains not a valid number, but free text is allowed!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "TEXT",
-			  "TEXT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Type
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "TEXT",
-			      "TEXT(Iterator<String> message)",
-			      "Optional field \"type\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "Optional field \"type\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXTTYPE_MATCHER, value)) {
 		this.type = TextType.valueOfTextType(value);
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "TEXT",
-			      "TEXT(Iterator<String> message)",
-			      "TEXT field \"type\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "TEXT field \"type\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "TEXT",
-			  "TEXT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Encoding
@@ -211,43 +180,23 @@ public class TEXT extends SEDAPExpressMessage {
 	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
 		this.encoding = TextEncoding.NONE;
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "TEXT",
-			      "TEXT(Iterator<String> message)",
-			      "TEXT field \"encoding\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "TEXT field \"encoding\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "TEXT",
-			  "TEXT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Text
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "TEXT",
-			      "TEXT(Iterator<String> message)",
-			      "Mandatory field \"text\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Mandatory field \"text\" is empty!");
 	    } else {
 		if (this.encoding == TextEncoding.BASE64) {
 		    try {
 			this.textContent = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
-			SEDAPExpressMessage.logger
-				.logp(
-				      Level.SEVERE,
-				      "TEXT",
-				      "TEXT(Iterator<String> message)",
-				      "Mandatory field \"text\" could not be decoded from Base64!");
+			SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Mandatory field \"text\" could not be decoded from Base64!");
 		    }
 
 		} else {
@@ -255,12 +204,7 @@ public class TEXT extends SEDAPExpressMessage {
 		}
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "TEXT",
-			  "TEXT(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Incomplete message!");
 	}
 
     }
@@ -273,19 +217,13 @@ public class TEXT extends SEDAPExpressMessage {
 	} else if (!(obj instanceof TEXT)) {
 	    return false;
 	} else {
-	    return super.equals(obj) &&
-		    (this.type == ((TEXT) obj).type) &&
+	    return super.equals(obj) && (this.type == ((TEXT) obj).type) &&
 
-		    (((this.encoding == null) && (((TEXT) obj).encoding == null)) ||
-			    ((this.encoding != null) && this.encoding.equals(((TEXT) obj).encoding)))
-		    &&
+		    (((this.encoding == null) && (((TEXT) obj).encoding == null)) || ((this.encoding != null) && this.encoding.equals(((TEXT) obj).encoding))) &&
 
-		    (((this.textContent == null) && (((TEXT) obj).textContent == null)) ||
-			    ((this.textContent != null) && this.textContent.equals(((TEXT) obj).textContent)))
-		    &&
+		    (((this.textContent == null) && (((TEXT) obj).textContent == null)) || ((this.textContent != null) && this.textContent.equals(((TEXT) obj).textContent))) &&
 
-		    (((this.recipient == null) && (((TEXT) obj).recipient == null)) ||
-			    ((this.recipient != null) && this.recipient.equals(((TEXT) obj).recipient)));
+		    (((this.recipient == null) && (((TEXT) obj).recipient == null)) || ((this.recipient != null) && this.recipient.equals(((TEXT) obj).recipient)));
 	}
     }
 
@@ -297,15 +235,9 @@ public class TEXT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return serializeHeader()
-		.append((this.type != null) ? this.type : "")
-		.append(";")
-		.append((this.encoding != null) ? this.encoding : "")
-		.append(";")
-		.append((this.textContent != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "")
-		.append(";")
-		.append((this.recipient != null) ? this.recipient : "")
-		.toString();
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.type != null) ? this.type : "").append(";").append((this.encoding != null) ? this.encoding : "").append(";")
+		.append((this.textContent != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "").append(";").append((this.recipient != null) ? this.recipient : "")
+		.toString());
     }
 
 }

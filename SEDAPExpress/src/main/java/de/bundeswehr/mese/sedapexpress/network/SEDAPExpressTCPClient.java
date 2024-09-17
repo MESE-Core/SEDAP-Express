@@ -94,8 +94,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
      * @param clients       Client list to be used
      * @param subscriptions Subscription list to be used
      */
-    protected SEDAPExpressTCPClient(SocketChannel socket, ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients,
-	    ConcurrentHashMap<MessageType, Set<SEDAPExpressSubscriber>> subscriptions) {
+    protected SEDAPExpressTCPClient(SocketChannel socket, ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients, ConcurrentHashMap<MessageType, Set<SEDAPExpressSubscriber>> subscriptions) {
 
 	super();
 
@@ -127,8 +126,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 
 		this.socket.connect(new InetSocketAddress(this.host, this.port));
 
-		SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()",
-			"Connected to " + this.socket.getRemoteAddress());
+		SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()", "Connected to " + this.socket.getRemoteAddress());
 
 		this.lastException = null;
 
@@ -138,8 +136,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 	    } else {
 
 		if (this.socket.isConnected()) {
-		    SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()",
-			    "Connected to " + this.socket.getRemoteAddress());
+		    SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()", "Connected to " + this.socket.getRemoteAddress());
 		    this.lastException = null;
 
 		    new Thread(this).start(); // Start receiving thread
@@ -163,8 +160,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 	while (this.status) {
 
 	    try {
-		try (final BufferedReader br = new BufferedReader(
-			Channels.newReader(this.socket, StandardCharsets.ISO_8859_1))) {
+		try (final BufferedReader br = new BufferedReader(Channels.newReader(this.socket, StandardCharsets.ISO_8859_1))) {
 
 		    while (this.status) {
 			String message = br.readLine(); // Waiting for data
@@ -177,17 +173,15 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 			    }
 			} catch (Exception e) {
 			    this.lastException = e;
-			    SEDAPExpressTCPClient.logger.log(Level.SEVERE,
-				    "SEDAPExpressTCPClient, could not deserialize message: " + message, e);
+			    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient, could not deserialize message: " + message, e);
 			    this.status = this.socket.isConnected();
-			    e.printStackTrace();
 			}
 		    }
 
 		} catch (Exception e) {
+
 		    this.lastException = e;
-		    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage(),
-			    e);
+		    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage(), e);
 
 		    if (this.host.equals("")) { // If initiated by client, then end client thread
 			this.status = false;
@@ -195,8 +189,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 			    this.clients.remove(this);
 			}
 		    } else { // If client initiated by user, then reconnect attempt after 2 seconds
-			SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPClient", "run()",
-				"Waiting 2 seconds for reconnect to: " + this.host + ":" + this.port);
+			SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPClient", "run()", "Waiting 2 seconds for reconnect to: " + this.host + ":" + this.port);
 			Thread.sleep(2000);
 			this.socket = null;
 			connect();
@@ -223,12 +216,15 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
     public boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) throws IOException {
 
 	try {
-	    this.socket.write(ByteBuffer.wrap(SEDAPExpressMessage.serialize(message).getBytes()));
+	    if (this.socket.write(ByteBuffer.wrap(SEDAPExpressMessage.serialize(message).getBytes())) >= 0) {
+		return true;
+	    }
+	    return false;
+
 	} catch (IOException e) {
 	    this.lastException = e;
 	    throw e;
 	}
-	return false;
 
     }
 
@@ -247,8 +243,7 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 	} catch (IOException e) {
 	}
 
-	SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "stopCommunicator()",
-		"Communicator stopped");
+	SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "stopCommunicator()", "Communicator stopped");
     }
 
     @Override

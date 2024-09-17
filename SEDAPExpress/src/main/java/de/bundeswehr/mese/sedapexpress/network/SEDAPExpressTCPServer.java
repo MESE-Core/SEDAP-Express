@@ -114,6 +114,7 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 		    SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(this.serverSocket.accept(),
 			    this.clients, this.subscriptions);
 		    this.clients.add(newClient);
+		    newClient.connect();
 
 		    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
 			    "Added new client " + newClient);

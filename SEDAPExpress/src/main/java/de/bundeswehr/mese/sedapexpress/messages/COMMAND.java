@@ -35,20 +35,7 @@ public class COMMAND extends SEDAPExpressMessage {
     private static final long serialVersionUID = -5662357406861380560L;
 
     public enum CommandType {
-	Poweroff(0),
-	Restart(1),
-	Standby(2),
-	Wake_up(3),
-	Sync_time(4),
-	Send_status(5),
-	Move(6),
-	Rotate(7),
-	Scan_area(8),
-	Take_photo(9),
-	Make_video(10),
-	Live_video(11),
-	Engagement(12),
-	Generic_action(255);
+	Poweroff(0), Restart(1), Standby(2), Wake_up(3), Sync_time(4), Send_status(5), Move(6), Rotate(7), Scan_area(8), Take_photo(9), Make_video(10), Live_video(11), Engagement(12), Generic_action(255);
 
 	public static CommandType valueOfCommandType(int type) {
 	    return switch (type) {
@@ -146,8 +133,7 @@ public class COMMAND extends SEDAPExpressMessage {
      * @param cmdType
      * @param cmdTypeDependentParameters
      */
-    public COMMAND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient,
-	    Integer cmdId, CommandType cmdType, List<String> cmdTypeDependentParameters) {
+    public COMMAND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, Integer cmdId, CommandType cmdType, List<String> cmdTypeDependentParameters) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -185,21 +171,10 @@ public class COMMAND extends SEDAPExpressMessage {
 		this.recipient = value;
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "COMMAND",
-			      "COMMAND(Iterator<String> message)",
-			      "Optional field \"recipient\" contains not a valid number, but free text is allowed!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.INFO, "COMMAND", "COMMAND(Iterator<String> message)", "Optional field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "COMMAND",
-			  "COMMAND(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "COMMAND", "COMMAND(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// CmdID
@@ -209,43 +184,21 @@ public class COMMAND extends SEDAPExpressMessage {
 		this.cmdId = Integer.valueOf(value, 16);
 	    } else if (!value.isBlank()) {
 		this.recipient = value;
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "COMMAND",
-			      "COMMAND(Iterator<String> message)",
-			      "Optional field \"CmdID\" contains not a valid number!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.INFO, "COMMAND", "COMMAND(Iterator<String> message)", "Optional field \"CmdID\" contains not a valid number!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger
-		    .logp(
-			  Level.SEVERE,
-			  "COMMAND",
-			  "COMMAND(Iterator<String> message)",
-			  "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "COMMAND", "COMMAND(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// CmdType
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "COMMAND",
-			      "COMMAND(Iterator<String> message)",
-			      "Mandatory field \"cmdType\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "COMMAND", "COMMAND(Iterator<String> message)", "Mandatory field \"cmdType\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.CMDTYPE_MATCHER, value)) {
 		this.cmdType = CommandType.valueOfCommandType(Integer.parseInt(value, 16));
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "COMMAND",
-			      "COMMAND(Iterator<String> message)",
-			      "Mandatory field \"cmdType\" contains invalid value!",
-			      value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "COMMAND", "COMMAND(Iterator<String> message)", "Mandatory field \"cmdType\" contains invalid value!", value);
 	    }
 	}
 
@@ -253,12 +206,7 @@ public class COMMAND extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.INFO,
-			      "COMMAND",
-			      "COMMAND(Iterator<String> message)",
-			      "Optional field \"cmdTypeDependentParameters\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.INFO, "COMMAND", "COMMAND(Iterator<String> message)", "Optional field \"cmdTypeDependentParameters\" is empty!");
 	    } else {
 		// Put all remaining elements into the list
 		this.cmdTypeDependentParameters = new LinkedList<>();
@@ -281,14 +229,12 @@ public class COMMAND extends SEDAPExpressMessage {
 	} else {
 	    return super.equals(obj) &&
 
-		    (((this.recipient == null) && (((COMMAND) obj).recipient == null)) ||
-			    ((this.recipient != null) && this.recipient.equals(((COMMAND) obj).recipient)))
-		    &&
+		    (((this.recipient == null) && (((COMMAND) obj).recipient == null)) || ((this.recipient != null) && this.recipient.equals(((COMMAND) obj).recipient))) &&
 
 		    (this.cmdType == (((COMMAND) obj).cmdType)) &&
 
-		    (((this.cmdTypeDependentParameters == null) && (((COMMAND) obj).cmdTypeDependentParameters == null)) ||
-			    ((this.cmdTypeDependentParameters != null) && this.cmdTypeDependentParameters.equals(((COMMAND) obj).cmdTypeDependentParameters)));
+		    (((this.cmdTypeDependentParameters == null) && (((COMMAND) obj).cmdTypeDependentParameters == null))
+			    || ((this.cmdTypeDependentParameters != null) && this.cmdTypeDependentParameters.equals(((COMMAND) obj).cmdTypeDependentParameters)));
 
 	}
     }
@@ -306,23 +252,11 @@ public class COMMAND extends SEDAPExpressMessage {
 	    StringBuilder parameters = new StringBuilder();
 	    this.cmdTypeDependentParameters.forEach(entry -> parameters.append(entry + ";"));
 
-	    return serializeHeader()
-		    .append((this.recipient != null) ? this.recipient : "")
-		    .append(";")
-		    .append((this.cmdId != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdId) : "")
-		    .append(";")
-		    .append((this.cmdType != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdType.getTypeValue()) : "")
-		    .append(";")
-		    .append((this.cmdTypeDependentParameters != null) ? parameters : "")
-		    .toString();
+	    return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.cmdId != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdId) : "")
+		    .append(";").append((this.cmdType != null) ? SEDAPExpressMessage.HEXFOMATER.toHighHexDigit(this.cmdType.getTypeValue()) : "").append(";").append((this.cmdTypeDependentParameters != null) ? parameters : "").toString());
 	} else {
-	    return serializeHeader()
-		    .append((this.recipient != null) ? this.recipient : "")
-		    .append(";")
-		    .append((this.cmdId != null) ? this.cmdId : "")
-		    .append(";")
-		    .append((this.cmdType != null) ? this.cmdType : "")
-		    .toString();
+	    return SEDAPExpressMessage.removeSemicolons(
+		    serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.cmdId != null) ? this.cmdId : "").append(";").append((this.cmdType != null) ? this.cmdType : "").toString());
 	}
 
     }
