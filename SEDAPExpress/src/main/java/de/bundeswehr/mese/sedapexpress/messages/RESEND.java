@@ -105,7 +105,7 @@ public class RESEND extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (!value.isBlank()) {
+	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Mandatory field \"recipient\" is empty!");
 	    } else {
 		this.recipient = value;

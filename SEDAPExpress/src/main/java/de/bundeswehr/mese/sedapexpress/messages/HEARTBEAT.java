@@ -105,7 +105,7 @@ public class HEARTBEAT extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (!value.isBlank()) {
+	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "HEARTBEAT", "HEARTBEAT(Iterator<String> message)", "Optional field \"recipient\" is empty!");
 	    } else {
 		this.recipient = value;

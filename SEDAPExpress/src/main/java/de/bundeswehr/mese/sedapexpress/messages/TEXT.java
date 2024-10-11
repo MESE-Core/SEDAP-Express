@@ -104,26 +104,27 @@ public class TEXT extends SEDAPExpressMessage {
     }
 
     /**
-     *
+     * 
      * @param number
      * @param time
      * @param sender
      * @param classification
      * @param acknowledgement
      * @param mac
+     * @param recipient
      * @param type
      * @param encoding
      * @param textContent
-     * @param recipient
      */
-    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, TextType type, TextEncoding encoding, String textContent, String recipient) {
+    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, TextType type, TextEncoding encoding, String textContent) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
+	this.recipient = recipient;
 	this.type = type;
 	this.encoding = encoding;
 	this.textContent = textContent;
-	this.recipient = recipient;
+
     }
 
     /**
@@ -148,7 +149,7 @@ public class TEXT extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (!value.isBlank()) {
+	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "Optional field \"recipient\" is empty!");
 	    } else {
 		this.recipient = value;
@@ -234,9 +235,9 @@ public class TEXT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.type != null) ? this.type : "").append(";").append((this.encoding != null) ? this.encoding : "").append(";")
-		.append((this.textContent != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "").append(";").append((this.recipient != null) ? this.recipient : "")
-		.toString());
+	return SEDAPExpressMessage
+		.removeSemicolons(serializeHeader().append(";").append((this.recipient != null) ? this.recipient : "").append(";").append((this.type != null) ? this.type : "").append(";").append((this.encoding != null) ? this.encoding : "")
+			.append(";").append((this.textContent != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "").toString());
     }
 
 }

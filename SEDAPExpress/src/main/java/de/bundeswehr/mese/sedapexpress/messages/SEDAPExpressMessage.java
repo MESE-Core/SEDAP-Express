@@ -700,7 +700,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
 	    if (message.hasNext()) {
 		value = message.next();
-		if (!value.isBlank()) {
+		if (value.isBlank()) {
 		    SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"sender\" is empty!");
 		} else {
 		    this.sender = value;

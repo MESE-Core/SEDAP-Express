@@ -211,7 +211,7 @@ public class COMMAND extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (!value.isBlank()) {
+	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "COMMAND", "COMMAND(Iterator<String> message)", "Optional field \"recipient\" is empty!");
 	    } else {
 		this.recipient = value;
@@ -225,8 +225,7 @@ public class COMMAND extends SEDAPExpressMessage {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.HEXNUMBER_MATCHER, value)) {
 		this.cmdId = Integer.valueOf(value, 16);
-	    } else if (!value.isBlank()) {
-		this.recipient = value;
+	    } else {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "COMMAND", "COMMAND(Iterator<String> message)", "Optional field \"CmdID\" contains not a valid number!", value);
 	    }
 	} else {
