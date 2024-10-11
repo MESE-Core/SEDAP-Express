@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: 23+37 (AdoptOpenJDK)
+Built-By: Volker Voss (volker.v@gmx.net)
+Build-Jdk: 23+37
+Main-Class: de.bundeswehr.mese.sedapexpress.ReleaseInfo
+Class-Path: . bcpkix-jdk18on-1.78.1.jar 
+ bcprov-jdk18on-1.78.1.jar bcutil-jdk18on-1.78.1.jar
+ gson-2.11.0.jar protobuf-java-4.28.1.jar protobuf-java-util-4.28.1.jar
+

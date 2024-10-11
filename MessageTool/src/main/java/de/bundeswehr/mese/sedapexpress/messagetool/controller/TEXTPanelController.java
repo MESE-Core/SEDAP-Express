@@ -66,13 +66,10 @@ public class TEXTPanelController extends MessagePanelController {
     }
 
     @Override
-    public SEDAPExpressMessage createMessage(Short number, Long time, String sender,
-	    Classification classification, Acknowledgement acknowledgement, String mac) {
+    public SEDAPExpressMessage createMessage(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
 
-	return new TEXT(number, time, sender, classification, acknowledgement, mac,
-		this.typeComboBox.getSelectionModel().getSelectedItem(),
-		this.encodingComboBox.getSelectionModel().getSelectedItem(),
-		this.recipientTextField.getText(), this.textTextArea.getText());
+	return new TEXT(number, time, sender, classification, acknowledgement, mac, this.recipientTextField.getText(), this.typeComboBox.getSelectionModel().getSelectedItem(), this.encodingComboBox.getSelectionModel().getSelectedItem(),
+		this.textTextArea.getText());
     }
 
     @Override

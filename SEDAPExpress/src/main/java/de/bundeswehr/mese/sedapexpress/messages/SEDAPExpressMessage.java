@@ -453,15 +453,15 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	Classification maxClassificationEnum = Classification.getValueOfClassificationChar(maxClassification);
 
 	return switch (classificationEnum) {
-	case Classification.NONE -> false;
-	case Classification.PUBLIC -> true; // Always permitted
-	case Classification.UNCLAS -> (maxClassificationEnum == Classification.UNCLAS) || (maxClassificationEnum == Classification.RESTRICTED) || (maxClassificationEnum == Classification.CONFIDENTIAL)
-		|| (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.RESTRICTED ->
+	case NONE -> false;
+	case PUBLIC -> true; // Always permitted
+	case UNCLAS -> (maxClassificationEnum == Classification.UNCLAS) || (maxClassificationEnum == Classification.RESTRICTED) || (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET)
+		|| (maxClassificationEnum == Classification.TOP_SECRET);
+	case RESTRICTED ->
 	    (maxClassificationEnum == Classification.RESTRICTED) || (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.CONFIDENTIAL -> (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.SECRET -> (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.TOP_SECRET -> maxClassificationEnum == Classification.TOP_SECRET;
+	case CONFIDENTIAL -> (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case SECRET -> (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case TOP_SECRET -> maxClassificationEnum == Classification.TOP_SECRET;
 	default -> throw new IllegalArgumentException("Unexpected value: " + classificationEnum);
 	};
     }
