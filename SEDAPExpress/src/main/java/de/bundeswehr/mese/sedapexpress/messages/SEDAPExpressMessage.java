@@ -56,20 +56,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     public enum MessageType {
 
-	ACKNOWLEDGE,
-	COMMAND,
-	CONTACT,
-	EMISSION,
-	GENERIC,
-	GRAPHIC,
-	HEARTBEAT,
-	TIMESYNC,
-	KEYEXCHANGE,
-	METEO,
-	OWNUNIT,
-	RESEND,
-	STATUS,
-	TEXT;
+	ACKNOWLEDGE, COMMAND, CONTACT, EMISSION, GENERIC, GRAPHIC, HEARTBEAT, TIMESYNC, KEYEXCHANGE, METEO, OWNUNIT, RESEND, STATUS, TEXT;
 
 	public static MessageType valueOfMessageType(String type) {
 	    return MessageType.valueOf(type.toUpperCase());
@@ -100,13 +87,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     public enum Classification {
-	NONE('-'),
-	PUBLIC('P'),
-	UNCLAS('U'),
-	RESTRICTED('R'),
-	CONFIDENTIAL('C'),
-	SECRET('S'),
-	TOP_SECRET('T');
+	NONE('-'), PUBLIC('P'), UNCLAS('U'), RESTRICTED('R'), CONFIDENTIAL('C'), SECRET('S'), TOP_SECRET('T');
 
 	public static Classification getValueOfClassificationChar(char character) {
 	    return switch (character) {
@@ -189,14 +170,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final char ENVIRONMENT_SUBSURFACE = 'u';
     public static final char ENVIRONMENT_GROUND = 'g';
 
-    public static final List<String> dimensionsList = new ArrayList<>(Arrays
-	    .asList(
-		    "Unknown",
-		    "Space",
-		    "Air",
-		    "Surface",
-		    "SubSurface",
-		    "Ground"));
+    public static final List<String> dimensionsList = new ArrayList<>(Arrays.asList("Unknown", "Space", "Air", "Surface", "SubSurface", "Ground"));
 
     // Identity
     public static final char IDENT_PENDING = 'p';
@@ -207,21 +181,13 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final char IDENT_ASSFRIEND = 'a';
     public static final char IDENT_FRIEND = 'f';
 
-    public static final List<String> identitiesList = new ArrayList<>(Arrays
-	    .asList(
-		    "Pending",
-		    "Unknown",
-		    "Hostile",
-		    "Suspect",
-		    "Neutral",
-		    "Assumed friend",
-		    "Friend"));
+    public static final List<String> identitiesList = new ArrayList<>(Arrays.asList("Pending", "Unknown", "Hostile", "Suspect", "Neutral", "Assumed friend", "Friend"));
 
     public static final Pattern NAME_MATCHER = Pattern.compile("^[a-zA-Z]+$"); // Name
     public static final Pattern NUMBER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,2}$"); // Number
     public static final Pattern TIME_MATCHER = Pattern.compile("^[A-Fa-f0-9]{8,16}$"); // Time
-    public static final Pattern SENDER_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,4}$"); // Sender-Recipient
-    public static final Pattern MAC_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,32}$"); // Sender-Recipient
+    public static final Pattern MAC_MATCHER = Pattern.compile("^[A-Fa-f0-9]{1,32}$"); // HexNumber
+    public static final Pattern HEXNUMBER_MATCHER = SEDAPExpressMessage.MAC_MATCHER;
     public static final Pattern TEXTTYPE_MATCHER = Pattern.compile("^[0-4]$"); // Text type
 
     public static final Pattern DOUBLE_MATCHER = Pattern.compile("^-?\\d+.?\\d*$"); // Double
@@ -462,14 +428,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      */
     public static char getClassificationFromFullName(final String classificationFullName) {
 
-	return switch (classificationFullName
-		.trim()
-		.toUpperCase()
-		.replace("NATO", "")
-		.replace("EU", "")
-		.replace(
-			 " ",
-			 "")) {
+	return switch (classificationFullName.trim().toUpperCase().replace("NATO", "").replace("EU", "").replace(" ", "")) {
 	case "OEFFENTLICH", "PUBLIC" -> Classification.PUBLIC.value;
 	case "OFFEN", "UNCLAS" -> Classification.UNCLAS.value;
 	case "VS-NFD", "RESTRICTED" -> Classification.RESTRICTED.value;
@@ -496,20 +455,12 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	return switch (classificationEnum) {
 	case Classification.NONE -> false;
 	case Classification.PUBLIC -> true; // Always permitted
-	case Classification.UNCLAS ->
-	    (maxClassificationEnum == Classification.UNCLAS) || (maxClassificationEnum == Classification.RESTRICTED)
-		    || (maxClassificationEnum == Classification.CONFIDENTIAL)
-		    || (maxClassificationEnum == Classification.SECRET)
-		    || (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.RESTRICTED -> (maxClassificationEnum == Classification.RESTRICTED)
-		|| (maxClassificationEnum == Classification.CONFIDENTIAL)
-		|| (maxClassificationEnum == Classification.SECRET)
-		|| (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.CONFIDENTIAL ->
-	    (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET)
-		    || (maxClassificationEnum == Classification.TOP_SECRET);
-	case Classification.SECRET ->
-	    (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.UNCLAS -> (maxClassificationEnum == Classification.UNCLAS) || (maxClassificationEnum == Classification.RESTRICTED) || (maxClassificationEnum == Classification.CONFIDENTIAL)
+		|| (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.RESTRICTED ->
+	    (maxClassificationEnum == Classification.RESTRICTED) || (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.CONFIDENTIAL -> (maxClassificationEnum == Classification.CONFIDENTIAL) || (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
+	case Classification.SECRET -> (maxClassificationEnum == Classification.SECRET) || (maxClassificationEnum == Classification.TOP_SECRET);
 	case Classification.TOP_SECRET -> maxClassificationEnum == Classification.TOP_SECRET;
 	default -> throw new IllegalArgumentException("Unexpected value: " + classificationEnum);
 	};
@@ -673,29 +624,12 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
 	final Class<?>[] paramTypes = new Class[] { Iterator.class };
 
-	Arrays
-		.asList(
+	Arrays.asList(
 
-			ACKNOWLEDGE.class,
-			COMMAND.class,
-			CONTACT.class,
-			EMISSION.class,
-			GENERIC.class,
-			GRAPHIC.class,
-			HEARTBEAT.class,
-			TIMESYNC.class,
-			KEYEXCHANGE.class,
-			METEO.class,
-			OWNUNIT.class,
-			RESEND.class,
-			STATUS.class,
-			TEXT.class)
+		ACKNOWLEDGE.class, COMMAND.class, CONTACT.class, EMISSION.class, GENERIC.class, GRAPHIC.class, HEARTBEAT.class, TIMESYNC.class, KEYEXCHANGE.class, METEO.class, OWNUNIT.class, RESEND.class, STATUS.class, TEXT.class)
 		.forEach(clazz -> {
 		    try {
-			SEDAPExpressMessage.messageNameToConstructor
-				.put(
-				     clazz.getSimpleName(),
-				     clazz.getConstructor(paramTypes));
+			SEDAPExpressMessage.messageNameToConstructor.put(clazz.getSimpleName(), clazz.getConstructor(paramTypes));
 		    } catch (NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		    }
@@ -718,8 +652,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
      * @param acknowledgement
      * @param mac             Message Authentification Code
      */
-    protected SEDAPExpressMessage(Short number, Long time, String sender,
-	    Classification classification, Acknowledgement acknowledgement, String mac) {
+    protected SEDAPExpressMessage(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
 	super();
 	this.number = number;
 	this.time = time;
@@ -742,84 +675,38 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    if (message.hasNext()) {
 		value = message.next();
 		if (value.isEmpty()) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.INFO,
-				  "SEDAPExpressMessage",
-				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"number\" is empty!",
-				  value);
+		    SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"number\" is empty!", value);
 		} else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
 		    this.number = Short.parseShort(value, 16);
 		} else if (!value.isBlank()) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "SEDAPExpressMessage",
-				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"number\" contains invalid value!",
-				  value);
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"number\" contains invalid value!", value);
 		}
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Incomplete message!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Incomplete message!");
 	    }
 
 	    if (message.hasNext()) {
 		value = message.next();
 		if (value.isEmpty()) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.INFO,
-				  "SEDAPExpressMessage",
-				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"time\" is empty!",
-				  value);
+		    SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"time\" is empty!", value);
 		} else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TIME_MATCHER, value)) {
 		    this.time = Long.parseLong(value, 16);
 		} else if (!value.isBlank()) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.SEVERE,
-				  "SEDAPExpressMessage",
-				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"time\" contains invalid value!",
-				  value);
+		    SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"time\" contains invalid value!", value);
 		}
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Incomplete message!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Incomplete message!");
 	    }
 
 	    if (message.hasNext()) {
 		value = message.next();
-		if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
+		if (!value.isBlank()) {
+		    SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"sender\" is empty!");
+		} else {
 		    this.sender = value;
-		} else if (!value.isBlank()) {
-		    this.sender = value;
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.INFO,
-				  "SEDAPExpressMessage",
-				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"sender\" contains not a valid number, but free text is allowed!",
-				  value);
 		}
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Incomplete message!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Incomplete message!");
 	    }
 
 	    if (message.hasNext()) {
@@ -828,12 +715,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 		    this.classification = Classification.getValueOfClassificationChar(classChar.charAt(0));
 		}
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Incomplete message!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Incomplete message!");
 	    }
 
 	    if (message.hasNext()) {
@@ -848,12 +730,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	    } else if (this instanceof HEARTBEAT) {
 		// allowed
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Incomplete message!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Incomplete message!");
 	    }
 
 	    if (message.hasNext()) {
@@ -861,23 +738,12 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 		if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.MAC_MATCHER, value)) {
 		    this.mac = value;
 		} else if (!value.isBlank()) {
-		    SEDAPExpressMessage.logger
-			    .logp(
-				  Level.INFO,
-				  "SEDAPExpressMessage",
-				  "SEDAPExpressMessage(Iterator<String> message)",
-				  "Optional field \"mac\" contains not a valid 32bit mac number!",
-				  value);
+		    SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"mac\" contains not a valid 32bit mac number!", value);
 		}
 	    } else if (this instanceof HEARTBEAT) {
 		// allowed
 	    } else {
-		SEDAPExpressMessage.logger
-			.logp(
-			      Level.SEVERE,
-			      "SEDAPExpressMessage",
-			      "SEDAPExpressMessage(Iterator<String> message)",
-			      "Incomplete message!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Incomplete message!");
 	    }
 
 	} catch (Exception e) {
@@ -917,8 +783,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 		    return null;
 		}
 
-	    } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-		    | InvocationTargetException e) {
+	    } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 		SEDAPExpressMessage.logger.throwing("SEDAPExpressMessage", "deserialize(String receivedMessage)", e);
 		return null;
 	    }

@@ -202,7 +202,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 		    try {
 			this.annotation = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
-			SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Optional field \"annotation\" could not be decoded from Base64!");
+			SEDAPExpressMessage.logger.logp(Level.SEVERE, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"annotation\" could not be decoded from Base64!");
 		    }
 
 		} else {

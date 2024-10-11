@@ -105,14 +105,13 @@ public class RESEND extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
-		this.recipient = String.valueOf(Integer.parseInt(value, 16));
-	    } else if (!value.isBlank()) {
+	    if (!value.isBlank()) {
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Mandatory field \"recipient\" is empty!");
+	    } else {
 		this.recipient = value;
-		SEDAPExpressMessage.logger.logp(Level.INFO, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
-	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Name
@@ -121,21 +120,21 @@ public class RESEND extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NAME_MATCHER, value)) {
 		this.nameOfTheMissingMessage = value;
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"nameOfTheMissingMessage\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Mandatory field \"nameOfTheMissingMessage\" invalid value: \"" + value + "\"");
 	    }
 	} else {
-	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Incomplete message!");
 	}
 
 	// Number
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMissingMessage\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Mandatory field \"numberOfTheMissingMessage\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
 		this.numberOfTheMissingMessage = Short.parseShort(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMissingMessage\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Mandatory field \"numberOfTheMissingMessage\" contains invalid value!", value);
 	    }
 	}
     }

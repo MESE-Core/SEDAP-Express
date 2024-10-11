@@ -106,11 +106,10 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
-		this.recipient = String.valueOf(Integer.parseInt(value, 16));
-	    } else if (!value.isBlank()) {
+	    if (!value.isBlank()) {
+		SEDAPExpressMessage.logger.logp(Level.INFO, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Optional field \"recipient\" is empty!");
+	    } else {
 		this.recipient = value;
-		SEDAPExpressMessage.logger.logp(Level.INFO, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
 	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Incomplete message!");
@@ -132,11 +131,11 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMessage\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"numberOfTheMessage\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NUMBER_MATCHER, value)) {
 		this.numberOfTheMessage = Short.parseShort(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"numberOfTheMessage\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"numberOfTheMessage\" contains invalid value!", value);
 	    }
 	}
     }

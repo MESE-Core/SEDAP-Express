@@ -96,11 +96,11 @@ public class TIMESYNC extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isEmpty()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"timestamp\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TIMESYNC", "TIMESYNC(Iterator<String> message)", "Mandatory field \"timestamp\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TIME_MATCHER, value)) {
 		this.timestamp = Long.parseLong(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Mandatory field \"timestamp\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TIMESYNC", "TIMESYNC(Iterator<String> message)", "Mandatory field \"timestamp\" contains invalid value!", value);
 	    }
 	}
     }

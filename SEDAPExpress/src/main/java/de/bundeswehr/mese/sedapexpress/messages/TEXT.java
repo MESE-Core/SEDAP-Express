@@ -148,11 +148,10 @@ public class TEXT extends SEDAPExpressMessage {
 	// Recipient
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SENDER_MATCHER, value)) {
+	    if (!value.isBlank()) {
+		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "Optional field \"recipient\" is empty!");
+	    } else {
 		this.recipient = value;
-	    } else if (!value.isBlank()) {
-		this.recipient = value;
-		SEDAPExpressMessage.logger.logp(Level.INFO, "SEDAPExpressMessage", "SEDAPExpressMessage(Iterator<String> message)", "Optional field \"recipient\" contains not a valid number, but free text is allowed!", value);
 	    }
 	} else {
 	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Incomplete message!");
