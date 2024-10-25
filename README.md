@@ -18,12 +18,11 @@ Below you will find a brief overview and description of the sub-projects. If you
 
 
 ### Documentation 
-In this project you will find all the necessary documents such as the SEDAP Express ICD and all other referenced standards and documents to make it as easy as possible for everyone involved to get started.
-
+In this project you will find all the necessary documents such as the SEDAP Express ICD and all other referenced standards and documents. Hopefully, tutorial videos and such stuff will be added in the coming weeks  here to make it as easy as possible for everyone to get started.
 
 ### SEDAPExpress
 
-Here you can find everything you need about SEDAP-Express and to understand the protocols. In the future we will also publish tutorial videos and such stuff here to make it as easy as possible for everyone to get started.
+Here you can find everything you need to implement SEDAP-Express into your Application and to understand the protocol. In future, we will also provide SDKs in programming languages other than Java. However, these will then be available via separate repositories.
 
 ### MessageTool
 The main function of that tool is to manually generate messages for test and debugging but also in operational use cases ("sneakernet"). 
