@@ -83,7 +83,7 @@ public class OWNUNITPanelController extends MessagePanelController {
 	assert this.sidcDimComboBox != null : "fx:id=\"sidcDimComboBox\" was not injected: check your FXML file 'OWNUNITPanel.fxml'.";
 	assert this.speedTextField != null : "fx:id=\"speedTextField\" was not injected: check your FXML file 'OWNUNITPanel.fxml'.";
 
-	this.sidcDimComboBox.setItems(FXCollections.observableList(SEDAPExpressMessage.dimensionsList));
+	this.sidcDimComboBox.setItems(FXCollections.observableList(MessagePanelController.dimensionsList));
 	this.sidcDimComboBox.getSelectionModel().selectedIndexProperty().addListener((observable, o, n) -> {
 	    switch ((int) n) {
 	    case 0 -> this.sidcComboBox.setItems(null);
@@ -100,8 +100,7 @@ public class OWNUNITPanelController extends MessagePanelController {
     }
 
     @Override
-    public SEDAPExpressMessage createMessage(Short number, Long time, String sender,
-	    Classification classification, Acknowledgement acknowledgement, String mac) {
+    public SEDAPExpressMessage createMessage(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
 
 	return null;
     }

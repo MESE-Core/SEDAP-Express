@@ -35,9 +35,22 @@ public class COMMAND extends SEDAPExpressMessage {
     private static final long serialVersionUID = -5662357406861380560L;
 
     public enum CommandFlag {
+
 	Add(0), Replace(1), CancelLast(2), CancelAll(3);
 
+	int flag;
+
+	public int getFlagValue() {
+
+	    return this.flag;
+	}
+
+	CommandFlag(int flag) {
+	    this.flag = flag;
+	}
+
 	public static CommandFlag valueOfCommandFlag(int type) {
+
 	    return switch (type) {
 	    case 0 -> Add;
 	    case 1 -> Replace;
@@ -47,28 +60,30 @@ public class COMMAND extends SEDAPExpressMessage {
 	    };
 	}
 
-	int flag;
-
-	CommandFlag(int flag) {
-	    this.flag = flag;
-	}
-
 	@Override
 	public String toString() {
 	    return String.valueOf(this.flag);
 	}
 
-	public int getFlagValue() {
-
-	    return this.flag;
-	}
-
     }
 
     public enum CommandType {
+
 	Poweroff(0), Restart(1), Standby(2), Sync_time(3), Send_status(4), Move(5), Rotate(6), Loiter(7), Scan_area(8), Take_photo(9), Make_video(10), Live_video(11), Engagement(12), Generic_action(255);
 
+	int type;
+
+	public int getTypeValue() {
+
+	    return this.type;
+	}
+
+	CommandType(int type) {
+	    this.type = type;
+	}
+
 	public static CommandType valueOfCommandType(int type) {
+
 	    return switch (type) {
 	    case 0 -> Poweroff;
 	    case 1 -> Restart;
@@ -88,20 +103,9 @@ public class COMMAND extends SEDAPExpressMessage {
 	    };
 	}
 
-	int type;
-
-	CommandType(int type) {
-	    this.type = type;
-	}
-
 	@Override
 	public String toString() {
 	    return String.valueOf(this.type);
-	}
-
-	public int getTypeValue() {
-
-	    return this.type;
 	}
 
     }

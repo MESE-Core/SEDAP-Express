@@ -35,7 +35,43 @@ public class GRAPHIC extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 341163682644789657L;
 
-    private Integer graphicType;
+    public enum GraphicType {
+
+	Point(0), Path(1), Polygon(2), Rectangle(3), Square(4), Circle(5), Ellipse(6), Block(7), Sphere(8), Ellipsoid(9);
+
+	int type;
+
+	public int getType() {
+	    return this.type;
+	}
+
+	private GraphicType(int type) {
+	    this.type = type;
+	}
+
+	public static GraphicType valueOfGraphicType(int type) {
+
+	    return switch (type) {
+	    case 0 -> Point;
+	    case 1 -> Path;
+	    case 2 -> Polygon;
+	    case 3 -> Rectangle;
+	    case 4 -> Circle;
+	    case 5 -> Ellipse;
+	    case 6 -> Block;
+	    case 7 -> Sphere;
+	    case 8 -> Ellipsoid;
+	    default -> Point;
+	    };
+	}
+
+	@Override
+	public String toString() {
+	    return String.valueOf(this.type);
+	}
+    }
+
+    private GraphicType graphicType;
 
     private Double lineWidth;
 
@@ -47,11 +83,11 @@ public class GRAPHIC extends SEDAPExpressMessage {
 
     private String annotation;
 
-    public Integer getGraphicType() {
+    public GraphicType getGraphicType() {
 	return this.graphicType;
     }
 
-    public void setGraphicType(Integer graphicType) {
+    public void setGraphicType(GraphicType graphicType) {
 	this.graphicType = graphicType;
     }
 
@@ -110,7 +146,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
      * @param encoding
      * @param annotation
      */
-    public GRAPHIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, Integer graphicType, Double lineWidth, Integer lineColor, Integer fillColor, TextEncoding encoding,
+    public GRAPHIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, GraphicType graphicType, Double lineWidth, Integer lineColor, Integer fillColor, TextEncoding encoding,
 	    String annotation) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
@@ -142,9 +178,11 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.GRAPHICTYPE_MATCHER, value)) {
-		this.graphicType = Integer.parseInt(value);
-	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.INFO, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Mandatory field \"graphicType\" contains invalid value!", value);
+		this.graphicType = GraphicType.valueOf(value);
+	    } else if (value.isBlank()) {
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Mandatory field \"graphicType\" is empty!", value);
+	    } else {
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Mandatory field \"graphicType\" contains invalid value!", value);
 	    }
 	} else {
 	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Incomplete message!");
@@ -156,7 +194,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.INTEGER_MATCHER, value)) {
 		this.lineWidth = Double.parseDouble(value);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.INFO, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"lineWidth\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"lineWidth\" contains invalid value!", value);
 	    }
 	}
 
@@ -166,7 +204,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.RGBA_MATCHER, value)) {
 		this.lineColor = Integer.parseInt(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.INFO, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"lineColor\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"lineColor\" contains invalid value!", value);
 	    }
 	}
 
@@ -176,19 +214,19 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.RGBA_MATCHER, value)) {
 		this.fillColor = Integer.parseInt(value, 16);
 	    } else if (!value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.INFO, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"fillColor\" contains invalid value!", value);
+		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"fillColor\" contains invalid value!", value);
 	    }
 	}
 
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (TextEncoding.valueOfTextEncoding(value) == TextEncoding.BASE64) {
+	    if (TextEncoding.valueOf(value) == TextEncoding.BASE64) {
 		this.encoding = TextEncoding.BASE64;
-	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
+	    } else if (TextEncoding.valueOf(value) == TextEncoding.NONE || value.isBlank()) {
 		this.encoding = TextEncoding.NONE;
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.INFO, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"encoding\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"encoding\" invalid value: \"" + value + "\"");
 	    }
 	}
 
@@ -196,7 +234,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (value.isBlank()) {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"text\" is empty!");
+		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"text\" is empty!");
 	    } else {
 		if (this.encoding == TextEncoding.BASE64) {
 		    try {

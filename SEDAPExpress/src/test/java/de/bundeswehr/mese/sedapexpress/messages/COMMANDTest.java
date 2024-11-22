@@ -44,19 +44,19 @@ class COMMANDTest {
     @Test
     final void testConstructorValues() {
 
-	final COMMAND command = new COMMAND((short) 55, 641244434L, "8F3A", Classification.SECRET, Acknowledgement.YES, "4389F10D", "7D31", 0x1111, COMMAND.CommandFlag.CancelAll, COMMAND.CommandType.Sync_time, Arrays.asList("10.8.0.6"));
+	final COMMAND command = new COMMAND((short) 55, 641244434L, "8F3A", Classification.Secret, Acknowledgement.TRUE, "4389F10D", "7D31", 0x1111, COMMAND.CommandFlag.CancelAll, COMMAND.CommandType.Sync_time, Arrays.asList("10.8.0.6"));
 
 	Assertions.assertEquals((short) 55, command.getNumber());
 	Assertions.assertEquals(641244434L, command.getTime());
 	Assertions.assertEquals("8F3A", command.getSender());
-	Assertions.assertEquals(Classification.SECRET, command.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.Secret, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x1111, command.getCmdId());
 	Assertions.assertEquals(COMMAND.CommandFlag.CancelAll, command.getCmdFlag());
 	Assertions.assertEquals(COMMAND.CommandType.Sync_time, command.getCmdType());
-	Assertions.assertEquals("10.8.0.6", command.getCmdTypeDependentParameters().getFirst());
+	Assertions.assertEquals("10.8.0.6", command.getCmdTypeDependentParameters().get(0));
     }
 
     @Test
@@ -69,15 +69,15 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 0x55, command.getNumber());
 	Assertions.assertEquals(0x1B351C87L, command.getTime());
 	Assertions.assertEquals("5BCD", command.getSender());
-	Assertions.assertEquals(Classification.SECRET, command.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.Secret, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x1111, command.getCmdId());
 	Assertions.assertEquals(COMMAND.CommandFlag.Replace, command.getCmdFlag());
 	Assertions.assertEquals(COMMAND.CommandType.Engagement, command.getCmdType());
-	Assertions.assertEquals(COMMAND.CMDTYPE_ENGAGEMENT_CMD_Hold, command.getCmdTypeDependentParameters().getFirst());
-	Assertions.assertEquals("1000", command.getCmdTypeDependentParameters().getLast());
+	Assertions.assertEquals(COMMAND.CMDTYPE_ENGAGEMENT_CMD_Hold, command.getCmdTypeDependentParameters().get(0));
+	Assertions.assertEquals("1000", command.getCmdTypeDependentParameters().get(command.getCmdTypeDependentParameters().size() - 1));
 
 	message = "COMMAND;29;661D44C0;E4B3;C;TRUE;;Drone1;;00;FF;OPEN_BAY";
 
@@ -86,13 +86,13 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 0x29, command.getNumber());
 	Assertions.assertEquals(0x661D44C0L, command.getTime());
 	Assertions.assertEquals("E4B3", command.getSender());
-	Assertions.assertEquals(Classification.CONFIDENTIAL, command.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.Confidential, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals(null, command.getMAC());
 	Assertions.assertEquals("Drone1", command.getRecipient());
 	Assertions.assertEquals(COMMAND.CommandType.Generic_action, command.getCmdType());
 	Assertions.assertEquals(COMMAND.CommandFlag.Add, command.getCmdFlag());
-	Assertions.assertEquals("OPEN_BAY", command.getCmdTypeDependentParameters().getFirst());
+	Assertions.assertEquals("OPEN_BAY", command.getCmdTypeDependentParameters().get(0));
 
     }
 
@@ -106,14 +106,14 @@ class COMMANDTest {
 	Assertions.assertEquals((short) 0x55, command.getNumber());
 	Assertions.assertEquals(0x1B351C87L, command.getTime());
 	Assertions.assertEquals("5BCD", command.getSender());
-	Assertions.assertEquals(Classification.SECRET, command.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, command.getAcknowledgement());
+	Assertions.assertEquals(Classification.Secret, command.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
 	Assertions.assertEquals(0x2892, command.getCmdId());
 	Assertions.assertEquals(COMMAND.CommandFlag.Add, command.getCmdFlag());
 	Assertions.assertEquals(COMMAND.CommandType.Sync_time, command.getCmdType());
-	Assertions.assertEquals("10.0.0.1", command.getCmdTypeDependentParameters().getFirst());
+	Assertions.assertEquals("10.0.0.1", command.getCmdTypeDependentParameters().get(0));
     }
 
 }

@@ -25,9 +25,7 @@
  */
 package de.bundeswehr.mese.sedapexpress.messages;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.logging.Level;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -38,34 +36,40 @@ public class TEXT extends SEDAPExpressMessage {
     private static final long serialVersionUID = 1140074068439618568L;
 
     public enum TextType {
+
 	Undefined(0), Alert(1), Warning(2), Notice(3), Chat(4);
 
-	private static final Map<Integer, TextType> types = new HashMap<>();
+	int type;
 
-	static {
-	    for (TextType e : TextType.values()) {
-		TextType.types.put(e.type, e);
-	    }
+	public int getType() {
+	    return this.type;
+	}
+
+	TextType(int type) {
+	    this.type = type;
 	}
 
 	public static TextType valueOfTextType(int type) {
-	    return TextType.types.get(type);
+
+	    return switch (type) {
+	    case 0 -> Undefined;
+	    case 1 -> Alert;
+	    case 2 -> Warning;
+	    case 3 -> Notice;
+	    case 4 -> Chat;
+	    default -> Undefined;
+	    };
 	}
 
-	public static TextType valueOfTextType(String type) {
-	    return TextType.types.get(Integer.parseInt(type));
-	}
-
-	public final Integer type;
-
-	private TextType(int type) {
-	    this.type = type;
+	@Override
+	public String toString() {
+	    return String.valueOf(this.type);
 	}
     }
 
-    private TextType type;
+    private TextType type = TextType.Undefined;
 
-    private TextEncoding encoding;
+    private TextEncoding encoding = TextEncoding.NONE;
 
     private String textContent;
 
@@ -161,10 +165,10 @@ public class TEXT extends SEDAPExpressMessage {
 	// Type
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (value.isBlank()) {
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXTTYPE_MATCHER, value)) {
+		this.type = TextType.valueOfTextType(Integer.parseInt(value));
+	    } else if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "Optional field \"type\" is empty!");
-	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXTTYPE_MATCHER, value)) {
-		this.type = TextType.valueOfTextType(value);
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "TEXT field \"type\" invalid value: \"" + value + "\"");
 	    }
@@ -175,12 +179,13 @@ public class TEXT extends SEDAPExpressMessage {
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (TextEncoding.valueOfTextEncoding(value) == TextEncoding.BASE64) {
-		this.encoding = TextEncoding.BASE64;
-	    } else if ("none".equalsIgnoreCase(value) || value.isBlank()) {
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXT_ENCODING_MATCHER, value)) {
+		this.encoding = TextEncoding.valueOf(value);
+	    } else if (value.isBlank()) {
 		this.encoding = TextEncoding.NONE;
+		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "Optional TEXT field \"encoding\" is empty!");
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "TEXT field \"encoding\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Optional TEXT field \"encoding\" invalid value: \"" + value + "\"");
 	    }
 	} else {
 	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Incomplete message!");

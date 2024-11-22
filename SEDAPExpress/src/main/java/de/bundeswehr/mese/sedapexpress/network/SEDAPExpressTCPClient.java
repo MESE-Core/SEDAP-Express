@@ -61,13 +61,20 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 
     private SocketChannel socket;
 
-    private final String host;
+    private String host;
 
     private final int port;
 
     private boolean status = true;
 
     private final ConcurrentLinkedDeque<SEDAPExpressTCPClient> clients;
+
+    private Thread ownThread;
+
+    public String getHost() {
+
+	return this.host;
+    }
 
     /**
      * Instantiate a new SEDAP-Express TCP Client
@@ -84,7 +91,6 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 
 	this.clients = new ConcurrentLinkedDeque<>();
 	this.subscriptions = new ConcurrentHashMap<MessageType, Set<SEDAPExpressSubscriber>>();
-
     }
 
     /**
@@ -100,37 +106,45 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 
 	this.socket = socket;
 
-	this.host = ""; // Unused
+	try {
+	    this.host = socket.getRemoteAddress().toString().substring(1);
+	} catch (IOException e) {
+	    this.host = "";
+	}
+
 	this.port = 0; // Unused
 
 	this.clients = clients;
 	this.subscriptions = subscriptions;
+
     }
 
     public boolean connect() {
+
+	if (this.clients.isEmpty())
+	    logInput("TCP client started!");
 
 	try {
 	    // No socket given from server
 	    if (this.socket == null) {
 		this.socket = SelectorProvider.provider().openSocketChannel();
-
-		// Empfangspuffer auf 1MB setzen
-		this.socket.setOption(StandardSocketOptions.SO_RCVBUF, 1024 * 1024);
-		// Sendenpuffer auf 1MB setzen
-		this.socket.setOption(StandardSocketOptions.SO_SNDBUF, 1024 * 1024);
-
-		// socket.setOption(StandardSocketOptions.SO_LINGER, 1000);
+		this.socket.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
+		this.socket.socket().setSoTimeout(2000);
 
 		// Blocking access
 		this.socket.configureBlocking(true);
 
 		this.socket.connect(new InetSocketAddress(this.host, this.port));
 
-		SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()", "Connected to " + this.socket.getRemoteAddress());
+		SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()", "Connected to " + this.host);
+		logInput("Connected to " + this.host);
 
 		this.lastException = null;
 
-		new Thread(this).start(); // Start receiving thread
+		if (this.ownThread == null) {
+		    this.ownThread = new Thread(this);
+		    this.ownThread.start();// Start receiving thread
+		}
 
 		return true;
 	    } else {
@@ -139,7 +153,10 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 		    SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()", "Connected to " + this.socket.getRemoteAddress());
 		    this.lastException = null;
 
-		    new Thread(this).start(); // Start receiving thread
+		    if (this.ownThread == null) {
+			this.ownThread = new Thread(this);
+			this.ownThread.start();// Start receiving thread
+		    }
 
 		    return true;
 		} else {
@@ -172,24 +189,31 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 				break;
 			    }
 			} catch (Exception e) {
-			    this.lastException = e;
-			    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient, could not deserialize message: " + message, e);
-			    this.status = this.socket.isConnected();
+
+			    if (this.status) { // Only if not manually triggered
+				this.lastException = e;
+				SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient, could not deserialize message: " + message, e);
+				this.status = this.socket.isConnected();
+			    }
 			}
 		    }
 
 		} catch (Exception e) {
-
 		    this.lastException = e;
-		    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage(), e);
 
-		    if (this.host.equals("")) { // If initiated by client, then end client thread
+		    if (this.status) { // Only if not manually triggered
+			SEDAPExpressTCPClient.logger.log(Level.WARNING, "SEDAPExpressTCPClient: " + e);
+		    }
+
+		    if (!this.clients.isEmpty()) { // If initiated by server, then end client thread
 			this.status = false;
-			if (this.clients != null) {
-			    this.clients.remove(this);
-			}
-		    } else { // If client initiated by user, then reconnect attempt after 2 seconds
+			this.clients.remove(this);
+			SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "run()", "Removed client " + this.host);
+			logInput("Remove client " + this.host);
+
+		    } else if (this.status) { // If client initiated by user, then reconnect attempt after 2 seconds
 			SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPClient", "run()", "Waiting 2 seconds for reconnect to: " + this.host + ":" + this.port);
+			logInput("Waiting 2 seconds for reconnect to: " + this.host + ":" + this.port);
 			Thread.sleep(2000);
 			this.socket = null;
 			connect();
@@ -198,15 +222,14 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 
 	    } catch (Exception e) {
 		this.lastException = e;
-		SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage(), e);
-		this.status = false;
-		if (this.clients != null) {
-		    this.clients.remove(this);
+
+		if (this.status) {// Only if not manually triggered
+		    SEDAPExpressTCPClient.logger.log(Level.SEVERE, "SEDAPExpressTCPClient: " + e.getLocalizedMessage());
 		}
-	    } finally {
-		try {
-		    this.socket.close();
-		} catch (IOException e) {
+
+		this.status = false;
+		if (!this.clients.isEmpty()) {
+		    this.clients.remove(this);
 		}
 	    }
 	}
@@ -243,7 +266,11 @@ public class SEDAPExpressTCPClient extends SEDAPExpressCommunicator implements R
 	} catch (IOException e) {
 	}
 
-	SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "stopCommunicator()", "Communicator stopped");
+	SEDAPExpressTCPClient.logger.logp(Level.INFO, "SEDAPExpressTCPClient", "stopCommunicator()", "TCP client stopped");
+
+	if (this.clients.isEmpty()) // Nur bei TCP Client
+	    logInput("TCP client stopped");
+
     }
 
     @Override

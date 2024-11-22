@@ -44,25 +44,13 @@ class OWNUNITTest {
     @Test
     final void testConstructorValues() {
 
-	final OWNUNIT ownunit = new OWNUNIT(
-		(short) 11,
-		456465543L,
-		"22AA",
-		Classification.UNCLAS,
-		Acknowledgement.NO,
-		"4389F10D",
-		77.88d, -10.12d, 5577.0d,
-		33.44d,
-		55.66d,
-		1.1d, -2.2d, 3.3d,
-		"Ownunit",
-		"SFGPIB----H----".toCharArray());
+	final OWNUNIT ownunit = new OWNUNIT((short) 11, 456465543L, "22AA", Classification.Unclas, Acknowledgement.TRUE, "4389F10D", 77.88d, -10.12d, 5577.0d, 33.44d, 55.66d, 1.1d, -2.2d, 3.3d, "Ownunit", "SFGPIB----H----".toCharArray());
 
 	Assertions.assertEquals((short) 11, ownunit.getNumber());
 	Assertions.assertEquals(456465543L, ownunit.getTime());
 	Assertions.assertEquals("22AA", ownunit.getSender());
-	Assertions.assertEquals(Classification.UNCLAS, ownunit.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.Unclas, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, ownunit.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", ownunit.getMAC());
 	Assertions.assertEquals(77.88d, ownunit.getLatitude());
 	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
@@ -80,15 +68,15 @@ class OWNUNITTest {
     @Test
     final void testConstructorString() {
 
-	String message = "OWNUNIT;11;1B351C87;22AA;U;FALSE;4389F10D;77.88;-10.12;5577.0;33.44;55.66;1.1;-2.2;3.3;Ownunit;SFGPIB----H----";
+	String message = "OWNUNIT;11;1B351C87;22AA;U;TRUE;4389F10D;77.88;-10.12;5577.0;33.44;55.66;1.1;-2.2;3.3;Ownunit;SFGPIB----H----";
 
 	OWNUNIT ownunit = new OWNUNIT(message);
 
 	Assertions.assertEquals((short) 0x11, ownunit.getNumber());
 	Assertions.assertEquals(0x1B351C87L, ownunit.getTime());
 	Assertions.assertEquals("22AA", ownunit.getSender());
-	Assertions.assertEquals(Classification.UNCLAS, ownunit.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.Unclas, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, ownunit.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", ownunit.getMAC());
 	Assertions.assertEquals(77.88d, ownunit.getLatitude());
 	Assertions.assertEquals(-10.12d, ownunit.getLongitude());
@@ -108,8 +96,8 @@ class OWNUNITTest {
 	Assertions.assertEquals((short) 0x5E, ownunit.getNumber());
 	Assertions.assertEquals(0x661D4410L, ownunit.getTime());
 	Assertions.assertEquals("66A3", ownunit.getSender());
-	Assertions.assertEquals(Classification.RESTRICTED, ownunit.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.Restricted, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.FALSE, ownunit.getAcknowledgement());
 	Assertions.assertEquals(53.32d, ownunit.getLatitude());
 	Assertions.assertEquals(8.11d, ownunit.getLongitude());
 	Assertions.assertEquals(0d, ownunit.getAltitude());
@@ -124,33 +112,16 @@ class OWNUNITTest {
     @Test
     final void testConstructorIterator() {
 
-	Iterator<String> it = Arrays
-		.asList(
-			"11",
-			"1B351C87",
-			"22AA",
-			"U",
-			"FALSE", // SEDAPExpressMessage.ACKNOWLEDGE_NO
-			"4389F10D",
-			"77.88",
-			"-10.12",
-			"5577.0",
-			"33.44",
-			"55.66",
-			"1.1",
-			"-2.2",
-			"3.3",
-			"Ownunit",
-			"SFGPIB----H----")
-		.iterator();
+	Iterator<String> it = Arrays.asList("11", "1B351C87", "22AA", "U", "FALSE", // SEDAPExpressMessage.ACKNOWLEDGE_NO
+		"4389F10D", "77.88", "-10.12", "5577.0", "33.44", "55.66", "1.1", "-2.2", "3.3", "Ownunit", "SFGPIB----H----").iterator();
 
 	OWNUNIT ownunit = new OWNUNIT(it);
 
 	Assertions.assertEquals((short) 0x11, ownunit.getNumber());
 	Assertions.assertEquals(0x1B351C87L, ownunit.getTime());
 	Assertions.assertEquals("22AA", ownunit.getSender());
-	Assertions.assertEquals(Classification.UNCLAS, ownunit.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, ownunit.getAcknowledgement());
+	Assertions.assertEquals(Classification.Unclas, ownunit.getClassification());
+	Assertions.assertEquals(Acknowledgement.FALSE, ownunit.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", ownunit.getMAC());
 	Assertions.assertEquals(77.88d, ownunit.getLatitude());
 	Assertions.assertEquals(-10.12d, ownunit.getLongitude());

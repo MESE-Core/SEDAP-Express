@@ -31,12 +31,11 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.HexFormat;
 import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,6 +43,8 @@ import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.MessageType;
 import de.bundeswehr.mese.sedapexpress.messages.TIMESYNC;
+import de.bundeswehr.mese.sedapexpress.processing.SEDAPExpressInputLoggingSubscriber;
+import de.bundeswehr.mese.sedapexpress.processing.SEDAPExpressOutputLoggingSubscriber;
 import de.bundeswehr.mese.sedapexpress.processing.SEDAPExpressSubscriber;
 
 /**
@@ -58,9 +59,54 @@ public abstract class SEDAPExpressCommunicator {
 	SEDAPExpressCommunicator.logger.setLevel(Level.ALL);
     }
 
-    public short timesyncNumber = 0;
+    protected CopyOnWriteArraySet<SEDAPExpressInputLoggingSubscriber> inputLogger = new CopyOnWriteArraySet<>();
+    protected CopyOnWriteArraySet<SEDAPExpressOutputLoggingSubscriber> outputLogger = new CopyOnWriteArraySet<>();
 
-    public abstract boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) throws IOException;
+    /**
+     * Subscribe for logging messages related to data input
+     * 
+     * @param subscriber The class which should process the logging message
+     */
+    public void subscripeForInputLogging(SEDAPExpressInputLoggingSubscriber subscriber) {
+	this.inputLogger.add(subscriber);
+    }
+
+    /**
+     * Unsubscribe for logging messages related to data input
+     * 
+     * @param subscriber The class which should NOT process the logging message
+     *                   anymore
+     */
+    public void unsubscripeForInputLogging(SEDAPExpressInputLoggingSubscriber subscriber) {
+	this.inputLogger.remove(subscriber);
+    }
+
+    /**
+     * Subscribe for logging messages related to data output
+     * 
+     * @param subscriber The class which should process the logging message
+     */
+    public void subscripeForOutputLogging(SEDAPExpressOutputLoggingSubscriber subscriber) {
+	this.outputLogger.add(subscriber);
+    }
+
+    /**
+     * Unsubscribe for logging messages related to data output
+     * 
+     * @param subscriber The class which should NOT process the logging message
+     *                   anymore
+     */
+    public void unsubscripeForOutputLogging(SEDAPExpressOutputLoggingSubscriber subscriber) {
+	this.outputLogger.remove(subscriber);
+    }
+
+    protected void logInput(String message) {
+	this.inputLogger.forEach(il -> il.processSEDAPExpressInputLoggingMessage(message));
+    }
+
+    protected void logOutput(String message) {
+	this.outputLogger.forEach(il -> il.processSEDAPExpressOutputLoggingMessage(message));
+    }
 
     protected ConcurrentHashMap<MessageType, Set<SEDAPExpressSubscriber>> subscriptions = new ConcurrentHashMap<>();
 
@@ -74,8 +120,7 @@ public abstract class SEDAPExpressCommunicator {
 
 	clazzes.forEach(clazz -> {
 
-	    this.subscriptions.computeIfAbsent(clazz,
-		    key -> Collections.synchronizedSet(new HashSet<SEDAPExpressSubscriber>()));
+	    this.subscriptions.computeIfAbsent(clazz, key -> new CopyOnWriteArraySet<SEDAPExpressSubscriber>());
 
 	    this.subscriptions.get(clazz).add(subscriber);
 	});
@@ -121,6 +166,15 @@ public abstract class SEDAPExpressCommunicator {
     }
 
     /**
+     * Unsubscribe all message types
+     *
+     * @param subscriber the original subscriber of the message types
+     */
+    public void unsubscribeAll(SEDAPExpressSubscriber subscriber) {
+	unsubscribeMessages(subscriber, MessageType.values());
+    }
+
+    /**
      * Distribute a message to the subscribers
      *
      * @param message
@@ -128,8 +182,7 @@ public abstract class SEDAPExpressCommunicator {
     protected void distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage message) {
 
 	if ((message != null) && this.subscriptions.containsKey(message.getMessageType())) {
-	    this.subscriptions.get(message.getMessageType())
-		    .forEach(subscriber -> subscriber.processSEDAPExpressMessage(message));
+	    this.subscriptions.get(message.getMessageType()).forEach(subscriber -> subscriber.processSEDAPExpressMessage(message));
 	}
     }
 
@@ -140,14 +193,26 @@ public abstract class SEDAPExpressCommunicator {
      */
     public abstract boolean connect();
 
+    /**
+     * Sends a SEDAP-Express message to the connected node(s)
+     * 
+     * @param message SEDAP-Express to send
+     * @return Result if the sending was successfully
+     * 
+     * @throws IOException While sending the SEDAP-Express message, somthing gone
+     *                     wrong
+     */
+    public abstract boolean sendSEDAPExpressMessage(SEDAPExpressMessage message) throws IOException;
+
+    public short timesyncNumber = 0;
+
     class TimeSyncRunnable extends Thread implements SEDAPExpressSubscriber {
 
 	TIMESYNC timesyncAnswer;
 
 	@Override
 	public void run() {
-	    SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()",
-		    "Started time synchronization process...");
+	    SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()", "Started time synchronization process...");
 
 	    this.timesyncAnswer = null;
 
@@ -155,13 +220,10 @@ public abstract class SEDAPExpressCommunicator {
 		SEDAPExpressCommunicator.this.timesyncNumber = 0;
 
 	    try {
-		sendSEDAPExpressMessage(
-			new TIMESYNC(SEDAPExpressCommunicator.this.timesyncNumber++, System.currentTimeMillis(),
-				SEDAPExpressCommunicator.this.createSenderId(), null, Acknowledgement.NO, null));
+		sendSEDAPExpressMessage(new TIMESYNC(SEDAPExpressCommunicator.this.timesyncNumber++, System.currentTimeMillis(), SEDAPExpressCommunicator.this.createSenderId(), null, Acknowledgement.TRUE, null));
 	    } catch (IOException e) {
 
-		SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()",
-			"Could not send TIMESYNC message", e);
+		SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()", "Could not send TIMESYNC message", e);
 	    }
 
 	    while (this.timesyncAnswer == null) {
@@ -178,63 +240,50 @@ public abstract class SEDAPExpressCommunicator {
 	    if (System.getProperty("os.name").startsWith("Windows")) {
 		try {
 
-		    final Process p1 = new ProcessBuilder("cmd", "/C", "time",
-			    calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + ":"
-				    + calendar.get(Calendar.SECOND) + "." + (calendar.get(Calendar.MILLISECOND) / 10))
+		    final Process p1 = new ProcessBuilder("cmd", "/C", "time", calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND) + "." + (calendar.get(Calendar.MILLISECOND) / 10))
 			    .redirectError(Redirect.DISCARD).redirectOutput(Redirect.DISCARD).start();
 		    p1.waitFor();
 
-		    final Process p2 = new ProcessBuilder("cmd", "/C", "date",
-			    calendar.get(Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-"
-				    + calendar.get(Calendar.YEAR))
-			    .redirectError(Redirect.DISCARD).redirectOutput(Redirect.DISCARD).start();
+		    final Process p2 = new ProcessBuilder("cmd", "/C", "date", calendar.get(Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.YEAR)).redirectError(Redirect.DISCARD)
+			    .redirectOutput(Redirect.DISCARD).start();
 		    p2.waitFor();
 
 		    if ((p1.exitValue() == 0) && (p2.exitValue() == 0)) {
-			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()",
-				"New system time: " + new SimpleDateFormat("MMM dd yyy HH:mm:ss.SSS")
-					.format(System.currentTimeMillis()) + "\"");
-			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()",
-				"Time sync successfully!");
+			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()", "New system time: " + new SimpleDateFormat("MMM dd yyy HH:mm:ss.SSS").format(System.currentTimeMillis()) + "\"");
+			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()", "Time sync successfully!");
 		    } else {
 
-			SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()",
-				"Could not set time! No standard Windows or no rights!?");
-			// System.err.println("Exitcode1: " + p1.exitValue());
-			// System.err.println("Exitcode2: " + p2.exitValue());
+			SEDAPExpressCommunicator.logger.logp(Level.WARNING, "SEDAPExpressCommunicator", "doTimesync()", "Could not set time! No standard Windows or no rights!?");
+			SEDAPExpressCommunicator.logger.logp(Level.WARNING, "SEDAPExpressCommunicator", "doTimesync()", "ExitCode \"cmd /C time\":" + p1.exitValue());
+			SEDAPExpressCommunicator.logger.logp(Level.WARNING, "SEDAPExpressCommunicator", "doTimesync()", "ExitCode \"cmd /C date\":" + p2.exitValue());
+
 		    }
 
 		} catch (final Exception e1) {
 
-		    SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()",
-			    "Could not set time! No standard Windows or no rights!?");
+		    SEDAPExpressCommunicator.logger.logp(Level.WARNING, "SEDAPExpressCommunicator", "doTimesync()", "Could not set time! No standard Windows or no rights!?", e1);
 
 		}
 
 	    } else { // Unixodide e.g. Linux, BSD
 		try {
 
-		    final Process p = new ProcessBuilder("/usr/bin/date", "-s",
-			    new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(calendar.getTimeInMillis()))
-			    .redirectError(Redirect.DISCARD).redirectOutput(Redirect.DISCARD).start();
+		    final Process p = new ProcessBuilder("/usr/bin/date", "-s", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(calendar.getTimeInMillis())).redirectError(Redirect.DISCARD).redirectOutput(Redirect.DISCARD).start();
 		    p.waitFor();
 
 		    if (p.exitValue() == 0) {
-			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()",
-				"New system time: " + new SimpleDateFormat("MMM dd yyy HH:mm:ss.SSS")
-					.format(System.currentTimeMillis()) + "\"");
-			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()",
-				"Time sync successfully!");
+			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()", "New system time: " + new SimpleDateFormat("MMM dd yyy HH:mm:ss.SSS").format(System.currentTimeMillis()) + "\"");
+			SEDAPExpressCommunicator.logger.logp(Level.INFO, "SEDAPExpressCommunicator", "doTimesync()", "Time sync successfully!");
 		    } else {
 
-			SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()",
-				"Could not set time! No standard Linux or no rights!?");
+			SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()", "Could not set time! No standard Linux or no rights!?");
+			SEDAPExpressCommunicator.logger.logp(Level.WARNING, "SEDAPExpressCommunicator", "doTimesync()", "ExitCode \"/usr/bin/date -s\":" + p.exitValue());
+
 		    }
 
 		} catch (final Exception e2) {
 
-		    SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()",
-			    "Could not set time! No standard Linux or no rights!?");
+		    SEDAPExpressCommunicator.logger.logp(Level.SEVERE, "SEDAPExpressCommunicator", "doTimesync()", "Could not set time! No standard Linux or no rights!?", e2);
 
 		}
 	    }
@@ -261,6 +310,9 @@ public abstract class SEDAPExpressCommunicator {
 	return HexFormat.of().toHexDigits((short) Math.round(Math.random() * 65535));
     }
 
+    /**
+     * Stops and disconnects the communicator
+     */
     public abstract void stopCommunicator();
 
     public abstract Exception getLastException();

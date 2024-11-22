@@ -145,8 +145,7 @@ public class MessageTool extends Application {
     @FXML
     void connectToSEDAPExpress(ActionEvent event) {
 
-	this.communicator = new SEDAPExpressTCPClient(this.ipTextField.getText(),
-		Integer.parseInt(this.portTextField.getText()));
+	this.communicator = new SEDAPExpressTCPClient(this.ipTextField.getText(), Integer.parseInt(this.portTextField.getText()));
 
 	if (this.communicator.connect()) {
 	    this.connectButton.setDisable(true);
@@ -279,8 +278,7 @@ public class MessageTool extends Application {
     void sendMessage(ActionEvent event) {
 
 	try {
-	    this.communicator
-		    .sendSEDAPExpressMessage(this.currentController.createMessage(null, null, null, null, null, null));
+	    this.communicator.sendSEDAPExpressMessage(this.currentController.createMessage(null, null, null, null, null, null));
 	} catch (IOException e) {
 	}
     }
@@ -301,8 +299,7 @@ public class MessageTool extends Application {
 	    time = null;
 	}
 
-	SEDAPExpressMessage message = this.currentController.createMessage(number, time, this.senderTextField.getText(),
-		this.classificationComboBox.getSelectionModel().getSelectedItem(),
+	SEDAPExpressMessage message = this.currentController.createMessage(number, time, this.senderTextField.getText(), this.classificationComboBox.getSelectionModel().getSelectedItem(),
 		this.acknowledgmentComboBox.getSelectionModel().getSelectedItem(), this.macTextField.getText());
 
 	System.out.println(message);
@@ -342,28 +339,17 @@ public class MessageTool extends Application {
 
     @FXML
     void initialize() {
-	assert this.authenticationCheckBox != null
-		: "fx:id=\"authenticationCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.connectButton != null
-		: "fx:id=\"connectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.disconnectButton != null
-		: "fx:id=\"disconnectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.encryptedCheckBox != null
-		: "fx:id=\"encryptedCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.inputLogTextArea != null
-		: "fx:id=\"inputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.ipTextField != null
-		: "fx:id=\"ipTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.keyTextField != null
-		: "fx:id=\"keyTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.messageBorderPane != null
-		: "fx:id=\"messageBorderPane\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.outputLogTextArea != null
-		: "fx:id=\"outputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.portTextField != null
-		: "fx:id=\"portTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
-	assert this.protobufCheckBox != null
-		: "fx:id=\"protobufCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.authenticationCheckBox != null : "fx:id=\"authenticationCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.connectButton != null : "fx:id=\"connectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.disconnectButton != null : "fx:id=\"disconnectButton\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.encryptedCheckBox != null : "fx:id=\"encryptedCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.inputLogTextArea != null : "fx:id=\"inputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.ipTextField != null : "fx:id=\"ipTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.keyTextField != null : "fx:id=\"keyTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.messageBorderPane != null : "fx:id=\"messageBorderPane\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.outputLogTextArea != null : "fx:id=\"outputLogTextArea\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.portTextField != null : "fx:id=\"portTextField\" was not injected: check your FXML file 'MessageTool.fxml'.";
+	assert this.protobufCheckBox != null : "fx:id=\"protobufCheckBox\" was not injected: check your FXML file 'MessageTool.fxml'.";
 
 	this.classificationComboBox.setItems(FXCollections.observableList(Arrays.asList(Classification.values())));
 	this.classificationComboBox.getSelectionModel().select(1);
@@ -487,6 +473,7 @@ public class MessageTool extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
 	try {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("MessageTool.fxml"));
 
@@ -495,6 +482,7 @@ public class MessageTool extends Application {
 
 	    primaryStage.setScene(scene);
 	    primaryStage.show();
+
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}

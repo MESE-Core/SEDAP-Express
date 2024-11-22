@@ -42,7 +42,18 @@ public class STATUS extends SEDAPExpressMessage {
 
 	Off_absent(0), Initializing(1), Degraded(2), Operational(3), Fault(4);
 
+	int state;
+
+	public int getState() {
+	    return this.state;
+	}
+
+	TechnicalState(int state) {
+	    this.state = state;
+	}
+
 	public static TechnicalState valueOfTechnicalState(int state) {
+
 	    return switch (state) {
 	    case 0 -> Off_absent;
 	    case 1 -> Initializing;
@@ -53,15 +64,9 @@ public class STATUS extends SEDAPExpressMessage {
 	    };
 	}
 
-	int value;
-
-	TechnicalState(int status) {
-	    this.value = status;
-	}
-
 	@Override
 	public String toString() {
-	    return String.valueOf(this.value);
+	    return String.valueOf(this.state);
 	}
     }
 
@@ -69,7 +74,18 @@ public class STATUS extends SEDAPExpressMessage {
 
 	Not_operational(0), Degraded(1), Operational(2);
 
+	int state;
+
+	OperationalState(int state) {
+	    this.state = state;
+	}
+
+	public int getState() {
+	    return this.state;
+	}
+
 	public static OperationalState valueOfOperationalState(int state) {
+
 	    return switch (state) {
 	    case 0 -> Not_operational;
 	    case 1 -> Degraded;
@@ -78,15 +94,9 @@ public class STATUS extends SEDAPExpressMessage {
 	    };
 	}
 
-	int value;
-
-	OperationalState(int status) {
-	    this.value = status;
-	}
-
 	@Override
 	public String toString() {
-	    return String.valueOf(this.value);
+	    return String.valueOf(this.state);
 	}
     }
 
@@ -94,7 +104,18 @@ public class STATUS extends SEDAPExpressMessage {
 
 	Undefined(0), Executed_successfully(1), Partially_executed_successfully(2), Executed_not_successfully(3), Execution_not_possible(4), Will_execute_at(5);
 
+	int state;
+
+	public int getState() {
+	    return this.state;
+	}
+
+	CommandState(int status) {
+	    this.state = status;
+	}
+
 	public static CommandState valueOfMessageType(int state) {
+
 	    return switch (state) {
 	    case 0 -> Undefined;
 	    case 1 -> Executed_successfully;
@@ -106,15 +127,9 @@ public class STATUS extends SEDAPExpressMessage {
 	    };
 	}
 
-	int value;
-
-	CommandState(int status) {
-	    this.value = status;
-	}
-
 	@Override
 	public String toString() {
-	    return String.valueOf(this.value);
+	    return String.valueOf(this.state);
 	}
     }
 

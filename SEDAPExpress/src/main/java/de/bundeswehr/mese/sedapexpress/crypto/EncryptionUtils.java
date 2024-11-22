@@ -43,6 +43,51 @@ public class EncryptionUtils {
     }
 
     /**
+     * Encrypts a message with AES128/256 ECB/PKCS7Padding (NIST SP 800-38A)
+     *
+     * @param originalData plain data which should be encrypted
+     * @param key          the 128 or 256 bit wide encryption key
+     *
+     * @return encrypted data
+     *
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws InvalidKeyException
+     */
+    public static String encrypt_AES_ECB(String originalData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+	Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
+	cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+	byte[] encryptedBytes = cipher.doFinal(originalData.getBytes());
+	return Base64.getEncoder().encodeToString(encryptedBytes);
+    }
+
+    /**
+     * Decrypts a message with AES128/256 ECB/PKCS7Padding (NIST SP 800-38A)
+     *
+     * @param encryptedData encrypted data which should be decrypted
+     * @param key           the 128 or 256 bit wide decryption key
+     *
+     * @return decrypted data
+     *
+     * @throws NoSuchPaddingException
+     * @throws NoSuchAlgorithmException
+     * @throws BadPaddingException
+     * @throws IllegalBlockSizeException
+     * @throws InvalidKeyException
+     */
+    public static String decrypt_AES_ECB(String encryptedData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+	Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
+	cipher.init(Cipher.DECRYPT_MODE, secretKey);
+	byte[] decodedBytes = Base64.getDecoder().decode(encryptedData);
+	byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+	return new String(decryptedBytes);
+    }
+
+    /**
      * Encrypts a message with AES128/256 CFB/NoPadding (NIST SP 800-38A)
      *
      * @param originalData plain data which should be encrypted

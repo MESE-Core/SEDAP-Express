@@ -47,41 +47,24 @@ class STATUSTest {
     @Test
     final void testConstructorValues() {
 
-	final STATUS status = new STATUS(
-		(short) 41,
-		7865454543L,
-		"BB91",
-		Classification.CONFIDENTIAL,
-		Acknowledgement.YES,
-		"93B37ACC",
-		TechnicalState.Operational,
-		OperationalState.Operational,
-		Arrays.asList("MLG"),
-		Arrays.asList(50.0),
-		Arrays.asList("Tank1"),
-		Arrays.asList(75.3),
-		Arrays.asList("MainAkku"),
-		Arrays.asList(10.8),
-		34,
-		CommandState.Executed_successfully,
-		"10.8.0.6",
-		Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
+	final STATUS status = new STATUS((short) 41, 7865454543L, "BB91", Classification.Confidential, Acknowledgement.TRUE, "93B37ACC", TechnicalState.Operational, OperationalState.Operational, Arrays.asList("MLG"), Arrays.asList(50.0),
+		Arrays.asList("Tank1"), Arrays.asList(75.3), Arrays.asList("MainAkku"), Arrays.asList(10.8), 34, CommandState.Executed_successfully, "10.8.0.6", Arrays.asList("rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2"),
 		"This is a sample!");
 
 	Assertions.assertEquals((short) 41, status.getNumber());
 	Assertions.assertEquals(7865454543L, status.getTime());
 	Assertions.assertEquals("BB91", status.getSender());
-	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.Confidential, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, status.getAcknowledgement());
 	Assertions.assertEquals("93B37ACC", status.getMAC());
 	Assertions.assertEquals(TechnicalState.Operational, status.getTecState());
 	Assertions.assertEquals(OperationalState.Operational, status.getOpsState());
-	Assertions.assertEquals("MLG", status.getAmmunitionLevelNames().getFirst());
-	Assertions.assertEquals(50.0, status.getAmmunitionLevels().getFirst());
-	Assertions.assertEquals("Tank1", status.getFuelLevelNames().getFirst());
-	Assertions.assertEquals(75.3, status.getFuelLevels().getFirst());
-	Assertions.assertEquals("MainAkku", status.getBatterieLevelNames().getFirst());
-	Assertions.assertEquals(10.8, status.getBatterieLevels().getFirst());
+	Assertions.assertEquals("MLG", status.getAmmunitionLevelNames().get(0));
+	Assertions.assertEquals(50.0, status.getAmmunitionLevels().get(0));
+	Assertions.assertEquals("Tank1", status.getFuelLevelNames().get(0));
+	Assertions.assertEquals(75.3, status.getFuelLevels().get(0));
+	Assertions.assertEquals("MainAkku", status.getBatterieLevelNames().get(0));
+	Assertions.assertEquals(10.8, status.getBatterieLevels().get(0));
 	Assertions.assertEquals(34, status.getCmdId());
 	Assertions.assertEquals(CommandState.Executed_successfully, status.getCmdState());
 	Assertions.assertEquals("10.8.0.6", status.getHostname());
@@ -100,17 +83,17 @@ class STATUSTest {
 	Assertions.assertEquals((short) 0x41, status.getNumber());
 	Assertions.assertEquals(0x50505050L, status.getTime());
 	Assertions.assertEquals("BB91", status.getSender());
-	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.Confidential, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, status.getAcknowledgement());
 	Assertions.assertEquals("93B37ACC", status.getMAC());
 	Assertions.assertEquals(TechnicalState.Degraded, status.getTecState());
 	Assertions.assertEquals(OperationalState.Degraded, status.getOpsState());
-	Assertions.assertEquals("", status.getAmmunitionLevelNames().getFirst());
-	Assertions.assertEquals(20.3, status.getAmmunitionLevels().getFirst());
-	Assertions.assertEquals("", status.getFuelLevelNames().getFirst());
-	Assertions.assertEquals(30.4, status.getFuelLevels().getFirst());
-	Assertions.assertEquals("", status.getBatterieLevelNames().getFirst());
-	Assertions.assertEquals(40.5, status.getBatterieLevels().getFirst());
+	Assertions.assertEquals("", status.getAmmunitionLevelNames().get(0));
+	Assertions.assertEquals(20.3, status.getAmmunitionLevels().get(0));
+	Assertions.assertEquals("", status.getFuelLevelNames().get(0));
+	Assertions.assertEquals(30.4, status.getFuelLevels().get(0));
+	Assertions.assertEquals("", status.getBatterieLevelNames().get(0));
+	Assertions.assertEquals(40.5, status.getBatterieLevels().get(0));
 	Assertions.assertNull(status.getCmdId());
 	Assertions.assertNull(status.getCmdState());
 	Assertions.assertEquals("10.8.0.6", status.getHostname());
@@ -124,8 +107,8 @@ class STATUSTest {
 	Assertions.assertEquals((short) 0x15, status.getNumber());
 	Assertions.assertEquals(0x66e2d520L, status.getTime());
 	Assertions.assertEquals("LASSY", status.getSender());
-	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.Confidential, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.FALSE, status.getAcknowledgement());
 	Assertions.assertNull(status.getMAC());
 	Assertions.assertEquals(TechnicalState.Operational, status.getTecState());
 	Assertions.assertEquals(OperationalState.Operational, status.getOpsState());
@@ -133,8 +116,8 @@ class STATUSTest {
 	Assertions.assertNull(status.getAmmunitionLevels());
 	Assertions.assertNull(status.getFuelLevelNames());
 	Assertions.assertNull(status.getFuelLevels());
-	Assertions.assertEquals("MainBattery", status.getBatterieLevelNames().getFirst());
-	Assertions.assertEquals(100.0, status.getBatterieLevels().getFirst());
+	Assertions.assertEquals("MainBattery", status.getBatterieLevelNames().get(0));
+	Assertions.assertEquals(100.0, status.getBatterieLevels().get(0));
 	Assertions.assertNull(status.getCmdId());
 	Assertions.assertNull(status.getCmdState());
 	Assertions.assertEquals("192.168.168.105", status.getHostname());
@@ -147,41 +130,24 @@ class STATUSTest {
     final void testConstructorIterator() {
 
 	Iterator<String> it = Arrays
-		.asList(
-			"41",
-			"A0B0C0D0",
-			"BB91",
-			"C",
-			"TRUE",
-			"93B37ACC",
-			"2",
-			"1",
-			"#20.3",
-			"#30.4",
-			"#40.5",
-			"",
-			"",
-			"MTAuOC4wLjY=",
-			"cnRzcDovLzEwLjguMC42L3N0cmVhbTE=#cnRzcDovLzEwLjguMC42L3N0cmVhbTI=",
-			"U2FtcGxlVGV4dCE=")
-		.iterator();
+		.asList("41", "A0B0C0D0", "BB91", "C", "TRUE", "93B37ACC", "2", "1", "#20.3", "#30.4", "#40.5", "", "", "MTAuOC4wLjY=", "cnRzcDovLzEwLjguMC42L3N0cmVhbTE=#cnRzcDovLzEwLjguMC42L3N0cmVhbTI=", "U2FtcGxlVGV4dCE=").iterator();
 
 	final STATUS status = new STATUS(it);
 
 	Assertions.assertEquals((short) 0x41, status.getNumber());
 	Assertions.assertEquals(0xA0B0C0D0L, status.getTime());
 	Assertions.assertEquals("BB91", status.getSender());
-	Assertions.assertEquals(Classification.CONFIDENTIAL, status.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, status.getAcknowledgement());
+	Assertions.assertEquals(Classification.Confidential, status.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, status.getAcknowledgement());
 	Assertions.assertEquals("93B37ACC", status.getMAC());
 	Assertions.assertEquals(TechnicalState.Degraded, status.getTecState());
 	Assertions.assertEquals(OperationalState.Degraded, status.getOpsState());
-	Assertions.assertEquals("", status.getAmmunitionLevelNames().getFirst());
-	Assertions.assertEquals(20.3, status.getAmmunitionLevels().getFirst());
-	Assertions.assertEquals("", status.getFuelLevelNames().getFirst());
-	Assertions.assertEquals(30.4, status.getFuelLevels().getFirst());
-	Assertions.assertEquals("", status.getBatterieLevelNames().getFirst());
-	Assertions.assertEquals(40.5, status.getBatterieLevels().getFirst());
+	Assertions.assertEquals("", status.getAmmunitionLevelNames().get(0));
+	Assertions.assertEquals(20.3, status.getAmmunitionLevels().get(0));
+	Assertions.assertEquals("", status.getFuelLevelNames().get(0));
+	Assertions.assertEquals(30.4, status.getFuelLevels().get(0));
+	Assertions.assertEquals("", status.getBatterieLevelNames().get(0));
+	Assertions.assertEquals(40.5, status.getBatterieLevels().get(0));
 	Assertions.assertEquals("10.8.0.6", status.getHostname());
 	Assertions.assertArrayEquals(new String[] { "rtsp://10.8.0.6/stream1", "rtsp://10.8.0.6/stream2" }, status.getMediaUrls().toArray());
 	Assertions.assertEquals("SampleText!", status.getFreeText());

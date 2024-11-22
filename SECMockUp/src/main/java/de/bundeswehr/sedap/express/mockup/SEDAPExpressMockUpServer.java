@@ -139,17 +139,9 @@ public class SEDAPExpressMockUpServer {
 		incrementVariables();
 
 		try {
-		    this.clientChannel
-			    .write(
-				   ByteBuffer
-					   .wrap(
-						 ("NAVDATA;"
-							 + (Math.round(this.lat * 100000d) / 100000d) + ";"
-							 + (Math.round(this.lon * 100000d) / 100000d) + ";"
-							 + this.alt + ";"
-							 + Math.round(this.cog) + ";"
-							 + Math.round(this.sog)
-							 + "\n").getBytes(StandardCharsets.ISO_8859_1)));
+		    this.clientChannel.write(
+			    ByteBuffer.wrap(("NAVDATA;" + (Math.round(this.lat * 100000d) / 100000d) + ";" + (Math.round(this.lon * 100000d) / 100000d) + ";" + this.alt + ";" + Math.round(this.cog) + ";" + Math.round(this.sog) + "\n")
+				    .getBytes(StandardCharsets.ISO_8859_1)));
 		} catch (final Exception e) {
 		    return;
 		}
@@ -209,16 +201,9 @@ public class SEDAPExpressMockUpServer {
 		incrementVariables();
 
 		try {
-		    this.clientChannel
-			    .write(
-				   ByteBuffer
-					   .wrap(
-						 ("METEO;"
-							 + (Math.round(this.airTemp * 10d) / 10d) + ";"
-							 + (Math.round(this.waterTemp * 10d) / 10d) + ";"
-							 + (Math.round(this.windSpeed * 10d) / 10d) + ";"
-							 + (Math.round(this.windDirection * 10d) / 10d)
-							 + "\n").getBytes(StandardCharsets.ISO_8859_1)));
+		    this.clientChannel.write(ByteBuffer.wrap(
+			    ("METEO;" + (Math.round(this.airTemp * 10d) / 10d) + ";" + (Math.round(this.waterTemp * 10d) / 10d) + ";" + (Math.round(this.windSpeed * 10d) / 10d) + ";" + (Math.round(this.windDirection * 10d) / 10d) + "\n")
+				    .getBytes(StandardCharsets.ISO_8859_1)));
 		} catch (final Exception e) {
 		    return;
 		}
@@ -313,23 +298,12 @@ public class SEDAPExpressMockUpServer {
 		    incrementVariables();
 
 		    try {
-			this.clientChannel
-				.write(
-				       ByteBuffer
-					       .wrap(
-						     ("CONTACT;0;1000;"
+			this.clientChannel.write(ByteBuffer.wrap(("CONTACT;0;1000;"
 
-							     + (Math.round(this.xContact1 * 1000d) / 1000d) + ";"
-							     + (Math.round(this.yContact1 * 1000d) / 1000d) + ";"
-							     + (Math.round(this.zContact1 * 1000d) / 1000d) + ";"
+				+ (Math.round(this.xContact1 * 1000d) / 1000d) + ";" + (Math.round(this.yContact1 * 1000d) / 1000d) + ";" + (Math.round(this.zContact1 * 1000d) / 1000d) + ";"
 
-							     + (Math.round(this.latContact1 * 100000d) / 100000d) + ";"
-							     + (Math.round(this.lonContact1 * 100000d) / 100000d) + ";"
-							     + this.altContact1 + ";"
-							     + Math.round(this.cogContact1) + ";"
-							     + Math.round(this.sogContact1) + ";"
-							     + "Meermaid;snspxr---------"
-							     + "\n").getBytes(StandardCharsets.ISO_8859_1)));
+				+ (Math.round(this.latContact1 * 100000d) / 100000d) + ";" + (Math.round(this.lonContact1 * 100000d) / 100000d) + ";" + this.altContact1 + ";" + Math.round(this.cogContact1) + ";"
+				+ Math.round(this.sogContact1) + ";" + "Meermaid;snspxr---------" + "\n").getBytes(StandardCharsets.ISO_8859_1)));
 		    } catch (final Exception e) {
 			return;
 		    }
@@ -340,23 +314,12 @@ public class SEDAPExpressMockUpServer {
 		    }
 
 		    try {
-			this.clientChannel
-				.write(
-				       ByteBuffer
-					       .wrap(
-						     ("CONTACT;0;2000;"
+			this.clientChannel.write(ByteBuffer.wrap(("CONTACT;0;2000;"
 
-							     + (Math.round(this.xContact2 * 1000d) / 1000d) + ";"
-							     + (Math.round(this.yContact2 * 1000d) / 1000d) + ";"
-							     + (Math.round(this.zContact2 * 1000d) / 1000d) + ";"
+				+ (Math.round(this.xContact2 * 1000d) / 1000d) + ";" + (Math.round(this.yContact2 * 1000d) / 1000d) + ";" + (Math.round(this.zContact2 * 1000d) / 1000d) + ";"
 
-							     + (Math.round(this.latContact2 * 100000d) / 100000d) + ";"
-							     + (Math.round(this.lonContact2 * 100000d) / 100000d) + ";"
-							     + (Math.round(this.altContact2 * 100d) / 100d) + ";"
-							     + Math.round(this.cogContact2) + ";"
-							     + Math.round(this.sogContact2) + ";"
-							     + "UH60 Blackhawk;sfapmh---------"
-							     + "\n").getBytes(StandardCharsets.ISO_8859_1)));
+				+ (Math.round(this.latContact2 * 100000d) / 100000d) + ";" + (Math.round(this.lonContact2 * 100000d) / 100000d) + ";" + (Math.round(this.altContact2 * 100d) / 100d) + ";" + Math.round(this.cogContact2) + ";"
+				+ Math.round(this.sogContact2) + ";" + "UH60 Blackhawk;sfapmh---------" + "\n").getBytes(StandardCharsets.ISO_8859_1)));
 		    } catch (final Exception e) {
 			return;
 		    }
@@ -551,9 +514,10 @@ public class SEDAPExpressMockUpServer {
 
     public static void main(final String[] args) {
 
-	System.out.println("------------------------------------------------------------------------");
-	System.out.println("SEDAP Express MockUp v1.0 - (C)2024, BSD-Licence, Bundeswehr, Volker Voß");
-	System.out.println("------------------------------------------------------------------------");
+	System.out.println("""
+		-----------------------------------------------------------------------------------
+		              SEDAP Express MockUp v1.0 - (C)2024, Simplified-BSD-Licence, Bundeswehr, Volker Voß
+		              -----------------------------------------------------------------------------------""");
 
 	if ((args.length != 0) && (args.length != 1) && (args.length != 2)) {
 	    System.out.println("Only none, [serverport] or [bind IP address] [bind port] allowed as command line parameters!");
@@ -608,10 +572,7 @@ public class SEDAPExpressMockUpServer {
 	    }
 
 	} catch (final Exception e) {
-	    System.err
-		    .println(
-			     "Could not start server on port " +
-				     SEDAPExpressMockUpServer.serverAddress + ":" + SEDAPExpressMockUpServer.serverPort + "!");
+	    System.err.println("Could not start server on port " + SEDAPExpressMockUpServer.serverAddress + ":" + SEDAPExpressMockUpServer.serverPort + "!");
 	    System.exit(1);
 	}
     }

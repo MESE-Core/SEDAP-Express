@@ -28,22 +28,34 @@
  */
 module SEDAPExpress {
 
+    exports de.bundeswehr.mese.sedapexpress;
+    exports de.bundeswehr.mese.sedapexpress.controls;
     exports de.bundeswehr.mese.sedapexpress.messages;
     exports de.bundeswehr.mese.sedapexpress.network;
     exports de.bundeswehr.mese.sedapexpress.processing;
     exports de.bundeswehr.mese.sedapexpress.crypto;
+    exports de.bundeswehr.mese.sedapexpress.json;
 
+    opens de.bundeswehr.mese.sedapexpress;
+    opens de.bundeswehr.mese.sedapexpress.controls;
     opens de.bundeswehr.mese.sedapexpress.messages;
     opens de.bundeswehr.mese.sedapexpress.network;
     opens de.bundeswehr.mese.sedapexpress.processing;
     opens de.bundeswehr.mese.sedapexpress.crypto;
+    opens de.bundeswehr.mese.sedapexpress.json;
 
     requires java.logging;
 
-    requires org.bouncycastle.util;
+    requires transitive org.bouncycastle.util;
     requires transitive org.bouncycastle.provider;
-    requires org.bouncycastle.pkix;
-    requires com.google.gson;
-    requires com.google.protobuf;
-    requires com.google.protobuf.util;
+    requires transitive org.bouncycastle.pkix;
+
+    requires transitive com.google.gson;
+
+    requires transitive com.google.protobuf;
+    requires transitive com.google.protobuf.util;
+
+    requires transitive javafx.base;
+    requires transitive javafx.fxml;
+    requires transitive javafx.controls;
 }

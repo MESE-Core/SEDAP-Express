@@ -26,6 +26,7 @@
 package de.bundeswehr.mese.sedapexpress.network;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -59,6 +60,8 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
     private boolean status = true;
 
+    private Thread ownThread;
+
     /**
      * Instantiate a new SEDAP-Express UDP Client
      *
@@ -82,19 +85,29 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 		this.socket = new DatagramSocket(this.port);
 	    }
 
-	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "run()",
-		    "Started listening on port: " + this.port);
+	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "run()", "UDP server listening on port: " + this.port);
+	    logInput("UDP server listening on port: " + this.port);
 
 	    this.socket.setBroadcast(true);
 	    this.socket.setReuseAddress(true);
 
 	    this.lastException = null;
 
-	    new Thread(this).start(); // Starting receiving thread
+	    if (this.ownThread == null) {
+		this.ownThread = new Thread(this);
+		this.ownThread.start();// Start receiving thread
+	    }
 
 	    return true;
 	} catch (final Exception e) {
-	    e.printStackTrace();
+
+	    if (e instanceof BindException) {
+		SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "run()", "Could not listening on port " + this.port + " - port is already in use!");
+		logInput("Could not listening on port " + this.port + " - port is already in use!");
+	    } else {
+		SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "run()", "Could not listening on port " + this.port);
+		logInput("Could not listening on port " + this.port);
+	    }
 	    this.lastException = e;
 	    return false;
 	}
@@ -112,16 +125,18 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 
 		this.socket.receive(packet);
 
-		Arrays.asList(new String(packet.getData(), 0, packet.getLength()).split("\n")).forEach(
-			message -> distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage.deserialize(message)));
+		Arrays.asList(new String(packet.getData(), 0, packet.getLength()).split("\n")).forEach(message -> distributeReceivedSEDAPExpressMessage(SEDAPExpressMessage.deserialize(message)));
 
 	    } catch (final Exception e) {
 		this.lastException = e;
-		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPClient", "run()",
-			"Waiting 2 seconds for reconnect on port:" + this.port);
-		try {
-		    Thread.sleep(2000);
-		} catch (InterruptedException ex) {
+
+		if (this.status) {
+		    SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressUDPClient", "run()", "Waiting 2 seconds for reconnect on port:" + this.port);
+		    logInput("Waiting 2 seconds for reconnect on port:" + this.port);
+		    try {
+			Thread.sleep(2000);
+		    } catch (InterruptedException ex) {
+		    }
 		}
 	    }
 
@@ -151,8 +166,8 @@ public class SEDAPExpressUDPClient extends SEDAPExpressCommunicator implements R
 	    this.socket.close();
 	}
 
-	SEDAPExpressUDPClient.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "stopCommunicator()",
-		"Communicator stopped");
+	SEDAPExpressUDPClient.logger.logp(Level.INFO, "SEDAPExpressUDPClient", "stopCommunicator()", "UDP server stopped");
+	logInput("UDP server stopped");
     }
 
     @Override

@@ -41,13 +41,13 @@ class TEXTTest {
     @Test
     final void testConstructorValues() {
 
-	final TEXT text = new TEXT((short) 55, 641244434L, "8F3A", Classification.SECRET, Acknowledgement.YES, "4389F10D", "ORKA", TextType.Chat, TextEncoding.NONE, "TESTTEST");
+	final TEXT text = new TEXT((short) 55, 641244434L, "8F3A", Classification.Secret, Acknowledgement.TRUE, "4389F10D", "ORKA", TextType.Chat, TextEncoding.NONE, "TESTTEST");
 
 	Assertions.assertEquals((short) 55, text.getNumber());
 	Assertions.assertEquals(641244434L, text.getTime());
 	Assertions.assertEquals("8F3A", text.getSender());
-	Assertions.assertEquals(Classification.SECRET, text.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.Secret, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, text.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", text.getMAC());
 	Assertions.assertEquals("ORKA", text.getRecipient());
 	Assertions.assertEquals(TextType.Chat, text.getType());
@@ -65,8 +65,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD3, text.getNumber());
 	Assertions.assertEquals(0x661D44D2L, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(Classification.SECRET, text.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.Secret, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TextType.Alert, text.getType());
@@ -80,8 +80,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD4, text.getNumber());
 	Assertions.assertEquals(0x661D458EL, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(Classification.CONFIDENTIAL, text.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.Confidential, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TextType.Warning, text.getType());
@@ -95,8 +95,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD5, text.getNumber());
 	Assertions.assertEquals(0x661D6565L, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(Classification.RESTRICTED, text.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.Restricted, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.FALSE, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TextType.Notice, text.getType());
@@ -110,8 +110,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0xD6, text.getNumber());
 	Assertions.assertEquals(0x661D7032L, text.getTime());
 	Assertions.assertEquals("324E", text.getSender());
-	Assertions.assertEquals(Classification.UNCLAS, text.getClassification());
-	Assertions.assertEquals(Acknowledgement.NO, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.Unclas, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.FALSE, text.getAcknowledgement());
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertEquals("E4F1", text.getRecipient());
 	Assertions.assertEquals(TextType.Chat, text.getType());
@@ -129,8 +129,8 @@ class TEXTTest {
 	Assertions.assertEquals((short) 0x55, text.getNumber());
 	Assertions.assertEquals(0x1B351C87L, text.getTime());
 	Assertions.assertEquals("5BCD", text.getSender());
-	Assertions.assertEquals(Classification.SECRET, text.getClassification());
-	Assertions.assertEquals(Acknowledgement.YES, text.getAcknowledgement());
+	Assertions.assertEquals(Classification.Secret, text.getClassification());
+	Assertions.assertEquals(Acknowledgement.TRUE, text.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", text.getMAC());
 	Assertions.assertEquals(TEXT.TextType.Notice, text.getType());
 	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());

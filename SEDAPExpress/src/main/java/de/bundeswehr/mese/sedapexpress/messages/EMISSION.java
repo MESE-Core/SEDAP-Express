@@ -80,7 +80,7 @@ public class EMISSION extends SEDAPExpressMessage {
     public static final Integer FUNCTION_LASER_Lidar = 28;
 
     private String emissionID;
-    private Boolean deleteFlag;
+    private DeleteFlag deleteFlag;
     private Double sensorLatitude;
     private Double sensorLongitude;
     private Double sensorAltitude;
@@ -106,11 +106,11 @@ public class EMISSION extends SEDAPExpressMessage {
 	this.emissionID = emissionID;
     }
 
-    public Boolean getDeleteFlag() {
+    public DeleteFlag getDeleteFlag() {
 	return this.deleteFlag;
     }
 
-    public void setDeleteFlag(Boolean deleteFlag) {
+    public void setDeleteFlag(DeleteFlag deleteFlag) {
 	this.deleteFlag = deleteFlag;
     }
 
@@ -269,7 +269,7 @@ public class EMISSION extends SEDAPExpressMessage {
      * @param sidc
      * @param comment
      */
-    public EMISSION(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String emissionID, Boolean deleteFlag, Double sensorLatitude, Double sensorLongitude,
+    public EMISSION(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String emissionID, DeleteFlag deleteFlag, Double sensorLatitude, Double sensorLongitude,
 	    Double sensorAltitude, Double emitterLatitude, Double emitterLongitude, Double emitterAltitude, Double bearing, List<Double> frequency, Double bandwidth, Double power, Integer freqAgility, Integer prfAgility, Integer function,
 	    Integer spotNumber, char[] sidc, String comment) {
 
@@ -325,12 +325,12 @@ public class EMISSION extends SEDAPExpressMessage {
 	// DeleteFlag
 	if (message.hasNext()) {
 	    value = message.next();
-	    if ("true".equalsIgnoreCase(value)) {
-		this.deleteFlag = true;
-	    } else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
-		this.deleteFlag = false;
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.YES_NO_FLAG_MATCHER, value)) {
+		this.deleteFlag = DeleteFlag.valueOf(value);
+	    } else if (value.isBlank()) {
+		this.deleteFlag = DeleteFlag.FALSE;
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Optional field \"deleteFlag\" invalid value: \"" + value + "\"");
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Mandatory field \"deleteFlag\" invalid value: \"" + value + "\"");
 	    }
 	} else {
 	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "EMISSION", "EMISSION(Iterator<String> message)", "Incomplete message!");

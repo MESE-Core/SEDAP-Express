@@ -66,10 +66,8 @@ public class SampleUDPClient implements SEDAPExpressSubscriber {
 	// Sample thread as example for how producing messages
 	new Thread(() -> {
 
-	    final STATUS status = new STATUS(this.numberSTATUS++, System.currentTimeMillis(), this.senderId,
-		    Classification.CONFIDENTIAL, Acknowledgement.NO, null, TechnicalState.Operational,
-		    OperationalState.Operational, "MLG", 50.0, "Tank", 75.3, "MainAkku", 10.8, 23,
-		    CommandState.Executed_successfully, "10.8.0.6", "rtsp://10.8.0.6/stream1", "This is a sample!");
+	    final STATUS status = new STATUS(this.numberSTATUS++, System.currentTimeMillis(), this.senderId, Classification.Confidential, Acknowledgement.FALSE, null, TechnicalState.Operational, OperationalState.Operational, "MLG", 50.0,
+		    "Tank", 75.3, "MainAkku", 10.8, 23, CommandState.Executed_successfully, "10.8.0.6", "rtsp://10.8.0.6/stream1", "This is a sample!");
 
 	    try {
 		this.communicator.sendSEDAPExpressMessage(status);

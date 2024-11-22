@@ -166,19 +166,12 @@ public class EMISSIONPanelController extends MessagePanelController {
 	assert this.spotNumberTextField != null : "fx:id=\"spotNumberTextField\" was not injected: check your FXML file 'EMISSIONPanel.fxml'.";
 	assert this.widthLabel != null : "fx:id=\"widthLabel\" was not injected: check your FXML file 'EMISSIONPanel.fxml'.";
 
-	this.deleteFlagComboBox
-		.setItems(
-			  FXCollections
-				  .observableList(
-						  Arrays
-							  .asList(
-								  "yes",
-								  "no")));
+	this.deleteFlagComboBox.setItems(FXCollections.observableList(Arrays.asList("yes", "no")));
 	this.deleteFlagComboBox.getSelectionModel().select(1);
 
-	this.sidcIDComboBox.setItems(FXCollections.observableList(SEDAPExpressMessage.identitiesList));
+	this.sidcIDComboBox.setItems(FXCollections.observableList(MessagePanelController.identitiesList));
 	this.sidcIDComboBox.getSelectionModel().select(3);
-	this.sidcDimComboBox.setItems(FXCollections.observableList(SEDAPExpressMessage.dimensionsList));
+	this.sidcDimComboBox.setItems(FXCollections.observableList(MessagePanelController.dimensionsList));
 	this.sidcDimComboBox.getSelectionModel().selectedIndexProperty().addListener((observable, o, n) -> {
 	    switch ((int) n) {
 	    case 0 -> this.sidcComboBox.setItems(null);

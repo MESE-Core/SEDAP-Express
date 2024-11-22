@@ -2,11 +2,11 @@ package de.bundeswehr.mese.sedapexpress.messagetool.controller;
 
 import java.util.Arrays;
 
-import de.bundeswehr.mese.sedapexpress.messages.CONTACT.DeleteFlag;
 import de.bundeswehr.mese.sedapexpress.messages.CONTACT.Source;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.DeleteFlag;
 import de.bundeswehr.mese.sedapexpress.messages.SIDCCodes;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -200,9 +200,9 @@ public class CONTACTPanelController extends MessagePanelController {
 	this.deleteFlagComboBox.setItems(FXCollections.observableList(Arrays.asList(DeleteFlag.values())));
 	this.deleteFlagComboBox.getSelectionModel().select(1);
 
-	this.sidcIDComboBox.setItems(FXCollections.observableList(SEDAPExpressMessage.identitiesList));
+	this.sidcIDComboBox.setItems(FXCollections.observableList(MessagePanelController.identitiesList));
 	this.sidcIDComboBox.getSelectionModel().select(6);
-	this.sidcDimComboBox.setItems(FXCollections.observableList(SEDAPExpressMessage.dimensionsList));
+	this.sidcDimComboBox.setItems(FXCollections.observableList(MessagePanelController.dimensionsList));
 	this.sidcDimComboBox.getSelectionModel().selectedIndexProperty().addListener((observable, o, n) -> {
 	    switch ((int) n) {
 	    case 0 -> this.sidcComboBox.setItems(null);
@@ -220,8 +220,7 @@ public class CONTACTPanelController extends MessagePanelController {
     }
 
     @Override
-    public SEDAPExpressMessage createMessage(Short number, Long time, String sender,
-	    Classification classification, Acknowledgement acknowledgement, String mac) {
+    public SEDAPExpressMessage createMessage(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
 
 	return null;
     }

@@ -32,21 +32,22 @@ public class GENERIC extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 3541277880391552711L;
 
-    public static final String CONTENT_TYPE_SEDAP = "SEDAP";
-    public static final String CONTENT_TYPE_ASCII = "ASCII";
-    public static final String CONTENT_TYPE_BINARY = "BINARY";
+    public enum ContentType {
 
-    private String contentType;
+	SEDAP, ASCII, BINARY
+    }
+
+    private ContentType contentType;
 
     private String encoding;
 
     private String content;
 
-    public String getContentType() {
+    public ContentType getContentType() {
 	return this.contentType;
     }
 
-    public void setContentType(String contentType) {
+    public void setContentType(ContentType contentType) {
 	this.contentType = contentType;
     }
 
@@ -78,7 +79,7 @@ public class GENERIC extends SEDAPExpressMessage {
      * @param encoding
      * @param content
      */
-    public GENERIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String contentType, String encoding, String content) {
+    public GENERIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, ContentType contentType, String encoding, String content) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -112,8 +113,8 @@ public class GENERIC extends SEDAPExpressMessage {
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" is empty!");
 	    } else {
-		this.contentType = value;
-		if (!("SEDAP".equals(this.contentType) || "ASCII".equals(this.contentType) || "NMEA".equals(this.contentType) || "XML".equals(this.contentType) || "JSON".equals(this.contentType) || "BINARY".equals(this.contentType))) {
+		this.contentType = ContentType.valueOf(value);
+		if (this.contentType == null) {
 		    SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" has an invalid value > " + this.contentType);
 		}
 	    }
@@ -125,7 +126,7 @@ public class GENERIC extends SEDAPExpressMessage {
 	    value = message.next();
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"encoding\" is empty!");
-	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.ENCODING_MATCHER, value)) {
+	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DATA_ENCODING_MATCHER, value)) {
 		this.encoding = value;
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Mandatory field \"encoding\" invalid value: \"" + value + "\"");

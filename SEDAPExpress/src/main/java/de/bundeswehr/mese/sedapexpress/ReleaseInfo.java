@@ -25,11 +25,12 @@
  */
 package de.bundeswehr.mese.sedapexpress;
 
+import de.bundeswehr.mese.sedapexpress.messages.HEARTBEAT;
+
 public class ReleaseInfo {
 
     public static void main(String[] args) {
-	System.out.println("Release v1.0 - October 10th 2024 - (C)2024, Bundeswehr, Volker Voß (\"Simplified BSD License\")");
-
+	new HEARTBEAT();
     }
 
 }

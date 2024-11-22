@@ -26,7 +26,9 @@
 package de.bundeswehr.mese.sedapexpress.messages;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import java.util.logging.Level;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -36,33 +38,47 @@ public class CONTACT extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = 5990524206762624628L;
 
-    public enum DeleteFlag {
-
-	DELETE_NO(Boolean.FALSE), DELETE_YES(Boolean.TRUE);
-
-	boolean value;
-
-	DeleteFlag(Boolean flag) {
-	    this.value = flag;
-	}
-
-    }
-
     public enum Source {
 
-	Radar("R"), AIS("A"), IFF("I"), Sonar("S"), EW("E"), Optical("O"), Synthetic("Y"), Manual("M");
+	None(' '), Radar('R'), AIS('A'), IFF('I'), Sonar('S'), EW('E'), Optical('O'), Synthetic('Y'), Manual('M');
 
-	String value;
+	char source;
 
-	Source(String source) {
-	    this.value = source;
+	public char getSourceValue() {
+
+	    return this.source;
+	}
+
+	Source(char source) {
+	    this.source = source;
+	}
+
+	public static Source valueOfSource(char source) {
+
+	    return switch (source) {
+	    case 'R' -> Radar;
+	    case 'A' -> AIS;
+	    case 'I' -> IFF;
+	    case 'S' -> Sonar;
+	    case 'E' -> EW;
+	    case 'O' -> Optical;
+	    case 'Y' -> Synthetic;
+	    case 'M' -> Manual;
+	    case ' ' -> None;
+	    default -> None;
+	    };
+	}
+
+	@Override
+	public String toString() {
+	    return String.valueOf(this.source);
 	}
 
     }
 
     private String contactID;
 
-    private Boolean deleteFlag;
+    private DeleteFlag deleteFlag;
 
     private Double latitude;
     private Double longitude;
@@ -84,7 +100,7 @@ public class CONTACT extends SEDAPExpressMessage {
     private Double height;
 
     private String name;
-    private String source;
+    private Set<Source> source;
     private char[] sidc;
     private String mmsi;
     private String icao;
@@ -101,11 +117,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	this.contactID = contactID;
     }
 
-    public Boolean isDeleteFlag() {
+    public DeleteFlag getDeleteFlag() {
 	return this.deleteFlag;
     }
 
-    public void setDeleteFlag(Boolean deleteFlag) {
+    public void setDeleteFlag(DeleteFlag deleteFlag) {
 	this.deleteFlag = deleteFlag;
     }
 
@@ -229,11 +245,11 @@ public class CONTACT extends SEDAPExpressMessage {
 	this.name = name;
     }
 
-    public String getSource() {
+    public Set<Source> getSource() {
 	return this.source;
     }
 
-    public void setSource(String source) {
+    public void setSource(Set<Source> source) {
 	this.source = source;
     }
 
@@ -278,6 +294,49 @@ public class CONTACT extends SEDAPExpressMessage {
     }
 
     /**
+     * 
+     * Instantiate a new CONTACT message
+     * 
+     * @param number
+     * @param time
+     * @param sender
+     * @param classification
+     * @param acknowledgement
+     * @param mac
+     * @param contactID
+     * @param deleteFlag
+     * @param latitude
+     * @param longitude
+     * @param altitude
+     * @param relativeXDistance
+     * @param relativeYDistance
+     * @param relativeZDistance
+     * @param speed
+     * @param course
+     * @param heading
+     * @param roll
+     * @param pitch
+     * @param width
+     * @param length
+     * @param height
+     * @param name
+     * @param source
+     * @param sidc
+     * @param mmsi
+     * @param icao
+     * @param imageData
+     * @param comment
+     */
+    public CONTACT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String contactID, DeleteFlag deleteFlag, Double latitude, Double longitude, Double altitude,
+	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance, Double speed, Double course, Double heading, Double roll, Double pitch, Double width, Double length, Double height, String name, Source source,
+	    char[] sidc, String mmsi, String icao, byte[] imageData, String comment) {
+	this(number, time, sender, classification, acknowledgement, mac, contactID, deleteFlag, latitude, longitude, altitude, relativeXDistance, relativeYDistance, relativeZDistance, speed, course, heading, roll, pitch, width, length,
+		height, name, source.toString(), sidc, mmsi, icao, imageData, comment);
+
+    }
+
+    /**
+     * 
      * Instantiate a new CONTACT message
      *
      * @param number
@@ -310,7 +369,7 @@ public class CONTACT extends SEDAPExpressMessage {
      * @param imageData
      * @param comment
      */
-    public CONTACT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String contactID, Boolean deleteFlag, Double latitude, Double longitude, Double altitude,
+    public CONTACT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String contactID, DeleteFlag deleteFlag, Double latitude, Double longitude, Double altitude,
 	    Double relativeXDistance, Double relativeYDistance, Double relativeZDistance, Double speed, Double course, Double heading, Double roll, Double pitch, Double width, Double length, Double height, String name, String source,
 	    char[] sidc, String mmsi, String icao, byte[] imageData, String comment) {
 
@@ -333,7 +392,8 @@ public class CONTACT extends SEDAPExpressMessage {
 	this.length = length;
 	this.height = height;
 	this.name = name;
-	this.source = source;
+	this.source = new HashSet<Source>();
+	source.chars().forEach(ch -> this.source.add(Source.valueOfSource((char) ch)));
 	this.sidc = sidc;
 	this.mmsi = mmsi;
 	this.icao = icao;
@@ -375,10 +435,10 @@ public class CONTACT extends SEDAPExpressMessage {
 	// DeleteFlag
 	if (message.hasNext()) {
 	    value = message.next();
-	    if ("true".equalsIgnoreCase(value)) {
-		this.deleteFlag = true;
-	    } else if ("false".equalsIgnoreCase(value) || value.isBlank()) {
-		this.deleteFlag = false;
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.YES_NO_FLAG_MATCHER, value)) {
+		this.deleteFlag = DeleteFlag.valueOf(value);
+	    } else if (value.isBlank()) {
+		this.deleteFlag = DeleteFlag.FALSE;
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"deleteFlag\" invalid value: \"" + value + "\"");
 	    }
@@ -389,7 +449,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	// Latitude
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (value.isEmpty()) {
+	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field latitude is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.latitude = Double.valueOf(value);
@@ -403,7 +463,7 @@ public class CONTACT extends SEDAPExpressMessage {
 	// Longitude
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (value.isEmpty()) {
+	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Mandatory field \"longitude\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DOUBLE_MATCHER, value)) {
 		this.longitude = Double.valueOf(value);
@@ -570,7 +630,8 @@ public class CONTACT extends SEDAPExpressMessage {
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"source\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.SOURCE_MATCHER, value)) {
-		this.source = value;
+		this.source = new HashSet<>();
+		value.chars().forEach(ch -> this.source.add(Source.valueOfSource((char) ch)));
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"source\" contains invalid value!", value);
 	    }
@@ -690,6 +751,9 @@ public class CONTACT extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
+	StringBuilder sourceStr = new StringBuilder();
+	this.source.forEach(s -> sourceStr.append(s));
+
 	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
 		.append(this.contactID).append(";")
@@ -711,7 +775,7 @@ public class CONTACT extends SEDAPExpressMessage {
 		.append(this.width != null ? SEDAPExpressMessage.numberFormatter.format(this.width) : "").append(";").append(this.length != null ? SEDAPExpressMessage.numberFormatter.format(this.length) : "").append(";")
 		.append(this.height != null ? SEDAPExpressMessage.numberFormatter.format(this.height) : "").append(";")
 
-		.append(this.name != null ? this.name : "").append(";").append(this.source != null ? this.source : "").append(";")
+		.append(this.name != null ? this.name : "").append(";").append(sourceStr.isEmpty() ? sourceStr.toString() : "").append(";")
 
 		.append(this.sidc != null ? String.valueOf(this.sidc) : "").append(";").append(this.mmsi != null ? this.mmsi : "").append(";").append(this.icao != null ? this.icao : "").append(";")
 

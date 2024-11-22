@@ -28,6 +28,7 @@ package de.bundeswehr.mese.sedapexpress.network;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,8 +90,8 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	    this.serverSocket.configureBlocking(true);
 	    this.serverSocket.bind(new InetSocketAddress(this.intf, this.port));
 
-	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
-		    "Listening on port: " + this.port);
+	    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "TCP server listening on port: " + this.port);
+	    logInput("TCP server listening on port: " + this.port);
 
 	    this.lastException = null;
 
@@ -110,20 +111,25 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 	while (this.status) {
 
 	    try {
-		while (true) {
-		    SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(this.serverSocket.accept(),
-			    this.clients, this.subscriptions);
+		while (this.status) {
+		    SocketChannel clientSocket = this.serverSocket.accept();
+		    SEDAPExpressTCPClient newClient = new SEDAPExpressTCPClient(clientSocket, this.clients, this.subscriptions);
 		    this.clients.add(newClient);
+		    newClient.inputLogger = this.inputLogger;
+		    newClient.outputLogger = this.outputLogger;
+
 		    newClient.connect();
 
-		    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
-			    "Added new client " + newClient);
+		    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "Added new client " + newClient.getHost());
+		    logInput("Added new client " + newClient.getHost());
 		}
 	    } catch (Exception e) {
+		if (this.status) { // Only if not manually triggered
+		    this.lastException = e;
+		    SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()", "Could not listening on port: " + this.port);
+		    logInput("Could not listening on port: " + this.port);
+		}
 		this.status = false;
-		this.lastException = e;
-		SEDAPExpressTCPServer.logger.logp(Level.SEVERE, "SEDAPExpressTCPServer", "run()",
-			"Could not listening on port: " + this.port, e);
 	    } finally {
 		try {
 		    this.serverSocket.close();
@@ -146,8 +152,10 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 		    client.sendSEDAPExpressMessage(message);
 		} catch (Exception e) {
 		    removeClients.add(client);
-		    SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()",
-			    "Remove client " + client);
+		    if (this.status) { // Only if not manually triggered
+			SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "run()", "Removed client " + client.getHost());
+			logInput("Removed client " + client.getHost());
+		    }
 		}
 	    }
 
@@ -170,8 +178,8 @@ public class SEDAPExpressTCPServer extends SEDAPExpressCommunicator implements R
 
 	this.clients.forEach(SEDAPExpressTCPClient::stopCommunicator);
 
-	SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "stopCommunicator()",
-		"Communicator stopped");
+	SEDAPExpressTCPServer.logger.logp(Level.INFO, "SEDAPExpressTCPServer", "stopCommunicator()", "TCP server stopped");
+	logInput("TCP server stopped");
     }
 
     @Override

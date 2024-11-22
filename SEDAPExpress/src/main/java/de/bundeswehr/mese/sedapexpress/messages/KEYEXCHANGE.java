@@ -43,7 +43,41 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 
     private static final long serialVersionUID = -6681575300891302102L;
 
-    private Integer algorithm;
+    public enum AlgorithmType {
+
+	Diffie_Hellman_Merkle(0), Diffie_Hellman_Merkle_with_Curve25519(1), Kyber512(2), Kyber768(3), Kyber1024(4);
+
+	int algorithm;
+
+	public int getAlgorithmTypeValue() {
+
+	    return this.algorithm;
+	}
+
+	AlgorithmType(int algorithm) {
+	    this.algorithm = algorithm;
+	}
+
+	public static AlgorithmType valueOfAlgorithmType(int algorithm) {
+
+	    return switch (algorithm) {
+	    case 0 -> Diffie_Hellman_Merkle;
+	    case 1 -> Diffie_Hellman_Merkle_with_Curve25519;
+	    case 2 -> Kyber512;
+	    case 3 -> Kyber768;
+	    case 4 -> Kyber1024;
+	    default -> Diffie_Hellman_Merkle;
+	    };
+	}
+
+	@Override
+	public String toString() {
+	    return String.valueOf(this.algorithm);
+	}
+
+    }
+
+    private AlgorithmType algorithmType;
     private Integer phase;
 
     private Integer keyLength;
@@ -54,12 +88,12 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 
     private SecretKey encryptedKey;
 
-    public Integer getAlgorithm() {
-	return this.algorithm;
+    public AlgorithmType getAlgorithmType() {
+	return this.algorithmType;
     }
 
-    public void setAlgorithm(Integer algorithm) {
-	this.algorithm = algorithm;
+    public void setAlgorithmType(AlgorithmType algorithmType) {
+	this.algorithmType = algorithmType;
     }
 
     public Integer getPhase() {
@@ -111,14 +145,14 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
     }
 
     /**
-     *
+     * 
      * @param number
      * @param time
      * @param sender
      * @param classification
      * @param acknowledgement
      * @param mac
-     * @param algorithm
+     * @param algorithmType
      * @param phase
      * @param keyLength
      * @param primeNumber
@@ -126,10 +160,10 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
      * @param publicKey
      * @param encryptedKey
      */
-    public KEYEXCHANGE(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, Integer algorithm, Integer phase, Integer keyLength, BigInteger primeNumber,
+    public KEYEXCHANGE(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, AlgorithmType algorithmType, Integer phase, Integer keyLength, BigInteger primeNumber,
 	    BigInteger naturalNumber, PublicKey publicKey, SecretKey encryptedKey) {
 	super(number, time, sender, classification, acknowledgement, mac);
-	this.algorithm = algorithm;
+	this.algorithmType = algorithmType;
 	this.phase = phase;
 	this.keyLength = keyLength;
 	this.primeNumber = primeNumber;
@@ -161,7 +195,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if ("0".equals(value) || "1".equals(value) || "2".equals(value) || "3".equals(value) || "4".equals(value)) {
-		this.algorithm = Integer.parseInt(value);
+		this.algorithmType = AlgorithmType.valueOfAlgorithmType(Integer.parseInt(value));
 	    } else if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "KEYEXCHANGE", "KEYEXCHANGE(Iterator<String> message)", "Mandatory field \"Algorithm\" contains not a valid number!", value);
 	    }
@@ -261,7 +295,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 	// SecretKey
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (value.isBlank() && (this.phase == 2) && (this.algorithm > 1)) {
+	    if (value.isBlank() && (this.phase == 2) && (this.algorithmType != AlgorithmType.Diffie_Hellman_Merkle) && (this.algorithmType != AlgorithmType.Diffie_Hellman_Merkle_with_Curve25519)) {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "KEYEXCHANGE", "KEYEXCHANGE(Iterator<String> message)", "Mandatory (Kyber, phase 2) field \"EncryptedKey\" is empty!");
 
 	    } else if (value.isBlank()) {
@@ -291,7 +325,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 	} else {
 	    return (super.equals(obj) &&
 
-		    (this.algorithm == ((KEYEXCHANGE) obj).algorithm) && (this.phase == ((KEYEXCHANGE) obj).phase) &&
+		    (this.algorithmType == ((KEYEXCHANGE) obj).algorithmType) && (this.phase == ((KEYEXCHANGE) obj).phase) &&
 
 		    (this.keyLength == ((KEYEXCHANGE) obj).keyLength) && (this.primeNumber == ((KEYEXCHANGE) obj).primeNumber) && (this.naturalNumber == ((KEYEXCHANGE) obj).naturalNumber) &&
 
@@ -312,7 +346,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 
 	return SEDAPExpressMessage.removeSemicolons(serializeHeader()
 
-		.append((this.algorithm != null) ? this.algorithm : "").append(";").append((this.phase != null) ? this.phase : "").append(";").append((this.keyLength != null) ? this.keyLength : "").append(";")
+		.append((this.algorithmType != null) ? this.algorithmType : "").append(";").append((this.phase != null) ? this.phase : "").append(";").append((this.keyLength != null) ? this.keyLength : "").append(";")
 		.append((this.primeNumber != null) ? this.primeNumber : "").append(";").append((this.naturalNumber != null) ? this.naturalNumber : "").append(";")
 		.append((this.publicKey != null) ? SEDAPExpressMessage.HEXFOMATER.formatHex(this.publicKey.getEncoded()) : "").append(";")
 		.append((this.publicKey != null) ? SEDAPExpressMessage.HEXFOMATER.formatHex(this.encryptedKey.getEncoded()) : "").toString());
