@@ -195,8 +195,6 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 
     private String mac;
 
-    public static final HexFormat formatter = HexFormat.of().withUpperCase();
-
     public Short getNumber() {
 	return this.number;
     }

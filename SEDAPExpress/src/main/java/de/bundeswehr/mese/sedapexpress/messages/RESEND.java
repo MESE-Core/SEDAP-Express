@@ -164,9 +164,8 @@ public class RESEND extends SEDAPExpressMessage {
 
     @Override
     public String toString() {
-
 	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.nameOfTheMissingMessage != null) ? this.nameOfTheMissingMessage : "").append(";")
-		.append((this.numberOfTheMissingMessage != null) ? this.numberOfTheMissingMessage : "").toString());
+		.append((this.numberOfTheMissingMessage != null) ? SEDAPExpressMessage.HEXFOMATER.toHexDigits(this.numberOfTheMissingMessage) : "").toString());
     }
 
 }
