@@ -33,7 +33,7 @@ import org.junit.jupiter.api.Test;
 
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
-import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.TextEncoding;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.DataEncoding;
 import de.bundeswehr.mese.sedapexpress.messages.TEXT.TextType;
 
 class TEXTTest {
@@ -41,7 +41,7 @@ class TEXTTest {
     @Test
     final void testConstructorValues() {
 
-	final TEXT text = new TEXT((short) 55, 641244434L, "8F3A", Classification.Secret, Acknowledgement.TRUE, "4389F10D", "ORKA", TextType.Chat, TextEncoding.NONE, "TESTTEST");
+	final TEXT text = new TEXT((short) 55, 641244434L, "8F3A", Classification.Secret, Acknowledgement.TRUE, "4389F10D", "ORKA", TextType.Chat, DataEncoding.NONE, "TESTTEST");
 
 	Assertions.assertEquals((short) 55, text.getNumber());
 	Assertions.assertEquals(641244434L, text.getTime());
@@ -51,7 +51,7 @@ class TEXTTest {
 	Assertions.assertEquals("4389F10D", text.getMAC());
 	Assertions.assertEquals("ORKA", text.getRecipient());
 	Assertions.assertEquals(TextType.Chat, text.getType());
-	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
+	Assertions.assertEquals(DataEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("TESTTEST", text.getTextContent());
     }
 
@@ -70,7 +70,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TextType.Alert, text.getType());
-	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
+	Assertions.assertEquals(DataEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("\"This is an alert!\"", text.getTextContent());
 
 	message = "TEXT;D4;661D458E;324E;C;TRUE;;;2;NONE;\"This is a warning!\"";
@@ -85,7 +85,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TextType.Warning, text.getType());
-	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
+	Assertions.assertEquals(DataEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("\"This is a warning!\"", text.getTextContent());
 
 	message = "TEXT;D5;661D6565;324E;R;;;;3;;\"This is a notice!\"";
@@ -100,7 +100,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertNull(text.getRecipient());
 	Assertions.assertEquals(TextType.Notice, text.getType());
-	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
+	Assertions.assertEquals(DataEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("\"This is a notice!\"", text.getTextContent());
 
 	message = "TEXT;D6;661D7032;324E;U;;;E4F1;4;BASE64;IlRoaXMgaXMgYSBjaGF0IG1lc3NhZ2UhIg==";
@@ -115,7 +115,7 @@ class TEXTTest {
 	Assertions.assertNull(text.getMAC());
 	Assertions.assertEquals("E4F1", text.getRecipient());
 	Assertions.assertEquals(TextType.Chat, text.getType());
-	Assertions.assertEquals(TextEncoding.BASE64, text.getEncoding());
+	Assertions.assertEquals(DataEncoding.BASE64, text.getEncoding());
 	Assertions.assertEquals("\"This is a chat message!\"", text.getTextContent());
     }
 
@@ -133,7 +133,7 @@ class TEXTTest {
 	Assertions.assertEquals(Acknowledgement.TRUE, text.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", text.getMAC());
 	Assertions.assertEquals(TEXT.TextType.Notice, text.getType());
-	Assertions.assertEquals(TextEncoding.NONE, text.getEncoding());
+	Assertions.assertEquals(DataEncoding.NONE, text.getEncoding());
 	Assertions.assertEquals("10.0.0.1", text.getTextContent());
 	Assertions.assertEquals("7D31", text.getRecipient());
 

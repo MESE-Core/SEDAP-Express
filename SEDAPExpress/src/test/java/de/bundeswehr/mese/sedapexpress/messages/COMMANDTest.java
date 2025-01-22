@@ -44,7 +44,8 @@ class COMMANDTest {
     @Test
     final void testConstructorValues() {
 
-	final COMMAND command = new COMMAND((short) 55, 641244434L, "8F3A", Classification.Secret, Acknowledgement.TRUE, "4389F10D", "7D31", 0x1111, COMMAND.CommandFlag.CancelAll, COMMAND.CommandType.Sync_time, Arrays.asList("10.8.0.6"));
+	final COMMAND command = new COMMAND((short) 55, 641244434L, "8F3A", Classification.Secret, Acknowledgement.TRUE, "4389F10D", "7D31", (short) 0x3311, COMMAND.CommandFlag.CancelAll, COMMAND.CommandType.Sync_time,
+		Arrays.asList("10.8.0.6"));
 
 	Assertions.assertEquals((short) 55, command.getNumber());
 	Assertions.assertEquals(641244434L, command.getTime());
@@ -53,7 +54,7 @@ class COMMANDTest {
 	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
-	Assertions.assertEquals(0x1111, command.getCmdId());
+	Assertions.assertEquals((short) 0x3311, command.getCmdId());
 	Assertions.assertEquals(COMMAND.CommandFlag.CancelAll, command.getCmdFlag());
 	Assertions.assertEquals(COMMAND.CommandType.Sync_time, command.getCmdType());
 	Assertions.assertEquals("10.8.0.6", command.getCmdTypeDependentParameters().get(0));
@@ -62,7 +63,7 @@ class COMMANDTest {
     @Test
     final void testConstructorString() {
 
-	String message = "COMMAND;55;1B351C87;5BCD;S;TRUE;4389F10D;7D31;1111;01;0C;hold-engagement;1000";
+	String message = "COMMAND;55;1B351C87;5BCD;S;TRUE;4389F10D;7D31;1221;01;0C;hold-engagement;1000";
 
 	COMMAND command = new COMMAND(message);
 
@@ -73,7 +74,7 @@ class COMMANDTest {
 	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
-	Assertions.assertEquals(0x1111, command.getCmdId());
+	Assertions.assertEquals((short) 0x1221, command.getCmdId());
 	Assertions.assertEquals(COMMAND.CommandFlag.Replace, command.getCmdFlag());
 	Assertions.assertEquals(COMMAND.CommandType.Engagement, command.getCmdType());
 	Assertions.assertEquals(COMMAND.CMDTYPE_ENGAGEMENT_CMD_Hold, command.getCmdTypeDependentParameters().get(0));
@@ -110,7 +111,7 @@ class COMMANDTest {
 	Assertions.assertEquals(Acknowledgement.TRUE, command.getAcknowledgement());
 	Assertions.assertEquals("4389F10D", command.getMAC());
 	Assertions.assertEquals("7D31", command.getRecipient());
-	Assertions.assertEquals(0x2892, command.getCmdId());
+	Assertions.assertEquals((short) 0x2892, command.getCmdId());
 	Assertions.assertEquals(COMMAND.CommandFlag.Add, command.getCmdFlag());
 	Assertions.assertEquals(COMMAND.CommandType.Sync_time, command.getCmdType());
 	Assertions.assertEquals("10.0.0.1", command.getCmdTypeDependentParameters().get(0));

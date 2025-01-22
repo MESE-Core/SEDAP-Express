@@ -78,7 +78,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 	}
     }
 
-    public enum TextEncoding {
+    public enum DataEncoding {
 
 	NONE, BASE64;
     }
@@ -177,7 +177,6 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern OPSSTATUS_MATCHER = Pattern.compile("^[0-4]$"); // OpsStatus
     public static final Pattern PERCENT_MATCHER = Pattern.compile("^([A-Za-z0-9]*#(100(\\\\.0+)?|(\\d{1,2}(.\\d+)*))#*)+$"); // Percent
     public static final Pattern DATA_ENCODING_MATCHER = Pattern.compile("^BASE64$|^ASCII$|^BINARY$");
-    public static final Pattern TEXT_ENCODING_MATCHER = Pattern.compile("^BASE64$|^NONE$");
 
     public static boolean matchesPattern(Pattern pattern, String value) {
 	return pattern.matcher(value).matches();

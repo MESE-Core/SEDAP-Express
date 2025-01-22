@@ -39,7 +39,7 @@ public class GENERIC extends SEDAPExpressMessage {
 
     private ContentType contentType;
 
-    private String encoding;
+    private DataEncoding encoding;
 
     private String content;
 
@@ -51,11 +51,11 @@ public class GENERIC extends SEDAPExpressMessage {
 	this.contentType = contentType;
     }
 
-    public String getEncoding() {
+    public DataEncoding getEncoding() {
 	return this.encoding;
     }
 
-    public void setEncoding(String encoding) {
+    public void setEncoding(DataEncoding encoding) {
 	this.encoding = encoding;
     }
 
@@ -79,7 +79,7 @@ public class GENERIC extends SEDAPExpressMessage {
      * @param encoding
      * @param content
      */
-    public GENERIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, ContentType contentType, String encoding, String content) {
+    public GENERIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, ContentType contentType, DataEncoding encoding, String content) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -127,7 +127,7 @@ public class GENERIC extends SEDAPExpressMessage {
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"encoding\" is empty!");
 	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DATA_ENCODING_MATCHER, value)) {
-		this.encoding = value;
+		this.encoding = DataEncoding.valueOf(value);
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Mandatory field \"encoding\" invalid value: \"" + value + "\"");
 	    }

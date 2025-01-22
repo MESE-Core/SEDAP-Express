@@ -34,7 +34,7 @@ public class RESEND extends SEDAPExpressMessage {
 
     private String recipient;
 
-    private String nameOfTheMissingMessage;
+    private MessageType nameOfTheMissingMessage;
 
     private Short numberOfTheMissingMessage;
 
@@ -46,11 +46,11 @@ public class RESEND extends SEDAPExpressMessage {
 	this.recipient = recipient;
     }
 
-    public String getNameOfTheMissingMessage() {
+    public MessageType getNameOfTheMissingMessage() {
 	return this.nameOfTheMissingMessage;
     }
 
-    public void setNameOfTheMissingMessage(String nameOfTheMissingMessage) {
+    public void setNameOfTheMissingMessage(MessageType nameOfTheMissingMessage) {
 	this.nameOfTheMissingMessage = nameOfTheMissingMessage;
     }
 
@@ -74,7 +74,7 @@ public class RESEND extends SEDAPExpressMessage {
      * @param nameOfTheMissingMessage
      * @param numberOfTheMissingMessage
      */
-    public RESEND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, String nameOfTheMissingMessage, Short numberOfTheMissingMessage) {
+    public RESEND(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, MessageType nameOfTheMissingMessage, Short numberOfTheMissingMessage) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -118,7 +118,7 @@ public class RESEND extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NAME_MATCHER, value)) {
-		this.nameOfTheMissingMessage = value;
+		this.nameOfTheMissingMessage = MessageType.valueOfMessageType(value);
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "RESEND", "RESEND(Iterator<String> message)", "Mandatory field \"nameOfTheMissingMessage\" invalid value: \"" + value + "\"");
 	    }

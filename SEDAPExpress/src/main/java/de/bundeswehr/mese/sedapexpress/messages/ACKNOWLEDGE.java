@@ -34,7 +34,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 
     private String recipient;
 
-    private MessageType nameOfTheMessage;
+    private MessageType typeOfTheMessage;
 
     private Short numberOfTheMessage;
 
@@ -46,12 +46,12 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	this.recipient = recipient;
     }
 
-    public MessageType getNameOfTheMessage() {
-	return this.nameOfTheMessage;
+    public MessageType getTypeOfTheMessage() {
+	return this.typeOfTheMessage;
     }
 
-    public void setNameOfTheMessage(MessageType nameOfTheMessage) {
-	this.nameOfTheMessage = nameOfTheMessage;
+    public void setTypeOfTheMessage(MessageType typeOfTheMessage) {
+	this.typeOfTheMessage = typeOfTheMessage;
     }
 
     public Short getNumberOfTheMessage() {
@@ -79,7 +79,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	super(number, time, sender, classification, acknowledgement, mac);
 
 	this.recipient = recipient;
-	this.nameOfTheMessage = nameOfTheMessage;
+	this.typeOfTheMessage = nameOfTheMessage;
 	this.numberOfTheMessage = numberOfTheMessage;
 
     }
@@ -119,7 +119,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 	if (message.hasNext()) {
 	    value = message.next();
 	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.NAME_MATCHER, value)) {
-		this.nameOfTheMessage = MessageType.valueOfMessageType(value);
+		this.typeOfTheMessage = MessageType.valueOfMessageType(value);
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "ACKNOWLEDGE", "ACKNOWLEDGE(Iterator<String> message)", "Mandatory field \"nameOfTheMessage\" invalid value: \"" + value + "\"");
 	    }
@@ -152,7 +152,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
 
 		    (((this.recipient == null) && (((ACKNOWLEDGE) obj).recipient == null)) || ((this.recipient != null) && this.recipient.equals(((ACKNOWLEDGE) obj).recipient))) &&
 
-		    (((this.nameOfTheMessage == null) && (((ACKNOWLEDGE) obj).nameOfTheMessage == null)) || ((this.nameOfTheMessage != null) && this.nameOfTheMessage.equals(((ACKNOWLEDGE) obj).nameOfTheMessage))) &&
+		    (((this.typeOfTheMessage == null) && (((ACKNOWLEDGE) obj).typeOfTheMessage == null)) || ((this.typeOfTheMessage != null) && this.typeOfTheMessage.equals(((ACKNOWLEDGE) obj).typeOfTheMessage))) &&
 
 		    (this.numberOfTheMessage == (((ACKNOWLEDGE) obj).numberOfTheMessage));
 	}
@@ -166,7 +166,7 @@ public class ACKNOWLEDGE extends SEDAPExpressMessage {
     @Override
     public String toString() {
 
-	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.nameOfTheMessage != null) ? this.nameOfTheMessage : "").append(";")
+	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.recipient != null) ? this.recipient : "").append(";").append((this.typeOfTheMessage != null) ? this.typeOfTheMessage : "").append(";")
 		.append((this.numberOfTheMessage != null) ? this.numberOfTheMessage : "").toString());
     }
 

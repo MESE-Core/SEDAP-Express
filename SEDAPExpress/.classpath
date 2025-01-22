@@ -12,24 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="libs/Bouncycastle/bcpkix-jdk18on-1.78.1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Bouncycastle/bcpkix-jdk18on-1.78.1-javadoc.jar!/"/>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/Bouncycastle/bcprov-jdk18on-1.78.1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Bouncycastle/bcprov-jdk18on-1.78.1-javadoc.jar!/"/>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="libs/Bouncycastle/bcutil-jdk18on-1.78.1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Bouncycastle/bcutil-jdk18on-1.78.1-javadoc.jar!/"/>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="libs/Gson/gson-2.11.0.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/SEDAPExpress/libs/Gson/gson-2.11.0-javadoc.jar!/"/>
@@ -47,6 +29,21 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFx">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcpkix-jdk18on-1.79.jar" sourcepath="libs/Bouncycastle/bcpkix-jdk18on-1.79-sources.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcprov-jdk18on-1.79.jar" sourcepath="libs/Bouncycastle/bcprov-jdk18on-1.79-sources.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcutil-jdk18on-1.79.jar" sourcepath="libs/Bouncycastle/bcutil-jdk18on-1.79-sources.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/22.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
-    <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints maxWidth="115.0" minWidth="10.0" prefWidth="120.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="150.0" />
       <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
   </columnConstraints>
@@ -26,7 +28,7 @@
       <Label text="Recipient:" />
       <Label text="Name:" GridPane.rowIndex="2" />
       <Label text="Number:" GridPane.rowIndex="3" />
-      <Label fx:id="recipientIdLabel" text="invalid" GridPane.columnIndex="3">
+      <Label fx:id="contactIdLabel" text="invalid" GridPane.columnIndex="3">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,9 +55,18 @@
             </ImageView>
          </graphic>
       </Label>
-      <TextField fx:id="recipientTextField" GridPane.columnIndex="1" />
-      <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="numberTextField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField fx:id="contactIdTextField" GridPane.columnIndex="1">
+         <tooltip>
+            <Tooltip text="normaly hex 16-Bit UINT, freely selected textual identifiers allow" />
+         </tooltip></TextField>
+      <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <tooltip>
+            <Tooltip text="The name of the message which should be acknowledged" />
+         </tooltip></TextField>
+      <TextField fx:id="numberTextField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <tooltip>
+            <Tooltip text="This is a hexadecimal string representation of an 8-bit" />
+         </tooltip></TextField>
       <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
          <image>
             <Image url="@../mandatory.png" />
@@ -72,5 +83,6 @@
          </image>
       </ImageView>
       <Separator prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+      <ComboBox fx:id="nameComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
 </GridPane>

@@ -58,4 +58,6 @@ module SEDAPExpress {
     requires transitive javafx.base;
     requires transitive javafx.fxml;
     requires transitive javafx.controls;
+    requires transitive jdk.httpserver;
+    requires transitive java.net.http;
 }

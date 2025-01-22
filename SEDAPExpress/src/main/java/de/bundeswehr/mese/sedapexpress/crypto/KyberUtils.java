@@ -50,7 +50,7 @@ public class KyberUtils {
     }
 
     public static KeyPair generateKeyPair() throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
-	// generate key pair
+
 	KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("Kyber", "BCPQC");
 	keyPairGenerator.initialize(KyberParameterSpec.kyber512, new SecureRandom());
 	return keyPairGenerator.generateKeyPair();

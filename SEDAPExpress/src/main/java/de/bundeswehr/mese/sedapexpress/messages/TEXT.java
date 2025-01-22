@@ -69,7 +69,7 @@ public class TEXT extends SEDAPExpressMessage {
 
     private TextType type = TextType.Undefined;
 
-    private TextEncoding encoding = TextEncoding.NONE;
+    private DataEncoding encoding = DataEncoding.NONE;
 
     private String textContent;
 
@@ -83,11 +83,11 @@ public class TEXT extends SEDAPExpressMessage {
 	this.type = type;
     }
 
-    public TextEncoding getEncoding() {
+    public DataEncoding getEncoding() {
 	return this.encoding;
     }
 
-    public void setEncoding(TextEncoding encoding) {
+    public void setEncoding(DataEncoding encoding) {
 	this.encoding = encoding;
     }
 
@@ -120,7 +120,7 @@ public class TEXT extends SEDAPExpressMessage {
      * @param encoding
      * @param textContent
      */
-    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, TextType type, TextEncoding encoding, String textContent) {
+    public TEXT(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, TextType type, DataEncoding encoding, String textContent) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
 
@@ -179,10 +179,10 @@ public class TEXT extends SEDAPExpressMessage {
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.TEXT_ENCODING_MATCHER, value)) {
-		this.encoding = TextEncoding.valueOf(value);
+	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.DATA_ENCODING_MATCHER, value)) {
+		this.encoding = DataEncoding.valueOf(value);
 	    } else if (value.isBlank()) {
-		this.encoding = TextEncoding.NONE;
+		this.encoding = DataEncoding.NONE;
 		SEDAPExpressMessage.logger.logp(Level.INFO, "TEXT", "TEXT(Iterator<String> message)", "Optional TEXT field \"encoding\" is empty!");
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Optional TEXT field \"encoding\" invalid value: \"" + value + "\"");
@@ -197,7 +197,7 @@ public class TEXT extends SEDAPExpressMessage {
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "TEXT", "TEXT(Iterator<String> message)", "Mandatory field \"text\" is empty!");
 	    } else {
-		if (this.encoding == TextEncoding.BASE64) {
+		if (this.encoding == DataEncoding.BASE64) {
 		    try {
 			this.textContent = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
@@ -242,7 +242,7 @@ public class TEXT extends SEDAPExpressMessage {
 
 	return SEDAPExpressMessage
 		.removeSemicolons(serializeHeader().append(";").append((this.recipient != null) ? this.recipient : "").append(";").append((this.type != null) ? this.type : "").append(";").append((this.encoding != null) ? this.encoding : "")
-			.append(";").append((this.textContent != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "").toString());
+			.append(";").append((this.textContent != null) ? ((this.encoding == DataEncoding.BASE64) ? Base64.toBase64String(this.textContent.getBytes()) : this.textContent) : "").toString());
     }
 
 }

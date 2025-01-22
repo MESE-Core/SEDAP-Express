@@ -79,7 +79,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 
     private Integer fillColor;
 
-    private TextEncoding encoding;
+    private DataEncoding encoding;
 
     private String annotation;
 
@@ -115,11 +115,11 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	this.fillColor = fillColor;
     }
 
-    public TextEncoding getEncoding() {
+    public DataEncoding getEncoding() {
 	return this.encoding;
     }
 
-    public void setEncoding(TextEncoding encoding) {
+    public void setEncoding(DataEncoding encoding) {
 	this.encoding = encoding;
     }
 
@@ -146,7 +146,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
      * @param encoding
      * @param annotation
      */
-    public GRAPHIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, GraphicType graphicType, Double lineWidth, Integer lineColor, Integer fillColor, TextEncoding encoding,
+    public GRAPHIC(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, GraphicType graphicType, Double lineWidth, Integer lineColor, Integer fillColor, DataEncoding encoding,
 	    String annotation) {
 
 	super(number, time, sender, classification, acknowledgement, mac);
@@ -221,12 +221,13 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (TextEncoding.valueOf(value) == TextEncoding.BASE64) {
-		this.encoding = TextEncoding.BASE64;
-	    } else if (TextEncoding.valueOf(value) == TextEncoding.NONE || value.isBlank()) {
-		this.encoding = TextEncoding.NONE;
+	    if (DataEncoding.valueOf(value) == DataEncoding.BASE64) {
+		this.encoding = DataEncoding.BASE64;
+	    } else if (DataEncoding.valueOf(value) == DataEncoding.NONE || value.isBlank()) {
+		this.encoding = DataEncoding.NONE;
 	    } else {
-		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"encoding\" invalid value: \"" + value + "\"");
+		this.encoding = DataEncoding.NONE;
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"encoding\" contains invalid value!", value);
 	    }
 	}
 
@@ -236,7 +237,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.WARNING, "GRAPHIC", "GRAPHIC(Iterator<String> message)", "Optional field \"text\" is empty!");
 	    } else {
-		if (this.encoding == TextEncoding.BASE64) {
+		if (this.encoding == DataEncoding.BASE64) {
 		    try {
 			this.annotation = new String(Base64.decode(value));
 		    } catch (DecoderException e) {
@@ -278,7 +279,7 @@ public class GRAPHIC extends SEDAPExpressMessage {
 
 	return SEDAPExpressMessage.removeSemicolons(serializeHeader().append((this.graphicType != null) ? this.graphicType : "").append(";").append((this.lineWidth != null) ? SEDAPExpressMessage.numberFormatter.format(this.lineWidth) : "")
 		.append(";").append((this.lineColor != null) ? this.lineColor : "").append(";").append((this.fillColor != null) ? this.fillColor : "").append(";").append((this.encoding != null) ? this.encoding : "").append(";")
-		.append((this.annotation != null) ? ((this.encoding == TextEncoding.BASE64) ? Base64.toBase64String(this.annotation.getBytes()) : this.annotation) : "").toString());
+		.append((this.annotation != null) ? ((this.encoding == DataEncoding.BASE64) ? Base64.toBase64String(this.annotation.getBytes()) : this.annotation) : "").toString());
     }
 
 }

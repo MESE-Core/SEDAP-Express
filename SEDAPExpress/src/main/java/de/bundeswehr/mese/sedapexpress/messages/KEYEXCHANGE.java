@@ -45,7 +45,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 
     public enum AlgorithmType {
 
-	Diffie_Hellman_Merkle(0), Diffie_Hellman_Merkle_with_Curve25519(1), Kyber512(2), Kyber768(3), Kyber1024(4);
+	Diffie_Hellman_Merkle(0), Diffie_Hellman_Merkle_with_Curve25519(1), Kyber512(2), Kyber768(3), Kyber1024(4), FrodoKEM640(5), FrodoKEM976(6), FrodoKEM1344(7);
 
 	int algorithm;
 
@@ -66,6 +66,9 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 	    case 2 -> Kyber512;
 	    case 3 -> Kyber768;
 	    case 4 -> Kyber1024;
+	    case 5 -> FrodoKEM640;
+	    case 6 -> FrodoKEM976;
+	    case 7 -> FrodoKEM1344;
 	    default -> Diffie_Hellman_Merkle;
 	    };
 	}
@@ -77,6 +80,8 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 
     }
 
+    private String recipient;
+
     private AlgorithmType algorithmType;
     private Integer phase;
 
@@ -87,6 +92,14 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
     private PublicKey publicKey;
 
     private SecretKey encryptedKey;
+
+    public String getRecipient() {
+	return this.recipient;
+    }
+
+    public void setRecipient(String recipient) {
+	this.recipient = recipient;
+    }
 
     public AlgorithmType getAlgorithmType() {
 	return this.algorithmType;
@@ -152,6 +165,7 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
      * @param classification
      * @param acknowledgement
      * @param mac
+     * @param recipient
      * @param algorithmType
      * @param phase
      * @param keyLength
@@ -160,9 +174,10 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
      * @param publicKey
      * @param encryptedKey
      */
-    public KEYEXCHANGE(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, AlgorithmType algorithmType, Integer phase, Integer keyLength, BigInteger primeNumber,
-	    BigInteger naturalNumber, PublicKey publicKey, SecretKey encryptedKey) {
+    public KEYEXCHANGE(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac, String recipient, AlgorithmType algorithmType, Integer phase, Integer keyLength,
+	    BigInteger primeNumber, BigInteger naturalNumber, PublicKey publicKey, SecretKey encryptedKey) {
 	super(number, time, sender, classification, acknowledgement, mac);
+	this.recipient = recipient;
 	this.algorithmType = algorithmType;
 	this.phase = phase;
 	this.keyLength = keyLength;
@@ -190,6 +205,18 @@ public class KEYEXCHANGE extends SEDAPExpressMessage {
 	super(message);
 
 	String value;
+
+	// Recipient
+	if (message.hasNext()) {
+	    value = message.next();
+	    if (value.isBlank()) {
+		SEDAPExpressMessage.logger.logp(Level.INFO, "KEYEXCHANGE", "KEYEXCHANGE(Iterator<String> message)", "Optional field \"recipient\" is empty!");
+	    } else {
+		this.recipient = value;
+	    }
+	} else {
+	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "KEYEXCHANGE", "KEYEXCHANGE(Iterator<String> message)", "Incomplete message!");
+	}
 
 	// Algorithm
 	if (message.hasNext()) {
