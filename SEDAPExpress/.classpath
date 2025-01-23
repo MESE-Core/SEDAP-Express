@@ -33,17 +33,17 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/Bouncycastle/bcpkix-jdk18on-1.79.jar" sourcepath="libs/Bouncycastle/bcpkix-jdk18on-1.79-sources.jar">
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcpkix-jdk18on-1.80.jar" sourcepath="libs/Bouncycastle/bcpkix-jdk18on-1.80-sources.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/Bouncycastle/bcprov-jdk18on-1.79.jar" sourcepath="libs/Bouncycastle/bcprov-jdk18on-1.79-sources.jar">
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcprov-jdk18on-1.80.jar" sourcepath="libs/Bouncycastle/bcprov-jdk18on-1.80-sources.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="libs/Bouncycastle/bcutil-jdk18on-1.79.jar" sourcepath="libs/Bouncycastle/bcutil-jdk18on-1.79-sources.jar">
+	<classpathentry kind="lib" path="libs/Bouncycastle/bcutil-jdk18on-1.80.jar" sourcepath="libs/Bouncycastle/bcutil-jdk18on-1.80-sources.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
