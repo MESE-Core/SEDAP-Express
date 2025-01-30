@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/22.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
@@ -35,20 +35,10 @@
       <Label text="FillColor:" GridPane.rowIndex="4" />
       <Label text="Encoding:" GridPane.rowIndex="5" />
       <Label text="Annotation:" GridPane.rowIndex="7" />
-      <Label fx:id="contactIdLabel" text="invalid" GridPane.columnIndex="3">
-         <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../invalid.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
       <ComboBox fx:id="graficTypeComboBox" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
       <TextField fx:id="lineWidthTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="lineColorTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <TextField fx:id="fillColorTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <TextField fx:id="encodingTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <TextArea fx:id="annotationTextArea" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
       <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="6" />
@@ -57,5 +47,6 @@
             <Image url="@../mandatory.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="encodingComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
    </children>
 </GridPane>

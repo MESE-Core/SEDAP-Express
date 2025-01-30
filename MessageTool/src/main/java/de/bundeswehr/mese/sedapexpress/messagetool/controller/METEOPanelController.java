@@ -1,11 +1,13 @@
 package de.bundeswehr.mese.sedapexpress.messagetool.controller;
 
+import de.bundeswehr.mese.sedapexpress.messages.METEO;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.ImageView;
 
 public class METEOPanelController extends MessagePanelController {
@@ -44,7 +46,7 @@ public class METEOPanelController extends MessagePanelController {
     private TextField humidityRelTextField;
 
     @FXML
-    private ImageView pressureLabel;
+    private Label pressureLabel;
 
     @FXML
     private TextField pressureTextField;
@@ -129,18 +131,462 @@ public class METEOPanelController extends MessagePanelController {
 	assert this.windSpeedLabel != null : "fx:id=\"windSpeedLabel\" was not injected: check your FXML file 'METEOPanel.fxml'.";
 	assert this.windSpeedTextField != null : "fx:id=\"windSpeedTextField\" was not injected: check your FXML file 'METEOPanel.fxml'.";
 
+	
+	// SpeedThrougWater
+    speedThroughWaterTextfield.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    speedThroughWaterTextfield.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+        	String text = speedThroughWaterTextfield.getText();
+            if(text.isEmpty()) {
+            	speedThroughWater=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	speedThroughWaterTextfield.setText(text);
+        		speedThroughWater= Double.parseDouble(text);
+     			System.out.println("Wert: " + speedThroughWater);
+        	}
+        }
+    });
+    speedThroughWaterLabel.setVisible(false);
+    
+	// WaterSpeed
+    waterSpeedTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    waterSpeedTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = waterSpeedTextField.getText();
+            if(text.isEmpty()) {
+            	speedThroughWater=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	waterSpeedTextField.setText(text);
+            	waterSpeed= Double.parseDouble(text);
+     			System.out.println("Wert: " + waterSpeed);
+        	}
+        }
+    });
+    waterSpeedLabel.setVisible(false);
+    
+	// WaterDirection
+    waterDirectionTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    waterDirectionTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = waterDirectionTextField.getText();
+            if(text.isEmpty()) {
+            	waterDirection=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	waterDirectionTextField.setText(text);
+            	waterDirection= Double.parseDouble(text);
+        	}
+        }
+    });
+    waterDirectionLabel.setVisible(false);
+    
+	// WaterTemperature
+    waterTemperatureTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    waterTemperatureTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = waterTemperatureTextField.getText();
+            if(text.isEmpty()) {
+            	waterTemperature=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	waterTemperatureTextField.setText(text);
+            	waterTemperature= Double.parseDouble(text);
+        	}
+        }
+    });
+    waterTemperatureLabel.setVisible(false);
+    
+	// WaterDepth
+    waterDepthTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    waterDepthTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = waterDepthTextField.getText();
+            if(text.isEmpty()) {
+            	waterDepth=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	waterDepthTextField.setText(text);
+            	waterDepth= Double.parseDouble(text);
+        	}
+        }
+    });
+    waterDepthLabel.setVisible(false);
+    
+	// AirTemperatur
+    airTemperatureTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    airTemperatureTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = airTemperatureTextField.getText();
+            if(text.isEmpty()) {
+            	airTemperature=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	airTemperatureTextField.setText(text);
+            	airTemperature= Double.parseDouble(text);
+        	}
+        }
+    });
+    airTemperatureLabel.setVisible(false);
+    
+	// DewPoint
+    dewPointTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    dewPointTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = dewPointTextField.getText();
+            if(text.isEmpty()) {
+            	dewPoint=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	dewPointTextField.setText(text);
+            	dewPoint= Double.parseDouble(text);
+        	}
+        }
+    });
+    dewPointLabel.setVisible(false);
+    
+	// Humidity Rel
+    humidityRelTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    humidityRelTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = humidityRelTextField.getText();
+            if(text.isEmpty()) {
+            	humidityRel=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	humidityRelTextField.setText(text);
+            	humidityRel= Double.parseDouble(text);
+        	}
+        }
+    });
+    humidityRelLabel.setVisible(false);
+    
+	// Pressure Text
+    pressureTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    pressureTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = pressureTextField.getText();
+            if(text.isEmpty()) {
+            	pressure=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	pressureTextField.setText(text);
+            	pressure= Double.parseDouble(text);
+        	}
+        }
+    });
+    pressureLabel.setVisible(false);
+    
+	// Wind Speed
+    windSpeedTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    windSpeedTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = windSpeedTextField.getText();
+            if(text.isEmpty()) {
+            	windSpeed=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	windSpeedTextField.setText(text);
+            	windSpeed= Double.parseDouble(text);
+        	}
+        }
+    });
+    windSpeedLabel.setVisible(false);
+    
+	// Wind Direction
+    windDirectionTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    windDirectionTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = windDirectionTextField.getText();
+            if(text.isEmpty()) {
+            	windDirection=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	windDirectionTextField.setText(text);
+            	windDirection= Double.parseDouble(text);
+        	}
+        }
+    });
+    windDirectionLabel.setVisible(false);
+    
+	// Visibility
+    visibilityTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    visibilityTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = visibilityTextField.getText();
+            if(text.isEmpty()) {
+            	visibility=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	visibilityTextField.setText(text);
+            	visibility= Double.parseDouble(text);
+        	}
+        }
+    });
+    visibilityLabel.setVisible(false);
+    
+	// Cloud Height
+    cloudHeightTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    cloudHeightTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = cloudHeightTextField.getText();
+            if(text.isEmpty()) {
+            	cloudHeight=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	cloudHeightTextField.setText(text);
+            	cloudHeight= Double.parseDouble(text);
+        	}
+        }
+    });
+    cloudHeightLabel.setVisible(false);
+    
+	// Cloud Cover
+    cloudCoverTextField.setTextFormatter(new TextFormatter<>(change -> {
+ 		String newText = change.getControlNewText();
+ 		if(newText.matches("\\d*\\.?\\d*")) {
+ 			return change;
+ 		}
+ 		return null;
+ 	}));
+    cloudCoverTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        if (!newValue) {  // Wenn der Fokus verloren geht
+            String text = cloudCoverTextField.getText();
+            if(text.isEmpty()) {
+            	cloudCover=null;
+            }else {
+            	if (text.startsWith(".")) {
+            		text = "0" + text;
+            	}
+            	if (!text.contains(".")) {
+            		text = text + ".0";
+            	}
+            	if (text.endsWith(".")) {
+            		text = text + "0";
+            	}
+            	cloudCoverTextField.setText(text);
+            	cloudCover= Double.parseDouble(text);
+        	}
+        }
+    });
+    cloudCoverLabel.setVisible(false);
+    
     }
 
+    Double speedThroughWater, waterSpeed, waterDirection,waterTemperature, waterDepth, airTemperature, dewPoint, humidityRel, 
+    pressure,  windSpeed,  windDirection,visibility,  cloudHeight,  cloudCover;
+    
     @Override
-    public SEDAPExpressMessage createMessage(Short number, Long time, String sender,
+    public METEO createMessage(Short number, Long time, String sender,
 	    Classification classification, Acknowledgement acknowledgement, String mac) {
 
-	return null;
+    	METEO meteo = new METEO(number, time, sender,
+		classification, acknowledgement, mac,
+		this.speedThroughWater,
+		this.waterSpeed,
+		this.waterDirection,
+		this.waterTemperature,
+		this.waterDepth,
+		this.airTemperature,
+		this.dewPoint,
+		this.humidityRel,
+		this.pressure,
+		this.windSpeed,
+		this.windDirection,
+		this.visibility,
+		this.cloudHeight,
+		this.cloudCover
+		);
+		
+	return meteo;
     }
 
     @Override
     public boolean isValidFilled() {
 
-	return true;
+    	return true;
     }
 }

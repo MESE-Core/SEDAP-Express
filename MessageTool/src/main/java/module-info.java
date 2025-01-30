@@ -34,9 +34,9 @@ module MessageTool {
     opens de.bundeswehr.mese.sedapexpress.messagetool;
     opens de.bundeswehr.mese.sedapexpress.messagetool.controller;
 
-    requires transitive SEDAPExpress;
-    requires transitive javafx.base;
     requires transitive javafx.controls;
-    requires transitive javafx.fxml;
-    requires transitive javafx.graphics;
+    requires transitive SEDAPExpress;
+    requires javafx.fxml;
+    requires javafx.graphics;
+	requires javafx.base;
 }

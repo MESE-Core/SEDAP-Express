@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/22.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane hgap="5.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints minWidth="10.0" prefWidth="120.0" />
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="150.0" />
@@ -32,6 +32,7 @@
       <RowConstraints minHeight="10.0" />
       <RowConstraints minHeight="10.0" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Label text="Latitude [°]:" />
@@ -43,8 +44,9 @@
       <Label text="Roll [°]:" GridPane.rowIndex="8" />
       <Label text="Pitch [°]:" GridPane.rowIndex="9" />
       <Label text="Name:" GridPane.rowIndex="11" />
-      <Label text="SIDC:" GridPane.rowIndex="12" />
-      <Label fx:id="latitudeLabel" layoutX="321.0" layoutY="47.0" text="invalid" GridPane.columnIndex="3">
+      <Label text="SIDC dimension:" GridPane.rowIndex="12" />
+      <Label text="SIDC code:" GridPane.rowIndex="13" />
+      <Label fx:id="latitudeLabel" layoutX="321.0" layoutY="47.0" prefHeight="17.0" prefWidth="57.0" text="invalid" GridPane.columnIndex="3">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -98,15 +100,21 @@
             </ImageView>
          </graphic>
       </Label>
-      <TextField fx:id="latitudeTextField" text="55.33" GridPane.columnIndex="1" />
-      <TextField fx:id="longitudeTextField" text="11.22" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField fx:id="altitudeTextField" text="300" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="latitudeTextField" GridPane.columnIndex="1" />
+      <TextField fx:id="longitudeTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField fx:id="altitudeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="speedTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <TextField fx:id="courseTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <TextField fx:id="headingTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <TextField fx:id="rollTextField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <TextField fx:id="pitchTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="12">
+         <children>
+            <ComboBox fx:id="sidcDimComboBox" layoutX="10.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="150.0" />
+         </children>
+      </HBox>
+      <ComboBox fx:id="sidcComboBox" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="159.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="13" />
       <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
       <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="6" />
       <Separator prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="10" />
@@ -120,11 +128,5 @@
             <Image url="@../mandatory.png" />
          </image>
       </ImageView>
-      <HBox alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="12">
-         <children>
-            <ComboBox fx:id="sidcDimComboBox" layoutX="10.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="80.0" />
-            <ComboBox fx:id="sidcComboBox" layoutX="60.0" layoutY="13.0" maxWidth="1.7976931348623157E308" prefWidth="150.0" />
-         </children>
-      </HBox>
    </children>
 </GridPane>

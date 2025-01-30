@@ -17,9 +17,6 @@
     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="150.0" />
       <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="30.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
-      <ColumnConstraints halignment="CENTER" />
-      <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="120.0" />
-      <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -114,12 +111,5 @@
             </ImageView>
          </graphic>
       </Label>
-      <Label layoutX="10.0" layoutY="88.0" text="AmmunitionName:" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-      <Label layoutX="10.0" layoutY="118.0" text="FuelName:" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-      <Label layoutX="10.0" layoutY="148.0" text="BatterieName:" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-      <Separator maxHeight="1.7976931348623157E308" orientation="VERTICAL" GridPane.columnIndex="4" GridPane.rowSpan="2147483647" GridPane.vgrow="ALWAYS" />
-      <TextField fx:id="ammunitionNameTextField" layoutX="135.0" layoutY="84.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-      <TextField fx:id="fuelNameTextField" layoutX="135.0" layoutY="114.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-      <TextField fx:id="batterieNameTextField" layoutX="135.0" layoutY="144.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
    </children>
 </GridPane>

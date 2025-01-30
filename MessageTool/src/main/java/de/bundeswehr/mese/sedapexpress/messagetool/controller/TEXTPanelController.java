@@ -27,17 +27,20 @@ package de.bundeswehr.mese.sedapexpress.messagetool.controller;
 
 import java.util.Arrays;
 
-import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Acknowledgement;
 import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.Classification;
-import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.TextEncoding;
+import de.bundeswehr.mese.sedapexpress.messages.SEDAPExpressMessage.DataEncoding;
 import de.bundeswehr.mese.sedapexpress.messages.TEXT;
 import de.bundeswehr.mese.sedapexpress.messages.TEXT.TextType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.util.Callback;
 
 public class TEXTPanelController extends MessagePanelController {
 
@@ -45,7 +48,7 @@ public class TEXTPanelController extends MessagePanelController {
     private TextField recipientTextField;
 
     @FXML
-    private ComboBox<TextEncoding> encodingComboBox;
+    private ComboBox<DataEncoding> encodingComboBox;
 
     @FXML
     private ComboBox<TextType> typeComboBox;
@@ -59,14 +62,46 @@ public class TEXTPanelController extends MessagePanelController {
 	assert this.encodingComboBox != null : "fx:id=\"encodingComboBox\" was not injected: check your FXML file 'TEXTPanel.fxml'.";
 	assert this.typeComboBox != null : "fx:id=\"typeComboBox\" was not injected: check your FXML file 'TEXTPanel.fxml'.";
 
-	this.encodingComboBox.setItems(FXCollections.observableList(Arrays.asList(TextEncoding.values())));
+	// TOOLTIPS
+	Tooltip toolTipTextArea = new Tooltip("Free text of the message. Field is mandatory");
+	this.textTextArea.setTooltip(toolTipTextArea);
 
+	// Encoding
+	this.encodingComboBox.setItems(FXCollections.observableList(Arrays.asList(DataEncoding.values())));
+	this.encodingComboBox.getSelectionModel().select(0);
+	// Text Type
 	this.typeComboBox.setItems(FXCollections.observableList(Arrays.asList(TextType.values())));
-
+	this.typeComboBox.setCellFactory(new Callback<ListView<TextType>, ListCell<TextType>>() {
+	    @Override
+	    public ListCell<TextType> call(ListView<TextType> l) {
+		return new ListCell<TextType>() {
+		    @Override
+		    protected void updateItem(TextType item, boolean empty) {
+			super.updateItem(item, empty);
+			if (item == null || empty) {
+			    setGraphic(null);
+			} else {
+			    setText(item.name());
+			}
+		    }
+		};
+	    }
+	});
+	this.typeComboBox.setButtonCell(new ListCell<>() {
+	    protected void updateItem(TextType item, boolean empty) {
+		super.updateItem(item, empty);
+		if (item == null || empty) {
+		    setGraphic(null);
+		} else {
+		    setText(item.name());
+		}
+	    }
+	});
+	this.typeComboBox.getSelectionModel().select(0);
     }
 
     @Override
-    public SEDAPExpressMessage createMessage(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
+    public TEXT createMessage(Short number, Long time, String sender, Classification classification, Acknowledgement acknowledgement, String mac) {
 
 	return new TEXT(number, time, sender, classification, acknowledgement, mac, this.recipientTextField.getText(), this.typeComboBox.getSelectionModel().getSelectedItem(), this.encodingComboBox.getSelectionModel().getSelectedItem(),
 		this.textTextArea.getText());
@@ -75,6 +110,6 @@ public class TEXTPanelController extends MessagePanelController {
     @Override
     public boolean isValidFilled() {
 
-	return true;
+	return this.textTextArea.getText().isEmpty() ? false : true;
     }
 }
