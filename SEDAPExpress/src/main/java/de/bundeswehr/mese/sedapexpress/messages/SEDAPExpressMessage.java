@@ -579,9 +579,9 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
 			\n
 		***********************************************************
 		***********************************************************
-		** SEDAP-Express v1.0 (November 20th, 2024)              **
+		** SEDAP-Express v1.0 (January 30th, 2025)               **
 		** Licensed under the \"Simplified BSD License\"           **
-		** (C)2024, Federal Armed Forces of Germany, Volker Voss **
+		** (C)2024-2025, Federal Armed Forces of Germany         **
 		***********************************************************
 		***********************************************************\n""");
     }
