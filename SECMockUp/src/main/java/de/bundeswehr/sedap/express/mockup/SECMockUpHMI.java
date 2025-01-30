@@ -521,15 +521,13 @@ public class SECMockUpHMI extends Application implements SEDAPExpressSubscriber,
     @Override
     public void processSEDAPExpressMessage(SEDAPExpressMessage message) {
 
-	switch (message) {
-
-	case ACKNOWLEDGE acknowledge -> {
+	if (message instanceof ACKNOWLEDGE acknowledge) {
 	}
 
-	case COMMAND command -> {
+	else if (message instanceof COMMAND command) {
 	}
 
-	case CONTACT contact -> {
+	else if (message instanceof CONTACT contact) {
 
 	    MilStd2525TacticalSymbol pp = null;
 
@@ -650,32 +648,21 @@ public class SECMockUpHMI extends Application implements SEDAPExpressSubscriber,
 
 	}
 
-	case EMISSION emision -> {
-	}
-	case GENERIC generic -> {
-	}
-	case GRAPHIC graphic -> {
-	}
-	case HEARTBEAT heartbeat -> {
-	}
-	case KEYEXCHANGE keyexchange -> {
-	}
-	case METEO meteo -> {
-	}
-	case OWNUNIT ownunit -> {
-	}
-	case RESEND resend -> {
-	}
-	case STATUS status -> {
-	}
-	case TEXT text -> {
+	else if (message instanceof EMISSION emision) {
+	} else if (message instanceof GENERIC generic) {
+	} else if (message instanceof GRAPHIC graphic) {
+	} else if (message instanceof HEARTBEAT heartbeat) {
+	} else if (message instanceof KEYEXCHANGE keyexchange) {
+	} else if (message instanceof METEO meteo) {
+	} else if (message instanceof OWNUNIT ownunit) {
+	} else if (message instanceof RESEND resend) {
+	} else if (message instanceof STATUS status) {
+	} else if (message instanceof TEXT text) {
 
-	}
-	case TIMESYNC timesync -> {
+	} else if (message instanceof TIMESYNC timesync) {
 	    // Ignore, is already done by SEDAPExpressCommunicator.TimeSyncRunable
-	}
-	default -> throw new IllegalArgumentException("Unexpected value: " + message.getMessageType());
-	}
+	} else
+	    throw new IllegalArgumentException("Unexpected value: " + message.getMessageType());
 
     }
 

@@ -87,23 +87,18 @@ public class SampleTCPServer implements SEDAPExpressSubscriber {
 
 	System.out.println("Received: " + message); // Use e.g. a Logger or output in a HMI
 
-	switch (message) {
-
-	case OWNUNIT ownunitMessage -> {
-	    // Write here your own code, e.g. distribute it to the other connected clients
-	    // and/or process it
+	if (message instanceof OWNUNIT ownunitMessage) {
+	    // Write here your own processing code
 	}
 
-	case CONTACT contactMessage -> {
+	else if (message instanceof CONTACT contactMessage) {
 
-	    // Write here your own code, e.g. distribute it to the other connected clients
-	    // and/or process it
+	    // Write here your own processing code
 	}
 
-	case HEARTBEAT heartbeat -> {
+	else if (message instanceof HEARTBEAT heartbeat) {
 
-	    // Write here your own code, e.g. distribute it to the other connected clients
-	    // and/or process it
+	    // Write here your own processing code
 	    try {
 		this.communicator.sendSEDAPExpressMessage(new HEARTBEAT());
 	    } catch (IOException e) {
@@ -112,14 +107,12 @@ public class SampleTCPServer implements SEDAPExpressSubscriber {
 	    System.out.println("Answered: HEARTBEAT");
 	}
 
-	case STATUS status -> {
-	    // Write here your own code, e.g. distribute it to the other connected clients
-	    // and/or process it
+	else if (message instanceof STATUS status) {
+	    // Write here your own processing code
 	}
 
-	default -> throw new IllegalArgumentException("Unexpected value: " + message);
-
-	}
+	else
+	    throw new IllegalArgumentException("Unexpected value: " + message);
 
     }
 
