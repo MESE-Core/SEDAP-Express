@@ -25,133 +25,92 @@
  */
 package de.bundeswehr.mese.sedapexpress.crypto;
 
-import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Security;
 
-import org.bouncycastle.asn1.ASN1Encoding;
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import org.bouncycastle.crypto.SecretWithEncapsulation;
-import org.bouncycastle.crypto.agreement.ECDHCBasicAgreement;
+import javax.crypto.KeyGenerator;
+
 import org.bouncycastle.crypto.digests.SHA256Digest;
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
-import org.bouncycastle.crypto.generators.ECKeyPairGenerator;
-import org.bouncycastle.crypto.generators.KDF2BytesGenerator;
-import org.bouncycastle.crypto.params.ECDomainParameters;
-import org.bouncycastle.crypto.params.ECKeyGenerationParameters;
-import org.bouncycastle.crypto.params.KDFParameters;
-import org.bouncycastle.crypto.params.KeyParameter;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKEMExtractor;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKEMGenerator;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKeyGenerationParameters;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKeyPairGenerator;
-import org.bouncycastle.pqc.crypto.frodo.FrodoKeyParameters;
-import org.bouncycastle.pqc.crypto.frodo.FrodoParameters;
-import org.bouncycastle.pqc.crypto.frodo.FrodoPublicKeyParameters;
-import org.bouncycastle.pqc.crypto.util.SubjectPublicKeyInfoFactory;
-import org.bouncycastle.util.Arrays;
-import org.bouncycastle.util.BigIntegers;
-import org.bouncycastle.util.Strings;
-import org.bouncycastle.util.encoders.Hex;
+import org.bouncycastle.crypto.macs.HMac;
+import org.bouncycastle.crypto.prng.SP800SecureRandomBuilder;
+import org.bouncycastle.jcajce.SecretKeyWithEncapsulation;
+import org.bouncycastle.jcajce.spec.KEMExtractSpec;
+import org.bouncycastle.jcajce.spec.KEMGenerateSpec;
+import org.bouncycastle.pqc.jcajce.spec.FrodoParameterSpec;
 
 public class FrodoUtils {
 
-    private static SecureRandom random = new SecureRandom();
+    private static SecureRandom random = new SP800SecureRandomBuilder().buildHMAC(new HMac(new SHA256Digest()), null, true);
     static {
 	Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 	Security.addProvider(new org.bouncycastle.pqc.jcajce.provider.BouncyCastlePQCProvider());
     }
 
-    public static AsymmetricCipherKeyPair generateKeyPair() throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
+    /**
+     * Generates a key pair for the FrodoKEM process
+     * 
+     * @param frodoParameterSpec
+     * 
+     * @return KeyPair for FrodoKEM
+     * 
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchProviderException
+     * @throws InvalidAlgorithmParameterException
+     */
+    public static KeyPair generateKeyPair(FrodoParameterSpec frodoParameterSpec) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
 
-	ECDomainParameters params = new ECDomainParameters(CustomNamedCurves.getByName("Curve25519"));
+	KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("Frodo", "BCPQC");
+	keyPairGenerator.initialize(frodoParameterSpec, FrodoUtils.random);
 
-	ECKeyPairGenerator ecKpGen = new ECKeyPairGenerator();
-	ECKeyGenerationParameters genParameters = new ECKeyGenerationParameters(params, FrodoUtils.random);
-	ecKpGen.init(genParameters);
-
-	return ecKpGen.generateKeyPair();
+	return keyPairGenerator.generateKeyPair();
     }
 
-    public static AsymmetricCipherKeyPair generateFrodoKeyPair(FrodoParameters frodoParameters) {
+    /**
+     * Calculates the shared secret key with encapsulation
+     * 
+     * @param publicKey
+     * 
+     * @return shared secret key with encapsulation
+     * 
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchProviderException
+     * @throws InvalidAlgorithmParameterException
+     */
+    public static SecretKeyWithEncapsulation generateSharedSecretKeyWithEncapsulation(PublicKey publicKey, int bitSize) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
 
-	FrodoKeyGenerationParameters genParam = new FrodoKeyGenerationParameters(FrodoUtils.random, frodoParameters);
-	FrodoKeyPairGenerator frodoKpGen = new FrodoKeyPairGenerator();
-	frodoKpGen.init(genParam);
+	KeyGenerator keyGenerator = KeyGenerator.getInstance("Frodo", "BCPQC");
+	KEMGenerateSpec kemGenerateSpec = new KEMGenerateSpec(publicKey, "Secret", bitSize);
+	keyGenerator.init(kemGenerateSpec);
 
-	return frodoKpGen.generateKeyPair();
+	return (SecretKeyWithEncapsulation) keyGenerator.generateKey();
     }
 
-    public static void main(String[] arg) throws Exception {
+    /**
+     * Calculates the shared secret key from encapsulation
+     * 
+     * @param privateKey
+     * @param encapsulation
+     * 
+     * @return the shared secret key
+     * 
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchProviderException
+     * @throws InvalidAlgorithmParameterException
+     */
+    public static byte[] generateSharedSecretKeyFromEncapsulation(PrivateKey privateKey, byte[] encapsulation, int bitSize) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException {
 
-	// one key pair for the initiator
-	AsymmetricCipherKeyPair initKeyPair = FrodoUtils.generateKeyPair();
+	KEMExtractSpec kemExtractSpec = new KEMExtractSpec(privateKey, encapsulation, "Secret", bitSize);
+	KeyGenerator keyGenerator = KeyGenerator.getInstance("Frodo", "BCPQC");
+	keyGenerator.init(kemExtractSpec);
 
-	// one key pair for the recipient
-	AsymmetricCipherKeyPair recKeyPair = FrodoUtils.generateKeyPair();
-
-	// You will just create a Frodo key pair for the recipient.
-	AsymmetricCipherKeyPair recFrodoKP = FrodoUtils.generateFrodoKeyPair(FrodoParameters.frodokem640aes);
-
-	FrodoPublicKeyParameters pubParameters = (FrodoPublicKeyParameters) recFrodoKP.getPublic();
-
-	byte[] publicKeyAsASN1 = SubjectPublicKeyInfoFactory.createSubjectPublicKeyInfo(pubParameters).getEncoded(ASN1Encoding.BER);
-	System.out.println(new String(publicKeyAsASN1));
-
-	// The agreement step the ECDHC Basic Agreement (cofactor Diffie-Hellman)
-	ECDHCBasicAgreement agreement = new ECDHCBasicAgreement();
-
-	agreement.init(initKeyPair.getPrivate());
-
-	BigInteger initAgreed = agreement.calculateAgreement(recKeyPair.getPublic());
-
-	byte[] initZ = BigIntegers.asUnsignedByteArray(agreement.getFieldSize(), initAgreed);
-
-	FrodoKEMGenerator frodoEncCipher = new FrodoKEMGenerator(FrodoUtils.random);
-	SecretWithEncapsulation initEnc = frodoEncCipher.generateEncapsulated(pubParameters);
-
-	byte[] initT = initEnc.getSecret();
-
-	// introduce the KDF - X9.63 style using SHA-256.
-	KDF2BytesGenerator initKdf = new KDF2BytesGenerator(new SHA256Digest());
-
-	// the second parameter is just the regular user keying materiel
-	initKdf.init(new KDFParameters(Arrays.concatenate(initZ, initT), Strings.toByteArray("Hybrid Exchange")));
-
-	// Generate
-	byte[] initBuf = new byte[32];
-	initKdf.generateBytes(initBuf, 0, initBuf.length);
-	KeyParameter initKey = new KeyParameter(initBuf);
-	System.out.println("Initiator Generated hybrid key: " + Hex.toHexString(initKey.getKey()));
-
-	// Recipient Side.
-	// Do the agreement
-	ECDHCBasicAgreement recAgree = new ECDHCBasicAgreement();
-
-	recAgree.init(recKeyPair.getPrivate());
-
-	BigInteger recAgreed = recAgree.calculateAgreement(initKeyPair.getPublic());
-
-	byte[] recZ = BigIntegers.asUnsignedByteArray(recAgree.getFieldSize(), recAgreed);
-
-	// now extract the KEM secret.
-	FrodoKEMExtractor frodoDecCipher = new FrodoKEMExtractor((FrodoKeyParameters) recFrodoKP.getPrivate());
-	byte[] recT = frodoDecCipher.extractSecret(initEnc.getEncapsulation());
-
-	// introduce the recipient KDF - again X9.63 style using SHA-256.
-	KDF2BytesGenerator recKdf = new KDF2BytesGenerator(new SHA256Digest());
-
-	// the second parameter is just the regular user keying material
-	recKdf.init(new KDFParameters(Arrays.concatenate(recZ, recT), Strings.toByteArray("Hybrid Exchange")));
-
-	// Generate the recipient secret key.
-	byte[] recBuf = new byte[32];
-	recKdf.generateBytes(recBuf, 0, recBuf.length);
-	KeyParameter recKey = new KeyParameter(initBuf);
-	System.out.println("Recipient Generated hybrid key: " + Hex.toHexString(recKey.getKey()));
+	return ((SecretKeyWithEncapsulation) keyGenerator.generateKey()).getEncoded();
     }
 
 }

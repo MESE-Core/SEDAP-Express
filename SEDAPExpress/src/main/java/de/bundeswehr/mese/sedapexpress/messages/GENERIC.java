@@ -34,7 +34,7 @@ public class GENERIC extends SEDAPExpressMessage {
 
     public enum ContentType {
 
-	SEDAP, ASCII, BINARY
+	SEDAP, ASCII, NMEA, XML, JSON, BINARY
     }
 
     private ContentType contentType;
@@ -112,15 +112,18 @@ public class GENERIC extends SEDAPExpressMessage {
 	    value = message.next();
 	    if (value.isBlank()) {
 		SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" is empty!");
-	    } else {
+	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.CONTENT_TYPE_MATCHER, value)) {
 		this.contentType = ContentType.valueOf(value);
 		if (this.contentType == null) {
 		    SEDAPExpressMessage.logger.logp(Level.INFO, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" has an invalid value > " + this.contentType);
 		}
+	    } else {
+		SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Optional field \"contentType\" invalid value: \"" + value + "\"");
 	    }
 	} else {
 	    SEDAPExpressMessage.logger.logp(Level.SEVERE, "GENERIC", "GENERIC(Iterator<String> message)", "Incomplete message!");
 	}
+
 	// Encoding
 	if (message.hasNext()) {
 	    value = message.next();

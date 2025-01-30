@@ -40,7 +40,7 @@ import org.junit.jupiter.api.Test;
 class ECDHUtilsTest {
 
     @Test
-    void testKeyGeneration() throws InvalidParameterSpecException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, InvalidKeyException, InvalidKeySpecException {
+    void testECDHKeyExchange() throws InvalidParameterSpecException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, InvalidKeyException, InvalidKeySpecException {
 
 	// Client Key (private / public)
 	KeyPair clientKeyPair = ECDHUtils.generateKeyPair();
@@ -49,17 +49,17 @@ class ECDHUtilsTest {
 	KeyPair serverKeyPair = ECDHUtils.generateKeyPair();
 
 	// Client
-	byte[] secretClient = ECDHUtils.getSharedSecret(clientKeyPair.getPrivate(), serverKeyPair.getPublic());
+	byte[] secretClient = ECDHUtils.getSharedSecretKey(clientKeyPair.getPrivate(), serverKeyPair.getPublic());
 
 	// Server
-	byte[] secretServer = ECDHUtils.getSharedSecret(serverKeyPair.getPrivate(), clientKeyPair.getPublic());
+	byte[] secretServer = ECDHUtils.getSharedSecretKey(serverKeyPair.getPrivate(), clientKeyPair.getPublic());
 
 	Assertions.assertArrayEquals(secretClient, secretServer);
 
 	System.out.println("Public key client: " + HexFormat.of().withUpperCase().formatHex(clientKeyPair.getPublic().getEncoded()));
 	System.out.println("Public key server: " + HexFormat.of().withUpperCase().formatHex(serverKeyPair.getPublic().getEncoded()));
 	System.out.println();
-	System.out.println("Secret client: " + HexFormat.of().withUpperCase().formatHex(secretClient));
-	System.out.println("Secret sever:  " + HexFormat.of().withUpperCase().formatHex(secretServer));
+	System.out.println("Shared secret client: " + HexFormat.of().withUpperCase().formatHex(secretClient));
+	System.out.println("Shared secret sever:  " + HexFormat.of().withUpperCase().formatHex(secretServer));
     }
 }

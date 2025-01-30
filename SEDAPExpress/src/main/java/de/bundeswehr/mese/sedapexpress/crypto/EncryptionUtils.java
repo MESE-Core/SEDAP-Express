@@ -57,10 +57,12 @@ public class EncryptionUtils {
      * @throws InvalidKeyException
      */
     public static String encrypt_AES_ECB(String originalData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+
 	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 	Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
 	cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 	byte[] encryptedBytes = cipher.doFinal(originalData.getBytes());
+
 	return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 
@@ -79,11 +81,13 @@ public class EncryptionUtils {
      * @throws InvalidKeyException
      */
     public static String decrypt_AES_ECB(String encryptedData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+
 	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 	Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
 	cipher.init(Cipher.DECRYPT_MODE, secretKey);
 	byte[] decodedBytes = Base64.getDecoder().decode(encryptedData);
 	byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+
 	return new String(decryptedBytes);
     }
 
@@ -102,10 +106,12 @@ public class EncryptionUtils {
      * @throws InvalidKeyException
      */
     public static String encrypt_AES_CFB(String originalData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+
 	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 	Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
 	cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 	byte[] encryptedBytes = cipher.doFinal(originalData.getBytes());
+
 	return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 
@@ -124,11 +130,13 @@ public class EncryptionUtils {
      * @throws InvalidKeyException
      */
     public static String decrypt_AES_CFB(String encryptedData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+
 	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 	Cipher cipher = Cipher.getInstance("AES/CFB/NoPadding");
 	cipher.init(Cipher.DECRYPT_MODE, secretKey);
 	byte[] decodedBytes = Base64.getDecoder().decode(encryptedData);
 	byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+
 	return new String(decryptedBytes);
     }
 
@@ -147,10 +155,12 @@ public class EncryptionUtils {
      * @throws InvalidKeyException
      */
     public static String encrypt_AES_CTR(String originalData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+
 	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 	Cipher cipher = Cipher.getInstance("AES/CTR/NoPadding");
 	cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 	byte[] encryptedBytes = cipher.doFinal(originalData.getBytes());
+
 	return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 
@@ -169,11 +179,13 @@ public class EncryptionUtils {
      * @throws InvalidKeyException
      */
     public static String decrypt_AES_CTR(String encryptedData, byte[] key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+
 	SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
 	Cipher cipher = Cipher.getInstance("AES/CTR/NoPadding");
 	cipher.init(Cipher.DECRYPT_MODE, secretKey);
 	byte[] decodedBytes = Base64.getDecoder().decode(encryptedData);
 	byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+
 	return new String(decryptedBytes);
     }
 }

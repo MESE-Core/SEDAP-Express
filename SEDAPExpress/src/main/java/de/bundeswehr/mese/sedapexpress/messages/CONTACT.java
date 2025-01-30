@@ -549,7 +549,9 @@ public class CONTACT extends SEDAPExpressMessage {
 	// Heading
 	if (message.hasNext()) {
 	    value = message.next();
-	    if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
+	    if (value.isBlank()) {
+		SEDAPExpressMessage.logger.logp(Level.INFO, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"heading\" is empty!");
+	    } else if (SEDAPExpressMessage.matchesPattern(SEDAPExpressMessage.BEARING_MATCHER, value)) {
 		this.heading = Double.valueOf(value);
 	    } else {
 		SEDAPExpressMessage.logger.logp(Level.SEVERE, "CONTACT", "CONTACT(Iterator<String> message)", "Optional field \"heading\" contains invalid value!", value);

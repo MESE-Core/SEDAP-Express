@@ -47,7 +47,7 @@ public class ECDHUtils {
     }
 
     /**
-     * Generates a key pair for the Diffie-Hellman-Merkle process
+     * Generates a key pair for the Elliptic-Curves-Diffie-Hellman-Merkle process
      *
      * @return Key pair
      *
@@ -59,21 +59,23 @@ public class ECDHUtils {
 
 	KeyPairGenerator clientKeyPairGenerator = KeyPairGenerator.getInstance("X25519", BouncyCastleProvider.PROVIDER_NAME);
 	clientKeyPairGenerator.initialize(new XDHParameterSpec(XDHParameterSpec.X25519));
+
 	return clientKeyPairGenerator.generateKeyPair();
     }
 
     /**
-     * Calculates the shared secret when using ECDH
+     * Calculates the shared secret key
      *
      * @param ownSecretKey   the own secret key
      * @param otherPublicKey the public key of the other side
+     * 
      * @return the shared secret key
      *
      * @throws NoSuchProviderException
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeyException
      */
-    public static byte[] getSharedSecret(PrivateKey ownSecretKey, PublicKey otherPublicKey) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException {
+    public static byte[] getSharedSecretKey(PrivateKey ownSecretKey, PublicKey otherPublicKey) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException {
 
 	KeyAgreement serverKeyAgreement = KeyAgreement.getInstance("X25519", BouncyCastleProvider.PROVIDER_NAME);
 	serverKeyAgreement.init(ownSecretKey);

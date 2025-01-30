@@ -176,7 +176,8 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     public static final Pattern TECSTATUS_MATCHER = Pattern.compile("^[0-5]$"); // TecStatus
     public static final Pattern OPSSTATUS_MATCHER = Pattern.compile("^[0-4]$"); // OpsStatus
     public static final Pattern PERCENT_MATCHER = Pattern.compile("^([A-Za-z0-9]*#(100(\\\\.0+)?|(\\d{1,2}(.\\d+)*))#*)+$"); // Percent
-    public static final Pattern DATA_ENCODING_MATCHER = Pattern.compile("^BASE64$|^ASCII$|^BINARY$");
+    public static final Pattern DATA_ENCODING_MATCHER = Pattern.compile("^BASE64$|^NONE$");
+    public static final Pattern CONTENT_TYPE_MATCHER = Pattern.compile("^SEDAP$|^ASCII$|^NMEA$|^XML$|^JSON$|^BINARY$");
 
     public static boolean matchesPattern(Pattern pattern, String value) {
 	return pattern.matcher(value).matches();
@@ -264,9 +265,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     /**
-     * If one is using for instance a ComboBox with the available classifications,
-     * this method can be used to get the matching classification depending on the
-     * selected index.
+     * If one is using for instance a ComboBox with the available classifications, this method can be used to get the matching classification depending on the selected index.
      *
      * @param selectedIndex of for instance a List or a ComboBox
      * @return classification code
@@ -387,8 +386,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     /**
-     * Compares two classifications with each other and returns whether the given
-     * classification is within the maximum permissible classification range.
+     * Compares two classifications with each other and returns whether the given classification is within the maximum permissible classification range.
      *
      * @param classification    classification to text
      * @param maxClassification Maximal permitted classification
@@ -444,8 +442,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     /**
-     * Splits a #-list in a serialized SEDAP-Express message into a list if string
-     * values.
+     * Splits a #-list in a serialized SEDAP-Express message into a list if string values.
      *
      * @param list #-list
      * @return Array with the content of the #-list
@@ -478,8 +475,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     /**
-     * Splits a #-list in a serialized SEDAP-Express message into a list if integer
-     * values.
+     * Splits a #-list in a serialized SEDAP-Express message into a list if integer values.
      *
      * @param list #-list
      * @return Array with the content of the #-list
@@ -512,8 +508,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     /**
-     * Splits a #-list in a serialized SEDAP-Express message into a list if double
-     * values.
+     * Splits a #-list in a serialized SEDAP-Express message into a list if double values.
      *
      * @param list #-list
      * @return Array with the content of the #-list
@@ -708,8 +703,7 @@ public abstract class SEDAPExpressMessage implements Comparable<SEDAPExpressMess
     }
 
     /**
-     * Deserializes a SEDAP-Express message and return the matching concrete
-     * implementation object.
+     * Deserializes a SEDAP-Express message and return the matching concrete implementation object.
      *
      * @param receivedMessage serialized SEDAP-Message
      *

@@ -25,6 +25,7 @@
  */
 package de.bundeswehr.mese.sedapexpress.crypto;
 
+import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
@@ -42,32 +43,40 @@ import org.junit.jupiter.api.Test;
 class DHUtilsTest {
 
     @Test
-    void testKeyGeneration() throws InvalidParameterSpecException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, InvalidKeyException, InvalidKeySpecException {
+    void testDHKeyExchange() throws InvalidParameterSpecException, NoSuchAlgorithmException, NoSuchProviderException, InvalidAlgorithmParameterException, InvalidKeyException, InvalidKeySpecException {
 
-	DHParameterSpec params = DHUtils.generateVariable(256);
+	Integer keySize = 256;
+
+	DHParameterSpec parameterSpecsServer = DHUtils.generateVariables(keySize);
+
+	BigInteger p = parameterSpecsServer.getP();
+	BigInteger g = parameterSpecsServer.getG();
+
+	DHParameterSpec parameterSpecsClient = DHUtils.generateVariables(keySize, p, g);
 
 	// Client Key (private / public)
-	KeyPair clientKeyPair = DHUtils.generateKeyPair(params);
+	KeyPair clientKeyPair = DHUtils.generateKeyPair(parameterSpecsServer);
 
 	// Server Key (private / public)
-	KeyPair serverKeyPair = DHUtils.generateKeyPair(params);
+	KeyPair serverKeyPair = DHUtils.generateKeyPair(parameterSpecsClient);
 
 	// Client
-	byte[] secretClient = DHUtils.getSharedSecret(clientKeyPair.getPrivate(), serverKeyPair.getPublic());
+	byte[] secretClient = DHUtils.getSharedSecretKey(clientKeyPair.getPrivate(), serverKeyPair.getPublic());
 
 	// Server
-	byte[] secretServer = DHUtils.getSharedSecret(serverKeyPair.getPrivate(), clientKeyPair.getPublic());
+	byte[] secretServer = DHUtils.getSharedSecretKey(serverKeyPair.getPrivate(), clientKeyPair.getPublic());
 
 	Assertions.assertArrayEquals(secretClient, secretServer);
 
-	System.out.println("p: " + params.getP());
-	System.out.println("g: " + params.getG());
+	System.out.println("KeySize: " + keySize);
+	System.out.println("p:       " + p);
+	System.out.println("g:       " + g);
 	System.out.println();
 	System.out.println("Public key client: " + HexFormat.of().withUpperCase().formatHex(clientKeyPair.getPublic().getEncoded()));
 	System.out.println("Public key server: " + HexFormat.of().withUpperCase().formatHex(serverKeyPair.getPublic().getEncoded()));
 	System.out.println();
-	System.out.println("Secret client: " + HexFormat.of().withUpperCase().formatHex(secretClient));
-	System.out.println("Secret sever:  " + HexFormat.of().withUpperCase().formatHex(secretServer));
+	System.out.println("Shared secret client: " + HexFormat.of().withUpperCase().formatHex(secretClient));
+	System.out.println("Shared secret sever:  " + HexFormat.of().withUpperCase().formatHex(secretServer));
 
     }
 }
